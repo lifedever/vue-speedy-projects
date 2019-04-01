@@ -53,7 +53,6 @@
                     return false;
                 this.$slots.default.forEach((o, index) => {
                     let column = o.componentInstance
-
                     let item = {
                         title: column.title,
                         key: column.prop,

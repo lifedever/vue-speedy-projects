@@ -41,12 +41,13 @@
             this.loadData()
         },
         methods: {
-            loadData(page) {
+            loadData(page, query) {
                 this.loading = true
                 let params = {}
                 if (page !== undefined) {
                     params.page = page - 1
                 }
+                Object.assign(params, query)
                 this.$http.get(this.url, {
                     params: params
                 }).then(res => {
