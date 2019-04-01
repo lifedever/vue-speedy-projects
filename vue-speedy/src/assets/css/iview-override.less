@@ -1,0 +1,109 @@
+@import "./base";
+
+body {
+    font-size: @font-size-base;
+}
+
+.ivu-table-wrapper {
+    border: none;
+}
+
+.ivu-table th, .ivu-table td {
+    border-bottom: @border-line;
+}
+
+tr {
+    border-color: @border-color-split;
+}
+
+.ivu-table:before, .ivu-table:after {
+    background-color: #fff;
+}
+
+.ivu-table, .ivu-form .ivu-form-item-label {
+    font-size: @font-size-base;
+}
+
+.ivu-checkbox-wrapper {
+    font-size: @font-size-base;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ivu-btn {
+    padding: 3px 10px 4px;
+}
+
+.ivu-btn-small {
+    font-size: @font-size-small;
+    padding: 1px 7px 2px;
+}
+
+.ivu-input {
+    font-size: @font-size-base;
+}
+
+.ivu-modal-header p, .ivu-modal-header-inner {
+    font-size: @font-size-large;
+}
+
+.ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title {
+    padding: 14px 20px;
+}
+
+.ivu-tree ul li {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ivu-form .ivu-form-item-label {
+    font-size: 14px;
+    padding: 0 12px 10px 0;
+}
+.ivu-form.ivu-form-label-right .ivu-form-item-label {
+    font-size: 14px;
+    padding: 9px 12px 10px 0;
+}
+
+.ivu-layout-sider, .ivu-menu-dark {
+    background: darken(@primary-color, 25%);
+    font-weight: 500;
+
+    span {
+
+    }
+}
+
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
+    background: darken(@primary-color, 25%);
+    .ivu-menu-submenu-title{
+        background: darken(@primary-color, 25%);
+    }
+}
+
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover,.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover {
+    border-right: none;
+    color: #fff;
+    background: darken(@primary-color, 35%) !important;
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+    background: darken(@primary-color, 28%) !important;
+}
+.side-menu-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-container {
+    height: 100%;
+    overflow: auto;
+}
+.main .logo-con > .logo-title {
+    text-align: left;
+    padding-left: 20px;
+}
