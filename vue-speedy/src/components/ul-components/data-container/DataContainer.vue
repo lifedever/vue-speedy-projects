@@ -34,20 +34,24 @@
             return {
                 loading: false,
                 pageable: null,
-                items: null
+                items: null,
+                params: null
             }
         },
         mounted() {
             this.loadData()
         },
         methods: {
-            loadData(page, query) {
+            load(params) {
+                this.params = params
+            },
+            loadData(page) {
                 this.loading = true
                 let params = {}
                 if (page !== undefined) {
                     params.page = page - 1
                 }
-                Object.assign(params, query)
+                Object.assign(params, this.params)
                 this.$http.get(this.url, {
                     params: params
                 }).then(res => {
