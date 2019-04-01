@@ -44,6 +44,7 @@
         methods: {
             load(params) {
                 this.params = params
+                this.loadData(1)
             },
             loadData(page) {
                 this.loading = true
