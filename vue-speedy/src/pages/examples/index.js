@@ -18,6 +18,15 @@ export default {
                 holderNeedless: true
             },
             component: () => import('./two-col-container')
+        },{
+            path: '/page-data-container',
+            name: 'PageDataContainer', // 一级目录下的二级页面
+            meta: {
+                authenticated: true,
+                title: '分页数据',
+                holderNeedless: true
+            },
+            component: () => import('./page-data-container')
         }, {
             path: '/none',
             name: 'none', // 一级目录下的二级页面

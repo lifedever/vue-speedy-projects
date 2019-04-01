@@ -5,9 +5,22 @@
         </div>
         <template slot-scope="scope">
             <ul-table v-if="items" :height="scope.mainHeight" v-model="items" :loading="loading">
+                <ul-table-column label="#" width="80" align="center">
+                    <template slot-scope="scope">
+                        {{scope.index + 1}}
+                    </template>
+                </ul-table-column>
                 <slot></slot>
             </ul-table>
         </template>
+        <div slot="footer" v-if="pageable">
+            <Page :total="pageable.totalElements"
+                  :page-size="pageable.size"
+                  show-total
+                  :current="pageable.number + 1"
+                  @on-change="loadData"
+                  show-elevator></Page>
+        </div>
     </Container>
 </template>
 
@@ -17,22 +30,34 @@
         props: {
             url: String
         },
-        data(){
+        data() {
             return {
                 loading: false,
+                pageable: null,
                 items: null
             }
         },
-        mounted(){
+        mounted() {
             this.loadData()
         },
         methods: {
-            loadData(){
+            loadData(page) {
                 this.loading = true
-                this.$http.get(this.url).then(res => {
-                    this.items = res.data
+                let params = {}
+                if (page !== undefined) {
+                    params.page = page - 1
+                }
+                this.$http.get(this.url, {
+                    params: params
+                }).then(res => {
+                    if (res.data.content) {     // 属于分页
+                        this.items = res.data.content;
+                        this.pageable = res.data
+                    } else {
+                        this.items = res.data;
+                    }
                     this.loading = false
-                })
+                });
             },
         }
     }

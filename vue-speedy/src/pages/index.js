@@ -29,27 +29,6 @@ export default [
     },
     {
         path: '/',
-        name: "TestIndex",
-        meta: {
-            authenticated: true,
-        },
-        component: () => import('../view/main'),
-        children: [
-            {
-                path: '/test',
-                name: "Test",
-                meta: {
-                    title: '测试',
-                    authenticated: true,
-                    holderNeedless: true,
-                    ignoreTab: true
-                },
-                component: () => import('../pages/test/Test'),
-            }
-        ]
-    },
-    {
-        path: '/',
         name: "TenoworkIndex",
         meta: {
             authenticated: true,
