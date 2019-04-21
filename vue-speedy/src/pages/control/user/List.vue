@@ -4,7 +4,7 @@
             <Button type="primary"
                     icon="md-add"
                     @click="addUser">
-                添加新用户
+                {{$t('addUser')}}
             </Button>
         </div>
         <ul-table-column title="用户名">
@@ -42,6 +42,16 @@
 
     export default {
         name: "UserList",
+        i18n: {
+            messages: {
+                'zh-CN': {
+                    addUser: '添加新用户'
+                },
+                'en-US': {
+                    addUser: 'Add User'
+                },
+            }
+        },
         data() {
             return {
                 sending: false

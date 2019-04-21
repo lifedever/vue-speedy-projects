@@ -166,9 +166,15 @@
                 this.turnToPage(item)
             },
             handleSetLocale(locale) {
-                this.setLocal(locale)
-                this.$nextTick(() => {
-                    location.reload()
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '系统将刷新以改变当前的语言，确认继续吗？',
+                    onOk: () => {
+                        this.setLocal(locale)
+                        this.$nextTick(() => {
+                            location.reload()
+                        })
+                    }
                 })
             }
         },
