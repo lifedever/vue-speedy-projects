@@ -3,7 +3,7 @@ import {
     setTagNavListInLocalstorage,
     getMenuByRouter,
     getTagNavListFromLocalstorage,
-    getHomeRoute
+    getHomeRoute, setLocale
 } from '../../libs/util'
 
 let routers = []
@@ -51,6 +51,8 @@ export default {
         },
         setLocal(state, lang) {
             state.local = lang
+            console.log('set locale', lang)
+            setLocale(lang)
         },
         setForbidden(state, forbidden) {
             state.forbidden = forbidden

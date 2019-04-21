@@ -1,11 +1,12 @@
 import Main from '@/view/main'
+import i18n from '../../locale'
 
 export default {
     path: '/',
     name: 'Main',
     component: Main,
     meta: {
-        title: '首页',
+        title: i18n.t('router.home'),
         authenticated: true,
         notClose: true
     },
@@ -14,7 +15,7 @@ export default {
             path: ':holder/home',
             name: 'Home',
             meta: {
-                title: '首页',
+                title: i18n.t('router.home'),
                 icon: 'md-home',
                 hideInMenu: true,
                 notClose: true,

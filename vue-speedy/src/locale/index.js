@@ -6,13 +6,17 @@ import customEnUs from './lang/en-US'
 import zhCnLocale from 'iview/src/locale/lang/zh-CN'
 import enUsLocale from 'iview/src/locale/lang/en-US'
 import zhTwLocale from 'iview/src/locale/lang/zh-TW'
+import {getLocale} from "../libs/util";
 
 Vue.use(VueI18n)
 
 // 自动根据浏览器系统语言设置语言
 const navLang = navigator.language
 const localLang = (navLang === 'zh-CN' || navLang === 'en-US') ? navLang : false
-let lang = window.localStorage.lang || localLang || 'zh-CN'
+
+let lang = getLocale() || localLang || 'zh-CN'
+
+console.log('current lang', lang)
 
 Vue.config.lang = lang
 

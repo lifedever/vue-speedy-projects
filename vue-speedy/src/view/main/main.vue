@@ -17,7 +17,7 @@
             <Header class="header-con" style="height: 48px; line-height: 0;">
                 <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
                     <user :user-avator="userAvator"/>
-                    <!--<language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>-->
+                    <language @on-lang-change="handleSetLocale" style="margin-right: 10px;" :lang="local"/>
                     <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
                     <div class="tag-nav-wrapper" slot="breadcrumb">
                         <tags-nav :value="$route" @input="handleClick" :list="tagNavList" @on-close="handleCloseTag"/>
@@ -164,6 +164,12 @@
             handleClick(item) {
                 this.forbid(false)
                 this.turnToPage(item)
+            },
+            handleSetLocale(locale) {
+                this.setLocal(locale)
+                this.$nextTick(() => {
+                    location.reload()
+                })
             }
         },
         watch: {

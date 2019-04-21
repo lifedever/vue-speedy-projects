@@ -1,11 +1,12 @@
 import Main from '@/view/main'
+import i18n from '../../locale'
 export default {
     path: '/control',
     name: 'HolderIndex',
     meta: {
         icon: 'md-desktop',
         authenticated: true,
-        title: '访问控制'
+        title: i18n.t('router.control')
     },
     component: Main,
     children: [
@@ -14,7 +15,7 @@ export default {
             name: 'HolderRole', // 一级目录下的二级页面
             meta: {
                 authenticated: true,
-                title: '角色管理'
+                title: i18n.t('router.roles')
             },
             component: () => import('./role')
         },
@@ -23,7 +24,7 @@ export default {
             name: 'HolderProfile',
             meta: {
                 authenticated: true,
-                title: '用户管理',
+                title: i18n.t('router.users')
             },
             component: () => import('./user')
         },
@@ -32,7 +33,7 @@ export default {
             name: 'HolderRolePermission',
             meta: {
                 authenticated: true,
-                title: '用户授权'
+                title: i18n.t('router.permission')
             }
         }
     ]

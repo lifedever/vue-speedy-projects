@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import {SESSION_HOLDER_KEY, TOKEN_KEY} from "../const";
+import {LANGUAGE_KEY, SESSION_HOLDER_KEY, TOKEN_KEY} from "../const";
 // cookie保存的天数
 import config from '@/config'
 import {forEach, hasOneOf} from '@/libs/tools'
@@ -436,4 +436,12 @@ export const getErrorCode = (err) => {
     } else {
         return null
     }
+}
+
+export const setLocale = (language) => {
+    window.localStorage.setItem(LANGUAGE_KEY, language)
+}
+
+export const getLocale = () => {
+    return window.localStorage.getItem(LANGUAGE_KEY)
 }
