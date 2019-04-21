@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routers from './routers'
-import {canTurnTo, getToken} from '@/libs/util'
 import store from '../store'
+import $Message from 'iview/src/components/message'
 import {checkIfHolderNeedless, getLocalHolder, setLocalHolder, storeHolder} from "../libs/util";
 
 Vue.use(Router);
@@ -47,7 +47,7 @@ export default (extRoutes) => {
                 // 远程holder加载
                 store.dispatch('loadHolders').then(holders => {
                     if (holders.length === 0) {
-                        alert('当前登录用户在此平台无有效关联租户，请联系系统管理员！')
+                        $Message.warning('当前登录用户在此平台无有效关联租户，请联系系统管理员！')
                         store.dispatch('handleLogOut')
                         next('/login')
                     } else if (holders.length === 1) {
