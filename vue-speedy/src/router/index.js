@@ -18,11 +18,9 @@ export default (extRoutes) => {
     router.beforeEach((to, from, next) => {
         console.log('from', from)
         console.log('to', to)
-
         let holderId = to.params.holder
         if (!holderId && !checkIfHolderNeedless(to)) {
             console.log('远程 load 租户列表')
-
             const nextRoute = (holderId) => {
                 let params = to.params || {}
                 let name = to.name

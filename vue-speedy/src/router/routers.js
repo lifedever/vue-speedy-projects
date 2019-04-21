@@ -6,7 +6,8 @@ export default (routes) => {
             meta: {
                 title: 'Login - 登录',
                 hide: true,
-                anonymous: true
+                anonymous: true,
+                holderNeedless: true
             },
             component: () => import('@/view/login/login.vue')
         }
