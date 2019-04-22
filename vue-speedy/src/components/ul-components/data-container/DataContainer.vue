@@ -108,7 +108,7 @@
             checkEditModal () {
                 return new Promise((resolve, reject) => {
                     if (!this.editModal) {
-                        console.error('请设置editModal属性！')
+                        console.error('请设置 editModal 属性！')
                         reject()
                     } else {
                         resolve()
@@ -119,7 +119,7 @@
                 this.checkEditModal().then(_ => {
                     this.$mountModal({
                         component: this.editModal.component,
-                        title: '添加' + this.editModal.title,
+                        title: '添加' + (this.editModal.title || ''),
                         width: this.editModal.width || 450,
                         ok: (formIns, error) => {
                             formIns.save().then(res => {
@@ -137,7 +137,7 @@
                 this.checkEditModal().then( _ => {
                     this.$mountModal({
                         component: this.editModal.component,
-                        title: '编辑' + this.editModal.title,
+                        title: '编辑' + (this.editModal.title || ''),
                         width: this.editModal.width || 450,
                         props: {
                             itemId: item.id
