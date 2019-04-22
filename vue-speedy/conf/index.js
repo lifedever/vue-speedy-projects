@@ -14,6 +14,7 @@ module.exports = (option) => {
     Object.assign(defaultOption, option);
     return {
         publicPath: defaultOption.baseUrl || '/',
+        useEslint: false,
         pages: {
             index: {
                 // page 的入口
