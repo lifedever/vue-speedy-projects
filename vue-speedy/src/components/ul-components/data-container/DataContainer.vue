@@ -11,7 +11,7 @@
                     </template>
                 </ul-table-column>
                 <slot></slot>
-                <ul-table-column title="操作" v-if="!readonly">
+                <ul-table-column title="操作" v-if="!readonly" :width="operationWidth" align="center">
                     <template slot-scope="scope">
                         <Button type="primary" size="small" v-if="editable" @click="editItem(scope.row)">编辑</Button>
                         <Button type="error" size="small" v-if="deletable" @click="deleteItem(scope.row)">删除</Button>
@@ -55,12 +55,19 @@
                 type: String,
                 default: 'id'
             },
+            // 是否显示操作列
             readonly: {
                 type: Boolean,
                 default: false
             },
+            // 编辑行的modal定义
             editModal: {
                 type: Object
+            },
+            // 操作列宽度，默认150
+            operationWidth: {
+                type: Number,
+                default: 150
             }
         },
         data () {
