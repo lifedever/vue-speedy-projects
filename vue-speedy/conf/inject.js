@@ -13,6 +13,7 @@ import axiosInterceptors from '../src/libs/axios.interceptors'
 import lodash from 'lodash'
 import UlComponents from '@/components/ul-components'
 import configMixin from '../src/config/mixins'
+import dayjs from '../src/libs/dayjs'
 
 Vue.use(iView, {
     i18n: (key, value) => i18n.t(key, value)
@@ -24,6 +25,7 @@ Vue.config.productionTip = false
 
 let $bus = new Vue()
 Vue.prototype.$bus = $bus;
+Vue.prototype.$dayjs = dayjs
 
 Vue.prototype.$mountModal = view => {
     $bus.$emit('MODAL_OPEN', view)
