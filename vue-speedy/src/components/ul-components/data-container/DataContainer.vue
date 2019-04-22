@@ -74,7 +74,7 @@
             return {
                 loading: false,
                 pageable: null,
-                items: null,
+                items: [],
                 params: null
             }
         },
