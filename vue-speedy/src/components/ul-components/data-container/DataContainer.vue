@@ -11,6 +11,13 @@
                     </template>
                 </ul-table-column>
                 <slot></slot>
+                <ul-table-column title="操作" v-if="!readonly">
+                    <template slot-scope="scope">
+                        <Button type="primary" size="small" v-if="editable" @click="editItem(scope.row)">编辑</Button>
+                        <Button type="error" size="small" v-if="deletable" @click="deleteItem(scope.row)">删除</Button>
+                        <slot name="itemOperation" v-bind:scope="scope"></slot>
+                    </template>
+                </ul-table-column>
             </ul-table>
         </template>
         <div slot="footer" v-if="pageable">
@@ -28,7 +35,33 @@
     export default {
         name: "DataContainer",
         props: {
-            url: String
+            // 数据列表地址
+            url: {
+                type:String,
+                required: true
+            },
+            // 是否可编辑
+            editable: {
+                type: Boolean,
+                default: true
+            },
+            // 是否可删除
+            deletable: {
+                type: Boolean,
+                default: true
+            },
+            // 数据主键
+            itemKey: {
+                type: String,
+                default: 'id'
+            },
+            readonly: {
+                type: Boolean,
+                default: false
+            },
+            editModal: {
+                type: Object
+            }
         },
         data() {
             return {
@@ -65,6 +98,61 @@
                     this.loading = false
                 });
             },
+            checkEditModal(){
+                if (!this.editModal) {
+                    console.error('请设置editModal属性！')
+                    return false
+                }
+            },
+            addItem(){
+                this.checkEditModal()
+                this.$mountModal({
+                    component: this.editModal.component,
+                    title: this.editModal.title || '添加',
+                    width: this.editModal.width || 450,
+                    ok: (formIns, error) => {
+                        formIns.save().then(res => {
+                            this.$Message.success('保存成功！');
+                            this.$unmountModal()
+                            this.loadData()
+                        }).catch(err => {
+                            error()
+                        })
+                    }
+                })
+            },
+            editItem (item) {
+                this.checkEditModal()
+                this.$mountModal({
+                    component: this.editModal.component,
+                    title: this.editModal.title || '编辑',
+                    width: this.editModal.width || 450,
+                    props: {
+                        itemId: item.id
+                    },
+                    ok: (formIns, error) => {
+                        formIns.save().then(res => {
+                            this.$Message.success('保存成功！');
+                            this.$unmountModal()
+                            this.loadData()
+                        }).catch(err => {
+                            error()
+                        })
+                    }
+                })
+            },
+            deleteItem (item) {
+                this.$Modal.confirm({
+                    title: '确认',
+                    content: '确认要删除当前记录吗？',
+                    onOk: () => {
+                        this.$http.delete(`${this.url}/${item[this.itemKey]}`).then(res => {
+                            this.$Message.success('删除成功')
+                            this.loadData()
+                        })
+                    }
+                })
+            }
         }
     }
 </script>

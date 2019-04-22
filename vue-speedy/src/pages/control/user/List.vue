@@ -23,17 +23,15 @@
                 <Tag v-else>未激活</Tag>
             </template>
         </ul-table-column>
-        <ul-table-column title="操作">
-            <template slot-scope="scope">
-                <Button type="error" size="small">删除</Button>
-                <Button type="primary"
-                        v-if="!scope.row.active"
-                        size="small"
-                        :loading="scope.row.id === sending"
-                        @click="sendActivationEmail(scope.row)">再次发送激活邮件
-                </Button>
-            </template>
-        </ul-table-column>
+
+        <template v-slot:itemOperation="{scope}">
+            <Button type="primary"
+                    v-if="!scope.row.active"
+                    size="small"
+                    :loading="scope.row.id === sending"
+                    @click="sendActivationEmail(scope.row)">再次发送激活邮件
+            </Button>
+        </template>
     </DataContainer>
 </template>
 
