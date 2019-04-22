@@ -3,8 +3,9 @@
 		   :title="title"
            :width="width"
            :footer-hide="footerHide"
-		   class-name="vertical-center-modal"
-		   @on-cancel="handleClose" @on-visible-change="handleVisibleChange">
+		   :class-name="vertical? 'vertical-center-modal': ''"
+		   @on-cancel="handleClose"
+           @on-visible-change="handleVisibleChange">
 		<slot></slot>
 		<div slot="footer" v-if="!footerHide">
 			<Button @click="handleClose">取消</Button>
