@@ -4,7 +4,7 @@
             <slot name="headerRight"></slot>
         </div>
         <template slot-scope="scope">
-            <ul-table v-if="items" :height="scope.mainHeight" v-model="items" :loading="loading">
+            <ul-table :height="scope.mainHeight" v-model="items" :loading="loading">
                 <ul-table-column label="#" width="80" align="center">
                     <template slot-scope="scope">
                         {{scope.index + 1}}
@@ -120,7 +120,7 @@
                     this.$mountModal({
                         component: this.editModal.component,
                         title: '添加' + (this.editModal.title || ''),
-                        width: this.editModal.width || 450,
+                        width: this.editModal.width || 500,
                         ok: (formIns, error) => {
                             formIns.save().then(res => {
                                 this.$Message.success('保存成功！')
