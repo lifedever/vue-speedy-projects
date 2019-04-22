@@ -33,11 +33,11 @@
 
 <script>
     export default {
-        name: "DataContainer",
+        name: 'DataContainer',
         props: {
             // 数据列表地址
             url: {
-                type:String,
+                type: String,
                 required: true
             },
             // 是否可编辑
@@ -63,7 +63,7 @@
                 type: Object
             }
         },
-        data() {
+        data () {
             return {
                 loading: false,
                 pageable: null,
@@ -71,15 +71,15 @@
                 params: null
             }
         },
-        mounted() {
+        mounted () {
             this.loadData()
         },
         methods: {
-            load(params) {
+            load (params) {
                 this.params = params
                 this.loadData(1)
             },
-            loadData(page) {
+            loadData (page) {
                 this.loading = true
                 let params = {}
                 if (page !== undefined) {
@@ -90,55 +90,61 @@
                     params: params
                 }).then(res => {
                     if (res.data.content) {     // 属于分页
-                        this.items = res.data.content;
+                        this.items = res.data.content
                         this.pageable = res.data
                     } else {
-                        this.items = res.data;
+                        this.items = res.data
                     }
                     this.loading = false
-                });
+                })
             },
-            checkEditModal(){
-                if (!this.editModal) {
-                    console.error('请设置editModal属性！')
-                    return false
-                }
-            },
-            addItem(){
-                this.checkEditModal()
-                this.$mountModal({
-                    component: this.editModal.component,
-                    title: this.editModal.title || '添加',
-                    width: this.editModal.width || 450,
-                    ok: (formIns, error) => {
-                        formIns.save().then(res => {
-                            this.$Message.success('保存成功！');
-                            this.$unmountModal()
-                            this.loadData()
-                        }).catch(err => {
-                            error()
-                        })
+            checkEditModal () {
+                return new Promise((resolve, reject) => {
+                    if (!this.editModal) {
+                        console.error('请设置editModal属性！')
+                        reject()
+                    } else {
+                        resolve()
                     }
                 })
             },
+            addItem () {
+                this.checkEditModal().then(_ => {
+                    this.$mountModal({
+                        component: this.editModal.component,
+                        title: this.editModal.title || '添加',
+                        width: this.editModal.width || 450,
+                        ok: (formIns, error) => {
+                            formIns.save().then(res => {
+                                this.$Message.success('保存成功！')
+                                this.$unmountModal()
+                                this.loadData()
+                            }).catch(err => {
+                                error()
+                            })
+                        }
+                    })
+                })
+            },
             editItem (item) {
-                this.checkEditModal()
-                this.$mountModal({
-                    component: this.editModal.component,
-                    title: this.editModal.title || '编辑',
-                    width: this.editModal.width || 450,
-                    props: {
-                        itemId: item.id
-                    },
-                    ok: (formIns, error) => {
-                        formIns.save().then(res => {
-                            this.$Message.success('保存成功！');
-                            this.$unmountModal()
-                            this.loadData()
-                        }).catch(err => {
-                            error()
-                        })
-                    }
+                this.checkEditModal().then( _ => {
+                    this.$mountModal({
+                        component: this.editModal.component,
+                        title: this.editModal.title || '编辑',
+                        width: this.editModal.width || 450,
+                        props: {
+                            itemId: item.id
+                        },
+                        ok: (formIns, error) => {
+                            formIns.save().then(res => {
+                                this.$Message.success('保存成功！')
+                                this.$unmountModal()
+                                this.loadData()
+                            }).catch(err => {
+                                error()
+                            })
+                        }
+                    })
                 })
             },
             deleteItem (item) {
