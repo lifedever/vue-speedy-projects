@@ -51,13 +51,13 @@
     import User from './components/user'
     import Fullscreen from './components/fullscreen'
     import Language from './components/language'
-    import {mapActions, mapMutations, mapGetters} from 'vuex'
-    import {getNewTagList} from '../../libs/util'
+    import { mapActions, mapMutations, mapGetters } from 'vuex'
+    import { getNewTagList } from '../../libs/util'
     import minLogo from '@/assets/images/logo-min.jpg'
     import maxLogo from '@/assets/images/logo.jpg'
     import './main.less'
-    import Error_403 from "../error-page/403";
-    import {getNextByPath, getNextByName} from "../../libs/util";
+    import Error_403 from '../error-page/403'
+    import { getNextByPath, getNextByName } from '../../libs/util'
 
     export default {
         name: 'Main',
@@ -70,7 +70,7 @@
             Fullscreen,
             User
         },
-        data() {
+        data () {
             return {
                 collapsed: false,
                 minLogo,
@@ -83,22 +83,22 @@
             ...mapGetters([
                 'forbiddenGet'
             ]),
-            tagNavList() {
+            tagNavList () {
                 return this.$store.state.app.tagNavList
             },
-            tagRouter() {
+            tagRouter () {
                 return this.$store.state.app.tagRouter
             },
-            userAvator() {
+            userAvator () {
                 return this.$store.state.user.avatorImgPath
             },
-            cacheList() {
+            cacheList () {
                 return this.tagNavList.length ? this.tagNavList.filter(item => !(item.meta && item.meta.notCache)).map(item => item.name) : []
             },
-            menuList() {
+            menuList () {
                 return this.$store.getters.menuList
             },
-            local() {
+            local () {
                 return this.$store.state.app.local
             }
         },
@@ -116,10 +116,10 @@
             /**
              * 匹配当前是否为iframe，如果是iframe，则不走router，走缓存。
              */
-            matchIframes() {
+            matchIframes () {
                 if (this.$route.meta.iframe) {
                     let name = this.$route.name
-                    let currentFrame = _find(this.iframes, {name: name})
+                    let currentFrame = _find(this.iframes, { name: name })
                     if (this.$route.meta.iframe && !currentFrame) {
                         this.iframes.push({
                             href: this.$route.meta.iframe,
@@ -128,22 +128,24 @@
                     }
                 }
             },
-            turnToPage(item) {
+            turnToPage (item) {
                 if (item.name.indexOf('isTurnByHref_') > -1) {
                     window.open(item.name.split('_')[1])
                     return
                 }
                 this.$router.push(item)
             },
-            handleCollapsedChange(state) {
+            handleCollapsedChange (state) {
                 this.collapsed = state
             },
-            handleCloseTag(res, item, type) {
-                let nextRoute;
-                if (item.meta.matchByPath) {
-                    nextRoute = getNextByPath(this.tagNavList, item.path)
-                } else {
-                    nextRoute = getNextByName(this.tagNavList, item.name)
+            handleCloseTag (res, item, type) {
+                let nextRoute
+                if (item) {
+                    if (item.meta && item.meta.matchByPath) {
+                        nextRoute = getNextByPath(this.tagNavList, item.path)
+                    } else {
+                        nextRoute = getNextByName(this.tagNavList, item.name)
+                    }
                 }
 
                 this.setTagNavList(res)
@@ -155,17 +157,17 @@
                     return
                 }
                 if (type === 'others') {
-                    return ;
+                    return
                 }
 
                 console.log('nextRoute', nextRoute)
                 this.$router.push(nextRoute)
             },
-            handleClick(item) {
+            handleClick (item) {
                 this.forbid(false)
                 this.turnToPage(item)
             },
-            handleSetLocale(locale) {
+            handleSetLocale (locale) {
                 this.$Modal.confirm({
                     title: '提示',
                     content: '系统将刷新以改变当前的语言，确认继续吗？',
@@ -179,15 +181,15 @@
             }
         },
         watch: {
-            '$route'(newRoute) {
+            '$route' (newRoute) {
                 if (!newRoute.meta || !newRoute.meta.ignoreTab) {
-                    this.setBreadCrumb(newRoute.matched);
+                    this.setBreadCrumb(newRoute.matched)
                     this.setTagNavList(getNewTagList(this.tagNavList, newRoute))
                 }
                 this.matchIframes()
             }
         },
-        mounted() {
+        mounted () {
             /**
              * @description 初始化设置面包屑导航和标签导航
              */
