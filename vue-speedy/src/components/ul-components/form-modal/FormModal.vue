@@ -32,6 +32,7 @@
                 default: false
             },
             title: String,
+            vertical: Boolean,
             loading: Boolean,
             width: {
                 type: [String, Number],
