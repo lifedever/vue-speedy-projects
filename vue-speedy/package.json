@@ -1,6 +1,6 @@
 {
 	"name": "vue-speedy",
-	"version": "2.0.58",
+	"version": "2.0.59",
 	"author": "gefangshuai<gefangshuai@163.com>",
 	"private": false,
 	"license": "MIT",
@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.18.0",
+		"bson-objectid": "^1.2.4",
 		"clipboard": "^2.0.0",
 		"codemirror": "^5.38.0",
 		"countup": "^1.8.2",
@@ -27,7 +28,9 @@
 		"http-server": "^0.11.1",
 		"iview": "^3.0.0",
 		"iview-area": "^1.5.17",
+		"jquery": "^3.4.0",
 		"js-cookie": "^2.2.0",
+		"jstree": "^3.3.7",
 		"lodash": "^4.17.10",
 		"qs": "^6.5.2",
 		"simplemde": "^1.11.2",
@@ -49,9 +52,9 @@
 		"compression-webpack-plugin": "^2.0.0",
 		"eslint-plugin-cypress": "^2.0.1",
 		"less": "^2.7.3",
-        "uglifyjs-webpack-plugin": "^2.1.2",
-        "less-loader": "^4.0.5",
+		"less-loader": "^4.0.5",
 		"lint-staged": "^6.0.0",
+		"uglifyjs-webpack-plugin": "^2.1.2",
 		"vue-template-compiler": "^2.5.13"
 	},
 	"browserslist": [
