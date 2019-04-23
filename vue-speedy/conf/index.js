@@ -1,4 +1,5 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const productionGzipExtensions = ['js', 'css']
 const path = require('path')
 const resolve = dir => {
@@ -52,6 +53,23 @@ module.exports = (option) => {
                         minRatio: 0.8
                     })
                 );
+
+                config.plugins.push(
+                    new UglifyJsPlugin({
+                        uglifyOptions: {
+                            // 最紧凑的输出
+                            beautify: false,
+                            // 删除所有的注释
+                            comments: false,
+                            compress: {
+                                drop_console: true,
+                                warnings: false,
+                                collapse_vars: true,
+                                reduce_vars: true
+                            },
+                        }
+                    })
+                )
             }
         },
         // 打包时不生成.map文件
