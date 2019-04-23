@@ -105,6 +105,7 @@
                     this.loading = false
                     this.$emit('loadSuccess', res.data)
                 }).catch(error => {
+                    this.loading = false
                     console.error(error)
                     this.$emit('loadError', error)
                 })
