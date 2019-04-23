@@ -105,8 +105,8 @@
                     this.loading = false
                     this.$emit('loadSuccess', res.data)
                 }).catch(error => {
+                    this.$Message.warning('数据加载失败！')
                     this.loading = false
-                    console.error(error)
                     this.$emit('loadError', error)
                 })
             },
