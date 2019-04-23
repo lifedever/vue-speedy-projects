@@ -27,7 +27,7 @@
         name: "TwoColContainer",
         data(){
             return {
-                split: 0.2
+                split: '300px'
             }
         },
         created(){
@@ -67,7 +67,6 @@
             line-height: 48px;
             background: #ffffff;
             padding: 0;
-            margin-bottom: 5px;
         }
         .ivu-layout-sider {
             background: #ffffff;

@@ -14,11 +14,13 @@ import lodash from 'lodash'
 import UlComponents from '@/components/ul-components'
 import configMixin from '../src/config/mixins'
 import dayjs from '../src/libs/dayjs'
+import jQuery from '../src/libs/jquery'
 
 Vue.use(iView, {
     i18n: (key, value) => i18n.t(key, value)
 })
 Vue.use(UlComponents)
+Vue.use(jQuery)
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,6 @@
 import Container from './container';
 import DataContainer from './data-container';
+import TreeContainer from './tree-container';
 import SplitContainer from './split-container';
 import {UlTable, UlTableColumn} from './ul-table';
 
@@ -7,6 +8,7 @@ const ul = {
     Container,
     SplitContainer,
     DataContainer,
+    TreeContainer,
     UlTableColumn,
     UlTable
 };

@@ -1,5 +1,5 @@
 <template>
-    $END$
+    <tree-container></tree-container>
 </template>
 
 <script>

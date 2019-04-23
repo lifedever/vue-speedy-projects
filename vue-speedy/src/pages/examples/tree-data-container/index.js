@@ -1,2 +1,2 @@
-import PageDataContainer from './PageDataContainer'
-export default PageDataContainer
+import TreeDataContainer from './TreeDataContainer'
+export default TreeDataContainer

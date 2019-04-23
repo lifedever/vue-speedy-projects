@@ -1,2 +1,2 @@
-import SplitContainer from './SplitContainer';
-export default SplitContainer
+import TreeContainer from './TreeContainer';
+export default TreeContainer

@@ -27,6 +27,15 @@ export default {
                 holderNeedless: true
             },
             component: () => import('./page-data-container')
+        },{
+            path: '/tree-data-container',
+            name: 'TreeDataContainer', // 一级目录下的二级页面
+            meta: {
+                authenticated: true,
+                title: '树数据组件',
+                holderNeedless: true
+            },
+            component: () => import('./tree-data-container')
         }, {
             path: '/none',
             name: 'none', // 一级目录下的二级页面
