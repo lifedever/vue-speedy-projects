@@ -14,8 +14,8 @@
                 <ul-table-column title="操作" v-if="!readonly" :width="operationWidth" align="center">
                     <template slot-scope="scope">
                         <Button type="primary" size="small" v-if="editable" @click="editItem(scope.row)">编辑</Button>
-                        <Button type="error" size="small" v-if="deletable" @click="deleteItem(scope.row)">删除</Button>
                         <slot name="itemOperation" v-bind:scope="scope"></slot>
+                        <Button type="error" size="small" v-if="deletable" @click="deleteItem(scope.row)">删除</Button>
                     </template>
                 </ul-table-column>
             </ul-table>
@@ -103,6 +103,10 @@
                         this.items = res.data
                     }
                     this.loading = false
+                    this.$emit('loadSuccess', res.data)
+                }).catch(error => {
+                    console.error(error)
+                    this.$emit('loadError', error)
                 })
             },
             checkEditModal () {
