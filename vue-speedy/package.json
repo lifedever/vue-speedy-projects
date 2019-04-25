@@ -1,6 +1,6 @@
 {
 	"name": "vue-speedy",
-	"version": "2.0.65",
+	"version": "2.0.66",
 	"author": "gefangshuai<gefangshuai@163.com>",
 	"private": false,
 	"license": "MIT",
@@ -55,7 +55,6 @@
 		"less": "^2.7.3",
 		"less-loader": "^4.0.5",
 		"lint-staged": "^6.0.0",
-		"uglifyjs-webpack-plugin": "^2.1.2",
 		"vue-template-compiler": "^2.5.13",
 		"webpack-butternut-plugin": "^0.3.4"
 	},
