@@ -1,5 +1,6 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const ButternutPlugin = require('butternut-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 const productionGzipExtensions = ['js', 'css']
 const path = require('path')
 const resolve = dir => {
@@ -54,11 +55,21 @@ module.exports = (option) => {
                     })
                 );
 
-                config.plugins.push(
-                    new ButternutPlugin({
-
+                /*config.plugins.push(
+                    new UglifyJSPlugin({
+                        uglifyOptions: {
+                            warnings: false,
+                            parse: {},
+                            compress: {},
+                            mangle: true, // Note `mangle.properties` is `false` by default.
+                            output: null,
+                            toplevel: false,
+                            nameCache: null,
+                            ie8: false,
+                            keep_fnames: false,
+                        },
                     })
-                )
+                )*/
             }
         },
         // 打包时不生成.map文件
