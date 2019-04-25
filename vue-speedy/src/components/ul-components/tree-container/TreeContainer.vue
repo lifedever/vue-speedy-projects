@@ -8,9 +8,6 @@
         </div>
         <div slot="left">
             <div id="ksTree"></div>
-            <Button size="small" v-if="!value || value.length === 0" type="text" icon="md-add" @click="addRootHandler">
-                添加根数据
-            </Button>
         </div>
     </split-container>
 </template>
@@ -31,7 +28,7 @@
                 currentNode: null
             }
         },
-        props: ['value'],
+        props: ['value', 'url'],
         watch: {
             value() {
                 if (this.value) {
@@ -52,7 +49,7 @@
                             'name': 'proton',
                             'responsive': true
                         },
-                        data: nodes,
+                        data: nodes || {url: this.url},
                         "check_callback": true
                     },
                     types: {
