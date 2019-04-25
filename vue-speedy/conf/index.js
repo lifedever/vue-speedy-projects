@@ -1,5 +1,5 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const ButternutPlugin = require('butternut-webpack-plugin')
 const productionGzipExtensions = ['js', 'css']
 const path = require('path')
 const resolve = dir => {
@@ -55,19 +55,8 @@ module.exports = (option) => {
                 );
 
                 config.plugins.push(
-                    new UglifyJsPlugin({
-                        uglifyOptions: {
-                            // 最紧凑的输出
-                            beautify: false,
-                            // 删除所有的注释
-                            comments: false,
-                            compress: {
-                                drop_console: true,
-                                warnings: false,
-                                collapse_vars: true,
-                                reduce_vars: true
-                            },
-                        }
+                    new ButternutPlugin({
+
                     })
                 )
             }
