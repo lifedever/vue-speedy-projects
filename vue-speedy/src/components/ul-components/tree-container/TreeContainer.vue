@@ -8,7 +8,9 @@
         </div>
         <div slot="left">
             <div id="ksTree"></div>
-            <Button size="small" v-if="!value || value.length === 0" type="text" icon="md-add" @click="addRootHandler">添加根数据</Button>
+            <Button size="small" v-if="!value || value.length === 0" type="text" icon="md-add" @click="addRootHandler">
+                添加根数据
+            </Button>
         </div>
     </split-container>
 </template>
@@ -31,7 +33,11 @@
         },
         props: ['value'],
         watch: {
-
+            value() {
+                if (this.value) {
+                    this.bindTree(this.value)
+                }
+            }
         },
         methods: {
             initJsTree(nodes) {
@@ -203,7 +209,7 @@
             },
             // 移动节点
             moveNode(current, parent, defaultPos) {
-                if(!parent)
+                if (!parent)
                     return;
                 let children = parent.children;
                 let pos = defaultPos || (children && children.length > 0 ? children.length : 0);
@@ -243,7 +249,7 @@
                 this.setNodeSelect(newNode.id);
                 this.setNodeEditable();
             },
-            emitChange(evt){
+            emitChange(evt) {
                 let obj = {
                     current: this.currentNode,
                     json: this.getTreeRef().get_json(),
@@ -264,7 +270,7 @@
                 console.log('hover', data)
                 this.$emit('hover', data);
             },
-            addRootHandler(){
+            addRootHandler() {
                 this.$emit('addRoot')
             }
         }
