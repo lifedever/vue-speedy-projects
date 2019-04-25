@@ -41,6 +41,7 @@ export default {
             name: 'none', // 一级目录下的二级页面
             meta: {
                 authenticated: true,
+                hideInMenu: true,
                 title: '待定',
                 holderNeedless: true
             }
