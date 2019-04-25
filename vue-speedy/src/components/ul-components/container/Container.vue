@@ -58,8 +58,8 @@
             this.getMainHeight();
         },
         methods: {
-            getTabTitle(item){
-                return item.meta.title  || item.params.tabTitle
+            getTabTitle(item) {
+                return item.meta.title || (item.params ? item.params.tabTitle : '')
             },
             getMainHeight() {
                 let dom = this.$refs['containerMainRef']
