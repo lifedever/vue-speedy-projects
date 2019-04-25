@@ -2,7 +2,7 @@
     <split-container class="tree-container">
         <div slot="left">
             <div id="ksTree"></div>
-            <Button size="small" v-if="!value || value.length === 0" type="text" icon="md-add">添加根数据</Button>
+            <Button size="small" v-if="!value || value.length === 0" type="text" icon="md-add" @click="addRootHandler">添加根数据</Button>
         </div>
     </split-container>
 </template>
@@ -257,6 +257,9 @@
             emitHover(data) {
                 console.log('hover', data)
                 this.$emit('hover', data);
+            },
+            addRootHandler(){
+                this.$emit('addRoot')
             }
         }
     }
