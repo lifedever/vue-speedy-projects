@@ -1,7 +1,12 @@
 <template>
     <div class="ul-container">
         <div class="ul-container-header" v-if="$slots['header'] && !hideHeader">
-            <slot name="header"></slot>
+            <div :class="$slots['headerRight']? 'pull-left': ''">
+                <slot name="header"></slot>
+            </div>
+            <div class="pull-right" v-if="$slots['headerRight']">
+                <slot name="headerRight"></slot>
+            </div>
         </div>
         <div class="ul-container-header" v-else-if="!hideHeader">
             <Breadcrumb class="pull-left">
@@ -59,6 +64,7 @@
         },
         methods: {
             getTabTitle(item) {
+                console.log(item)
                 return item.meta.title || (item.params ? item.params.tabTitle : '')
             },
             getMainHeight() {

@@ -37,11 +37,18 @@ export default {
             },
             component: () => import('./tree-data-container')
         }, {
+            path: '/aaa',
+            name: 'aaa', // 一级目录下的二级页面
+            meta: {
+                authenticated: true,
+                hideInMenu: true
+            },
+            component: () => import('./tree-data-container')
+        }, {
             path: '/none',
             name: 'none', // 一级目录下的二级页面
             meta: {
                 authenticated: true,
-                hideInMenu: true,
                 title: '待定',
                 holderNeedless: true
             }

@@ -3,6 +3,9 @@
         <Layout>
             <Header v-if="!hideHeader">
                 <Container hideMain>
+                    <div slot="header" v-if="$slots['header']">
+                        <slot name="header"></slot>
+                    </div>
                     <div slot="headerRight" v-if="$slots['headerRight']">
                         <slot name="headerRight"></slot>
                     </div>
