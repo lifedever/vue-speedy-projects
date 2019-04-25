@@ -9,7 +9,6 @@
 <script>
     import jstree from 'jstree'
     import ObjectID from 'bson-objectid';
-    import data from './data'
     import '../../../assets/jstree/proton/style.less'
 
     export default {
@@ -57,7 +56,6 @@
                     }
                 }
                 options.dnd.is_draggable = true
-
                 this.treeRef = $('#ksTree').jstree(options);
                 this.treeRef
                     .on('loaded.jstree', () => {	// 加载完
