@@ -1,7 +1,5 @@
-import UlTableColumn from './ul-table-column'
-import UlTable from './ul-table'
+import UlUpload from './ul-upload'
 
 export {
-    UlTableColumn,
-    UlTable
+    UlUpload
 }
