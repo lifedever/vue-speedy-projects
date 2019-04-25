@@ -35,7 +35,9 @@
             },
             format: {
                 type: Array,
-                default: ['jpg','jpeg','png', 'gif']
+                default: () => {
+                    return ['jpg','jpeg','png', 'gif']
+                }
             }
         },
         methods: {
