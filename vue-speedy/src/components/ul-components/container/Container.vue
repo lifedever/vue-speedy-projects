@@ -5,11 +5,11 @@
         </div>
         <div class="ul-container-header" v-else-if="!hideHeader">
             <Breadcrumb class="pull-left">
-                <BreadcrumbItem v-if="item.meta.title"
+                <BreadcrumbItem v-if="getTabTitle(item)"
                                 v-for="(item, index) in breadcrumbItems"
-                                :key="`item.meta.title_${index}`">
+                                :key="`getTabTitle(item)_${index}`">
                     <Icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></Icon>
-                    {{item.meta.title}}
+                    {{getTabTitle(item)}}
                 </BreadcrumbItem>
             </Breadcrumb>
             <div class="pull-right" v-if="$slots['headerRight']">
@@ -58,6 +58,9 @@
             this.getMainHeight();
         },
         methods: {
+            getTabTitle(item){
+                return item.meta.title  || item.params.tabTitle
+            },
             getMainHeight() {
                 let dom = this.$refs['containerMainRef']
                 this.mainHeight = dom ? dom.clientHeight - 12 * 2 : 0;
