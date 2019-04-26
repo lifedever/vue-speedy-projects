@@ -54,34 +54,36 @@
                     return false;
                 this.$slots.default.forEach((o, index) => {
                     let column = o.componentInstance
-                    let item = {
-                        title: column.title,
-                        key: column.prop,
-                        type: column.type,
-                        width: column.width,
-                        minWidth: column.minWidth,
-                        maxWidth: column.maxWidth,
-                        align: column.align,
-                        className: column.className,
-                        fixed: column.fixed,
-                        ellipsis: column.ellipsis,
-                        tooltip: column.tooltip,
-                        indexMethod: column.indexMethod,
-                        sortable: column.sortable,
-                        sortMethod: column.sortMethod,
-                        sortType: column.sortType,
-                        filters: column.filters,
-                        filterMethod: column.filterMethod,
-                        filterMultiple: column.filterMultiple,
-                        filteredValue: column.filteredValue || [],
-                        filterRemote: column.filterRemote
-                    }
-                    if (column.$scopedSlots.default) {
-                        item.render = (h, params) => {
-                            return column.$scopedSlots.default(params)
+                    if (column) {
+                        let item = {
+                            title: column.title,
+                            key: column.prop,
+                            type: column.type,
+                            width: column.width,
+                            minWidth: column.minWidth,
+                            maxWidth: column.maxWidth,
+                            align: column.align,
+                            className: column.className,
+                            fixed: column.fixed,
+                            ellipsis: column.ellipsis,
+                            tooltip: column.tooltip,
+                            indexMethod: column.indexMethod,
+                            sortable: column.sortable,
+                            sortMethod: column.sortMethod,
+                            sortType: column.sortType,
+                            filters: column.filters,
+                            filterMethod: column.filterMethod,
+                            filterMultiple: column.filterMultiple,
+                            filteredValue: column.filteredValue || [],
+                            filterRemote: column.filterRemote
+                        };
+                        if (column.$scopedSlots.default) {
+                            item.render = (h, params) => {
+                                return column.$scopedSlots.default(params)
+                            }
                         }
+                        this.columns.push(item);
                     }
-                    this.columns.push(item);
                 })
             }
         },

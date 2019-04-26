@@ -5,7 +5,7 @@ export default {
     meta: {
         title: '个人中心',
         authenticated: true,
-        hide: true,
+        hideInMenu: true,
     },
     component: Main,
     children: [

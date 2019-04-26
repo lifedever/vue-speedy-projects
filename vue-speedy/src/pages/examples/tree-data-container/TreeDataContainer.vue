@@ -1,5 +1,6 @@
 <template>
-    <tree-container @addRoot="addRootHandler" url="/api/course/wares/5cbe77fe4cfc3d5db1ec8fec/sections">
+    <tree-container @addRoot="addRootHandler"
+                    url="/api/course/wares/5cbe77fe4cfc3d5db1ec8fec/sections">
         <div slot="header">ddd</div>
         <div slot="headerRight">33333</div>
     </tree-container>
