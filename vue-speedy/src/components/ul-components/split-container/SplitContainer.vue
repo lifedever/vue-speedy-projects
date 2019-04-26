@@ -16,7 +16,7 @@
                     <div slot="left" class="split-item">
                         <slot name="left"></slot>
                     </div>
-                    <div slot="right" class="split-item split-item-right">
+                    <div slot="right" class="split-item split-item-right" style="height: 100%;">
                         <slot name="right"></slot>
                     </div>
                 </Split>
