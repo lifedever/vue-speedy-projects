@@ -9,6 +9,9 @@
         <div slot="left">
             <div id="ksTree"></div>
         </div>
+        <div slot="right">
+            <slot name="content"></slot>
+        </div>
     </split-container>
 </template>
 
