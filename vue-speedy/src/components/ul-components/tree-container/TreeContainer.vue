@@ -284,7 +284,7 @@
         }
 
         .split-item.split-item-right {
-            padding: 12px;
+            padding: 10px 10px 10px 18px;
         }
 
         #ksTree {
