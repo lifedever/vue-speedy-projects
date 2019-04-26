@@ -283,6 +283,10 @@
             padding: 5px 12px 12px 5px;
         }
 
+        .split-item.split-item-right {
+            padding: 12px;
+        }
+
         #ksTree {
         }
     }
