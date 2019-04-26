@@ -124,7 +124,7 @@
                 this.checkEditModal().then(_ => {
                     this.$mountModal({
                         component: this.editModal.component,
-                        title: '添加' + (this.editModal.title || ''),
+                        title: (this.editModal.title || '添加'),
                         width: this.editModal.width || 500,
                         ok: (formIns, error) => {
                             formIns.save().then(res => {
@@ -142,7 +142,7 @@
                 this.checkEditModal().then( _ => {
                     this.$mountModal({
                         component: this.editModal.component,
-                        title: '编辑' + (this.editModal.title || ''),
+                        title: (this.editModal.title || '编辑'),
                         width: this.editModal.width || 450,
                         props: {
                             itemId: item.id
