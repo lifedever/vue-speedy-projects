@@ -52,7 +52,10 @@
                             'name': 'proton',
                             'responsive': true
                         },
-                        data: nodes || {url: this.url},
+                        data: nodes? (obj, callback) => {
+                            console.log(nodes)
+                            callback.call(this, nodes)
+                        } : {url: this.url},
                         "check_callback": true
                     },
                     types: {

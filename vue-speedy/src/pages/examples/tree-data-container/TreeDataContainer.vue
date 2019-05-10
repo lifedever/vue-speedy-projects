@@ -1,6 +1,5 @@
 <template>
-    <tree-container @addRoot="addRootHandler"
-                    url="/api/navigators/24cc038445ad11e9927800163e06c3fc">
+    <tree-container @addRoot="addRootHandler" ref="containerRef">
         <div slot="header">ddd</div>
         <div slot="headerRight">33333</div>
         <div slot="content">
@@ -12,7 +11,15 @@
 <script>
     export default {
         name: "TreeDataContainer",
+        mounted(){
+            this.loadNodes()
+        },
         methods: {
+            loadNodes(){
+                this.$http.get(`/api/navigators/24cc038445ad11e9927800163e06c3fc`).then(res => {
+                    this.$refs['containerRef'].bindTree(res.data)
+                })
+            },
             addRootHandler(){
                 this.$router.push({
                     name: 'aaa',
