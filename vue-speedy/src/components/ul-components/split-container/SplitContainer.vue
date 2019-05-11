@@ -88,6 +88,7 @@
         .split-item {
             background: #fff;
             height: 100%;
+            overflow: auto;
         }
         .split-item-right {
             padding-left: 6px;
