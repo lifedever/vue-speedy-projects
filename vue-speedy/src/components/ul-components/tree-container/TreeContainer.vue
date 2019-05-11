@@ -75,6 +75,8 @@
                 this.treeRef = $('#ksTree').jstree(options);
                 this.treeRef
                     .on('loaded.jstree', () => {	// 加载完
+                        console.log('jsTree loaded')
+                        this.$emit('loaded')
                         this.treeRef.jstree('open_all');
                         if (this.$route.params.storyId) {
                             this.$nextTick(() => {

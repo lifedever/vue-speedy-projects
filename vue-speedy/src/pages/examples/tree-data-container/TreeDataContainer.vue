@@ -1,9 +1,9 @@
 <template>
-    <tree-container @addRoot="addRootHandler" ref="containerRef">
+    <tree-container @addRoot="addRootHandler" ref="containerRef" @loaded="setCurrent">
         <div slot="header">ddd</div>
         <div slot="headerRight">33333</div>
         <div slot="content">
-            ddd
+            <Button @click="setCurrent">设置当前选中节点</Button>
         </div>
     </tree-container>
 </template>
@@ -27,6 +27,9 @@
                         tabTitle: '这是二级标题'
                     }
                 })
+            },
+            setCurrent(){
+                this.$refs['containerRef'].setNodeSelect("701d98f645c411e9927800163e06c3fc")
             }
         }
     }
