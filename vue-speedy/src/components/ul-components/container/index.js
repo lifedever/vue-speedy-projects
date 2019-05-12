@@ -1,2 +1,6 @@
 import Container from './Container';
-export default Container
+import ContainerHeader from './ContainerHeader'
+export  {
+    Container,
+    ContainerHeader
+}

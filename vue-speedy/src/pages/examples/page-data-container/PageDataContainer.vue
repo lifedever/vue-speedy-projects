@@ -1,13 +1,35 @@
 <template>
-    <DataContainer url="/api/vmall/orders">
-        <ul-table-column prop="orderNumber" title="订单编号"></ul-table-column>
-        <ul-table-column prop="orderDate" title="下单日期"></ul-table-column>
-    </DataContainer>
+    <tree-container ref="treeContainerRef"
+                    url="/api/categories/json"
+                    @change="nodeChange"
+                    @loaded="treeLoaded">
+        <data-container slot="content"
+                        v-if="current"
+                        :url="`/api/categories/${current.id}/places`">
+            <div slot="headerRight">
+                ddddd
+            </div>
+            <ul-table-column prop="name" title="名称"></ul-table-column>
+        </data-container>
+    </tree-container>
 </template>
 
 <script>
     export default {
-        name: "PageDataContainer"
+        name: "PageDataContainer",
+        data() {
+            return {
+                current: null
+            }
+        },
+        methods: {
+            nodeChange(node) {
+                this.current = node.current.original
+            },
+            treeLoaded(node) {
+
+            }
+        }
     }
 </script>
 

@@ -1,5 +1,8 @@
 <template>
-    <Container ref="containerRef">
+    <Container ref="containerRef" :hide-header="hideHeader">
+        <div slot="header">
+            <slot name="header"></slot>
+        </div>
         <div slot="headerRight">
             <slot name="headerRight"></slot>
         </div>
@@ -68,9 +71,13 @@
             operationWidth: {
                 type: Number,
                 default: 150
+            },
+            hideHeader: {
+                type: Boolean,
+                default: false
             }
         },
-        data () {
+        data() {
             return {
                 loading: false,
                 pageable: null,
@@ -78,15 +85,20 @@
                 params: null
             }
         },
-        mounted () {
+        mounted() {
             this.loadData()
         },
+        watch: {
+            url() {
+                this.loadData()
+            }
+        },
         methods: {
-            load (params) {
+            load(params) {
                 this.params = params
                 this.loadData(1)
             },
-            loadData (page) {
+            loadData(page) {
                 this.loading = true
                 let params = {}
                 if (page !== undefined) {
@@ -110,7 +122,7 @@
                     this.$emit('loadError', error)
                 })
             },
-            checkEditModal () {
+            checkEditModal() {
                 return new Promise((resolve, reject) => {
                     if (!this.editModal) {
                         console.error('请设置 editModal 属性！')
@@ -120,7 +132,7 @@
                     }
                 })
             },
-            addItem () {
+            addItem() {
                 this.checkEditModal().then(_ => {
                     this.$mountModal({
                         component: this.editModal.component,
@@ -138,8 +150,8 @@
                     })
                 })
             },
-            editItem (item) {
-                this.checkEditModal().then( _ => {
+            editItem(item) {
+                this.checkEditModal().then(_ => {
                     this.$mountModal({
                         component: this.editModal.component,
                         title: (this.editModal.title || '编辑'),
@@ -159,7 +171,7 @@
                     })
                 })
             },
-            deleteItem (item, err) {
+            deleteItem(item, err) {
                 this.$Modal.confirm({
                     title: '确认',
                     content: '确认要删除当前记录吗？',

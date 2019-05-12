@@ -1,7 +1,7 @@
 <template>
     <div class="ul-container">
         <div class="ul-container-header" v-if="$slots['header'] && !hideHeader">
-            <div :class="$slots['headerRight']? 'pull-left': ''">
+            <div class="pull-left">
                 <slot name="header"></slot>
             </div>
             <div class="pull-right" v-if="$slots['headerRight']">

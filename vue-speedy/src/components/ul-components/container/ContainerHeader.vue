@@ -1,5 +1,6 @@
 <template>
-    $END$
+    <div class="ul-container-header">
+    </div>
 </template>
 
 <script>
