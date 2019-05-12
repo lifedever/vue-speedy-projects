@@ -1,6 +1,6 @@
 <template>
     <Container ref="containerRef" :hide-header="hideHeader">
-        <div slot="header">
+        <div slot="header" v-if="$slots['header']">
             <slot name="header"></slot>
         </div>
         <div slot="headerRight">
