@@ -4,6 +4,9 @@
             <FormItem label="角色名称" prop="name">
                 <Input v-model="roleForm.name" ref="roleName"/>
             </FormItem>
+            <FormItem>
+                <ul-upload v-model="roleForm.file"></ul-upload>
+            </FormItem>
         </Form>
     </div>
 </template>

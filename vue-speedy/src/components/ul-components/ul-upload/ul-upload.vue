@@ -13,6 +13,7 @@
             </div>
         </Upload>
         <div v-if="file">待上传文件: {{ file.name }}</div>
+        <slot></slot>
     </div>
 </template>
 
@@ -38,7 +39,7 @@
                 default: () => {
                     return ['jpg','jpeg','png', 'gif']
                 }
-            }
+            },
         },
         methods: {
             handleUpload(file) {
