@@ -2,6 +2,7 @@
     <div>
         <Upload type="drag"
                 :before-upload="handleUpload"
+                :multiple="multiple"
                 :accept="accept"
                 :max-size="maxSize"
                 :format="format"
@@ -40,9 +41,14 @@
                     return ['jpg','jpeg','png', 'gif']
                 }
             },
+            multiple: {
+                type: Boolean,
+                defalut: false
+            }
         },
         methods: {
             handleUpload(file) {
+                console.log('upload file', file)
                 this.file = file
                 this.$emit('input', file)
                 return false
