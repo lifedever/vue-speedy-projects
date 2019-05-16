@@ -3,6 +3,7 @@ import DataContainer from './data-container';
 import TreeContainer from './tree-container';
 import SplitContainer from './split-container';
 import UlUpload from './ul-upload';
+import UlFormItem from './form-item';
 import {UlTable, UlTableColumn} from './ul-table';
 
 const ul = {
@@ -13,7 +14,8 @@ const ul = {
     TreeContainer,
     UlTableColumn,
     UlTable,
-    UlUpload
+    UlUpload,
+    UlFormItem
 };
 
 const install = function (Vue, opts = {}) {
