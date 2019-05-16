@@ -27,7 +27,7 @@
                 <ul class="tags-nav-menu">
                     <li v-for="item in list"
                         ref="tagsPageOpened"
-                        :class="item.name === value.name? 'active': ''"
+                        :class="item.path === value.path? 'active': ''"
                         :key="`tag-nav-${item.path}`">
                         <a href="#" @click.prevent="handleClick(item)">
                             <Icon v-if="item.meta && item.meta.icon" :type="item.meta.icon"></Icon>
