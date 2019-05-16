@@ -80,10 +80,9 @@
 <style scoped lang="less">
     .file-item {
         font-size: 12px;
-        padding: 2px;
         transition: all .3s ease-in-out;
         user-select: none;
-
+        line-height: 16px;
         &:hover {
             background: rgba(15, 145, 233, 0.07);
 
