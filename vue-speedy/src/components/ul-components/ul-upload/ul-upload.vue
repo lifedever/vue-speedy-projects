@@ -80,9 +80,12 @@
 <style scoped lang="less">
     .file-item {
         font-size: 12px;
+        padding: 0 2px;
         transition: all .3s ease-in-out;
         user-select: none;
-        line-height: 16px;
+        line-height: 18px;
+        height: 18px;
+        position: relative;
         &:hover {
             background: rgba(15, 145, 233, 0.07);
 
@@ -93,13 +96,15 @@
 
         .file-item-remove {
             transition: all .3s ease-in-out;
-            opacity: 0;
+            opacity: 1;
             color: rgba(0, 0, 0, 0.58);
             height: 20px;
             line-height: 18px;
             width: 22px;
             cursor: pointer;
-            float: right;
+            position: absolute;
+            text-align: center;
+            right: 0;
         }
     }
 </style>
