@@ -13,17 +13,29 @@
                 <p>点击或拖拽到此</p>
             </div>
         </Upload>
-        <div v-if="file">待上传文件: {{ file.name }}</div>
+        <div v-if="file" class="file-item">
+            待上传文件: {{ file.name }}
+        </div>
+        <div v-for="f in files" class="file-item">
+            待上传文件: {{ f.name }}
+
+            <div class="file-item-remove" @click="remove(f.id)">
+                <Icon type="md-close" size="16"/>
+            </div>
+        </div>
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import ObjectId from 'bson-objectid'
+
     export default {
         name: "ul-upload",
-        data(){
+        data() {
             return {
-                file: null
+                file: null,
+                files: []
             }
         },
         props: {
@@ -38,25 +50,57 @@
             format: {
                 type: Array,
                 default: () => {
-                    return ['jpg','jpeg','png', 'gif']
+                    return ['jpg', 'jpeg', 'png', 'gif']
                 }
             },
             multiple: {
                 type: Boolean,
-                defalut: false
+                default: false
             }
         },
         methods: {
             handleUpload(file) {
-                console.log('upload file', file)
-                this.file = file
-                this.$emit('input', file)
+                if (!this.multiple) {   // 单文件上传
+                    this.file = file;
+                    this.$emit('input', file)
+                } else {    // 多文件上传
+                    file.id = ObjectId.generate()
+                    this.files.push(file)
+                    this.$emit('input', this.files)
+                }
                 return false
             },
+            remove(id) {
+                this.files = this.files.filter(f => f.id !== id)
+            }
         }
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+    .file-item {
+        font-size: 12px;
+        padding: 2px;
+        transition: all .3s ease-in-out;
+        user-select: none;
 
+        &:hover {
+            background: rgba(15, 145, 233, 0.07);
+
+            .file-item-remove {
+                opacity: 1;
+            }
+        }
+
+        .file-item-remove {
+            transition: all .3s ease-in-out;
+            opacity: 0;
+            color: rgba(0, 0, 0, 0.58);
+            height: 20px;
+            line-height: 18px;
+            width: 22px;
+            cursor: pointer;
+            float: right;
+        }
+    }
 </style>
