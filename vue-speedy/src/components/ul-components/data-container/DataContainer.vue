@@ -92,7 +92,7 @@
         mounted() {
             if (this.url) {
                 this.loadData()
-            }else if (this.data) {
+            } else if (this.data) {
                 this.items = this.data
             }
         },
@@ -100,7 +100,7 @@
             url() {
                 this.loadData()
             },
-            data(){
+            data() {
                 if (!this.url) {
                     this.items = this.data
                 }
@@ -189,11 +189,14 @@
                     title: '确认',
                     content: '确认要删除当前记录吗？',
                     onOk: () => {
-                        let url = this.url.split(/[?#]/)[0]
-                        this.$http.delete(`${url}/${item[this.itemKey]}`).then(res => {
-                            this.$Message.success('删除成功')
-                            this.loadData()
-                        }).catch(err)
+                        if (this.url) {
+                            let url = this.url.split(/[?#]/)[0]
+                            this.$http.delete(`${url}/${item[this.itemKey]}`).then(res => {
+                                this.$Message.success('删除成功')
+                                this.loadData()
+                            }).catch(err)
+                        }
+                        this.$emit('itemDeleted')
                     }
                 })
             }
