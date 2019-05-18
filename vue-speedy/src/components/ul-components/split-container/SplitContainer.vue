@@ -1,5 +1,5 @@
 <template>
-    <div class="two-col-container">
+    <div :class="['two-col-container', noPad? 'two-col-container-no-pad': '']">
         <Layout>
             <Header v-if="!hideHeader">
                 <Container hideMain>
@@ -53,6 +53,10 @@
             hideHeader: {
                 type: Boolean,
                 default: false
+            },
+            noPad: {
+                type: Boolean,
+                default: false
             }
         }
     }
@@ -92,6 +96,12 @@
         }
         .split-item-right {
             padding-left: 6px;
+        }
+
+        &.two-col-container-no-pad {
+            .split-item-right {
+                padding: 0;
+            }
         }
     }
 </style>

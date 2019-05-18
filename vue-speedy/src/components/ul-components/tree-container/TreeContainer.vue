@@ -1,5 +1,5 @@
 <template>
-    <split-container class="tree-container">
+    <split-container :class="['tree-container', noPad? 'tree-container-no-pad': '']" :no-pad="noPad">
         <div slot="header" v-if="$slots['header']">
             <slot name="header"></slot>
         </div>
@@ -31,7 +31,7 @@
                 currentNode: null
             }
         },
-        props: ['value', 'url'],
+        props: ['value', 'url', 'noPad'],
         watch: {
             value() {
                 if (this.value) {
@@ -305,6 +305,11 @@
         }
 
         #ksTree {
+        }
+        &.tree-container-no-pad {
+            .split-item.split-item-right {
+                padding: 0;
+            }
         }
     }
 </style>

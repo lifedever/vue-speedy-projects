@@ -2,8 +2,10 @@
     <tree-container ref="treeContainerRef"
                     url="/api/categories/json"
                     @change="nodeChange"
+                    no-pad
                     @loaded="treeLoaded">
         <data-container slot="content"
+                        hideHeader
                         v-if="current"
                         :url="`/api/categories/${current.id}/places`">
             <div slot="headerRight">
