@@ -5,7 +5,7 @@
                     @loaded="treeLoaded">
         <data-container slot="content"
                         v-if="current"
-                        :url="`/api/categories/${current.id}/places?ddd=333`">
+                        :url="`/api/categories/${current.id}/places`">
             <div slot="headerRight">
                 ddddd
             </div>
