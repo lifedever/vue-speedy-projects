@@ -196,7 +196,7 @@
                                 this.loadData()
                             }).catch(err)
                         }else{
-                            this.$emit('deleteItem')
+                            this.$emit('deleteItem', item)
                         }
                     }
                 })
