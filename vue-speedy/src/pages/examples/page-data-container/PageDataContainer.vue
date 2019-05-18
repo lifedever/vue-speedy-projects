@@ -24,7 +24,11 @@
         },
         methods: {
             nodeChange(node) {
-                this.current = node.current.original
+                if (node.current) {
+                    this.current = node.current.original;
+                } else {
+                    this.current = null
+                }
             },
             treeLoaded(node) {
 

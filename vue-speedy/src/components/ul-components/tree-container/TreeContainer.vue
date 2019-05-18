@@ -52,7 +52,7 @@
                             'name': 'proton',
                             'responsive': true
                         },
-                        data: nodes? (obj, callback) => {
+                        data: nodes ? (obj, callback) => {
                             console.log(nodes)
                             callback.call(this, nodes)
                         } : {url: this.url},
@@ -155,7 +155,6 @@
                     return false;
                 }).on('changed.jstree', (e, data) => {
                 }).on("select_node.jstree", (e, data) => {
-                    this.currentNode = data.node
                     this.emitChange({e, data})
                 }).on("hover_node.jstree", (e, data) => {
                     this.hoverNode = data.node;
@@ -255,13 +254,25 @@
                 this.setNodeEditable();
             },
             emitChange(evt) {
-                let obj = {
-                    current: this.currentNode,
-                    json: this.getTreeRef().get_json(),
-                    evt
+                console.log(evt)
+                if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
+                    this.currentNode = evt.data.node
+                    let obj = {
+                        current: this.currentNode,
+                        json: this.getTreeRef().get_json(),
+                        evt
+                    };
+                    this.$emit('change', obj)
+                } else {
+                    this.$emit('change', {
+                            current: null,
+                            json: this.getTreeRef().get_json(),
+                            evt
+                        }
+                    )
+                    this.setNodeSelect(null)
                 }
-                console.log('change', obj)
-                this.$emit('change', obj)
+
             },
             emitCreated(data) {
                 console.log('createdNode', data)
