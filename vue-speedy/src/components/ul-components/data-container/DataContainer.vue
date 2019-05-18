@@ -99,6 +99,11 @@
         watch: {
             url() {
                 this.loadData()
+            },
+            data(){
+                if (!this.url) {
+                    this.items = this.data
+                }
             }
         },
         methods: {
