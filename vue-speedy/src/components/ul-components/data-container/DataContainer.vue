@@ -38,10 +38,14 @@
     export default {
         name: 'DataContainer',
         props: {
+            data: {
+                type: Array,
+                required: false
+            },
             // 数据列表地址
             url: {
                 type: String,
-                required: true
+                required: false
             },
             // 是否可编辑
             editable: {
@@ -86,7 +90,11 @@
             }
         },
         mounted() {
-            this.loadData()
+            if (this.url) {
+                this.loadData()
+            }else if (this.data) {
+                this.items = this.data
+            }
         },
         watch: {
             url() {
