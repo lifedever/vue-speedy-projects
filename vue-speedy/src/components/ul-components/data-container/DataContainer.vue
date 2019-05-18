@@ -195,8 +195,9 @@
                                 this.$Message.success('删除成功')
                                 this.loadData()
                             }).catch(err)
+                        }else{
+                            this.$emit('deleteItem')
                         }
-                        this.$emit('itemDeleted')
                     }
                 })
             }
