@@ -64,7 +64,6 @@
         },
         methods: {
             getTabTitle(item) {
-                console.log(item)
                 return item.meta.title || (item.params ? item.params.tabTitle : '')
             },
             getMainHeight() {
