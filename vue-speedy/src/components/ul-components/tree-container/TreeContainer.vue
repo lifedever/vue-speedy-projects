@@ -264,6 +264,7 @@
                     };
                     this.$emit('change', obj)
                 } else {
+                    this.currentNode = null
                     this.$emit('change', {
                             current: null,
                             json: this.getTreeRef().get_json(),
