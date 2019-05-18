@@ -436,6 +436,19 @@ export const getErrorCode = (err) => {
     }
 }
 
+/**
+ * 清理Object，将值为空的属性去掉
+ * @param obj
+ */
+const clearObj = obj => {
+    let target = {};
+    Object.keys(obj).forEach(key => {
+        if (obj[key])
+            target[key] = obj[key]
+    });
+    return target;
+};
+
 export const setLocale = (language) => {
     window.localStorage.setItem(LANGUAGE_KEY, language)
 }
@@ -443,3 +456,4 @@ export const setLocale = (language) => {
 export const getLocale = () => {
     return window.localStorage.getItem(LANGUAGE_KEY)
 }
+
