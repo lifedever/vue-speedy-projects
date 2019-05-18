@@ -440,7 +440,7 @@ export const getErrorCode = (err) => {
  * 清理Object，将值为空的属性去掉
  * @param obj
  */
-const clearObj = obj => {
+export const clearObj = obj => {
     let target = {};
     Object.keys(obj).forEach(key => {
         if (obj[key])
