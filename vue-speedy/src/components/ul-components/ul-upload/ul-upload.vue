@@ -8,7 +8,8 @@
                 :format="format"
                 style="display: inline-block; width: 100%;"
                 action="#">
-            <div style="padding: 15px 0">
+            <slot name="holder" v-if="$slots['holder']"></slot>
+            <div style="padding: 15px 0" v-else>
                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                 <p>点击或拖拽到此</p>
             </div>

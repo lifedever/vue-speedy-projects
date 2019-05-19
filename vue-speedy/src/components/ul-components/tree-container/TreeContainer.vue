@@ -254,7 +254,7 @@
                 this.setNodeEditable();
             },
             emitChange(evt) {
-                console.log(evt)
+                console.log('change', evt)
                 if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
                     this.currentNode = evt.data.node
                     let obj = {
