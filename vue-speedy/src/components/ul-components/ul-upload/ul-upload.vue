@@ -6,7 +6,7 @@
                 :accept="accept"
                 :max-size="maxSize"
                 :format="format"
-                style="display: inline-block; width: 100%;"
+                :style="$slots['holder']? '': 'display: inline-block; width: 100%;'"
                 action="#">
             <slot name="holder" v-if="$slots['holder']"></slot>
             <div style="padding: 15px 0" v-else>
