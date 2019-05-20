@@ -82,6 +82,9 @@
                             this.$nextTick(() => {
                             })
                         }
+                        if (this.currentNode) {
+                            this.setNodeSelect(this.currentNode.id)
+                        }
                     })
                     .on('move_node.jstree', () => {	// 移动完
                         this.treeRef.jstree('open_all');
