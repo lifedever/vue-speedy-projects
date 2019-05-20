@@ -40,7 +40,7 @@
             }
         },
         methods: {
-            initJsTree(nodes) {
+            initJsTree(nodes, currentId) {
                 let options = {
                     core: {
                         'strings': {
@@ -82,9 +82,10 @@
                             this.$nextTick(() => {
                             })
                         }
-                        if (this.currentNode) {
+                        if (currentId) {
+                            console.log('bind currentId', currentId)
                             setTimeout(() => {
-                                this.setNodeSelect(this.currentNode.id)
+                                this.setNodeSelect(currentId)
                             }, 3000);
                         }
                     })
@@ -178,13 +179,13 @@
                 return this.treeRef.jstree(true);
             },
             // 绑定树
-            bindTree(nodes) {
+            bindTree(nodes, currentId) {
                 if (this.treeRef && this.getTreeRef()) {
                     this.getTreeRef().destroy();
                 }
 
                 this.$nextTick(() => {
-                    this.initJsTree(nodes)
+                    this.initJsTree(nodes, currentId)
                 })
             },
             // 设置选中节点（单选）
