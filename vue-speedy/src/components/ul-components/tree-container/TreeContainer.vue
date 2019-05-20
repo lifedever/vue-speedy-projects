@@ -75,7 +75,7 @@
                 this.treeRef = $('#ksTree').jstree(options);
                 this.treeRef
                     .on('loaded.jstree', () => {	// 加载完
-                        console.log('jsTree loaded')
+                        console.log('jsTree loaded, current', this.currentNode)
                         this.$emit('loaded')
                         this.treeRef.jstree('open_all');
                         if (this.$route.params.storyId) {
@@ -83,7 +83,9 @@
                             })
                         }
                         if (this.currentNode) {
-                            this.setNodeSelect(this.currentNode.id)
+                            setTimeout(() => {
+                                this.setNodeSelect(this.currentNode.id)
+                            }, 3000);
                         }
                     })
                     .on('move_node.jstree', () => {	// 移动完
@@ -257,7 +259,6 @@
                 this.setNodeEditable();
             },
             emitChange(evt) {
-                console.log('change', evt)
                 if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
                     this.currentNode = evt.data.node
                     let obj = {
@@ -265,6 +266,7 @@
                         json: this.getTreeRef().get_json(),
                         evt
                     };
+                    console.log('change', obj)
                     this.$emit('change', obj)
                 } else {
                     this.currentNode = null
