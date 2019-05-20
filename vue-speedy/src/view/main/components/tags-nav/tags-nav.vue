@@ -69,8 +69,8 @@
         },
         watch: {},
         methods: {
-            closeListener(router){
-                this.handleClose(null, router)
+            closeListener(){
+                this.handleClose(this.$router)
             },
             handlescroll(e) {
                 let type = e.type
