@@ -36,6 +36,10 @@ Vue.prototype.$unmountModal = (val) => {
     $bus.$emit('MODAL_CLOSE', val)
 }
 
+Vue.prototype.$closeTag = router => {
+    $bus.$emit('closeTab', router)
+}
+
 /**
  * 注册指令
  */

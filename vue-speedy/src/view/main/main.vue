@@ -159,7 +159,6 @@
                 if (type === 'others') {
                     return
                 }
-
                 console.log('nextRoute', nextRoute)
                 this.$router.push(nextRoute)
             },

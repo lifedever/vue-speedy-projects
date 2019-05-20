@@ -64,8 +64,14 @@
                 tagBodyLeft: 0
             }
         },
+        mounted(){
+            this.$bus.$on('closeTab', this.closeListener)
+        },
         watch: {},
         methods: {
+            closeListener(router){
+                this.handleClose(null, router)
+            },
             handlescroll(e) {
                 let type = e.type
                 let delta = 0
