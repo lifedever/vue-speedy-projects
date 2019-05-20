@@ -70,7 +70,7 @@
         watch: {},
         methods: {
             closeListener(){
-                this.handleClose(this.$router)
+                this.handleClose(null, this.$route)
             },
             handlescroll(e) {
                 let type = e.type
@@ -108,6 +108,7 @@
                 }
             },
             handleClose(e, route) {
+                console.log(route)
                 let res = this.list.filter(item => {
                     if (route.meta.matchByPath) {
                         return item.path !== route.path

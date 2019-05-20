@@ -8,6 +8,7 @@
         </div>
         <div slot="right">
             这是右边啊
+            <Button type="primary" @click="closeTab">关闭当前标签</Button>
         </div>
     </SplitContainer>
 </template>
@@ -18,6 +19,11 @@
         data(){
             return {
                 split: '300px'
+            }
+        },
+        methods: {
+            closeTab(){
+                this.$closeTag()
             }
         }
     }
