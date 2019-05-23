@@ -11,7 +11,7 @@
                     </div>
                 </Container>
             </Header>
-            <Content>
+            <Content style="height: 100%;">
                 <Split v-model="split">
                     <div slot="left" class="split-item">
                         <slot name="left"></slot>
