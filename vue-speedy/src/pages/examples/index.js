@@ -45,6 +45,14 @@ export default {
             },
             component: () => import('./tree-data-container')
         }, {
+            path: '/editor',
+            name: 'editor', // 一级目录下的二级页面
+            meta: {
+                title: '富文本编辑器',
+                authenticated: true,
+            },
+            component: () => import('./editor/ExpEditor')
+        }, {
             path: '/none',
             name: 'none', // 一级目录下的二级页面
             meta: {

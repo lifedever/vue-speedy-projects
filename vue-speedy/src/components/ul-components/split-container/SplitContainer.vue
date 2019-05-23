@@ -75,6 +75,9 @@
             background: #ffffff;
             padding: 0;
         }
+        .ivu-layout-content {
+            height: 100%;
+        }
         .ivu-layout-sider {
             background: #ffffff;
             margin-right: 8px;
