@@ -68,15 +68,15 @@
 
         .ivu-layout {
             height: 100%;
+            .ivu-layout-content {
+                height: 100%;
+            }
         }
         .ivu-layout-header {
             height: 48px;
             line-height: 48px;
             background: #ffffff;
             padding: 0;
-        }
-        .ivu-layout-content {
-            height: 100%;
         }
         .ivu-layout-sider {
             background: #ffffff;
