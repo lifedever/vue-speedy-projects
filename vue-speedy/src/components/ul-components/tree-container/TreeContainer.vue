@@ -91,6 +91,7 @@
                     })
                     .on('move_node.jstree', () => {	// 移动完
                         this.treeRef.jstree('open_all');
+                        this.emitMove()
                     })
                     .on('destroy.jstree', () => {
                     });
@@ -294,6 +295,11 @@
             },
             addRootHandler() {
                 this.$emit('addRoot')
+            },
+            emitMove() {
+                let data = this.getTreeRef().get_json()
+                console.log('moved', data)
+                this.$emit('moved', data)
             }
         }
     }

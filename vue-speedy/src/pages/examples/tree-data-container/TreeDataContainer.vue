@@ -25,7 +25,7 @@
         },
         methods: {
             loadNodes(){
-                this.$http.get(`/api/categories/json`).then(res => {
+                this.$http.get(`/api/cities/24cc038445ad11e9927800163e06c3fc/navigators`).then(res => {
                     this.$refs['containerRef'].bindTree(res.data)
                 })
             },
