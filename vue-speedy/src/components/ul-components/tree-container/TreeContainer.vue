@@ -31,7 +31,20 @@
                 currentNode: null
             }
         },
-        props: ['value', 'url', 'noPad'],
+        props: {
+            value: {
+                type: Array
+            },
+            url: {
+                type: String
+            },
+            noPad: {
+                type: Boolean
+            },
+            multiple: {
+                type: Boolean
+            }
+        },
         watch: {
             value() {
                 if (this.value) {
@@ -46,7 +59,7 @@
                         'strings': {
                             'Loading ...': '数据加载中 ...'
                         },
-                        multiple: false,
+                        multiple: this.multiple,
                         force_text: true,
                         themes: {
                             'name': 'proton',
@@ -191,7 +204,8 @@
             },
             // 设置选中节点（单选）
             setNodeSelect(id) {
-                this.getTreeRef().deselect_all();
+                if (!this.multiple)
+                    this.getTreeRef().deselect_all();
                 this.getTreeRef().select_node(id);
             },
             // 获取节点数据
@@ -261,24 +275,32 @@
                 this.setNodeEditable();
             },
             emitChange(evt) {
-                if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
-                    this.currentNode = evt.data.node
-                    let obj = {
-                        current: this.currentNode,
+                if (this.multiple) {
+                    this.$emit('change', {
+                        current: this.getTreeRef().get_selected(true),
                         json: this.getTreeRef().get_json(),
                         evt
-                    };
-                    console.log('change', obj)
-                    this.$emit('change', obj)
-                } else {
-                    this.currentNode = null
-                    this.$emit('change', {
-                            current: null,
+                    })
+                }else{
+                    if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
+                        this.currentNode = evt.data.node
+                        let obj = {
+                            current: this.currentNode,
                             json: this.getTreeRef().get_json(),
                             evt
-                        }
-                    )
-                    this.setNodeSelect(null)
+                        };
+                        console.log('change', obj)
+                        this.$emit('change', obj)
+                    } else {
+                        this.currentNode = null
+                        this.$emit('change', {
+                                current: null,
+                                json: this.getTreeRef().get_json(),
+                                evt
+                            }
+                        )
+                        this.setNodeSelect(null)
+                    }
                 }
 
             },
@@ -317,6 +339,7 @@
 
         #ksTree {
         }
+
         &.tree-container-no-pad {
             .split-item.split-item-right {
                 padding: 0;
