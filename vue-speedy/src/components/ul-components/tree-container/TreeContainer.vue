@@ -205,10 +205,14 @@
                     this.initJsTree(nodes, currentId)
                 })
             },
+            clearSelect(){
+                this.getTreeRef().deselect_all();
+            },
             // 设置选中节点（单选）
             setNodeSelect(id) {
-                if (!this.multiple)
-                    this.getTreeRef().deselect_all();
+                if (!this.multiple){
+                    this.clearSelect()
+                }
                 this.getTreeRef().select_node(id);
             },
             // 获取节点数据
