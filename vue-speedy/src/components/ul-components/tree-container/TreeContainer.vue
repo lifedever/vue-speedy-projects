@@ -290,7 +290,6 @@
                 this.$emit('renamedNode', data);
             },
             emitHover(data) {
-                console.log('hover', data)
                 this.$emit('hover', data);
             },
             addRootHandler() {
