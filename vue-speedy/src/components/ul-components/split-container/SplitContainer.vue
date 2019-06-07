@@ -11,12 +11,12 @@
                     </div>
                 </Container>
             </Header>
-            <Content style="height: 100%;">
+            <Content>
                 <Split v-model="split">
                     <div slot="left" class="split-item">
                         <slot name="left"></slot>
                     </div>
-                    <div slot="right" class="split-item split-item-right" style="height: 100%;">
+                    <div slot="right" class="split-item split-item-right">
                         <slot name="right"></slot>
                     </div>
                 </Split>
@@ -68,8 +68,17 @@
 
         .ivu-layout {
             height: 100%;
+            flex-direction: column;
+            position: relative;
             .ivu-layout-content {
-                height: 100%;
+                /*height: 100%;*/
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                right: 0;
+                top: 48px;
+                /*display: flex;*/
+                /*height: 100%;*/
             }
         }
         .ivu-layout-header {
