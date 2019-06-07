@@ -1,5 +1,6 @@
 <template>
     <tree-container @addRoot="addRootHandler" multiple ref="containerRef" @loaded="setCurrent">
+        <div slot="treeHeader">ddd</div>
         <div slot="header">ddd</div>
         <div slot="headerRight">33333</div>
         <div slot="content">

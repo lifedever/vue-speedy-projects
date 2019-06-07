@@ -6,9 +6,12 @@
         <div slot="headerRight" v-if="$slots['headerRight']">
             <slot name="headerRight"></slot>
         </div>
-        <div slot="left">
+        <Container slot="left" :hide-header="!$slots['treeHeader']">
+            <div slot="header" v-if="$slots['treeHeader']">
+                <slot name="treeHeader"></slot>
+            </div>
             <div id="ksTree"></div>
-        </div>
+        </Container>
         <div slot="right" style="height: 100%;">
             <slot name="content"></slot>
         </div>
@@ -281,7 +284,7 @@
                         json: this.getTreeRef().get_json(),
                         evt
                     })
-                }else{
+                } else {
                     if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
                         this.currentNode = evt.data.node
                         let obj = {
@@ -331,6 +334,12 @@
     .tree-container {
         .split-item {
             padding: 5px 12px 12px 5px;
+
+            &.split-item-left {
+                .ul-container > .ul-container-main {
+                    padding: 0;
+                }
+            }
         }
 
         .split-item.split-item-right {

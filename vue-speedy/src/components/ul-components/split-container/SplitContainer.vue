@@ -13,7 +13,7 @@
             </Header>
             <Content>
                 <Split v-model="split">
-                    <div slot="left" class="split-item">
+                    <div slot="left" class="split-item split-item-left">
                         <slot name="left"></slot>
                     </div>
                     <div slot="right" class="split-item split-item-right">
