@@ -6,6 +6,7 @@
                     :title="view? view.title: ''"
                     :loading="okLoading"
                     @close="handleClose"
+                    :mask-closable="view? view.maskClosable: true"
                     :width="view? view.width: null"
                     :footer-hide="view? view.footerHide: false"
                     @ok="handleOk"

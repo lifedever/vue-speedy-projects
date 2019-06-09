@@ -1,6 +1,7 @@
 <template>
 	<Modal :value="visible"
 		   :title="title"
+           :mask-closable="maskClosable"
            :width="width"
            :footer-hide="footerHide"
 		   :class-name="vertical? 'vertical-center-modal': ''"
@@ -23,6 +24,10 @@
             }
         },
         props: {
+            maskClosable: {
+                type: Boolean,
+                default: true
+            },
             visible: {
                 type: Boolean,
                 default: false
