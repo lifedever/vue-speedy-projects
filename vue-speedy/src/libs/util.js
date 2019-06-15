@@ -3,6 +3,8 @@ import {LANGUAGE_KEY, SESSION_HOLDER_KEY, TOKEN_KEY} from "../const";
 // cookie保存的天数
 import config from '@/config'
 import {forEach, hasOneOf} from '@/libs/tools'
+import _endsWith from 'lodash/endsWith'
+import _startsWith from 'lodash/startsWith'
 
 export const setToken = (token) => {
     Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
@@ -457,3 +459,12 @@ export const getLocale = () => {
     return window.localStorage.getItem(LANGUAGE_KEY)
 }
 
+export const appendPath = (prefix, path) => {
+    if (_endsWith(prefix, '/')) {
+        prefix = prefix.slice(0, -1)
+    }
+    if (_startsWith(path, '/')) {
+        path = path.slice(1)
+    }
+    return prefix + '/' + path
+}
