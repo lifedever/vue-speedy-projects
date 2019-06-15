@@ -92,7 +92,7 @@
             }
             this.editor.customConfig.zIndex = 1
             this.editor.customConfig.onchangeTimeout = this.changeInterval
-            editor.customConfig.menus = this.menus.concat(this.extraMenus)
+            this.editor.customConfig.menus = this.menus.concat(this.extraMenus)
 
             // create这个方法一定要在所有配置项之后调用
             this.editor.create()
