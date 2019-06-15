@@ -3,9 +3,10 @@
         <div class="close-con">
             <Dropdown transfer trigger="click" @on-click="handleTagsOption">
                 <Button size="small" type="text">
-                    <Icon :size="18" type="ios-close-circle-outline"/>
+                    <Icon type="md-more" size="18" style="transform: rotateZ(90deg)"/>
                 </Button>
                 <DropdownMenu slot="list">
+<!--                    <DropdownItem name="full-screen">全屏</DropdownItem>-->
                     <DropdownItem name="close-all">关闭所有</DropdownItem>
                     <DropdownItem name="close-others">关闭其他</DropdownItem>
                 </DropdownMenu>
@@ -64,12 +65,12 @@
                 tagBodyLeft: 0
             }
         },
-        mounted(){
+        mounted() {
             this.$bus.$on('closeTab', this.closeListener)
         },
         watch: {},
         methods: {
-            closeListener(){
+            closeListener() {
                 this.handleClose(null, this.$route)
             },
             handlescroll(e) {
@@ -100,11 +101,14 @@
                     // 关闭所有，除了home
                     let res = this.list.filter(item => item.meta.notClose)
                     this.$emit('on-close', res, null, 'all')
-                } else {
+                } else if (type === 'close-others') {
                     // 关闭除当前页和home页的其他页
                     console.log(this.value.name)
                     let res = this.list.filter(item => item.name === this.value.name || item.name === 'Home')
                     this.$emit('on-close', res, this.$route, 'others')
+                } else if(type === 'full-screen'){
+                    // 全屏
+                    this.$emit('toggleFullscreen', true)
                 }
             },
             handleClose(e, route) {
@@ -125,7 +129,8 @@
             },
             showTitleInside(item) {
                 return showTitle(item, this)
-            }
+            },
+
         }
     }
 </script>
