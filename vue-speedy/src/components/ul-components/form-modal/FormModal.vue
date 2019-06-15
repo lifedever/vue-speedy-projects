@@ -9,8 +9,12 @@
            @on-visible-change="handleVisibleChange">
 		<slot></slot>
 		<div slot="footer" v-if="!footerHide">
-			<Button @click="handleClose">取消</Button>
-			<Button type="primary" @click="handleOk" :loading="loading">确定</Button>
+			<Button @click="handleClose">
+                {{cancelText || '取消'}}
+            </Button>
+			<Button type="primary" @click="handleOk" :loading="loading">
+                {{okText || '保存'}}
+            </Button>
 		</div>
 	</Modal>
 </template>
@@ -37,6 +41,8 @@
                 default: false
             },
             title: String,
+            okText: String,
+            cancelText: String,
             vertical: Boolean,
             loading: Boolean,
             width: {

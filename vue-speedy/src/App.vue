@@ -9,6 +9,8 @@
                     :mask-closable="view? view.maskClosable: true"
                     :width="view? view.width: null"
                     :footer-hide="view? view.footerHide: false"
+                    :ok-text="view? view.okText: '确定'"
+                    :cancel-text="view? view.cancelText : '取消'"
                     @ok="handleOk"
                     v-bind="view? view.props: null">
             <transition name="fade">

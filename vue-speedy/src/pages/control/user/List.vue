@@ -19,8 +19,10 @@
         </ul-table-column>
         <ul-table-column title="是否激活">
             <template slot-scope="scope">
-                <Tag v-if="scope.row.active" color="green">已激活</Tag>
-                <Tag v-else>未激活</Tag>
+                <i-switch :value="scope.row.active" class="ivu-switch-xlarge" size="large" @on-change="activeChange(scope.row)">
+                    <span slot="open">已激活</span>
+                    <span slot="close">未激活</span>
+                </i-switch>
             </template>
         </ul-table-column>
 
@@ -82,11 +84,22 @@
                         })
                     }
                 })
+            },
+            activeChange(user) {
+                this.$http.put(`/api/holder/users/${user.id}/active/${!user.active}`).then(res => {
+                    this.$refs['containerRef'].loadData()
+                })
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="less">
+    .ivu-switch-xlarge.ivu-switch-large {
+        width: 66px;
 
+        &.ivu-switch-checked:after {
+            left: 46px;
+        }
+    }
 </style>
