@@ -79,6 +79,9 @@
             hideHeader: {
                 type: Boolean,
                 default: false
+            },
+            rowEditClick: {
+                type: Function
             }
         },
         data() {
@@ -164,6 +167,10 @@
                 })
             },
             editItem(item) {
+                if (this.rowEditClick) {
+                    this.rowEditClick()
+                    return false
+                }
                 this.checkEditModal().then(_ => {
                     this.$mountModal({
                         component: this.editModal.component,
@@ -182,7 +189,7 @@
                             })
                         }
                     })
-                })
+                });
             },
             deleteItem(item, err) {
                 this.$Modal.confirm({
