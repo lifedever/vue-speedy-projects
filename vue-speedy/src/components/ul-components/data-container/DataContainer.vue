@@ -168,7 +168,7 @@
             },
             editItem(item) {
                 if (this.rowEditClick) {
-                    this.rowEditClick()
+                    this.rowEditClick(item)
                     return false
                 }
                 this.checkEditModal().then(_ => {
