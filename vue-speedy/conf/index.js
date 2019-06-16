@@ -8,7 +8,6 @@ const resolve = dir => {
 }
 
 module.exports = (option) => {
-    console.log('vue config option', JSON.stringify(option))
     const defaultOption = {
         baseUrl: '/',    // baseurl
         devServer: null,      // 开发代理服务器
