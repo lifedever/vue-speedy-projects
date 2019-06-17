@@ -38,7 +38,7 @@
              */
             cache: {
                 type: Boolean,
-                default: true
+                default: false
             },
             menus: {
                 type: Array,
