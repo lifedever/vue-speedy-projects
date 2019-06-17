@@ -1,6 +1,6 @@
 <template>
     <div class="editor-wrapper">
-        <div :id="editorId" class=".editor"></div>
+        <div :id="editorId" class="editor"></div>
     </div>
 </template>
 
