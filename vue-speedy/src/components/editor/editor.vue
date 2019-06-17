@@ -120,11 +120,6 @@
     }
 </script>
 
-<style lang="less">
-    .editor-wrapper {
-        height: 100%;
-        .w-e-text-container {
-            height: 100% !important;
-        }
-    }
+<style>
+
 </style>
