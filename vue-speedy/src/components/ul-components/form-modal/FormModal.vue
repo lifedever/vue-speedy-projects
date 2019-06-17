@@ -58,7 +58,9 @@
                 this.$emit('close');
             },
             handleOk() {
-                this.$emit('ok', this.$slots.default[0].componentInstance);
+                let componentIns = this.$slots.default[0].componentInstance
+                console.log('componentIns', componentIns)
+                this.$emit('ok', componentIns);
             }
         }
     }
