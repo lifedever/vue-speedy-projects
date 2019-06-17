@@ -106,9 +106,16 @@
 
             // create这个方法一定要在所有配置项之后调用
             this.editor.create();
+            if (this.value) {
+                this.editor.txt.html(this.value)
+            }
             // 如果本地有存储加载本地存储内容
-            let html = localStorage.editorCache
-            if (html) this.editor.txt.html(html)
+            if (this.cache) {
+                let html = localStorage.editorCache;
+                if (html) {
+                    this.editor.txt.html(html)
+                }
+            }
         }
     }
 </script>
