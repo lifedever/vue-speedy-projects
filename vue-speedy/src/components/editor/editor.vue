@@ -87,6 +87,13 @@
                 return `editor${this._uid}`
             }
         },
+        watch: {
+            value(){
+                if (this.editor) {
+                    this.editor.txt.html(this.value)
+                }
+            }
+        },
         mounted() {
             this.editor = new Editor(`#${this.editorId}`)
             this.editor.customConfig.onchange = (html) => {
