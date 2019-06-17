@@ -53,6 +53,11 @@
                 if (this.value) {
                     this.bindTree(this.value)
                 }
+            },
+            url(){
+                if (this.url) {
+                    this.bindTree()
+                }
             }
         },
         methods: {
