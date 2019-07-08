@@ -76,10 +76,6 @@
                     return []
                 }
             },
-            uploadImgShowBase64: {      // 是否上传图片为base64
-                type: Boolean,
-                default: true
-            },
             uploadImgServer: String     // 上传图片的服务地址，与base64不能并存
         },
         computed: {
@@ -88,7 +84,7 @@
             }
         },
         watch: {
-            value(){
+            value() {
                 if (this.editor) {
                     this.editor.txt.html(this.value)
                 }
@@ -105,11 +101,11 @@
             this.editor.customConfig.zIndex = 1
             this.editor.customConfig.onchangeTimeout = this.changeInterval
             this.editor.customConfig.menus = this.menus.concat(this.extraMenus)
-            if (this.uploadImgShowBase64) {
-                this.editor.customConfig.uploadImgShowBase64 = true
-            } else if (this.uploadImgServer) {
+            if (this.uploadImgServer) {
                 this.editor.customConfig.uploadFileName = 'file'
                 this.editor.customConfig.uploadImgServer = this.uploadImgServer
+            } else{
+                this.editor.customConfig.uploadImgShowBase64 = true
             }
 
             // create这个方法一定要在所有配置项之后调用
