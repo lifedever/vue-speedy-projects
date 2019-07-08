@@ -108,6 +108,7 @@
             if (this.uploadImgShowBase64) {
                 this.editor.customConfig.uploadImgShowBase64 = true
             } else if (this.uploadImgServer) {
+                this.editor.customConfig.uploadFileName = 'file'
                 this.editor.customConfig.uploadImgServer = this.uploadImgServer
             }
 
