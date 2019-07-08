@@ -178,15 +178,17 @@
                         title: (this.editModal.title || '编辑'),
                         width: this.editModal.width || 450,
                         props: props,
-                        ok: (formIns, error) => {
-                            formIns.save().then(res => {
-                                this.$Message.success('保存成功！')
-                                this.$unmountModal()
-                                this.loadData()
-                            }).catch(err => {
-                                error()
-                            })
-                        }
+                        ok: this.editModal.ok || (
+                            (formIns, error) => {
+                                formIns.save().then(res => {
+                                    this.$Message.success('保存成功！')
+                                    this.$unmountModal()
+                                    this.loadData()
+                                }).catch(err => {
+                                    error()
+                                })
+                            }
+                        )
                     })
                 });
             },
@@ -201,7 +203,7 @@
                                 this.$Message.success('删除成功')
                                 this.loadData()
                             }).catch(err)
-                        }else{
+                        } else {
                             this.$emit('deleteItem', item)
                         }
                     }
