@@ -172,13 +172,12 @@
                     return false
                 }
                 this.checkEditModal().then(_ => {
+                    let props = Object.assign({}, {itemId: item.id}, this.editModal.props || {})
                     this.$mountModal({
                         component: this.editModal.component,
                         title: (this.editModal.title || '编辑'),
                         width: this.editModal.width || 450,
-                        props: {
-                            itemId: item.id
-                        },
+                        props: props,
                         ok: (formIns, error) => {
                             formIns.save().then(res => {
                                 this.$Message.success('保存成功！')
