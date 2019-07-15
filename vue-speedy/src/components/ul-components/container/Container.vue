@@ -1,15 +1,15 @@
 <template>
     <div class="ul-container">
         <div class="ul-container-header" v-if="$slots['header'] && !hideHeader">
-            <div class="pull-left">
+            <div class="left">
                 <slot name="header"></slot>
             </div>
-            <div class="pull-right" v-if="$slots['headerRight']">
+            <div class="right" v-if="$slots['headerRight']">
                 <slot name="headerRight"></slot>
             </div>
         </div>
         <div class="ul-container-header" v-else-if="!hideHeader">
-            <Breadcrumb class="pull-left">
+            <Breadcrumb class="left">
                 <BreadcrumbItem v-if="getTabTitle(item)"
                                 v-for="(item, index) in breadcrumbItems"
                                 :key="`getTabTitle(item)_${index}`">
@@ -17,7 +17,7 @@
                     {{getTabTitle(item)}}
                 </BreadcrumbItem>
             </Breadcrumb>
-            <div class="pull-right" v-if="$slots['headerRight']">
+            <div class="right" v-if="$slots['headerRight']">
                 <slot name="headerRight"></slot>
             </div>
         </div>
