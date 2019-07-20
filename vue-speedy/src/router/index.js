@@ -11,7 +11,15 @@ export default (extRoutes) => {
     const routes = routers(extRoutes)
     const router = new Router({
         routes,
-        mode: 'history'
+        mode: 'history',
+        scrollBehavior (to, from, savedPosition) {
+            // return 期望滚动到哪个的位置
+            if (savedPosition) {
+                return savedPosition
+            } else {
+                return { x: 0, y: 0 }
+            }
+        }
     });
 
     store.dispatch('setRoutes', routes)
