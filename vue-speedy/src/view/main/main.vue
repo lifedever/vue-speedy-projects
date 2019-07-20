@@ -25,7 +25,7 @@
                 </header-bar>
             </Header>
             <Content style="overflow-y: auto; height: 100%;" class="content-wrapper">
-                <keep-alive>
+                <keep-alive :include="cacheList">
                     <error_403 class="error" v-if="forbiddenGet"></error_403>
                     <router-view v-else-if="!$route.meta.iframe"/>
                 </keep-alive>
