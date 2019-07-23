@@ -104,6 +104,7 @@
             if (this.uploadImgServer) {
                 this.editor.customConfig.uploadFileName = 'file'
                 this.editor.customConfig.uploadImgServer = this.uploadImgServer
+                this.editor.customConfig.uploadImgTimeout = 60000
             } else{
                 this.editor.customConfig.uploadImgShowBase64 = true
             }
