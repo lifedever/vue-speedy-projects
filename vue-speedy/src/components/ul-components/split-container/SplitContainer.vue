@@ -1,5 +1,5 @@
 <template>
-    <div :class="['two-col-container', noPad? 'two-col-container-no-pad': '']">
+    <div :class="['two-col-container', noPad? 'two-col-container-no-pad': '', !hideHeader? 'top': '']">
         <Layout>
             <Header v-if="!hideHeader">
                 <Container hideMain>
@@ -65,7 +65,6 @@
 <style lang="less">
     .two-col-container {
         height: 100%;
-
         .ivu-layout {
             height: 100%;
             flex-direction: column;
@@ -76,9 +75,14 @@
                 bottom: 0px;
                 left: 0;
                 right: 0;
-                top: 48px;
+                top: 0;
                 /*display: flex;*/
                 /*height: 100%;*/
+            }
+        }
+        &.top {
+            .ivu-layout .ivu-layout-content {
+                top: 48px;
             }
         }
         .ivu-layout-header {
