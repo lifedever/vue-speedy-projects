@@ -1,5 +1,5 @@
 <template>
-    <split-container :class="['tree-container', noPad? 'tree-container-no-pad': '']" :no-pad="noPad">
+    <split-container :hideHeader="hideHeader" :class="['tree-container', noPad? 'tree-container-no-pad': '']" :no-pad="noPad">
         <div slot="header" v-if="$slots['header']">
             <slot name="header"></slot>
         </div>
@@ -45,6 +45,9 @@
                 type: Boolean
             },
             multiple: {
+                type: Boolean
+            },
+            hideHeader: {
                 type: Boolean
             }
         },
