@@ -192,7 +192,7 @@
                     })
                 });
             },
-            deleteItem(item, err) {
+            deleteItem(item) {
                 this.$Modal.confirm({
                     title: '确认',
                     content: '确认要删除当前记录吗？',
@@ -202,7 +202,9 @@
                             this.$http.delete(`${url}/${item[this.itemKey]}`).then(res => {
                                 this.$Message.success('删除成功')
                                 this.loadData()
-                            }).catch(err)
+                            }).catch(err => {
+                                this.$emit('deleteFail', err)
+                            })
                         } else {
                             this.$emit('deleteItem', item)
                         }
