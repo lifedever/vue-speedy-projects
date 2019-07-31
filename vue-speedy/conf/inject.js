@@ -40,6 +40,11 @@ Vue.prototype.$closeTag = () => {
     $bus.$emit('closeTab')
 }
 
+Vue.prototype.$Message.config({
+    top: 100,
+    duration: 3
+})
+
 /**
  * 注册指令
  */
