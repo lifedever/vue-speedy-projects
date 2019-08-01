@@ -185,8 +185,8 @@
                     e.stopImmediatePropagation();
                     return false;
                 }).on('changed.jstree', (e, data) => {
-                }).on("select_node.jstree", (e, data) => {
                     this.emitChange({e, data})
+                }).on("select_node.jstree", (e, data) => {
                 }).on("hover_node.jstree", (e, data) => {
                     this.hoverNode = data.node;
                     this.emitHover({e, data})
@@ -291,6 +291,7 @@
             },
             emitChange(evt) {
                 if (this.multiple) {
+                    console.log(this.getTreeRef().get_selected(true))
                     this.$emit('change', {
                         current: this.getTreeRef().get_selected(true),
                         json: this.getTreeRef().get_json(),
