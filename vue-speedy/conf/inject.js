@@ -16,6 +16,7 @@ import configMixin from '../src/config/mixins'
 import dayjs from '../src/libs/dayjs'
 import jQuery from '../src/libs/jquery'
 import {appendPath} from "../src/libs/util";
+import Notice from "iview/src/components/notice";
 
 Vue.use(iView, {
     i18n: (key, value) => i18n.t(key, value)
@@ -77,6 +78,18 @@ export default {
         defaultOptions.modules.forEach(m => {
             store.registerModule(m.path, m.module)
         })
+
+        Vue.config.errorHandler = (error, vm) => {
+            console.error(error)
+            console.error({
+                error,
+                vm
+            })
+            Notice.error({
+                title: '遇到未知错误!',
+                desc: `请按Ctrl + F5强制刷新浏览器重试！`
+            })
+        }
 
         new Vue({
             el: '#app',
