@@ -2,6 +2,7 @@ import store from '@/store';
 import Cookies from 'js-cookie'
 import {TOKEN_KEY} from "../const";
 import {getLocalHolder} from "./util";
+import Notice from "iview/src/components/notice";
 
 export default (axios, router) => {
     // 请求拦截器
@@ -19,7 +20,13 @@ export default (axios, router) => {
     axios.interceptors.response.use(response => {
         return Promise.resolve(response)
     }, error => {
-        console.log(store)
+        if (error.response && error.response.status === 500) {
+            Notice.warning({
+                title: '系统错误',
+                desc: error.response.data ? error.response.data.message || '系统发生了错误，请联系管理员！' : '系统发生了错误，请联系管理员！',
+                duration: 5
+            })
+        }
         if (error && error.response) {
             let status = error.response.status;
             if (status === 401) {
