@@ -1,8 +1,11 @@
 <template>
-    <div style="width: 700px;">
-        <Editor v-model="value"></Editor>
+    <div>
+        <div style="width: 700px;">
+            <Editor v-model="value"></Editor>
 
-        <Button @click="show()">get</Button>
+            <Button @click="show()">get</Button>
+        </div>
+
     </div>
 </template>
 
@@ -11,7 +14,7 @@
     import Editor from "../../../components/editor/editor";
     export default {
         name: "ExpEditor",
-        components: {Editor},
+        components: {SimditorEditor, Editor},
         data(){
             return {
                 value: 'hello world'

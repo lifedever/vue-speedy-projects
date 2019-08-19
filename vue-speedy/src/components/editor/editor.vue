@@ -76,7 +76,11 @@
                     return []
                 }
             },
-            uploadImgServer: String     // 上传图片的服务地址，与base64不能并存
+            uploadImgServer: String,     // 上传图片的服务地址，与base64不能并存,
+            uploadImgTimeout: {
+                type: Number,
+                default: 60000
+            }
         },
         computed: {
             editorId() {
@@ -104,7 +108,7 @@
             if (this.uploadImgServer) {
                 this.editor.customConfig.uploadFileName = 'file'
                 this.editor.customConfig.uploadImgServer = this.uploadImgServer
-                this.editor.customConfig.uploadImgTimeout = 60000
+                this.editor.customConfig.uploadImgTimeout = this.uploadImgTimeout
             } else{
                 this.editor.customConfig.uploadImgShowBase64 = true
             }
