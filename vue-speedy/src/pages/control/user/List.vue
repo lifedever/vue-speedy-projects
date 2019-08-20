@@ -1,5 +1,5 @@
 <template>
-    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="200">
+    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="210">
         <div slot="headerRight">
             <Button type="primary"
                     icon="md-add"
