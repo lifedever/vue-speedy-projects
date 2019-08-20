@@ -1,5 +1,5 @@
 <template>
-    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="260">
+    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="200">
         <div slot="headerRight">
             <Button type="primary"
                     icon="md-add"
@@ -31,7 +31,7 @@
                     v-if="!scope.row.active"
                     size="small"
                     :loading="scope.row.id === sending"
-                    @click="sendActivationEmail(scope.row)">再次发送激活邮件
+                    @click="sendActivationEmail(scope.row)">重置密码
             </Button>
         </template>
     </DataContainer>
