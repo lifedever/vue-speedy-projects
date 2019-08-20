@@ -16,14 +16,14 @@
                             <Input v-model="profile.loginName" readonly/>
                         </FormItem>
                         <FormItem label="设置密码" prop="password">
-                            <Input v-model="userForm.password"/>
+                            <Input v-model="userForm.password" type="password"/>
                         </FormItem>
                         <FormItem label="确认密码" prop="confirmPassword">
-                            <Input v-model="userForm.confirmPassword"/>
+                            <Input v-model="userForm.confirmPassword" type="password"/>
                         </FormItem>
                     </Form>
                     <div class="text-center">
-                        <Button type="primary" @click="submit">确认激活信息</Button>
+                        <Button type="primary" @click="submit" :loading="btnLoading">确认激活信息</Button>
                     </div>
                 </div>
                 <div v-else-if="!profile">
@@ -49,16 +49,24 @@
             }
             return {
                 loading: true,
+                btnLoading: false,
                 profile: null,
                 userForm: {
                     password: null,
                     confirmPassword: null
                 },
                 rules: {
-                    password: {
-                        required: true,
-                        message: '请输入密码'
-                    },
+                    password: [
+                        {
+                            required: true,
+                            message: '请输入密码'
+                        },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '最小长度6位'
+                        }
+                    ],
                     confirmPassword: [
                         {
                             required: true,
@@ -84,7 +92,14 @@
             submit() {
                 this.$refs.formRef.validate(valid => {
                     if (valid) {
-
+                        this.btnLoading = true
+                        let formData = new FormData()
+                        formData.append("email", this.profile.loginName)
+                        formData.append("password", this.userForm.password)
+                        this.$http.post(`/api/holder/users/activation`, formData).then(res => {
+                            this.$Message.success('密码设置成功，请登录！')
+                            this.$router.push('/login')
+                        })
                     }
                 })
             }
