@@ -1,5 +1,5 @@
 <template>
-    <DataContainer url="/api/holder/users" ref="containerRef">
+    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="250">
         <div slot="headerRight">
             <Button type="primary"
                     icon="md-add"
@@ -9,7 +9,7 @@
         </div>
         <ul-table-column title="用户名">
             <template slot-scope="scope">
-                {{scope.row.nickname}}
+                {{scope.row.nickname || scope.row.loginName}}
             </template>
         </ul-table-column>
         <ul-table-column title="邮箱">
@@ -27,7 +27,7 @@
         </ul-table-column>
 
         <template v-slot:itemOperation="{scope}">
-            <Button type="primary"
+            <Button type="success"
                     v-if="!scope.row.active"
                     size="small"
                     :loading="scope.row.id === sending"

@@ -14,11 +14,11 @@
                     </template>
                 </ul-table-column>
                 <slot></slot>
-                <ul-table-column title="操作" v-if="!readonly" :width="operationWidth" align="center">
+                <ul-table-column title="操作" v-if="!readonly" :width="operationWidth" align="left">
                     <template slot-scope="scope">
                         <Button type="primary" size="small" v-if="editable" @click="editItem(scope.row)">编辑</Button>
-                        <slot name="itemOperation" v-bind:scope="scope"></slot>
                         <Button type="error" size="small" v-if="deletable" @click="deleteItem(scope.row)">删除</Button>
+                        <slot name="itemOperation" v-bind:scope="scope"></slot>
                     </template>
                 </ul-table-column>
             </ul-table>

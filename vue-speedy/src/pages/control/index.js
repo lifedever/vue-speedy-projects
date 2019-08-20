@@ -10,31 +10,32 @@ export default {
     },
     component: Main,
     children: [
-        {
-            path: '/:holder/roles',
-            name: 'HolderRole', // 一级目录下的二级页面
-            meta: {
-                authenticated: true,
-                title: i18n.t('router.roles')
-            },
-            component: () => import('./role')
-        },
+        // {
+        //     path: '/:holder/roles',
+        //     name: 'HolderRole', // 一级目录下的二级页面
+        //     meta: {
+        //         authenticated: true,
+        //         title: i18n.t('router.roles')
+        //     },
+        //     component: () => import('./role')
+        // },
         {
             path: '/:holder/users',
             name: 'HolderProfile',
             meta: {
+                icon: 'md-person',
                 authenticated: true,
                 title: i18n.t('router.users')
             },
             component: () => import('./user')
         },
-        {
-            path: '/:holder/permission',
-            name: 'HolderRolePermission',
-            meta: {
-                authenticated: true,
-                title: i18n.t('router.permission')
-            }
-        }
+        // {
+        //     path: '/:holder/permission',
+        //     name: 'HolderRolePermission',
+        //     meta: {
+        //         authenticated: true,
+        //         title: i18n.t('router.permission')
+        //     }
+        // }
     ]
 }
