@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import jstree from 'jstree'
     import ObjectID from 'bson-objectid';
     import '../../../assets/jstree/proton/style.less'
 
