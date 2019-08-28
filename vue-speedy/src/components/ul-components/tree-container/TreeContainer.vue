@@ -1,5 +1,7 @@
 <template>
-    <split-container :hideHeader="hideHeader" :class="['tree-container', noPad? 'tree-container-no-pad': '']" :no-pad="noPad">
+    <split-container :hideHeader="hideHeader"
+                     :value="leftWidth"
+                     :class="['tree-container', noPad? 'tree-container-no-pad': '']" :no-pad="noPad">
         <div slot="header" v-if="$slots['header']">
             <slot name="header"></slot>
         </div>
@@ -19,7 +21,6 @@
 </template>
 
 <script>
-    import jstree from 'jstree'
     import ObjectID from 'bson-objectid';
     import '../../../assets/jstree/proton/style.less'
 
@@ -35,6 +36,10 @@
             }
         },
         props: {
+            leftWidth: {
+                type: [Number, String],
+                default: 300
+            },
             value: {
                 type: Array
             },
