@@ -103,6 +103,8 @@
                 }
                 options.dnd.is_draggable = true
                 this.treeRef = $('#ksTree').jstree(options);
+                if(!this.treeRef)
+                    return ;
                 this.treeRef
                     .on('loaded.jstree', () => {	// 加载完
                         console.log('jsTree loaded, current', this.currentNode)
