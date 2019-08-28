@@ -298,7 +298,7 @@
                         evt
                     })
                 } else {
-                    if (!this.currentNode || evt.data.node.id !== this.currentNode.id) {
+                    if (!this.currentNode || (evt.data.node && evt.data.node.id !== this.currentNode.id)) {
                         this.currentNode = evt.data.node
                         let obj = {
                             current: this.currentNode,
