@@ -63,7 +63,7 @@
                     this.bindTree(this.value)
                 }
             },
-            url(){
+            url() {
                 if (this.url) {
                     this.bindTree()
                 }
@@ -207,7 +207,8 @@
                 });
             },
             getTreeRef() {
-                return this.treeRef.jstree(true);
+                if (this.treeRef && this.treeRef.jstree)
+                    return this.treeRef.jstree(true);
             },
             // 绑定树
             bindTree(nodes, currentId) {
@@ -219,12 +220,12 @@
                     this.initJsTree(nodes, currentId)
                 })
             },
-            clearSelect(){
+            clearSelect() {
                 this.getTreeRef().deselect_all();
             },
             // 设置选中节点（单选）
             setNodeSelect(id) {
-                if (!this.multiple){
+                if (!this.multiple) {
                     this.clearSelect()
                 }
                 this.getTreeRef().select_node(id);
