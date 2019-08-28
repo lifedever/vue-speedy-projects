@@ -39,7 +39,7 @@
         props: {
             leftWidth: {
                 type: [Number, String],
-                default: 300
+                default: '300px'
             },
             value: {
                 type: Array
