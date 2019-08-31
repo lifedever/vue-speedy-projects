@@ -1,6 +1,5 @@
 module.exports = require('./conf')({
     lessModifyVars: {
-        // 'primary-color': '#1DA57A',
     },
     title: '未设置站点标题',
     baseUrl: '/',

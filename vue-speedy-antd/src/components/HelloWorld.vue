@@ -3,6 +3,7 @@
         <h1>{{ msg }}</h1>
         <a-button type="primary">这是按钮，可以点一下</a-button>
         <a-icon type="double-left" />
+        <p>这是部分文字的内容啊</p>
     </div>
 </template>
 

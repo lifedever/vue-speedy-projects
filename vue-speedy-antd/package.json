@@ -5,7 +5,8 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "serve:hot": "nodemon --exec yarn serve"
     },
     "dependencies": {
         "ant-design-vue": "^1.3.16",
@@ -19,6 +20,7 @@
         "compression-webpack-plugin": "^3.0.0",
         "less": "^3.10.3",
         "less-loader": "^5.0.0",
+        "nodemon": "^1.19.1",
         "vue-template-compiler": "^2.6.10"
     },
     "postcss": {
@@ -29,5 +31,15 @@
     "browserslist": [
         "> 1%",
         "last 2 versions"
-    ]
+    ],
+    "nodemonConfig": {
+        "watch": [
+            "conf/",
+            "vue.config.js",
+            "src/core/a-less-override.js"
+        ],
+        "env": {
+            "NODE_ENV": "development"
+        }
+    }
 }
