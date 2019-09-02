@@ -5,21 +5,8 @@
                 :trigger="null"
                 collapsible
                 v-model="collapsed">
-            <div class="logo" />
-            <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
-                <a-menu-item key="1">
-                    <a-icon type="user" />
-                    <span>nav 1</span>
-                </a-menu-item>
-                <a-menu-item key="2">
-                    <a-icon type="video-camera" />
-                    <span>nav 2</span>
-                </a-menu-item>
-                <a-menu-item key="3">
-                    <a-icon type="upload" />
-                    <span>nav 3</span>
-                </a-menu-item>
-            </a-menu>
+            <div class="logo"/>
+            <menus :menus="menus"></menus>
         </a-layout-sider>
         <a-layout>
             <a-layout-header class="admin-layout-header">
@@ -38,13 +25,13 @@
 
 <script>
     import './admin-layout.less'
-    import {Layout, Menu} from 'ant-design-vue';
+    import {Layout} from 'ant-design-vue';
+    import Menus from "./menu/Menus";
 
     export default {
         name: "AdminLayout",
         components: {
-            AMenu: Menu,
-            AMenuItem: Menu.Item,
+            Menus,
             ALayout: Layout,
             ALayoutSider: Layout.Sider,
             ALayoutHeader: Layout.Header,
@@ -52,7 +39,27 @@
         },
         data() {
             return {
-                collapsed: false
+                collapsed: false,
+                menus: [
+                    {
+                        name: '首页',
+                        icon: 'home',
+                        url: '/home'
+                    },
+                    {
+                        name: '系统管理',
+                        icon: 'setting',
+                        children: [
+                            {
+                                name: '用户管理',
+                                url: '/system/users'
+                            }, {
+                                name: '角色管理',
+                                url: '/system/roles'
+                            }
+                        ]
+                    }
+                ]
             }
         }
     }
