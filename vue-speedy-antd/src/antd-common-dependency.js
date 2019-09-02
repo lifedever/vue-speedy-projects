@@ -1,4 +1,7 @@
-import { Button, Icon } from 'ant-design-vue';
+import {
+    Button,
+    Icon,
+} from 'ant-design-vue';
 
 export default {
     install: (Vue, options) => {
