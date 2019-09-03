@@ -17,7 +17,7 @@ const actions = {
 const mutations = {
     'addMenuToTab'(state, menu) {
         console.log('addMenuToTab', menu)
-        if (!state.tabs.find(o => o.url === menu.url)) {
+        if (!state.tabs.find(o => o.id === menu.id)) {
             state.tabs.push(menu)
         }
         localSave(storage.MENU_TAB, state.tabs)

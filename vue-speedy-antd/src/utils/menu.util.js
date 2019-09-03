@@ -18,5 +18,23 @@ export const MenuUtil = {
                 return this.findByUrl(menu.children, url)
             }
         }
+    },
+    findById(menus, id) {
+        for (const menu of menus) {
+            if (menu.id === id) {
+                return menu
+            }
+            if (menu.children) {
+                return this.findById(menu.children, id)
+            }
+        }
+    },
+    findParent(menus, menu) {
+        for (const ms of menus) {
+            if (ms.children && !!ms.children.find(m => m.id === menu.id)) {
+                return ms
+            }
+        }
+        return null
     }
 }

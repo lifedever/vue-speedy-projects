@@ -16,18 +16,22 @@
             return {
                 menus: [
                     {
+                        id: 'home',
                         name: '首页',
                         icon: 'home',
                         url: '/home'
                     },
                     {
+                        id: 'setting',
                         name: '系统管理',
                         icon: 'setting',
                         children: [
                             {
+                                id: 'setting-users',
                                 name: '用户管理',
                                 url: '/system/users'
                             }, {
+                                id: 'setting-roles',
                                 name: '角色管理',
                                 url: '/system/roles'
                             }

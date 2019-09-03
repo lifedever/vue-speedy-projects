@@ -2,21 +2,24 @@
     <a-menu :theme="theme"
             mode="inline"
             v-model="current"
+            :openKeys="openKeys"
             @select="menuSelect">
         <template v-for="(menu, index) in menus">
             <a-sub-menu v-if="menu.children && menu.children.length > 0"
-                        :key="menu.url" :disabled="menu.disabled">
+                        :key="menu.id"
+                        @titleClick="titleClick"
+                        :disabled="menu.disabled">
                 <span slot="title">
                     <menu-name :menu="menu"></menu-name>
                 </span>
                 <a-menu-item v-for="(subMenu, subIndex) in menu.children"
                              :disabled="subMenu.disabled"
-                             :key="subMenu.url">
+                             :key="subMenu.id">
                     <menu-name :menu="subMenu"></menu-name>
                 </a-menu-item>
             </a-sub-menu>
             <a-menu-item v-else
-                         :key="menu.url"
+                         :key="menu.id"
                          :disabled="menu.disabled">
                 <menu-name :menu="menu"></menu-name>
             </a-menu-item>
@@ -28,6 +31,7 @@
     import {Menu} from 'ant-design-vue';
     import MenuMixin from './menu.mixin'
     import MenuName from "./MenuName";
+    import {MenuUtil} from "../../../../utils/menu.util";
 
     export default {
         components: {
@@ -38,6 +42,11 @@
         },
         name: "Menus",
         mixins: [MenuMixin],
+        data() {
+            return {
+                openKeys: []
+            }
+        },
         props: {
             theme: {
                 type: String,
@@ -54,10 +63,25 @@
         },
         mounted() {
             let url = this.$route.path
-            this.menuSelect({key: url})
+            const menu = MenuUtil.findByUrl(this.menus, url)
+            if (menu) {
+                this.menuSelect({key: menu.id});
+            }
         },
         methods: {
-
+            currentChange(menu) {
+                let parent = MenuUtil.findParent(this.menus, menu)
+                if (parent && this.openKeys.indexOf(parent.id) === -1) {
+                    this.openKeys.push(parent.id)
+                }
+            },
+            titleClick({key}) {
+                if (this.openKeys.indexOf(key) === -1) {
+                    this.openKeys = [key];
+                } else {
+                    this.openKeys = []
+                }
+            }
         }
     }
 </script>

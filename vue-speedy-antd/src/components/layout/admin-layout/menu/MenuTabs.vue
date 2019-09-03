@@ -2,7 +2,7 @@
     <a-menu v-model="current"
             class="menu-tab"
             mode="horizontal" @select="menuSelect">
-        <a-menu-item v-for="menu in tabs" :key="menu.url">
+        <a-menu-item v-for="menu in menus" :key="menu.id">
             <menu-name :menu="menu"/>
         </a-menu-item>
     </a-menu>
@@ -31,9 +31,12 @@
         },
         computed: {
             ...mapGetters('menuTab', {
-                tabs: 'menuTabsGet',
+                menus: 'menuTabsGet',
                 currentMenu: 'currentGet'
             })
+        },
+        methods: {
+
         }
     }
 </script>

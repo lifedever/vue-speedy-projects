@@ -9,8 +9,10 @@ export default {
     },
     watch: {
         currentMenu(value) {
-            console.log('current tab', value.url)
-            this.current = [value.url]
+            this.current = [value.id]
+            if (this.currentChange) {
+                this.currentChange(value)
+            }
         }
     },
     methods: {
@@ -18,8 +20,12 @@ export default {
             'addTab': 'addTabAction'
         }),
         menuSelect({item, key, selectedKeys}) {
-            const menu = MenuUtil.findByUrl(this.menus, key)
+            const menu = MenuUtil.findById(this.menus, key)
             this.addTab(menu)
+            if (menu.url) {
+                this.$router.push(menu.url).catch(err => {
+                })
+            }
         }
     },
     computed: {
