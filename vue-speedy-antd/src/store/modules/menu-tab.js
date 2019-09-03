@@ -1,7 +1,9 @@
 const state = {
     tabs: []
 }
-const getters = {}
+const getters = {
+    menuTabsGet: state => state.tabs
+}
 const actions = {
     openTabAction({state, commit}, menu) {
         commit('addMenuToTab', menu)
@@ -9,7 +11,8 @@ const actions = {
 }
 const mutations = {
     'addMenuToTab'(state, menu) {
-        if (state.tabs.indexOf(menu.url) < 0) {
+        console.log('addMenuToTab', menu)
+        if (!state.tabs.find(o => o.url === menu.url)) {
             state.tabs.push(menu)
         }
     }

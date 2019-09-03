@@ -15,6 +15,7 @@
                         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
                         @click="() => collapsed = !collapsed"
                 />
+                <menu-tabs></menu-tabs>
             </a-layout-header>
             <a-layout-content class="admin-layout-content">
                 <slot></slot>
@@ -25,12 +26,14 @@
 
 <script>
     import './admin-layout.less'
-    import {Layout} from 'ant-design-vue';
+    import {Layout, Menu} from 'ant-design-vue';
     import Menus from "./menu/Menus";
+    import MenuTabs from "./menu/MenuTabs";
 
     export default {
         name: "AdminLayout",
         components: {
+            MenuTabs,
             Menus,
             ALayout: Layout,
             ALayoutSider: Layout.Sider,
