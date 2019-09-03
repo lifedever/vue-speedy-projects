@@ -12,6 +12,9 @@ const getters = {
 const actions = {
     addTabAction({state, commit}, menu) {
         commit('addMenuToTab', menu)
+    },
+    removeTabAction({state, commit}, menu) {
+        commit('removeMenuFromTab', menu)
     }
 }
 const mutations = {
@@ -22,6 +25,22 @@ const mutations = {
         }
         localSave(storage.MENU_TAB, state.tabs)
         state.current = menu
+    },
+    'removeMenuFromTab'(state, menu) {
+        let tabs = []
+        for (let i = 0; i < state.tabs.length; i++) {
+            let tab = state.tabs[i]
+            if (tab.id !== menu.id) {
+                tabs.push(tab);
+            } else {
+                if (state.current.id === menu.id) {
+                    state.current = tabs[i - 1]
+                }
+            }
+        }
+        console.log(tabs)
+        state.tabs = tabs
+        localSave(storage.MENU_TAB, state.tabs)
     }
 }
 export default {

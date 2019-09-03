@@ -1,3 +1,5 @@
+@container-pad: 20px;
+@menu-item-pad: 12px;
 .admin-layout {
     .admin-layout-header {
         background: #fff;
@@ -10,17 +12,38 @@
 
         .trigger {
             font-size: 18px;
-            padding: 0 24px;
+            padding: 0 @container-pad;
             cursor: pointer;
             transition: color .3s;
         }
 
         .menu-tab {
             border-bottom: none;
+            flex: 1;
+            .ant-menu-item {
+                padding: 0 @menu-item-pad;
+                margin: 0 3px;
+                &:hover {
+                    .menu-tab-close {
+                        display: inline-block;
+                    }
+                }
+
+                .menu-tab-close {
+                    display: none;
+                    transform: scale(.9);
+                    position: absolute;
+                    right: -15px;
+                    margin-top: -10px;
+                }
+            }
         }
+
     }
 
     .admin-layout-sider {
+        box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+
         .ant-layout-sider-children {
             display: flex;
             flex-direction: column;
@@ -40,6 +63,6 @@
     }
 
     .admin-layout-content {
-        padding: 24px;
+        padding: @container-pad;
     }
 }

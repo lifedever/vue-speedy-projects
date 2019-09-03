@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import menuTab from './modules/menu-tab'
+import menu from './modules/menu'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        menuTab
+        menu
     },
 })

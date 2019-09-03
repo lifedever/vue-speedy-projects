@@ -16,7 +16,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('menuTab', {
+        ...mapActions('menu', {
             'addTab': 'addTabAction'
         }),
         menuSelect({item, key, selectedKeys}) {
@@ -32,7 +32,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('menuTab', {
+        ...mapGetters('menu', {
             currentMenu: 'currentGet'
         })
     }

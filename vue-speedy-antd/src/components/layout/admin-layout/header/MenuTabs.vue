@@ -3,6 +3,9 @@
             class="menu-tab"
             mode="horizontal" @select="menuSelect">
         <a-menu-item v-for="menu in menus" :key="menu.id">
+            <a href="#" v-if="!menu.fixed" class="menu-tab-close" @click.prevent.stop="removeTab(menu)">
+                <a-icon type="close-circle" theme="filled"/>
+            </a>
             <menu-name :menu="menu"/>
         </a-menu-item>
     </a-menu>
@@ -10,9 +13,9 @@
 
 <script>
     import {Menu} from 'ant-design-vue';
-    import {mapGetters} from "vuex";
-    import MenuName from "./MenuName";
-    import MenuMixin from './menu.mixin'
+    import {mapActions, mapGetters} from "vuex";
+    import MenuName from "../menu/MenuName";
+    import MenuMixin from '../menu/menu.mixin'
 
     export default {
         components: {
@@ -30,13 +33,15 @@
         mounted() {
         },
         computed: {
-            ...mapGetters('menuTab', {
+            ...mapGetters('menu', {
                 menus: 'menuTabsGet',
                 currentMenu: 'currentGet'
             })
         },
         methods: {
-
+            ...mapActions('menu', {
+                removeTab: 'removeTabAction'
+            })
         }
     }
 </script>

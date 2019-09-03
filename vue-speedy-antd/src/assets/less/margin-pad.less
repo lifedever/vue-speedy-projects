@@ -1,0 +1,22 @@
+.generate-margin-pad (@px, @name1, @name...) {
+    .@{name1}-left@{name} {
+            @{name1}-left: @px;
+    }
+    .@{name1}-right@{name} {
+            @{name1}-right: @px;
+    }
+    .@{name1}-top@{name} {
+            @{name1}-top: @px;
+    }
+    .@{name1}-bottom@{name} {
+            @{name1}-bottom: @px;
+    }
+}
+
+.generate-margin-pad(5px, margin, -sm);
+.generate-margin-pad(15px, margin);
+.generate-margin-pad(25px, margin, -lg);
+
+.generate-margin-pad(5px, padding, -sm);
+.generate-margin-pad(15px, padding);
+.generate-margin-pad(25px, padding, -lg);
