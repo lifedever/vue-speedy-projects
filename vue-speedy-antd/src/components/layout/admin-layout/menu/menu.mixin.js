@@ -20,11 +20,14 @@ export default {
             'addTab': 'addTabAction'
         }),
         menuSelect({item, key, selectedKeys}) {
+            console.log('menuId', key)
             const menu = MenuUtil.findById(this.menus, key)
-            this.addTab(menu)
-            if (menu.url) {
-                this.$router.push(menu.url).catch(err => {
-                })
+            if (menu) {
+                this.addTab(menu)
+                if (menu.url) {
+                    this.$router.push(menu.url).catch(err => {
+                    })
+                }
             }
         }
     },

@@ -25,7 +25,10 @@ export const MenuUtil = {
                 return menu
             }
             if (menu.children) {
-                return this.findById(menu.children, id)
+                let m = this.findById(menu.children, id)
+                if (m) {
+                    return m
+                }
             }
         }
     },

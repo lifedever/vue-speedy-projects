@@ -1,5 +1,6 @@
 <template>
     <a-menu :theme="theme"
+            class="menus"
             mode="inline"
             v-model="current"
             :openKeys="openKeys"
@@ -72,14 +73,14 @@
             currentChange(menu) {
                 let parent = MenuUtil.findParent(this.menus, menu)
                 if (parent && this.openKeys.indexOf(parent.id) === -1) {
-                    this.openKeys.push(parent.id)
+                    this.openKeys = [parent.id]
                 }
             },
             titleClick({key}) {
                 if (this.openKeys.indexOf(key) === -1) {
-                    this.openKeys = [key];
+                    this.openKeys = [key]
                 } else {
-                    this.openKeys = []
+                    this.openKeys = this.openKeys.filter(o => o !== key)
                 }
             }
         }
