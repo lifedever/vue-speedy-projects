@@ -1,11 +1,16 @@
+import {localGet, localSave} from "../../utils/storage";
+import {storage} from "../../cost/index";
+
 const state = {
-    tabs: []
+    tabs: localGet(storage.MENU_TAB) || [],
+    current: null
 }
 const getters = {
-    menuTabsGet: state => state.tabs
+    menuTabsGet: state => state.tabs,
+    currentGet: state => state.current
 }
 const actions = {
-    openTabAction({state, commit}, menu) {
+    addTabAction({state, commit}, menu) {
         commit('addMenuToTab', menu)
     }
 }
@@ -15,6 +20,8 @@ const mutations = {
         if (!state.tabs.find(o => o.url === menu.url)) {
             state.tabs.push(menu)
         }
+        localSave(storage.MENU_TAB, state.tabs)
+        state.current = menu
     }
 }
 export default {

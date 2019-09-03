@@ -1,15 +1,13 @@
 <template>
-    <admin-layout>
-        哈哈
-    </admin-layout>
+    <div>
+        哈哈， 这是首页
+    </div>
 </template>
 
 <script>
-    import Layout from "../../components/layout";
 
     export default {
         name: "Home",
-        components: {AdminLayout: Layout.AdminLayout}
     }
 </script>
 

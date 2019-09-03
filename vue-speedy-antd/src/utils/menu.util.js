@@ -8,5 +8,15 @@ export const MenuUtil = {
                 return this.findByName(menu.children, name)
             }
         }
+    },
+    findByUrl(menus, url) {
+        for (const menu of menus) {
+            if (menu.url === url) {
+                return menu
+            }
+            if (menu.children) {
+                return this.findByUrl(menu.children, url)
+            }
+        }
     }
 }

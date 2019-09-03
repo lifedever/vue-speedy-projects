@@ -1,8 +1,16 @@
-import Home from './home'
+import Main from './Main'
 export default [
     {
-        name: 'Home',
+        name: 'Main',
         path: '/',
-        component: () => import('./home')
+        component: Main,
+        redirect: '/home',
+        children: [
+            {
+                name: 'Home',
+                path: 'home',
+                component: () => import('./home')
+            }
+        ]
     }
 ]

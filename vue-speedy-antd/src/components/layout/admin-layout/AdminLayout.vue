@@ -13,8 +13,7 @@
                 <a-icon
                         class="trigger"
                         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                        @click="() => collapsed = !collapsed"
-                />
+                        @click="() => collapsed = !collapsed"/>
                 <menu-tabs></menu-tabs>
             </a-layout-header>
             <a-layout-content class="admin-layout-content">
@@ -43,26 +42,12 @@
         data() {
             return {
                 collapsed: false,
-                menus: [
-                    {
-                        name: '首页',
-                        icon: 'home',
-                        url: '/home'
-                    },
-                    {
-                        name: '系统管理',
-                        icon: 'setting',
-                        children: [
-                            {
-                                name: '用户管理',
-                                url: '/system/users'
-                            }, {
-                                name: '角色管理',
-                                url: '/system/roles'
-                            }
-                        ]
-                    }
-                ]
+            }
+        },
+        props: {
+            menus: {
+                type: Array,
+                default: []
             }
         }
     }
