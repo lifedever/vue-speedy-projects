@@ -13,14 +13,11 @@
 </template>
 
 <script>
-    import BaseContainer from "../../components/container/BaseContainer";
     import Menu from "../../class/Menu";
-    import {MenuUtil} from "../../utils/menu.util";
 
     export default {
         name: "Example",
         components: {
-            BaseContainer,
         },
         methods: {
             openNewTab() {

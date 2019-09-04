@@ -6,10 +6,8 @@
 
 <script>
 
-    import BaseContainer from "../../components/container/BaseContainer";
     export default {
         name: "Home",
-        components: {BaseContainer},
     }
 </script>
 
