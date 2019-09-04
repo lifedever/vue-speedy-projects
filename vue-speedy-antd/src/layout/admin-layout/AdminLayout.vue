@@ -27,7 +27,7 @@
     import Menus from "./menu/Menus";
     import MenuTabs from "./header/MenuTabs";
     import Top from './header/Top'
-    import {mapGetters} from "vuex";
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: "AdminLayout",
@@ -40,11 +40,18 @@
             ALayoutContent: Layout.Content,
         },
         mounted() {
-            console.log(this.$slots)
+            this.loadUserInfo()
         },
         data() {
             return {
                 collapsed: false,
+            }
+        },
+        watch: {
+            currentMenu(menu) {
+                if (menu && !menu.anonymous && !this.token) {
+                    this.$router.push('/login')
+                }
             }
         },
         props: {
@@ -60,6 +67,14 @@
         computed: {
             ...mapGetters('menu', {
                 currentMenu: 'currentGet'
+            }),
+            ...mapGetters('app', {
+                token: 'tokenGet'
+            })
+        },
+        methods: {
+            ...mapActions('user', {
+                loadUserInfo: 'loadUserInfoAction'
             })
         }
     }

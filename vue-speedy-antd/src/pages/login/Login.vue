@@ -61,6 +61,7 @@
             }
         },
         mounted() {
+            this.logout()
         },
         computed: {
             ...mapGetters('app', {
@@ -69,14 +70,15 @@
         },
         methods: {
             ...mapActions('app', {
-                storeToken: 'storeTokenAction'
+                storeToken: 'storeTokenAction',
+                logout: 'logoutAction'
             }),
             handleSubmit() {
                 this.form.validateFields((err, values) => {
                     if (!err) {
                         this.loading = true
                         this.$http.post('/api/login', values).then(res => {
-                            this.storeToken(res.data.token).then(_ => {
+                            this.storeToken(res.data).then(_ => {
                                 this.$message.success('登录成功，欢迎回来！')
                                 this.$router.push('/')
                             })

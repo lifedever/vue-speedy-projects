@@ -1,4 +1,8 @@
 import lscache from 'lscache'
+import Cookies from 'js-cookie'
+
+const TOKEN_KEY = "Token"
+
 /**
  * 本地保存
  */
@@ -16,4 +20,16 @@ export const localGet = (key) => {
  */
 export const localRemove = (key) => {
     lscache.remove(key)
+}
+
+export const setToken = (token, expires) => {
+    Cookies.set(TOKEN_KEY, token, expires)
+}
+
+export const getToken = () => {
+    return Cookies.get(TOKEN_KEY)
+}
+
+export const removeToken = () => {
+    return Cookies.remove(TOKEN_KEY)
 }

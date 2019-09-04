@@ -12,8 +12,10 @@ import {
     DatePicker,
     Tag,
     Spin,
+    Alert,
     message,
-    notification
+    notification,
+    Modal,
 } from 'ant-design-vue';
 
 export default {
@@ -26,6 +28,7 @@ export default {
 
         Vue.prototype.$message = message
         Vue.prototype.$notification = notification
+        Vue.prototype.$Modal = Modal
         Vue.component(Button.name, Button)
         Vue.component(Icon.name, Icon)
         Vue.component(Card.name, Card)
@@ -40,5 +43,7 @@ export default {
         Vue.component(DatePicker.name, DatePicker)
         Vue.component(Tag.name, Tag)
         Vue.component(Spin.name, Spin)
+        Vue.component(Alert.name, Alert)
+        Vue.component(Modal.name, Modal)
     }
 }

@@ -1,11 +1,9 @@
-import Cookies from 'js-cookie'
-import {TOKEN_KEY} from "./const";
 import notification from 'ant-design-vue/lib/notification'
+import {getToken} from "../utils/storage";
 export default (axios, router) => {
     // 请求拦截器
     axios.interceptors.request.use(config => {
-        config.headers.Authorization = `Bearer ${Cookies.get(TOKEN_KEY)}`;
-
+        config.headers.Authorization = `Bearer ${getToken()}`;
         return config;
     }, error => {
         return Promise.reject(error);
