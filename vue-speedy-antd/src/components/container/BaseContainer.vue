@@ -1,16 +1,21 @@
 <template>
     <a-layout class="base-container">
         <a-layout-header>
-            <a-breadcrumb>
-                <a-breadcrumb-item v-if="parentMenu">
-                    <a-icon :type="parentMenu.icon" v-if="parentMenu.icon"/>
-                    <span>{{parentMenu.name}}</span>
-                </a-breadcrumb-item>
-                <a-breadcrumb-item v-if="currentMenu">
-                    <a-icon :type="currentMenu.icon" v-if="currentMenu.icon"/>
-                    <span>{{currentMenu.name}}</span>
-                </a-breadcrumb-item>
-            </a-breadcrumb>
+            <div class="base-container-header-left">
+                <a-breadcrumb>
+                    <a-breadcrumb-item v-if="parentMenu">
+                        <a-icon :type="parentMenu.icon" v-if="parentMenu.icon"/>
+                        <span>{{parentMenu.name}}</span>
+                    </a-breadcrumb-item>
+                    <a-breadcrumb-item v-if="currentMenu">
+                        <a-icon :type="currentMenu.icon" v-if="currentMenu.icon"/>
+                        <span>{{currentMenu.name}}</span>
+                    </a-breadcrumb-item>
+                </a-breadcrumb>
+            </div>
+            <div class="base-container-header-right">
+                <slot name="headerRight"></slot>
+            </div>
         </a-layout-header>
         <a-layout-content>
             <slot></slot>
