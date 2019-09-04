@@ -11,8 +11,11 @@ export default {
     watch: {
         currentMenu(value) {
             this.current = [value.id]
+            if (value && value.url) {
+                this.$router.push(value.url).catch(err => {})
+            }
             if (this.currentChange) {
-                this.currentChange(value)
+                this.currentChange(value);
             }
             setSiteTitle(value.name)
         }
@@ -32,10 +35,6 @@ export default {
             const menu = MenuUtil.findById(this.allMenus, key)
             if (menu) {
                 this.addTab(menu)
-                if (menu.url) {
-                    this.$router.push(menu.url).catch(err => {
-                    })
-                }
             }
         }
     }

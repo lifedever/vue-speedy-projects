@@ -53,21 +53,26 @@ const mutations = {
         state.current = menu
     },
     'removeMenuFromTab'(state, menu) {
-        let tabs = []
-        for (let i = 0; i < state.tabs.length; i++) {
-            let tab = state.tabs[i]
-            if (tab.id !== menu.id) {
-                tabs.push(tab);
-            } else {
-                if (state.current.id === menu.id) {
-                    setTimeout(() => {
-                        state.current = tabs[i - 1]
-                    }, 300)
+        return new Promise((resolve, reject) => {
+            let tabs = []
+            for (let i = 0; i < state.tabs.length; i++) {
+                let tab = state.tabs[i]
+                if (tab.id !== menu.id) {
+                    tabs.push(tab);
+                } else {
+                    if (state.current.id === menu.id) {
+                        setTimeout(() => {
+                            state.current = tabs[i - 1]
+                            resolve(state.current)
+                        }, 100)
+                    }else{
+                        resolve(state.current)
+                    }
                 }
             }
-        }
-        state.tabs = tabs
-        localSave(storage.MENU_TAB, state.tabs)
+            state.tabs = tabs
+            localSave(storage.MENU_TAB, state.tabs)
+        })
     }
 }
 export default {

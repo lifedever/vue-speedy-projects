@@ -21,7 +21,7 @@
         },
         methods: {
             openNewTab() {
-                let menu = new Menu('newTabId', "新标签", "/example")
+                let menu = new Menu('newTabId', "新标签", "/example", "form")
                 this.openTab(menu)
             }
         }

@@ -5,7 +5,7 @@
             v-model="current"
             :openKeys="openKeys"
             @select="menuSelect">
-        <template v-for="(menu, index) in menus">
+        <template v-for="(menu, index) in menus" v-if="!menu.hide">
             <a-sub-menu v-if="menu.children && menu.children.length > 0"
                         :key="menu.id"
                         @titleClick="titleClick"
@@ -34,6 +34,7 @@
     import MenuName from "./MenuName";
     import {MenuUtil} from '../../../utils/menu.util'
     import {mapGetters} from "vuex";
+    import _cloneDeep from 'lodash/cloneDeep'
 
     export default {
         components: {
@@ -46,7 +47,8 @@
         mixins: [MenuMixin],
         data() {
             return {
-                openKeys: []
+                openKeys: [],
+                cachedOpenKeys: []
             }
         },
         props: {
@@ -74,9 +76,10 @@
         watch: {
             menuCollapsed() {
                 if (this.menuCollapsed) {
+                    this.cachedOpenKeys = _cloneDeep(this.openKeys)
                     this.openKeys = []
                 } else {
-                    this.currentChange(this.currentMenu)
+                    this.openKeys = _cloneDeep(this.cachedOpenKeys)
                 }
             }
         },

@@ -17,8 +17,7 @@ Vue.use(AntdDependency)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
-            routes: null,                // 路由配置
-            menus: [],
+            pages: null,                // 路由配置
             modules: [],
             mixins: [],
             config: {

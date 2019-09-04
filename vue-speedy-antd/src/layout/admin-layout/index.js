@@ -4,15 +4,15 @@ import BaseContainer from "./container/BaseContainer";
 import mixin from './mixins'
 import store from "../../store";
 import menuStore from './store/menu'
+import defaultMenus from './menu-default'
 
 export default {
     install: (Vue, options) => {
         store.registerModule('menu', menuStore)
-
         Vue.mixin(mixin)
 
         // 保存菜单
-        store.dispatch('menu/storeMenusAction', options.menus)
+        store.dispatch('menu/storeMenusAction', options.menus.concat(defaultMenus))
 
         Vue.component('admin-layout', AdminLayout)
         Vue.component('base-container', BaseContainer)
