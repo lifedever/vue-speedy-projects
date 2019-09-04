@@ -1,4 +1,7 @@
 # vue-speedy-antd
+----
+使用 [Ant Design Vue](https://vue.ant.design)封装的一套通用组件功能库
+
 ![](./example.jpg)
 
 ## Use
