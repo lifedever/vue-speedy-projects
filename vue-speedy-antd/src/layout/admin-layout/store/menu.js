@@ -1,6 +1,7 @@
 import {localGet, localSave} from "../../../utils/storage";
 import {storage} from "../../../cost/index";
 import {MenuUtil} from "../../../utils/menu.util";
+import _cloneDeep from 'lodash/cloneDeep'
 
 const state = {
     tabs: localGet(storage.MENU_TAB) || [],
@@ -17,6 +18,15 @@ const getters = {
         } else {
             return null
         }
+    },
+    menusAndTabsGet: state => {
+        let menus = _cloneDeep(state.menus);
+        state.tabs.forEach(m => {
+            if (!menus.find(o => o.id === m.id)) {
+                menus.push(m)
+            }
+        })
+        return menus
     }
 }
 const actions = {

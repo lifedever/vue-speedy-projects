@@ -33,6 +33,7 @@
     import MenuMixin from './menu.mixin'
     import MenuName from "./MenuName";
     import {MenuUtil} from '../../../utils/menu.util'
+    import {mapGetters} from "vuex";
 
     export default {
         components: {
@@ -64,12 +65,27 @@
         },
         mounted() {
             let url = this.$route.path
-            const menu = MenuUtil.findByUrl(this.menus, url)
+            const menu = MenuUtil.findByUrl(this.allMenus, url)
             if (menu) {
                 this.menuSelect({key: menu.id});
             }
         },
+        computed: {
+            ...mapGetters('menu', {
+                tabs: 'menuTabsGet',
+                allMenus: 'menusAndTabsGet'
+            })
+        },
         methods: {
+            menusMergeTabs() {
+                let menus = _cloneDeep(this.menus)
+                (this.tabs || []).forEach(m => {
+                    if(!menus.find(o => o.id === m.id)){
+                        menus.push(m)
+                    }
+                })
+                return menus
+            },
             currentChange(menu) {
                 let parent = MenuUtil.findParent(this.menus, menu)
                 if (parent && this.openKeys.indexOf(parent.id) === -1) {

@@ -1,4 +1,6 @@
 import store from '../store'
+import Main from "../pages/Main";
+
 export default [
     {
         name: 'Login',
@@ -13,5 +15,17 @@ export default [
             store.dispatch('app/logoutAction')
             next()
         }
+    },
+    {
+        name: 'ProfileMain',
+        component: Main,
+        path: '/',
+        children: [
+            {
+                name: 'Profile',
+                path: '/profile',
+                component: () => import('../pages/profile')
+            }
+        ]
     }
 ]

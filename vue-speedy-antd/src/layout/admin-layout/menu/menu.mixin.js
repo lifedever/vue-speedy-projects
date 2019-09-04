@@ -17,13 +17,19 @@ export default {
             setSiteTitle(value.name)
         }
     },
+    computed: {
+        ...mapGetters('menu', {
+            currentMenu: 'currentGet',
+            allMenus: 'menusAndTabsGet'
+        })
+    },
     methods: {
         ...mapActions('menu', {
-            'addTab': 'addTabAction'
+            'addTab': 'addTabAction',
         }),
         menuSelect({item, key, selectedKeys}) {
             console.log('menuId', key)
-            const menu = MenuUtil.findById(this.menus, key)
+            const menu = MenuUtil.findById(this.allMenus, key)
             if (menu) {
                 this.addTab(menu)
                 if (menu.url) {
@@ -32,10 +38,5 @@ export default {
                 }
             }
         }
-    },
-    computed: {
-        ...mapGetters('menu', {
-            currentMenu: 'currentGet'
-        })
     }
 }

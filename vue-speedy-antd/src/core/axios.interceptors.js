@@ -1,5 +1,6 @@
 import notification from 'ant-design-vue/lib/notification'
 import {getToken} from "../utils/storage";
+
 export default (axios, router) => {
     // 请求拦截器
     axios.interceptors.request.use(config => {
@@ -21,7 +22,7 @@ export default (axios, router) => {
         if (error && error.response) {
             let status = error.response.status;
             if (status === 401) {
-
+                router.push(`/logout`)
             }
             if (status === 403) {
 
