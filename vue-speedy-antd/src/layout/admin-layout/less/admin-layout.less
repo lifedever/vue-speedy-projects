@@ -34,11 +34,20 @@
         .ant-layout-sider-children {
             display: flex;
             flex-direction: column;
-
             .logo {
                 height: 32px;
-                background: rgba(255, 255, 255, .2);
                 margin: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: #fff;
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+                .logo-in {
+                    height: 100%;
+                    background: rgba(255, 255, 255, .2);
+                }
             }
 
             .menus {

@@ -11,7 +11,7 @@
 
 <script>
     import {Menu} from 'ant-design-vue';
-    import {mapActions, mapGetters} from "vuex";
+    import {mapGetters} from "vuex";
     import MenuName from "../menu/MenuName";
     import MenuMixin from '../menu/menu.mixin'
 

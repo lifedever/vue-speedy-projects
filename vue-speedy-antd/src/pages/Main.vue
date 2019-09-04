@@ -1,5 +1,13 @@
 <template>
     <admin-layout :menus="menus">
+        <template v-slot:logo="{data}">
+            <span v-if="data">
+                {{config.shortTitle}}
+            </span>
+            <span v-else>
+                {{config.title}}
+            </span>
+        </template>
         <keep-alive>
             <router-view></router-view>
         </keep-alive>
@@ -19,6 +27,9 @@
         computed:{
             ...mapGetters('menu', {
                 menus: 'menusGet'
+            }),
+            ...mapGetters('app', {
+                config: 'configGet'
             })
         }
     }

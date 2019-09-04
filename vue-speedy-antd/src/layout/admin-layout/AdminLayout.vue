@@ -5,7 +5,9 @@
                 :trigger="null"
                 collapsible
                 v-model="collapsed">
-            <div class="logo"/>
+            <div class="logo">
+                <slot name="logo" v-bind:data="collapsed"></slot>
+            </div>
             <menus :menus="menus"></menus>
         </a-layout-sider>
         <a-layout>
@@ -33,6 +35,9 @@
             ALayout: Layout,
             ALayoutSider: Layout.Sider,
             ALayoutContent: Layout.Content,
+        },
+        mounted() {
+            console.log(this.$slots)
         },
         data() {
             return {

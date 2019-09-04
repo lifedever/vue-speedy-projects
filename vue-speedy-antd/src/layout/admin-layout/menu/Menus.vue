@@ -32,8 +32,7 @@
     import {Menu} from 'ant-design-vue';
     import MenuMixin from './menu.mixin'
     import MenuName from "./MenuName";
-    import {MenuUtil} from "../../../../utils/menu.util";
-    import {mapActions} from "vuex";
+    import {MenuUtil} from '../../../utils/menu.util'
 
     export default {
         components: {

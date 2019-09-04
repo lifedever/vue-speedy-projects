@@ -9,13 +9,13 @@ import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'
+import {setSiteTitle} from "../src/utils/common";
 
 Vue.config.productionTip = false
 Vue.use(AntdDependency)
 
 export default {
     install: (Vue, options) => {
-        console.log('%c 😎😎😎 Platform Inject!', 'background: #00a1ff; padding: 1px 25px; color: #fff; border-radius: 4px;', options);
         let defaultOptions = {
             routes: null,                // 路由配置
             menus: [],
@@ -25,6 +25,8 @@ export default {
             }
         }
         defaultOptions = Object.assign(defaultOptions, options)
+
+        setSiteTitle(defaultOptions.config.title, true)
 
         const routerInstance = router(defaultOptions.pages)
         axiosInterceptors(axios, routerInstance)
@@ -51,12 +53,13 @@ export default {
         }
 
         // 保存菜单
-        store.dispatch('menu/storeMenusAction', defaultOptions.menus)
-
+        store.dispatch('app/storeConfigAction', defaultOptions.config)
         new Vue({
             router: routerInstance,
             store,
             render: h => h(App),
         }).$mount('#app')
+
+        console.log('%c 😎 Platform init finished!', 'background: #00a1ff; padding: 1px 25px; color: #fff; border-radius: 4px;', options);
     }
 }

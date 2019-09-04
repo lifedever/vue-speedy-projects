@@ -1,6 +1,6 @@
-import {localGet, localSave} from "../../../../utils/storage";
-import {storage} from "../../../../cost/index";
-import {MenuUtil} from "../../../../utils/menu.util";
+import {localGet, localSave} from "../../../utils/storage";
+import {storage} from "../../../cost/index";
+import {MenuUtil} from "../../../utils/menu.util";
 
 const state = {
     tabs: localGet(storage.MENU_TAB) || [],

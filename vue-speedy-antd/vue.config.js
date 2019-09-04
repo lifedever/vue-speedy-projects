@@ -2,13 +2,13 @@ module.exports = require('./conf')({
     lessModifyVars: {
 
     },
-    title: '未设置站点标题',
+    title: 'Vue Speedy Ant Design',
     baseUrl: '/',
     devServer: {
         port: 6060,
         proxy: {
             '/api': {
-                target: "http://yoyotrip.kanasinfo.com",
+                target: "http://localhost:18080",
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {

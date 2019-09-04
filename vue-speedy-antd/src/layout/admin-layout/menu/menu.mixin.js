@@ -1,6 +1,6 @@
 import {mapActions, mapGetters} from "vuex";
-import {MenuUtil} from "../../../../utils/menu.util";
-import {setSiteTitle} from "../../../../utils/common";
+import {MenuUtil} from "../../../utils/menu.util";
+import {setSiteTitle} from "../../../utils/common";
 
 export default {
     data() {

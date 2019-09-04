@@ -1,12 +1,31 @@
 import Vue from "vue";
 import Inject from '../conf/main-inject'
 import pages from './pages'
-import adminLayout from "./components/layout/admin-layout";
+import adminLayout from "./layout/admin-layout";
 
-Vue.use(adminLayout)
 Vue.use(Inject, {
     config: {
+        title: 'Vue Speedy Ant Design',
+        shortTitle: 'VD'
     },
+    pages: pages,
+    modules: [
+        {
+            path: 'test',
+            module: {
+                namespaced: true,
+                state: {
+                    name: 'VueSpeedyAntD'
+                },
+                getters: {
+                    nameGet: state => state.name
+                }
+            }
+        }
+    ]
+})
+
+Vue.use(adminLayout, {
     menus: [
         {
             id: 'home',
@@ -28,19 +47,4 @@ Vue.use(Inject, {
             ]
         }
     ],
-    pages: pages,
-    modules: [
-        {
-            path: 'test',
-            module: {
-                namespaced: true,
-                state: {
-                    name: 'VueSpeedyAntD'
-                },
-                getters: {
-                    nameGet: state => state.name
-                }
-            }
-        }
-    ]
 })
