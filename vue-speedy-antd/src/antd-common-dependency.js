@@ -11,6 +11,7 @@ import {
     Switch,
     DatePicker,
     Tag,
+    Spin,
     message,
     notification
 } from 'ant-design-vue';
@@ -38,5 +39,6 @@ export default {
         Vue.component(Switch.name, Switch)
         Vue.component(DatePicker.name, DatePicker)
         Vue.component(Tag.name, Tag)
+        Vue.component(Spin.name, Spin)
     }
 }

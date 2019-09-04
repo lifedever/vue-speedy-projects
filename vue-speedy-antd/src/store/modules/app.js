@@ -3,7 +3,8 @@ const state = {
     token: null
 }
 const getters = {
-    configGet: state => state.config
+    configGet: state => state.config,
+    tokenGet: state => state.token
 }
 const actions = {
     storeConfigAction({commit}, config) {

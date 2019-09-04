@@ -7,14 +7,16 @@ class Menu {
      * @param url 跳转地址
      * @param fixed 是否固定在tab，不可被关闭
      * @param children 子菜单
+     * @param anonymous 允许匿名访问
      */
-    constructor(id, name, url, icon, fixed, children) {
+    constructor(id, name, url, icon, fixed, children, anonymous) {
         this.id = id
         this.name = name
         this.icon = icon
         this.url = url
         this.fixed = fixed
         this.children = children
+        this.anonymous = anonymous
     }
 
     toString() {
