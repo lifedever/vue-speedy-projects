@@ -8,8 +8,9 @@ class Menu {
      * @param fixed 是否固定在tab，不可被关闭
      * @param children 子菜单
      * @param anonymous 允许匿名访问
+     * @param hide 从左侧菜单列表中隐藏
      */
-    constructor(id, name, url, icon, fixed, children, anonymous) {
+    constructor(id, name, url, icon, fixed, children, anonymous, hide) {
         this.id = id
         this.name = name
         this.icon = icon
@@ -17,6 +18,7 @@ class Menu {
         this.fixed = fixed
         this.children = children
         this.anonymous = anonymous
+        this.hide = hide
     }
 
     toString() {

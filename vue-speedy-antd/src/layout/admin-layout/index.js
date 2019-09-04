@@ -1,5 +1,6 @@
 import AdminLayout from "./AdminLayout";
 import BaseContainer from "./container/BaseContainer";
+import SplitContainer from "./container/SplitContainer";
 
 import mixin from './mixins'
 import store from "../../store";
@@ -16,6 +17,7 @@ export default {
 
         Vue.component('admin-layout', AdminLayout)
         Vue.component('base-container', BaseContainer)
+        Vue.component('split-container', SplitContainer)
         console.log('%c 👌 Admin Layout init finished!', 'background: #9d8621; padding: 1px 25px; color: #fff; border-radius: 4px;', options);
     }
 }

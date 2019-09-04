@@ -24,7 +24,12 @@ Vue.use(adminLayout, {
                     id: 'exampleBase',
                     name: '基础示例',
                     url: '/example',
-                }
+                },
+                {
+                    id: 'exampleSplit',
+                    name: '分割容器',
+                    url: '/example/split',
+                },
             ]
         }
     ],
