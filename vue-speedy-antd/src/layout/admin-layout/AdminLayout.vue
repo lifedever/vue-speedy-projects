@@ -8,7 +8,7 @@
             <div class="logo">
                 <slot name="logo" v-bind:data="collapsed"></slot>
             </div>
-            <menus :menus="menus"></menus>
+            <menus :menus="menus" :menu-collapsed="collapsed"></menus>
         </a-layout-sider>
         <a-layout :loading="true">
             <top v-model="collapsed"></top>

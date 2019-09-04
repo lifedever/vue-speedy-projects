@@ -61,7 +61,8 @@
             menus: {
                 type: Array,
                 default: []
-            }
+            },
+            menuCollapsed: Boolean
         },
         mounted() {
             let url = this.$route.path
@@ -70,22 +71,23 @@
                 this.menuSelect({key: menu.id});
             }
         },
+        watch: {
+            menuCollapsed() {
+                if (this.menuCollapsed) {
+                    this.openKeys = []
+                } else {
+                    this.currentChange(this.currentMenu)
+                }
+            }
+        },
         computed: {
             ...mapGetters('menu', {
                 tabs: 'menuTabsGet',
-                allMenus: 'menusAndTabsGet'
+                allMenus: 'menusAndTabsGet',
+                currentMenu: 'currentGet'
             })
         },
         methods: {
-            menusMergeTabs() {
-                let menus = _cloneDeep(this.menus)
-                (this.tabs || []).forEach(m => {
-                    if(!menus.find(o => o.id === m.id)){
-                        menus.push(m)
-                    }
-                })
-                return menus
-            },
             currentChange(menu) {
                 let parent = MenuUtil.findParent(this.menus, menu)
                 if (parent && this.openKeys.indexOf(parent.id) === -1) {
