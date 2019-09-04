@@ -1,6 +1,7 @@
 @container-pad: 20px;
 @menu-item-pad: 12px;
 .admin-layout {
+    overflow: hidden;
     .admin-layout-header {
         background: #fff;
         padding: 0;
@@ -9,7 +10,6 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-
         .trigger {
             font-size: 18px;
             padding: 0 @container-pad;
@@ -18,24 +18,11 @@
         }
 
         .menu-tab {
-            border-bottom: none;
             flex: 1;
-            .ant-menu-item {
-                padding: 0 @menu-item-pad;
-                margin: 0 3px;
-                &:hover {
-                    .menu-tab-close {
-                        display: inline-block;
-                    }
-                }
-
-                .menu-tab-close {
-                    display: none;
-                    transform: scale(.9);
-                    position: absolute;
-                    right: -15px;
-                    margin-top: -10px;
-                }
+            overflow: hidden;
+            padding-right: 50px;
+            .ant-menu {
+                border-bottom-color: transparent;
             }
         }
 

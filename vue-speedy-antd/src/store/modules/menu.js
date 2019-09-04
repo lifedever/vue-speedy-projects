@@ -34,7 +34,9 @@ const mutations = {
                 tabs.push(tab);
             } else {
                 if (state.current.id === menu.id) {
-                    state.current = tabs[i - 1]
+                    setTimeout(() => {
+                        state.current = tabs[i - 1]
+                    }, 300)
                 }
             }
         }

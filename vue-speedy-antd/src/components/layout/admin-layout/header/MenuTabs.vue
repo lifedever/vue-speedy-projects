@@ -1,14 +1,12 @@
 <template>
-    <a-menu v-model="current"
-            class="menu-tab"
-            mode="horizontal" @select="menuSelect">
-        <a-menu-item v-for="menu in menus" :key="menu.id">
-            <a href="#" v-if="!menu.fixed" class="menu-tab-close" @click.prevent.stop="removeTab(menu)">
-                <a-icon type="close-circle" theme="filled"/>
-            </a>
-            <menu-name :menu="menu"/>
-        </a-menu-item>
-    </a-menu>
+    <div class="menu-tab">
+        <a-menu v-model="current"
+                mode="horizontal" @select="menuSelect">
+            <a-menu-item v-for="menu in menus" :key="menu.id">
+                <menu-name :menu="menu" closable/>
+            </a-menu-item>
+        </a-menu>
+    </div>
 </template>
 
 <script>
@@ -39,9 +37,7 @@
             })
         },
         methods: {
-            ...mapActions('menu', {
-                removeTab: 'removeTabAction'
-            })
+
         }
     }
 </script>
