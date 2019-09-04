@@ -3,17 +3,30 @@
         <div slot="headerRight">
             <a-button type="primary">添加按钮</a-button>
         </div>
-        这是容器的内容
+        <div>
+            这是容器的内容
+        </div>
+        <div>
+            <a href="#" @click.prevent="openNewTab">在新标签中打开</a>
+        </div>
     </base-container>
 </template>
 
 <script>
     import BaseContainer from "../../components/container/BaseContainer";
+    import Menu from "../../class/Menu";
+    import {MenuUtil} from "../../utils/menu.util";
 
     export default {
         name: "Example",
         components: {
             BaseContainer,
+        },
+        methods: {
+            openNewTab() {
+                let menu = new Menu('newTabId', "新标签", "/example")
+                this.openTab(menu)
+            }
         }
     }
 </script>

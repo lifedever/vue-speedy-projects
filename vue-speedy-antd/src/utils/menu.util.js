@@ -33,14 +33,12 @@ export const MenuUtil = {
         }
     },
     findParent(menus, menu) {
-        console.log('menus', menus, menu)
         let m = null
         for (const ms of menus) {
             if (ms.children && !!ms.children.find(m => m.id === menu.id)) {
                 m = ms
             }
         }
-        console.log('parent', m)
         return m
     }
 }

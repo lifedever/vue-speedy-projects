@@ -1,6 +1,6 @@
-import {localGet, localSave} from "../../utils/storage";
-import {storage} from "../../cost/index";
-import {MenuUtil} from "../../utils/menu.util";
+import {localGet, localSave} from "../../../../utils/storage";
+import {storage} from "../../../../cost/index";
+import {MenuUtil} from "../../../../utils/menu.util";
 
 const state = {
     tabs: localGet(storage.MENU_TAB) || [],
@@ -12,7 +12,11 @@ const getters = {
     menuTabsGet: state => state.tabs,
     currentGet: state => state.current,
     parentGet: state => {
-        return MenuUtil.findParent(state.menus, state.current)
+        if (state.menus && state.current) {
+            return MenuUtil.findParent(state.menus, state.current)
+        } else {
+            return null
+        }
     }
 }
 const actions = {
@@ -52,7 +56,6 @@ const mutations = {
                 }
             }
         }
-        console.log(tabs)
         state.tabs = tabs
         localSave(storage.MENU_TAB, state.tabs)
     }
