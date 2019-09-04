@@ -1,5 +1,6 @@
 import {mapActions, mapGetters} from "vuex";
 import {MenuUtil} from "../../../../utils/menu.util";
+import {setSiteTitle} from "../../../../utils/common";
 
 export default {
     data() {
@@ -13,6 +14,7 @@ export default {
             if (this.currentChange) {
                 this.currentChange(value)
             }
+            setSiteTitle(value.name)
         }
     },
     methods: {

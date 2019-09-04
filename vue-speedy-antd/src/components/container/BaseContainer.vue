@@ -6,7 +6,7 @@
                     <a-icon :type="parentMenu.icon" v-if="parentMenu.icon"/>
                     <span>{{parentMenu.name}}</span>
                 </a-breadcrumb-item>
-                <a-breadcrumb-item>
+                <a-breadcrumb-item v-if="currentMenu">
                     <a-icon :type="currentMenu.icon" v-if="currentMenu.icon"/>
                     <span>{{currentMenu.name}}</span>
                 </a-breadcrumb-item>
