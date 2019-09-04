@@ -1,4 +1,6 @@
 # vue-speedy-antd
+![](./example.jpg)
+
 ## Use
 ```bash
 yarn add vue-speedy-antd@version
