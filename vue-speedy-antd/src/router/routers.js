@@ -19,7 +19,7 @@ export default [
     {
         name: 'ProfileMain',
         component: Main,
-        path: '/',
+        path: '/profile',
         children: [
             {
                 name: 'Profile',
