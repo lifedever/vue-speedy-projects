@@ -1,15 +1,24 @@
 import {localGet, localSave} from "../../utils/storage";
 import {storage} from "../../cost/index";
+import {MenuUtil} from "../../utils/menu.util";
 
 const state = {
     tabs: localGet(storage.MENU_TAB) || [],
+    menus: [],
     current: null
 }
 const getters = {
+    menusGet: state => state.menus,
     menuTabsGet: state => state.tabs,
-    currentGet: state => state.current
+    currentGet: state => state.current,
+    parentGet: state => {
+        return MenuUtil.findParent(state.menus, state.current)
+    }
 }
 const actions = {
+    storeMenusAction({commit}, menus) {
+        commit('storeMenus', menus)
+    },
     addTabAction({state, commit}, menu) {
         commit('addMenuToTab', menu)
     },
@@ -18,6 +27,9 @@ const actions = {
     }
 }
 const mutations = {
+    'storeMenus'(state, menus) {
+        state.menus = menus
+    },
     'addMenuToTab'(state, menu) {
         console.log('addMenuToTab', menu)
         if (!state.tabs.find(o => o.id === menu.id)) {

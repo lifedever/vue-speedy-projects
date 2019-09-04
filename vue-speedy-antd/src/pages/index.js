@@ -10,6 +10,11 @@ export default [
                 name: 'Home',
                 path: 'home',
                 component: () => import('./home')
+            },
+            {
+                name: 'Example',
+                path: 'example',
+                component: () => import('./examples')
             }
         ]
     }

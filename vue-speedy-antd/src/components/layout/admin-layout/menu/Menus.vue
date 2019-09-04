@@ -33,6 +33,7 @@
     import MenuMixin from './menu.mixin'
     import MenuName from "./MenuName";
     import {MenuUtil} from "../../../../utils/menu.util";
+    import {mapActions} from "vuex";
 
     export default {
         components: {
@@ -68,8 +69,12 @@
             if (menu) {
                 this.menuSelect({key: menu.id});
             }
+            this.storeMenusAction(this.menus)
         },
         methods: {
+            ...mapActions('menu', {
+                'storeMenusAction': 'storeMenusAction'
+            }),
             currentChange(menu) {
                 let parent = MenuUtil.findParent(this.menus, menu)
                 if (parent && this.openKeys.indexOf(parent.id) === -1) {

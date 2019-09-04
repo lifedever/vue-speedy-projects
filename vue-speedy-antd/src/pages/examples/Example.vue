@@ -1,15 +1,17 @@
 <template>
     <base-container>
-        哈哈， 这是首页
+        这是容器的内容
     </base-container>
 </template>
 
 <script>
-
     import BaseContainer from "../../components/container/BaseContainer";
+
     export default {
-        name: "Home",
-        components: {BaseContainer},
+        name: "Example",
+        components: {
+            BaseContainer,
+        }
     }
 </script>
 

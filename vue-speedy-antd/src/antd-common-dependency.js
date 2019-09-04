@@ -1,6 +1,7 @@
 import {
     Button,
     Icon,
+    Layout
 } from 'ant-design-vue';
 
 export default {
