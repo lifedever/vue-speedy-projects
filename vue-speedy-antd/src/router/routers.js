@@ -3,6 +3,48 @@ import Main from "../pages/Main";
 
 export default [
     {
+        name: 'Main',
+        path: '/',
+        component: Main,
+        redirect: '/home',
+        children: [
+            {
+                name: 'Home',
+                path: 'home',
+                component: () => import('../pages/home')
+            },
+            {
+                name: 'SystemHolderProfiles',
+                path: 'system/users',
+                component: () => import('../pages/system/holder-user')
+            },
+            {
+                path: '/403',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_403',
+                component: () => import('../pages/error-page/403.vue')
+            },
+            {
+                path: '/500',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_500',
+                component: () => import('../pages/error-page/500.vue')
+            },
+            {
+                path: '*',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_404',
+                component: () => import('../pages/error-page/404.vue')
+            }
+        ]
+    },
+    {
         name: 'Login',
         path: '/login',
         component: () => import('../pages/login')

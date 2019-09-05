@@ -13,7 +13,7 @@
         <a-layout :loading="true">
             <top v-model="collapsed"></top>
             <a-layout-content class="admin-layout-content">
-                <a-spin :spinning="!currentMenu || loading" class="admin-layout-content-spin">
+                <a-spin :spinning="spinning" class="admin-layout-content-spin">
                     <slot></slot>
                 </a-spin>
             </a-layout-content>
@@ -70,7 +70,10 @@
             }),
             ...mapGetters('app', {
                 token: 'tokenGet'
-            })
+            }),
+            spinning() {
+                return (!this.currentMenu || this.loading) && !this.$route.meta.clearLoading
+            }
         },
         methods: {
             ...mapActions('user', {

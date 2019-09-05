@@ -7,7 +7,7 @@ Vue.use(Router);
 export default (routers) => {
     const router = new Router({
         mode: 'history',
-        routes: defaultRouters.concat(routers)
+        routes: routers.concat(defaultRouters)
     })
     router.beforeEach((to, from, next) => {
         console.log('from', from)

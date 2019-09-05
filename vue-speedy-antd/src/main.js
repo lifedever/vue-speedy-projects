@@ -4,17 +4,14 @@ import pages from './pages'
 import adminLayout from "./layout/admin-layout";
 import router from "./router";
 
+import homeMenu from './pages/home/menu'
+import systemMenu from './pages/system/menu'
+
 const routerInstance = router(pages)
 
 Vue.use(adminLayout, {
     menus: [
-        {
-            id: 'home',
-            name: '首页',
-            icon: 'home',
-            url: '/home',
-            fixed: true         // 不能删除
-        },
+        homeMenu,
         {
             id: 'example',
             name: '示例',
@@ -31,7 +28,8 @@ Vue.use(adminLayout, {
                     url: '/example/split',
                 },
             ]
-        }
+        },
+        systemMenu
     ],
 })
 
