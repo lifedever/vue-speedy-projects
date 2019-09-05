@@ -13,9 +13,10 @@ import {
     Tag,
     Spin,
     Alert,
+    Modal,
+    List,
     message,
     notification,
-    Modal,
 } from 'ant-design-vue';
 
 export default {
@@ -45,5 +46,8 @@ export default {
         Vue.component(Spin.name, Spin)
         Vue.component(Alert.name, Alert)
         Vue.component(Modal.name, Modal)
+        Vue.component(List.name, List)
+        Vue.component(List.Item.name, List.Item)
+        Vue.component(List.Item.Meta.name, List.Item.Meta)
     }
 }

@@ -1,10 +1,11 @@
 import notification from 'ant-design-vue/lib/notification'
-import {getToken} from "../utils/storage";
+import {getToken, getHolder} from "../utils/storage";
 
 export default (axios, router) => {
     // 请求拦截器
     axios.interceptors.request.use(config => {
         config.headers.Authorization = `Bearer ${getToken()}`;
+        config.headers.common['Holder'] = getHolder();
         return config;
     }, error => {
         return Promise.reject(error);

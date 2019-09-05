@@ -73,17 +73,33 @@
             }),
             handleSubmit(values) {
                 this.loading = true
-                this.$http.post('/api/login', values).then(res => {
-                    this.storeToken(res.data).then(_ => {
+                this.$http.post('/api/login', values).then(loginRes => {
+                    this.storeToken(loginRes.data).then(_ => {
                         this.loadUserActiveHolders().then(res => {
                             if (res.data.length === 0) {
                                 this.$message.warning('无相关平台授权账号，请联系平台管理员！')
                                 this.$router.push('/logout').catch(err => {})
                                 this.loading = false
                             } else {
+                                this.$openModal({
+                                    modal: {
+                                        title: '请选择要访问的平台',
+                                        okText: '确定',
+                                        footer: null
+                                    },
+                                    props: {
+                                        holders: res.data,
+                                        expires: loginRes.data.expires
+                                    },
+                                    component: () => import('./HolderSelect'),
+                                    ok: () => {
+                                        this.loading = false
+                                    },
+                                    cancel: () => {
+                                        this.loading = false
+                                    }
+                                })
 
-                                this.$message.success('登录成功，欢迎回来！');
-                                this.$router.push('/')
                             }
                         })
                     })

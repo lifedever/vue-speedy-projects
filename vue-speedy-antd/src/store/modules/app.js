@@ -18,8 +18,9 @@ const actions = {
             resolve()
         })
     },
-    logoutAction({commit}, params) {
+    logoutAction({commit, dispatch}, params) {
         commit('removeToken')
+        dispatch('holder/removeHolderAction', {}, {root: true})
     }
 }
 

@@ -10,13 +10,17 @@
 </template>
 
 <script>
+    import _assign from 'lodash/merge'
     export default {
         name: "SModal",
         data() {
             return {
                 visible: false,
                 view: {
-                    modal: null,
+                    modal: {
+                        okText: '确定',
+                        cancelText: '取消'
+                    },
                     component: null,
                     props: null,
                     ok: () => {},
@@ -32,7 +36,8 @@
         },
         methods: {
             openModal(view) {
-                this.view = Object.assign({}, this.view, view)
+                console.log('openModal', view)
+                this.view = _assign({}, this.view, view)
                 this.visible = true
             },
             closeModal() {
