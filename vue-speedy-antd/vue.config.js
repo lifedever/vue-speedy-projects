@@ -9,6 +9,7 @@ module.exports = require('./conf')({
         proxy: {
             '/api': {
                 target: "http://localhost:18080",
+                // target: "http://yoyotrip.kanasinfo.com",
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {

@@ -5,7 +5,9 @@ export default (axios, router) => {
     // 请求拦截器
     axios.interceptors.request.use(config => {
         config.headers.Authorization = `Bearer ${getToken()}`;
-        config.headers.common['Holder'] = getHolder();
+        let holder = getHolder()
+        if (holder)
+            config.headers.common['Holder'] = getHolder();
         return config;
     }, error => {
         return Promise.reject(error);

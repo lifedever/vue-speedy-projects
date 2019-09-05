@@ -18,30 +18,6 @@ export default [
                 path: 'system/users',
                 component: () => import('../pages/system/holder-user')
             },
-            {
-                path: '/403',
-                meta: {
-                    clearLoading: true
-                },
-                name: 'error_403',
-                component: () => import('../pages/error-page/403.vue')
-            },
-            {
-                path: '/500',
-                meta: {
-                    clearLoading: true
-                },
-                name: 'error_500',
-                component: () => import('../pages/error-page/500.vue')
-            },
-            {
-                path: '*',
-                meta: {
-                    clearLoading: true
-                },
-                name: 'error_404',
-                component: () => import('../pages/error-page/404.vue')
-            }
         ]
     },
     {
@@ -67,6 +43,37 @@ export default [
                 name: 'Profile',
                 path: '/profile',
                 component: () => import('../pages/profile')
+            }
+        ]
+    },
+    {
+        name: 'sss',
+        path: '*',
+        component: Main,
+        children: [
+            {
+                path: '/403',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_403',
+                component: () => import('../pages/error-page/403.vue')
+            },
+            {
+                path: '/500',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_500',
+                component: () => import('../pages/error-page/500.vue')
+            },
+            {
+                path: '*',
+                meta: {
+                    clearLoading: true
+                },
+                name: 'error_404',
+                component: () => import('../pages/error-page/404.vue')
             }
         ]
     }

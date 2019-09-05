@@ -11,7 +11,7 @@ import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
-import InjectSModal from '../src/components/global/inject-global'
+import InjectSModal from '../src/components/global/s-modal/inject-global'
 
 Vue.use(VueBus)
 Vue.config.productionTip = false

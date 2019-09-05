@@ -1,7 +1,22 @@
+@import "~ant-design-vue/lib/style/themes/default";
 .ant-layout {
     height: 100%;
 }
 .ant-modal-confirm .ant-modal-confirm-btns {
     float: unset;
     text-align: center;
+}
+.btn-success {
+    color: #fff;
+    background-color: @success-color;
+    border-color: @success-color;
+    &:hover {
+        background-color: tint(@success-color, 20%);
+        color: #ffffff;
+        border-color: tint(@success-color, 20%);
+    }
+}
+.ant-btn-sm {
+    font-size: 12px;
+    line-height: 1.4;
 }

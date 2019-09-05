@@ -29,7 +29,6 @@
                     return false;
                 this.$slots.default.forEach((o, index) => {
                     let column = o.componentInstance
-                    console.log('column', column)
                     if (column) {
                         let item = {
                             align: column.align || 'left',
