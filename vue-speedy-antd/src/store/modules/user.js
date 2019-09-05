@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
 const state = {
-    userInfo: null
+    userInfo: null,
+    holders: null
 }
 
 const getters = {
@@ -15,12 +16,23 @@ const actions = {
                 resolve(res)
             }).catch(reject)
         })
+    },
+    loadUserActiveHoldersAction({commit}){
+        return new Promise((resolve, reject) => {
+            new Vue().$http.get(`/api/holder/profiles/active`).then(res => {
+                commit('loadUserActiveHolders', res.data)
+                resolve(res)
+            })
+        })
     }
 }
 
 const mutations = {
     'loadUserInfo'(state, userInfo) {
         state.userInfo = userInfo
+    },
+    'loadUserActiveHolders'(state, holders) {
+        state.holders = holders
     }
 }
 

@@ -4,16 +4,19 @@ import axios from 'axios'
 import router from '../src/router'
 import store from '../src/store'
 import {notification} from "ant-design-vue";
+import VueBus from 'vue-bus'
 
 import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
+import InjectSModal from '../src/components/global/inject-global'
 
+Vue.use(VueBus)
 Vue.config.productionTip = false
 Vue.use(AntdDependency)
-
+Vue.use(InjectSModal)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {

@@ -23,7 +23,8 @@ export const localRemove = (key) => {
 }
 
 export const setToken = (token, expires) => {
-    Cookies.set(TOKEN_KEY, token, expires)
+    console.log('expires', expires)
+    Cookies.set(TOKEN_KEY, token, {expires: expires})
 }
 
 export const getToken = () => {
