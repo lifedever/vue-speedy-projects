@@ -45,7 +45,6 @@ const mutations = {
         state.menus = menus
     },
     'addMenuToTab'(state, menu) {
-        console.log('addMenuToTab', menu)
         if (!state.tabs.find(o => o.id === menu.id)) {
             state.tabs.push(menu)
         }

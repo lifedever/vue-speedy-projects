@@ -17,7 +17,7 @@
                 <slot name="headerRight"></slot>
             </div>
         </a-layout-header>
-        <a-layout-content>
+        <a-layout-content ref="contentRef">
             <slot></slot>
         </a-layout-content>
     </a-layout>

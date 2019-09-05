@@ -20,3 +20,16 @@ export const toFormData = (object) => {
     })
     return formData
 }
+
+/**
+ * 清理Object，将值为空的属性去掉
+ * @param obj
+ */
+export const clearObj = obj => {
+    let target = {};
+    Object.keys(obj).forEach(key => {
+        if (obj[key])
+            target[key] = obj[key]
+    });
+    return target;
+};

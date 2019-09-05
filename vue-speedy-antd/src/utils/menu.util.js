@@ -12,7 +12,6 @@ export const MenuUtil = {
                 })
             }
         })
-        console.log('tempMenus', tempMenus)
         return tempMenus
     },
     /**
