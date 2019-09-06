@@ -36,6 +36,7 @@ export default {
         Vue.component(Form.name, Form)
         Vue.component(Form.Item.name, Form.Item)
         Vue.component(Input.name, Input)
+        Vue.component(Input.Search.name, Input.Search)
         Vue.component(InputNumber.name, InputNumber)
         Vue.component(Checkbox.name, Checkbox)
         Vue.component(Radio.name, Radio)

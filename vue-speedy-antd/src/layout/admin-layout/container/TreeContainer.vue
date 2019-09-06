@@ -2,18 +2,24 @@
     <split-container>
         <div slot="left">
             <a-spin v-if="loading"/>
-            <a-tree v-else
-                    :treeData="gData"
-                    v-bind="defaultConfig"
-                    @dragenter="onDragEnter"
-                    @check="handleCheck"
-                    @load="handleLoad"
-                    @select="handleSelect"
-                    @drop="onDrop">
-                <template slot="custom" slot-scope="data">
-                    <slot name="icon" v-bind:data="data"></slot>
-                </template>
-            </a-tree>
+            <template v-else>
+                <a-input-search v-model="key" v-if="defaultConfig.searchable" class="margin-bottom-sm"
+                                placeholder="关键词搜索" @change="onSearch"/>
+                <a-tree :treeData="gData"
+                        v-bind="defaultConfig"
+                        @dragenter="onDragEnter"
+                        @check="handleCheck"
+                        @load="handleLoad"
+                        @select="handleSelect"
+                        @drop="onDrop">
+                    <template slot="custom" slot-scope="data">
+                        <slot name="icon" v-bind:data="data"></slot>
+                    </template>
+                </a-tree>
+            </template>
+        </div>
+        <div slot="right">
+            <slot></slot>
         </div>
     </split-container>
 </template>
@@ -21,6 +27,7 @@
 <script>
     import {Tree} from 'ant-design-vue'
     import _merge from 'lodash/merge'
+    import {clearObj} from "../../../utils/common";
 
     export default {
         name: "TreeContainer",
@@ -35,6 +42,8 @@
         data() {
             return {
                 loading: false,
+                parent: null,
+                key: null,
                 gData: [],
                 defaultConfig: {}
             }
@@ -47,15 +56,32 @@
                 return {
                     showLine: false,
                     showIcon: this.showIcon,
-                    draggable: false
+                    draggable: false,
+                    asyncLoad: true,            // 异步树
+                    // searchable: true
                 }
             }
         },
         mounted() {
             this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config)
-            this.loadData()
+            // 判断是否异步
+            if (this.defaultConfig.asyncLoad) {
+                this.defaultConfig.loadData = this.onLoadData
+            }
+            this.loadData().then(data => {
+                this.gData = data
+            });
         },
         methods: {
+            initLoad() {
+                this.parent = null
+                this.key = null
+            },
+            onSearch() {
+                this.loadData().then(data => {
+                    this.gData = data
+                })
+            },
             handleCheck(checkedKeys, e) {
                 this.$emit('check', checkedKeys, e)
             },
@@ -83,11 +109,30 @@
                 })
             },
             loadData() {
-                this.loading = true
-                this.$http.get(this.url).then(res => {
-                    this.gData = res.data
-                    this.decorationTreeNode(this.gData)
-                    this.loading = false
+                return new Promise((resolve, reject) => {
+                    this.$http.get(this.url, {
+                        params: clearObj({
+                            key: this.key,
+                            parent: this.parent
+                        })
+                    }).then(res => {
+                        let items = res.data
+                        this.decorationTreeNode(items)
+                        this.loading = false
+                        this.initLoad()
+                        resolve(items)
+                    }).catch(reject)
+                })
+            },
+            // 异步加载
+            onLoadData(treeNode) {
+                this.parent = treeNode.dataRef.id
+                return new Promise((resolve) => {
+                    this.loadData().then(data => {
+                        treeNode.dataRef.children = data
+                        this.gData = [...this.gData]
+                        resolve()
+                    })
                 })
             },
             onDragEnter(info) {
