@@ -2,4 +2,20 @@
     .ant-table td {
         white-space: nowrap;
     }
+    .table-container-s-table {
+        height: 100%;
+        .ant-table-wrapper {
+            height: 100%;
+            .ant-spin-nested-loading {
+                height: 100%;
+                .ant-spin-container {
+                    display: flex;
+                    flex-direction: column;
+                    .ant-table {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
 }

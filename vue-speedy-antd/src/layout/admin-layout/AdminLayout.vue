@@ -23,6 +23,7 @@
 
 <script>
     import './less/admin-layout.less'
+    import './less/fix-safair-100.less'
     import {Layout} from 'ant-design-vue';
     import Menus from "./menu/Menus";
     import MenuTabs from "./header/MenuTabs";

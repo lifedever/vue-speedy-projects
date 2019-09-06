@@ -1,6 +1,6 @@
 <template>
     <a-layout class="base-container">
-        <a-layout-header>
+        <a-layout-header v-if="!hideHeader">
             <div class="base-container-header-left">
                 <a-breadcrumb>
                     <a-breadcrumb-item v-if="parentMenu">
@@ -36,6 +36,9 @@
             ALayoutHeader: Layout.Header,
             ABreadcrumb: Breadcrumb,
             ABreadcrumbItem: Breadcrumb.Item,
+        },
+        props: {
+            hideHeader: Boolean
         },
         computed: {
             ...mapGetters('menu', {

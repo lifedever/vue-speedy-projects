@@ -4,10 +4,10 @@
             <slot name="headerRight"></slot>
         </template>
         <split v-model="split" mode="horizontal">
-            <div slot="left">
+            <div slot="left" class="height100">
                 <slot name="left" />
             </div>
-            <div slot="right">
+            <div slot="right" class="height100">
                 <slot name="right" />
             </div>
         </split>
@@ -18,6 +18,7 @@
     import {Layout, Breadcrumb} from 'ant-design-vue'
     import Split from "../../../components/partial/split/split";
     import './less/split-container.less'
+
     export default {
         name: "SplitContainer",
         components: {

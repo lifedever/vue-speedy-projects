@@ -1,9 +1,9 @@
 <template>
-    <base-container class="table-container" ref="baseRef">
+    <base-container class="table-container" ref="baseRef" :hide-header="hideHeader">
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
-        <s-table :config="tableConfig">
+        <s-table :config="tableConfig" @change="tableChange" class="table-container-s-table">
             <s-table-column title="#" prop="nickname" width="60px" align="center">
                 <template slot-scope="{text, record, index}">
                     <div>{{index + 1}}</div>
@@ -28,6 +28,8 @@
     import {Table} from 'ant-design-vue'
     import STable from "../../../components/partial/table/STable";
     import STableColumn from "../../../components/partial/table/STableColumn";
+    import {clearObj} from "../../../utils/common";
+    import './less/table-contailer.less'
 
     export default {
         name: "TableContainer",
@@ -35,6 +37,7 @@
         props: {
             columns: Array,
             url: String,
+            hideHeader: Boolean,
             pageable: Boolean,
             operation: {
                 type: Boolean,
@@ -55,14 +58,19 @@
                 data: [],
                 loading: false,
                 tableHeight: null,
-                pagination: false
+                pagination: {
+                    // size: 'normal',
+                    // pageSizeOptions: ['10', '20', '30', '50', '100'],
+                    pageSize: 10,
+                    total: 0,
+                }
             }
         },
         computed: {
             tableConfig() {
                 return {
                     size: 'middle',
-                    dataSource: this.data,
+                    dataSource: this.pageable ? this.data.content : this.data,
                     loading: this.loading,
                     rowKey: 'id',
                     scroll: {x: true, y: this.tableHeight},
@@ -74,14 +82,33 @@
             this.loadData()
             window.addEventListener('resize', this.computedTableHeight)
         },
+        watch: {
+            url() {
+                this.loadData()
+            }
+        },
         methods: {
-            loadData() {
+            tableChange(pagination, filters, sorter) {
+                this.loadData({page: pagination.current})
+            },
+            loadData(params) {
                 this.loading = true
-                this.$http.get(this.url).then(res => {
+                this.$http.get(this.url, {
+                    params: clearObj({
+                        page: params && params.page ? params.page - 1: null
+                    })
+                }).then(res => {
                     this.data = res.data
+                    this.computedPagination()
                     this.loading = false
                     this.computedTableHeight()
                 })
+            },
+            computedPagination() {
+                if (this.pageable) {
+                    this.pagination.pageSize = this.data.size
+                    this.pagination.total = this.data.totalElements
+                }
             },
             computedTableHeight() {
                 this.$nextTick(() => {
@@ -119,7 +146,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

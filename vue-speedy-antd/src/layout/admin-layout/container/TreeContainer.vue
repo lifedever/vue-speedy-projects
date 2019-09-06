@@ -18,7 +18,7 @@
                 </a-tree>
             </template>
         </div>
-        <div slot="right">
+        <div slot="right" class="height100">
             <slot></slot>
         </div>
     </split-container>
@@ -71,6 +71,11 @@
             this.loadData().then(data => {
                 this.gData = data
             });
+        },
+        watch: {
+            url() {
+                this.loadData()
+            }
         },
         methods: {
             initLoad() {

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <a-table v-bind="config" :columns="columns">
+    <div class="s-table">
+        <a-table v-bind="config" :columns="columns" @change="handleChange">
         </a-table>
         <slot></slot>
     </div>
@@ -24,6 +24,9 @@
             this.parseColumns()
         },
         methods: {
+            handleChange(pagination, filters, sorter) {
+                this.$emit('change', pagination, filters, sorter)
+            },
             parseColumns() {
                 if(!this.$slots.default)
                     return false;
