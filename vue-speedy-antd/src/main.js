@@ -27,6 +27,11 @@ Vue.use(adminLayout, {
                     name: '分割容器',
                     url: '/example/split',
                 },
+                {
+                    id: 'exampleTree',
+                    name: '树容器',
+                    url: '/example/tree',
+                },
             ]
         },
         systemMenu

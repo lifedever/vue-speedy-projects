@@ -15,6 +15,11 @@ export default [
                 name: 'SplitExample',
                 path: 'example/split',
                 component: () => import('./examples/SplitContainerExample')
+            },
+            {
+                name: 'TreeExample',
+                path: 'example/tree',
+                component: () => import('./examples/TreeContainerExample')
             }
         ]
     }
