@@ -4,12 +4,12 @@
             <div :style="{right: `${anotherOffset}%`}" class="left-pane" :class="paneClasses">
                 <slot name="left"/>
             </div>
-            <div :class="`${prefix}-trigger-con`" :style="{left: `${offset}%`}" @mousedown="handleMousedown">
+            <div :class="`${prefix}-trigger-con`" :style="{left: defaultOffset}" @mousedown="handleMousedown">
                 <slot name="trigger">
                     <trigger mode="vertical"/>
                 </slot>
             </div>
-            <div :style="{left: `${offset}%`}" class="right-pane" :class="paneClasses">
+            <div :style="{left: defaultOffset}" class="right-pane" :class="paneClasses">
                 <slot name="right"/>
             </div>
         </div>
@@ -17,12 +17,12 @@
             <div :style="{bottom: `${anotherOffset}%`}" class="top-pane" :class="paneClasses">
                 <slot name="top"/>
             </div>
-            <div :class="`${prefix}-trigger-con`" :style="{top: `${offset}%`}" @mousedown="handleMousedown">
+            <div :class="`${prefix}-trigger-con`" :style="{top: defaultOffset}" @mousedown="handleMousedown">
                 <slot name="trigger">
                     <trigger mode="horizontal"/>
                 </slot>
             </div>
-            <div :style="{top: `${offset}%`}" class="bottom-pane" :class="paneClasses">
+            <div :style="{top: defaultOffset}" class="bottom-pane" :class="paneClasses">
                 <slot name="bottom"/>
             </div>
         </div>
@@ -74,6 +74,13 @@
             };
         },
         computed: {
+            defaultOffset() {
+                if (this.valueIsPx) {
+                    return this.value.indexOf('px') > -1? `${this.value}`: `${this.value}px`
+                }else{
+                    return `${this.offset}%`
+                }
+            },
             wrapperClasses() {
                 return [
                     `${this.prefix}-wrapper`,
@@ -158,11 +165,7 @@
                 this.$emit('on-move-start');
             },
             computeOffset() {
-                if(this.$refs.outerWrapper) {
-                    let offsetSize = this.$refs.outerWrapper[this.offsetSize]
-                    if (offsetSize)
-                        this.offset = (this.valueIsPx ? this.px2percent(this.value, offsetSize) : this.value) * 10000 / 100;
-                }
+                this.offset = (this.valueIsPx ? this.px2percent(this.value, this.$refs.outerWrapper[this.offsetSize]) : this.value) * 10000 / 100;
             }
         },
         watch: {

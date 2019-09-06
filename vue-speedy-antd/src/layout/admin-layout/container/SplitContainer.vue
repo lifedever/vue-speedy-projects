@@ -15,9 +15,9 @@
 </template>
 
 <script>
+    import './less/split-container.less'
     import {Layout, Breadcrumb} from 'ant-design-vue'
     import Split from "../../../components/partial/split/split";
-    import './less/split-container.less'
 
     export default {
         name: "SplitContainer",
@@ -31,7 +31,7 @@
         },
         data(){
             return {
-                split: '300px'
+                split: '250'
             }
         }
     }
