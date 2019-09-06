@@ -52,11 +52,10 @@
                 })
             },
             addUser() {
-                this.$openModal({
+                this.$openFormModal({
                     modal: {
                         title: '添加用户',
                         width: 400,
-                        footer: null
                     },
                     props: {
                         callback: () => {

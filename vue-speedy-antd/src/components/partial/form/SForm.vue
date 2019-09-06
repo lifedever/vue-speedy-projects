@@ -8,8 +8,7 @@
             <a-button
                     type="primary"
                     :loading="loading"
-                    html-type="submit"
-            >
+                    html-type="submit">
                 {{okText}}
             </a-button>
             <!--第二个按钮-->
