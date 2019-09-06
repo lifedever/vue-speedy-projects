@@ -1,9 +1,7 @@
 <template>
     <tree-container url="/api/cascadecontents/byparent"
-                    :config="{}" @select="nodeSelect">
-        <div v-for="node in selectedNodes">
-            {{node.data.props.dataRef}}
-        </div>
+                    v-model="selectedNodes"
+                    :config="{}">
         <table-container url="/api/categories/1IcwnGBCkVPNAT2byiQ/places"
                          hide-header
                          pageable
@@ -20,16 +18,21 @@
         components: {STableColumn},
         data() {
             return {
-                selectedNodes: []
+                selectedNodes: [{
+                    id: "Cd6ATXSIRfbi1cM8yWh"
+                }]
             }
         },
         computed: {
 
         },
-        methods: {
-            nodeSelect(selectKey, e) {
-                this.selectedNodes = e.selectedNodes
+        watch: {
+            selectedNodes() {
+                console.log(this.selectedNodes)
             }
+        },
+        methods: {
+
         }
     }
 </script>

@@ -34,6 +34,8 @@
         components: {ATree: Tree},
         props: {
             url: String,
+            data: Array,
+            value: Array,
             config: {
                 type: Object,
                 default: {}
@@ -45,7 +47,9 @@
                 parent: null,
                 key: null,
                 gData: [],
-                defaultConfig: {}
+                defaultConfig: {
+                    selectedKeys: []
+                }
             }
         },
         computed: {
@@ -64,13 +68,27 @@
         },
         mounted() {
             this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config)
+
             // 判断是否异步
             if (this.defaultConfig.asyncLoad) {
                 this.defaultConfig.loadData = this.onLoadData
             }
-            this.loadData().then(data => {
-                this.gData = data
-            });
+
+            if (this.data) {
+                this.gData = this.data
+                this.decorationTreeNode(this.data)
+            } else {
+                this.loadData().then(data => {
+                    this.gData = data
+                });
+            }
+
+            // 设置默认选中
+            if (this.value) {
+                this.value.forEach(o => {
+                    this.defaultConfig.selectedKeys.push(o.id)
+                })
+            }
         },
         watch: {
             url() {
@@ -95,6 +113,11 @@
             },
             handleSelect(selectedKeys, e) {
                 this.$emit('select', selectedKeys, e)
+                let nodes = []
+                e.selectedNodes.forEach(o => {
+                    nodes.push(o.data.props.dataRef)
+                })
+                this.$emit('input', nodes)
             },
             /**
              * 处理树节点
