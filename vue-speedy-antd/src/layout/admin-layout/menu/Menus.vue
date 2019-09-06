@@ -67,7 +67,12 @@
             menuCollapsed: Boolean
         },
         mounted() {
-            let url = this.$route.path
+            let url
+            if (this.$route.name === 'iFrameRoute') {
+                url = unescape(this.$route.query.url)
+            }else{
+                url  = this.$route.path;
+            }
             const menu = MenuUtil.findByUrl(this.allMenus, url)
             if (menu) {
                 this.menuSelect({key: menu.id});

@@ -124,6 +124,7 @@
              * @param items
              */
             decorationTreeNode(items) {
+                console.log(items)
                 items.forEach(item => {
                     if (this.showIcon) {
                         this.$set(item, 'scopedSlots', {icon: 'custom'})

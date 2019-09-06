@@ -13,6 +13,13 @@ Vue.use(adminLayout, {
     menus: [
         homeMenu,
         {
+            id: 'tenowork',
+            name: 'Tenowork',
+            icon: 'project',
+            url: 'https://app.tenowork.com',
+            iframe: true
+        },
+        {
             id: 'example',
             name: '示例',
             icon: 'appstore',

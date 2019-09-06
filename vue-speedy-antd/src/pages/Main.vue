@@ -28,7 +28,8 @@
         },
         computed:{
             ...mapGetters('menu', {
-                menus: 'menusGet'
+                menus: 'menusGet',
+                currentMenu: 'currentGet'
             }),
             ...mapGetters('app', {
                 config: 'configGet'
@@ -41,5 +42,12 @@
 </script>
 
 <style scoped>
-
+    .view-with-frame iframe {
+        position: absolute;
+        border: none;
+        left: 0px;
+        right: 0px;
+        top: 0;
+        bottom: 0;
+    }
 </style>

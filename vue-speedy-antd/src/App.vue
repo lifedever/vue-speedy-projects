@@ -10,6 +10,7 @@
     export default {
         name: 'app',
         components: {SModal},
+
     }
 </script>
 

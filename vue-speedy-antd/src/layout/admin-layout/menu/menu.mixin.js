@@ -11,8 +11,10 @@ export default {
     watch: {
         currentMenu(value) {
             this.current = [value.id]
-            if (value && value.url) {
+            if (value && value.url && !value.iframe) {
                 this.$router.push(value.url)
+            } else {
+                this.$router.push('/frame?url=' + escape(value.url))
             }
             if (this.currentChange) {
                 this.currentChange(value);
@@ -31,7 +33,6 @@ export default {
             'addTab': 'addTabAction',
         }),
         menuSelect({item, key, selectedKeys}) {
-            console.log('menuId', key)
             const menu = MenuUtil.findById(this.allMenus, key)
             if (menu) {
                 this.addTab(menu)

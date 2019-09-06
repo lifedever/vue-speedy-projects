@@ -45,9 +45,20 @@ export default [
                 component: () => import('../pages/profile')
             }
         ]
+    },{
+        name: 'iFrameMain',
+        component: Main,
+        path: '*',
+        children: [
+            {
+                name: 'iFrameRoute',
+                path: '/frame',
+                component: () => import('../pages/iframe')
+            }
+        ]
     },
     {
-        name: 'sss',
+        name: 'ErrorRoute',
         path: '*',
         component: Main,
         children: [
