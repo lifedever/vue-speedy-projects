@@ -9,6 +9,7 @@
 <script>
     import {Table} from 'ant-design-vue'
     import {clearObj} from "../../../utils/common";
+
     export default {
         name: "STable",
         components: {ATable: Table},
@@ -28,7 +29,7 @@
                 this.$emit('change', pagination, filters, sorter)
             },
             parseColumns() {
-                if(!this.$slots.default)
+                if (!this.$slots.default)
                     return false;
                 this.$slots.default.forEach((o, index) => {
                     let column = o.componentInstance
@@ -68,6 +69,10 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less">
+    .s-table {
+        .ant-table-pagination.ant-pagination {
+            margin: 8px 0;
+        }
+    }
 </style>
