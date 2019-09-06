@@ -33,3 +33,17 @@ export const clearObj = obj => {
     });
     return target;
 };
+
+
+/**
+ * 获取response error code
+ * @param err
+ * @returns {*}
+ */
+export const getErrorCode = (err) => {
+    if (err.response && err.response.data && err.response.data.code) {
+        return err.response.data.code
+    } else {
+        return null
+    }
+}

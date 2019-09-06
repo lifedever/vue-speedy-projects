@@ -12,7 +12,7 @@ export default {
         currentMenu(value) {
             this.current = [value.id]
             if (value && value.url) {
-                this.$router.push(value.url).catch(err => {})
+                this.$router.push(value.url)
             }
             if (this.currentChange) {
                 this.currentChange(value);

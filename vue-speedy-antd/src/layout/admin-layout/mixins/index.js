@@ -7,7 +7,7 @@ export default {
         }),
         openTab(menu) {
             this.addTab(menu)
-            this.$router.push(menu.url).catch(err=>{})
+            this.$router.push(menu.url)
         }
     }
 }

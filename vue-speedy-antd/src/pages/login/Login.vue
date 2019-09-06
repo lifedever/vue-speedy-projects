@@ -78,7 +78,7 @@
                         this.loadUserActiveHolders().then(res => {
                             if (res.data.length === 0) {
                                 this.$message.warning('无相关平台授权账号，请联系平台管理员！')
-                                this.$router.push('/logout').catch(err => {})
+                                this.$router.push('/logout')
                                 this.loading = false
                             } else {
                                 this.$openModal({

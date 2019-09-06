@@ -54,18 +54,32 @@
             addUser() {
                 this.$openModal({
                     modal: {
-                        title: '添加用户'
+                        title: '添加用户',
+                        width: 400,
+                        footer: null
+                    },
+                    props: {
+                        callback: () => {
+                            this.$refs['containerRef'].loadData()
+                        }
                     },
                     component: () => import('./UserForm')
                 })
             },
             editUser(user) {
+                this.$message.warning('暂未实现')
+                return false
                 this.$openModal({
                     modal: {
-                        title: '编辑用户'
+                        title: '编辑用户',
+                        width: 400,
+                        footer: null
                     },
                     props: {
-                        user
+                        user,
+                        callback: () => {
+                            this.$refs['containerRef'].loadData()
+                        }
                     },
                     component: () => import('./UserForm')
                 })

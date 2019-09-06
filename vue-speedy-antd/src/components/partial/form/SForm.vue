@@ -1,10 +1,10 @@
 <template>
     <a-form :form="form"
-            layout="horizontal"
+            :layout="layout"
             @submit.prevent="handleSubmit">
         <slot></slot>
         <a-form-item
-                :wrapper-col="{ span: 16, offset: 8 }">
+                :wrapper-col="{ span: 24 - submitBtnSpan, offset: submitBtnSpan }">
             <a-button
                     type="primary"
                     :loading="loading"
@@ -37,11 +37,18 @@
                 type: String,
                 default: '提交'
             },
+            submitBtnSpan: {
+                type: Number,
+                default: 8
+            },
             loading: Boolean
         },
         methods: {
-            getFieldValue(field){
+            getFieldValue(field) {
                 return this.form.getFieldValue(field)
+            },
+            setFieldsValue(obj) {
+                this.form.setFieldsValue(obj)
             },
             handleSubmit() {
                 this.form.validateFields((err, values) => {
