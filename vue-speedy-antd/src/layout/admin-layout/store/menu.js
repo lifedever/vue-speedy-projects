@@ -11,6 +11,7 @@ const state = {
 const getters = {
     menusGet: state => state.menus,
     menuTabsGet: state => state.tabs,
+    iFrameTabsGet: state => state.tabs.filter(o => o.iframe) || [],
     currentGet: state => state.current,
     parentGet: state => {
         if (state.menus && state.current) {

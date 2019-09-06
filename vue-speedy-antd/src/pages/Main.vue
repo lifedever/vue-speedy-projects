@@ -11,16 +11,23 @@
             </span>
         </template>
         <keep-alive>
-            <router-view></router-view>
+            <router-view v-if="!iframeShow"></router-view>
         </keep-alive>
+        <i-frame-view v-if="iFrames && iFrames.length > 0"
+                      v-show="iframeShow && currentMenu.id === item.id"
+                      v-for="item in iFrames"
+                      :menu="item">
+        </i-frame-view>
     </admin-layout>
 </template>
 
 <script>
     import {mapGetters} from "vuex";
+    import IFrameView from "../components/global/iframe";
 
     export default {
         name: "Main",
+        components: {IFrameView},
         data() {
             return {
 
@@ -29,14 +36,18 @@
         computed:{
             ...mapGetters('menu', {
                 menus: 'menusGet',
-                currentMenu: 'currentGet'
+                currentMenu: 'currentGet',
+                iFrames: 'iFrameTabsGet'
             }),
             ...mapGetters('app', {
                 config: 'configGet'
             }),
             ...mapGetters('holder', {
                 holder: 'currentGet'
-            })
+            }),
+            iframeShow() {
+                return this.currentMenu && this.currentMenu.iframe
+            }
         }
     }
 </script>

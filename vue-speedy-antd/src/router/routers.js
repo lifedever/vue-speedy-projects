@@ -45,15 +45,15 @@ export default [
                 component: () => import('../pages/profile')
             }
         ]
-    },{
+    },
+    {
         name: 'iFrameMain',
         component: Main,
-        path: '*',
+        path: '/frame',
         children: [
             {
                 name: 'iFrameRoute',
-                path: '/frame',
-                component: () => import('../pages/iframe')
+                path: ':menuId',
             }
         ]
     },

@@ -1,23 +1,28 @@
 <template>
     <div class="view-with-frame">
         <iframe frameborder="0"
+                ref="iframe"
                 width="100%"
                 height="100%"
                 style="height: 100%; width: 100%;"
-                :src="$route.query.url"></iframe>
+                :src="menu.url"></iframe>
     </div>
 </template>
 
 <script>
-    import {mapGetters} from "vuex";
-
     export default {
         name: "iFrameView",
+        mounted() {
+
+        },
+        data() {
+            return {
+            }
+        },
+        props: {
+            menu: Object
+        },
         computed: {
-            ...mapGetters('menu', {
-                menus: 'menusGet',
-                currentMenu: 'currentGet'
-            }),
         }
     }
 </script>

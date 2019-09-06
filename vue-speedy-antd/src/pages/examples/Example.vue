@@ -5,6 +5,7 @@
         </div>
         <div>
             基础容器定义
+            <a-input></a-input>
         </div>
         <div>
             <a href="#" @click.prevent="openNewTab">在新标签中打开</a>

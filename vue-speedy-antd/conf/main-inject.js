@@ -41,18 +41,18 @@ export default {
         defaultOptions.modules.forEach(m => {
             store.registerModule(m.path, m.module)
         })
-
-        Vue.config.errorHandler = (error, vm) => {
-            console.error(error)
-            console.error({
-                error,
-                vm
-            })
-            notification.error({
-                message: '遇到未知错误!',
-                description: `请按Ctrl + F5强制刷新浏览器重试！`
-            })
-        }
+        //
+        // Vue.config.errorHandler = (error, vm) => {
+        //     console.error(error)
+        //     console.error({
+        //         error,
+        //         vm
+        //     })
+        //     notification.error({
+        //         message: '遇到未知错误!',
+        //         description: `请按Ctrl + F5强制刷新浏览器重试！`
+        //     })
+        // }
 
         // 保存菜单
         store.dispatch('app/storeConfigAction', defaultOptions.config)

@@ -20,6 +20,13 @@ Vue.use(adminLayout, {
             iframe: true
         },
         {
+            id: 'vue-speedy-antd',
+            name: '项目地址',
+            icon: 'ant-design',
+            url: 'https://vue.ant.design/docs/vue/introduce-cn/',
+            iframe: true
+        },
+        {
             id: 'example',
             name: '示例',
             icon: 'appstore',

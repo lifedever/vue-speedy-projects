@@ -14,7 +14,7 @@ export default {
             if (value && value.url && !value.iframe) {
                 this.$router.push(value.url)
             } else {
-                this.$router.push('/frame?url=' + escape(value.url))
+                this.$router.push(`/frame/${value.id}`)
             }
             if (this.currentChange) {
                 this.currentChange(value);
