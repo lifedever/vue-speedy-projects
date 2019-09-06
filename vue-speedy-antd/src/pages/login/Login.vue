@@ -12,8 +12,7 @@
                                       'username',
                                       { rules: [{ required: true, message: '请输入用户名!' }] }
                                     ]"
-                                     placeholder="登录名"
-                            >
+                                     placeholder="登录名">
                             </a-input>
                         </s-form-item>
                         <s-form-item label="请输入登录密码"
@@ -71,6 +70,17 @@
             ...mapActions('user', {
                 loadUserActiveHolders: 'loadUserActiveHoldersAction'
             }),
+            ...mapActions('holder', {
+                storeHolders: 'storeHoldersAction',
+                setCurrentHolder: 'setCurrentHolderAction'
+            }),
+            setHolder(holder, expires) {
+                this.storeHolders(this.holders)
+                this.setCurrentHolder({holder, expires: 365}).then(() => {
+                    this.$message.success('登录成功，欢迎回来！');
+                    this.$router.push('/')
+                })
+            },
             handleSubmit(values) {
                 this.loading = true
                 this.$http.post('/api/login', values).then(loginRes => {
@@ -80,6 +90,8 @@
                                 this.$message.warning('无相关平台授权账号，请联系平台管理员！')
                                 this.$router.push('/logout')
                                 this.loading = false
+                            } else if(res.data.length === 1){
+                                this.setHolder(res.data[0], loginRes.data.expires)
                             } else {
                                 this.$openModal({
                                     modal: {
@@ -89,7 +101,9 @@
                                     },
                                     props: {
                                         holders: res.data,
-                                        expires: loginRes.data.expires
+                                        selected: (holder) => {
+                                            this.setHolder(holder, loginRes.data.expires)
+                                        }
                                     },
                                     component: () => import('./HolderSelect'),
                                     ok: () => {

@@ -18,20 +18,12 @@
         name: "HolderSelect",
         props: {
             holders: Array,
-            expires: Number
+            selected: Function
         },
         methods: {
-            ...mapActions('holder', {
-                storeHolders: 'storeHoldersAction',
-                setCurrentHolder: 'setCurrentHolderAction'
-            }),
             selectHolder(holder) {
                 this.$closeModal()
-                this.storeHolders(this.holders)
-                this.setCurrentHolder({holder, expires: this.expires}).then(() => {
-                    this.$message.success('登录成功，欢迎回来！');
-                    this.$router.push('/')
-                })
+                this.selected(holder)
             }
         }
     }

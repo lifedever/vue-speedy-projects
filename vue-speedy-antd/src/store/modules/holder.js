@@ -1,4 +1,5 @@
-import {removeHolder, setHolder} from "../../utils/storage";
+import {removeHolder, setHolder, getHolder} from "../../utils/storage";
+import Vue from "vue";
 
 const state = {
     holders: [],
@@ -9,6 +10,14 @@ const getters = {
     currentGet: state => state.current,
 }
 const actions = {
+    loadHolderAction({commit, dispatch}, holderId) {
+        return new Promise((resolve, reject) => {
+            new Vue().$http.get(`/api/holders/${holderId}`).then(res => {
+                commit('loadHolder', res.data)
+                resolve()
+            }).catch(reject)
+        })
+    },
     storeHoldersAction({commit}, holders) {
         commit('storeHolders', holders)
     },
@@ -30,6 +39,9 @@ const mutations = {
     'setCurrentHolder'(state, {holder, expires}) {
         state.current = holder
         setHolder(holder.id, expires)
+    },
+    'loadHolder'(state, holder) {
+        state.current = holder
     },
     'removeHolder'(state) {
         state.current = null

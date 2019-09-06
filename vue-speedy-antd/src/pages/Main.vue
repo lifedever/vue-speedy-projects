@@ -5,7 +5,9 @@
                 {{config.shortTitle}}
             </span>
             <span v-else>
-                {{config.title}}
+                <span v-if="holder">
+                    {{holder.name}}
+                </span>
             </span>
         </template>
         <keep-alive>
@@ -30,6 +32,9 @@
             }),
             ...mapGetters('app', {
                 config: 'configGet'
+            }),
+            ...mapGetters('holder', {
+                holder: 'currentGet'
             })
         }
     }

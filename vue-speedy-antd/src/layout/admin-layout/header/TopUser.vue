@@ -1,6 +1,7 @@
 <template>
-    <a-dropdown :trigger="['hover']" placement="bottomRight">
-        <a href="#" @click.prevent class="admin-top-user">
+    <a-popover trigger="hover" placement="bottomRight"
+               class="admin-top-user" v-model="visible">
+        <a @click.prevent class="admin-top-user">
             <a-avatar size="small"
                       style="color: #61759a; backgroundColor: rgba(178,220,255,0.65)">
                 {{usernameShort}}
@@ -9,6 +10,36 @@
                 &nbsp; {{userInfo.nickname || userInfo.loginName}}
             </span>
         </a>
+        <div slot="title" class="admin-top-user-title">
+            <div class="text-lg">
+                <a-avatar style="color: #61759a; backgroundColor: rgba(178,220,255,0.65)">
+                    {{usernameShort}}
+                </a-avatar>
+                {{userInfo.nickname || userInfo.loginName}}
+                &nbsp;
+                <a-tag color="blue">{{holder.name}}</a-tag>
+            </div>
+        </div>
+        <div slot="content" class="admin-top-user-content">
+            <a-menu @click="menuClick">
+                <a-menu-item key="profile">
+                    <a-icon type="user"/>
+                    个人中心
+                </a-menu-item>
+                <a-menu-item key="1">
+                    <a-icon type="setting"/>
+                    设置
+                </a-menu-item>
+                <a-menu-divider/>
+                <a-menu-item key="logout">
+                    <a-icon type="poweroff"/>
+                    退出
+                </a-menu-item>
+            </a-menu>
+        </div>
+    </a-popover>
+    <!--<a-dropdown :trigger="['hover']" placement="bottomRight">
+
         <a-menu slot="overlay" @click="menuClick">
             <a-menu-item key="profile">
                 <a-icon type="user"/>
@@ -24,11 +55,11 @@
                 退出
             </a-menu-item>
         </a-menu>
-    </a-dropdown>
+    </a-dropdown>-->
 </template>
 
 <script>
-    import {Avatar, Dropdown, Menu} from 'ant-design-vue'
+    import {Avatar, Dropdown, Menu, Popover} from 'ant-design-vue'
     import {mapGetters} from "vuex";
     import IMenu from '../../../class/Menu'
 
@@ -39,11 +70,20 @@
             ADropdown: Dropdown,
             AMenu: Menu,
             AMenuItem: Menu.Item,
-            AMenuDivider: Menu.Divider
+            AMenuDivider: Menu.Divider,
+            APopover: Popover
+        },
+        data() {
+            return {
+                visible: false
+            }
         },
         computed: {
             ...mapGetters('user', {
                 userInfo: 'userInfoGet'
+            }),
+            ...mapGetters('holder', {
+                holder: 'currentGet'
             }),
             usernameShort() {
                 if (this.userInfo) {
@@ -56,6 +96,7 @@
         },
         methods: {
             menuClick({item, key, keyPath}) {
+                this.visible = false
                 switch (key) {
                     case 'profile': {
                         this.openTab(new IMenu('profile', '个人中心', '/profile', 'user'))
@@ -84,9 +125,20 @@
         height: 46px;
         display: block;
         color: @text-color;
+        margin-left: 20px;
 
         &:hover {
             color: darken(@text-color, 10%);
+        }
+    }
+    .admin-top-user-title {
+        padding: 10px 0;
+    }
+    .admin-top-user-content {
+        margin: -10px -15px -15px -15px;
+
+        .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+            border-right: none;
         }
     }
 </style>

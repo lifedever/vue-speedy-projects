@@ -1,5 +1,6 @@
 @container-pad: 12px;
 @menu-item-pad: 12px;
+@dark-color: #061f37;
 .admin-layout {
     overflow: hidden;
     .admin-layout-header {
@@ -30,12 +31,20 @@
 
     .admin-layout-sider {
         box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+        background: @dark-color;
+        &.ant-layout-sider-dark {
+            .logo{
+                background: darken(@dark-color, 4%);
+                //border-bottom: 1px solid darken(@dark-color, 10%);
+            }
+        }
         .ant-layout-sider-children {
             display: flex;
             flex-direction: column;
             .logo {
-                height: 32px;
-                margin: 16px;
+                height: 56px;
+                line-height: 56px;
+                padding: 0 16px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -52,6 +61,12 @@
             .menus {
                 flex: 1;
                 overflow: auto;
+                &.ant-menu-dark {
+                    background: @dark-color;
+                    .ant-menu-inline.ant-menu-sub {
+                        background: darken(@dark-color, 3%);
+                    }
+                }
             }
         }
 

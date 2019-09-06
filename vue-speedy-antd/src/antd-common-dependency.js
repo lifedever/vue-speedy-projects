@@ -15,6 +15,8 @@ import {
     Alert,
     Modal,
     List,
+    Divider,
+    Avatar,
     message,
     notification,
 } from 'ant-design-vue';
@@ -44,11 +46,13 @@ export default {
         Vue.component(Switch.name, Switch)
         Vue.component(DatePicker.name, DatePicker)
         Vue.component(Tag.name, Tag)
+        Vue.component(Avatar.name, Avatar)
         Vue.component(Spin.name, Spin)
         Vue.component(Alert.name, Alert)
         Vue.component(Modal.name, Modal)
         Vue.component(List.name, List)
         Vue.component(List.Item.name, List.Item)
         Vue.component(List.Item.Meta.name, List.Item.Meta)
+        Vue.component(Divider.name, Divider)
     }
 }

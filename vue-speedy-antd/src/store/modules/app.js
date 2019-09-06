@@ -30,7 +30,7 @@ const mutations = {
     },
     'storeToken'(state, {token, expires}) {
         state.token = token
-        setToken(token, expires)
+        setToken(token, 365)
     },
     'removeToken'(state) {
         state.token = null

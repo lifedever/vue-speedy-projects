@@ -1,6 +1,8 @@
 <template>
-    <a-layout class="admin-layout">
+    <page-loading v-if="mainLoading"></page-loading>
+    <a-layout v-else class="admin-layout">
         <a-layout-sider
+                :width="siderWidth"
                 class="admin-layout-sider"
                 :trigger="null"
                 collapsible
@@ -29,10 +31,14 @@
     import MenuTabs from "./header/MenuTabs";
     import Top from './header/Top'
     import {mapActions, mapGetters} from "vuex";
+    import {getHolder} from "../../utils/storage";
+    import PageLoading from "../../components/partial/other/PageLoading";
+    import parallel from 'async/parallel';
 
     export default {
         name: "AdminLayout",
         components: {
+            PageLoading,
             Top,
             MenuTabs,
             Menus,
@@ -41,11 +47,26 @@
             ALayoutContent: Layout.Content,
         },
         mounted() {
-            this.loadUserInfo()
+            parallel([
+                    callback => {
+                        this.loadUserInfo().then(res => {
+                            callback(null, res);
+                        })
+                    },
+                    callback => {
+                        this.loadHolder(getHolder()).then(res => {
+                            callback(null, res)
+                        })
+                    }
+                ],
+                (err, results) => {
+                    this.mainLoading = false
+                });
         },
         data() {
             return {
                 collapsed: false,
+                mainLoading: true
             }
         },
         watch: {
@@ -63,6 +84,10 @@
             loading: {
                 type: Boolean,
                 default: false
+            },
+            siderWidth: {
+                type: [Number, String],
+                default: 250
             }
         },
         computed: {
@@ -79,6 +104,9 @@
         methods: {
             ...mapActions('user', {
                 loadUserInfo: 'loadUserInfoAction'
+            }),
+            ...mapActions('holder', {
+                loadHolder: 'loadHolderAction'
             })
         }
     }
