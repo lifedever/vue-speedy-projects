@@ -1,13 +1,18 @@
 <template>
-    <h1>这是前台啊</h1>
+    <div id="app">
+        <router-view></router-view>
+        <s-modal></s-modal>
+    </div>
 </template>
 
 <script>
+    import SModal from "../components/global/s-modal/SModal";
     export default {
-        name: "App"
+        name: 'app',
+        components: {SModal},
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>
