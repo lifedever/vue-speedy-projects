@@ -1,5 +1,5 @@
-import homeMenu from 'vue-speedy-antd/src/pages/home/menu'
-import systemMenu from 'vue-speedy-antd/src/pages/system/menu'
+import homeMenu from 'vue-speedy-antd/src/admin/pages/home/menu'
+import systemMenu from 'vue-speedy-antd/src/admin/pages/system/menu'
 
 export default [
     homeMenu,

@@ -61,7 +61,7 @@
 <script>
     import {Avatar, Dropdown, Menu, Popover} from 'ant-design-vue'
     import {mapGetters} from "vuex";
-    import IMenu from '../../../class/Menu'
+    import IMenu from '../../../admin/class/Menu'
 
     export default {
         name: "TopUser",
