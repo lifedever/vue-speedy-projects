@@ -5,7 +5,7 @@ module.exports = require('vue-speedy-antd/conf')({
     title: 'Vue Speedy Ant Design',
     baseUrl: '/',
     devServer: {
-        port: 6060,
+        port: 6161,
         proxy: {
             '/api': {
                 target: "http://localhost:18080",

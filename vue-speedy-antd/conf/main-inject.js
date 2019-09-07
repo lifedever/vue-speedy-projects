@@ -3,7 +3,6 @@ import App from '../src/App.vue'
 import axios from 'axios'
 import router from '../src/router'
 import store from '../src/store'
-import {notification} from "ant-design-vue";
 import VueBus from 'vue-bus'
 
 import AntdDependency from '../src/antd-common-dependency'

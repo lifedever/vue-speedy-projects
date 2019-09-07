@@ -1,7 +1,5 @@
 module.exports = require('./conf')({
-    lessModifyVars: {
 
-    },
     title: 'Vue Speedy Ant Design',
     baseUrl: '/',
     devServer: {
