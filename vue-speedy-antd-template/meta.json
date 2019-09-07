@@ -1,0 +1,20 @@
+{
+    "prompts": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "label": "Project name"
+        },
+        "description": {
+            "type": "string",
+            "required": true,
+            "label": "Project description",
+            "default": "build by Vue Speedy Ant Design"
+        },
+        "author": {
+            "type": "string",
+            "label": "Author"
+        }
+    },
+    "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn dev"
+}
