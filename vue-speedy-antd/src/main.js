@@ -21,7 +21,7 @@ Vue.use(adminLayout, {
         },
         {
             id: 'vue-speedy-antd',
-            name: '项目地址',
+            name: 'Ant.Design-Vue',
             icon: 'ant-design',
             url: 'https://vue.ant.design/docs/vue/introduce-cn/',
             iframe: true
