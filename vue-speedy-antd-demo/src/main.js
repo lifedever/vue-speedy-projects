@@ -1,11 +1,11 @@
 import Vue from "vue";
-import Inject from '../conf/main-inject'
-import pages from './pages'
-import adminLayout from "./layout/admin-layout";
-import router from "./router";
+import Inject from 'vue-speedy-antd/conf/main-inject'
+import pages from 'vue-speedy-antd/src/pages'
+import adminLayout from "vue-speedy-antd/src/layout/admin-layout";
+import router from "vue-speedy-antd/src/router";
 
-import homeMenu from './pages/home/menu'
-import systemMenu from './pages/system/menu'
+import homeMenu from 'vue-speedy-antd/src/pages/home/menu'
+import systemMenu from 'vue-speedy-antd/src/pages/system/menu'
 
 const routerInstance = router(pages)
 

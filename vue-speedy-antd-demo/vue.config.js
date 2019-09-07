@@ -1,4 +1,4 @@
-module.exports = require('./conf')({
+module.exports = require('vue-speedy-antd/conf')({
     lessModifyVars: {
 
     },

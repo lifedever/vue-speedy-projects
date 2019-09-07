@@ -14,6 +14,7 @@
             <router-view v-if="!iframeShow"></router-view>
         </keep-alive>
         <i-frame-view v-if="iFrames && iFrames.length > 0"
+                      :key="item.id"
                       v-show="iframeShow && currentMenu.id === item.id"
                       v-for="item in iFrames"
                       :menu="item">
