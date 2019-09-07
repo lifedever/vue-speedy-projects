@@ -12,7 +12,6 @@ module.exports = (option) => {
         process.exit(1)
     }
     const defaultOption = {
-        adminName: 'admin',    // base Admin url
         baseUrl: '/',    // base url
         devServer: null,      // 开发代理服务器
         title: null,            // 站点名称
@@ -58,20 +57,21 @@ module.exports = (option) => {
         },
         devServer: defaultOption.devServer
     }
-    config.pages = {}
-    config.pages[defaultOption.adminName] = {
-        // page 的入口
-        entry: 'src/main.js',
-        // 模板来源
+    config.pages = {
+        index: {
+            entry: defaultOption.index.entry,
+            template: 'public/index.html',
+            filename: `index.html`,
+            title: defaultOption.index.title,
+            chunks: ['chunk-vendors', 'chunk-common', `index`]
+        }
+    }
+    config.pages[defaultOption.admin.name] = {
+        entry: defaultOption.admin.entry,
         template: 'public/index.html',
-        // 在 dist/index.html 的输出
-        filename: `${defaultOption.adminName}.html`,
-        // 当使用 title 选项时，
-        // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-        title: defaultOption.title,
-        // 在这个页面中包含的块，默认情况下会包含
-        // 提取出来的通用 chunk 和 vendor chunk。
-        chunks: ['chunk-vendors', 'chunk-common', `${defaultOption.adminName}`]
+        filename: `${defaultOption.admin.name}.html`,
+        title: defaultOption.admin.title,
+        chunks: ['chunk-vendors', 'chunk-common', `${defaultOption.admin.name}`]
     }
     return config
 }

@@ -9,7 +9,6 @@ Vue.use(adminLayout, {
 })
 
 Vue.use(Inject, {
-    adminName: '',
     config: {
         title: 'Vue Speedy Ant Design',
         shortTitle: 'VD',
