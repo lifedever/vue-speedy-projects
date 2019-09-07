@@ -50,6 +50,8 @@ export default {
                 description: `请按Ctrl + F5强制刷新浏览器重试！`
             })
         }
+        // 保存配置信息
+        store.dispatch('app/storeConfigAction', defaultOptions.config)
 
         new Vue({
             router: routerInstance,

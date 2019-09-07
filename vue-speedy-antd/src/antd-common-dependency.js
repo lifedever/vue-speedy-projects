@@ -17,6 +17,8 @@ import {
     List,
     Divider,
     Avatar,
+    Row,
+    Col,
     message,
     notification,
 } from 'ant-design-vue';
@@ -54,5 +56,7 @@ export default {
         Vue.component(List.Item.name, List.Item)
         Vue.component(List.Item.Meta.name, List.Item.Meta)
         Vue.component(Divider.name, Divider)
+        Vue.component(Row.name, Row)
+        Vue.component(Col.name, Col)
     }
 }

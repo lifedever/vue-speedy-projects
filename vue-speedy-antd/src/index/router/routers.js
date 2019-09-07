@@ -18,7 +18,6 @@ export default [
     {
         name: 'ErrorRoute',
         path: '*',
-        component: Main,
         children: [
             {
                 path: '/403',
