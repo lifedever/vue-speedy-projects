@@ -6,16 +6,13 @@ Vue.use(Router);
 
 export default (routers) => {
     let options = {
-        // mode: 'history',
-        // base: `/${adminName}/`,
+        mode: 'history',
         routes: routers.concat(defaultRouters)
     }
     const router = new Router(options);
     router.beforeEach((to, from, next) => {
         console.log('from', from)
         console.log('to', to)
-
-
         next()
     })
     return router

@@ -1,25 +1,6 @@
 import store from '../store'
-import Main from "../pages/Main";
 
 export default [
-    {
-        name: 'Main',
-        path: '/',
-        component: Main,
-        redirect: {name: 'Home'},
-        children: [
-            {
-                name: 'Home',
-                path: 'home',
-                component: () => import('../pages/home')
-            },
-            {
-                name: 'SystemHolderProfiles',
-                path: 'system/users',
-                component: () => import('../pages/system/holder-user')
-            },
-        ]
-    },
     {
         name: 'Login',
         path: '/login',
@@ -33,29 +14,6 @@ export default [
             store.dispatch('app/logoutAction')
             next()
         }
-    },
-    {
-        name: 'ProfileMain',
-        component: Main,
-        path: '/profile',
-        children: [
-            {
-                name: 'Profile',
-                path: '/profile',
-                component: () => import('../pages/profile')
-            }
-        ]
-    },
-    {
-        name: 'iFrameMain',
-        component: Main,
-        path: '/frame',
-        children: [
-            {
-                name: 'iFrameRoute',
-                path: ':menuId',
-            }
-        ]
     },
     {
         name: 'ErrorRoute',

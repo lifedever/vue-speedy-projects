@@ -5,12 +5,13 @@ import router from '../src/admin/router'
 import store from '../src/admin/store'
 import VueBus from 'vue-bus'
 
-import AntdDependency from '../src/admin/antd-common-dependency'
+import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
+import notification from 'ant-design-vue/lib/notification'
 
 Vue.use(VueBus)
 Vue.config.productionTip = false
@@ -41,18 +42,18 @@ export default {
         defaultOptions.modules.forEach(m => {
             store.registerModule(m.path, m.module)
         })
-        //
-        // Vue.config.errorHandler = (error, vm) => {
-        //     console.error(error)
-        //     console.error({
-        //         error,
-        //         vm
-        //     })
-        //     notification.error({
-        //         message: '遇到未知错误!',
-        //         description: `请按Ctrl + F5强制刷新浏览器重试！`
-        //     })
-        // }
+
+        Vue.config.errorHandler = (error, vm) => {
+            console.error(error)
+            console.error({
+                error,
+                vm
+            })
+            notification.error({
+                message: '遇到未知错误!',
+                description: `请按Ctrl + F5强制刷新浏览器重试！`
+            })
+        }
 
         // 保存菜单
         store.dispatch('app/storeConfigAction', defaultOptions.config)

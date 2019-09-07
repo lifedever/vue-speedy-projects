@@ -1,16 +1,17 @@
 import Vue from 'vue'
-import App from '../src/admin/App.vue'
+import App from '../src/index/App.vue'
 import axios from 'axios'
-import router from '../src/admin/router'
-import store from '../src/admin/store'
+import router from '../src/index/router'
+import store from '../src/index/store'
 import VueBus from 'vue-bus'
 
-import AntdDependency from '../src/admin/antd-common-dependency'
+import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
+import notification from 'ant-design-vue/lib/notification'
 
 Vue.use(VueBus)
 Vue.config.productionTip = false
@@ -19,7 +20,6 @@ Vue.use(InjectSModal)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
-            // adminName: 'index',
             pages: null,                // 路由配置
             modules: [],
             mixins: [],
@@ -27,12 +27,9 @@ export default {
             }
         }
         defaultOptions = Object.assign(defaultOptions, options)
-
         setSiteTitle(defaultOptions.config.title, true)
-
         const routerInstance = router(defaultOptions.pages)
         axiosInterceptors(axios, routerInstance)
-
         /**
          * @description 全局注册应用配置
          */
@@ -54,8 +51,6 @@ export default {
             })
         }
 
-        // 保存菜单
-        store.dispatch('app/storeConfigAction', defaultOptions.config)
         new Vue({
             router: routerInstance,
             store,
