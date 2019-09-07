@@ -7640,10 +7640,10 @@ vue-router@^3.0.3:
   resolved "http://npm.kanasinfo.cn/vue-router/-/vue-router-3.1.3.tgz#e6b14fabc0c0ee9fda0e2cbbda74b350e28e412b"
   integrity sha512-8iSa4mGNXBjyuSZFCCO4fiKfvzqk+mhL0lnKuGcQtO1eoj8nq3CmbEG8FwK5QqoqwDgsjsf1GDuisDX4cdb/aQ==
 
-vue-speedy-antd@0.1.11:
-  version "0.1.11"
-  resolved "http://npm.kanasinfo.cn/vue-speedy-antd/-/vue-speedy-antd-0.1.11.tgz#463f6996f6ca415506fe29872fb780d5a916a5ca"
-  integrity sha512-lVc2GjNMojWx+CjNFF40fqSTnZAEKfB3eguj7moNefxcFDrygyMSnxRAYyEMQus/v0Iq11TDUw82v6mLKVNZQA==
+vue-speedy-antd@0.1.12:
+  version "0.1.12"
+  resolved "http://npm.kanasinfo.cn/vue-speedy-antd/-/vue-speedy-antd-0.1.12.tgz#77db2ea01f18490415f0a7ab382ac072d08d33c2"
+  integrity sha512-PTcTx+Z5gdTTsUjHaMDUWJOdJyK9ZLHdpWMRPa/Wmh95y1ufECCEeM/EC2i4R+C+hmqajwQuWiFtNVTj7ZyCcA==
   dependencies:
     ant-design-vue "^1.3.16"
     async "^3.1.0"

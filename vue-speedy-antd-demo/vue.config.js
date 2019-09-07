@@ -1,6 +1,6 @@
 module.exports = require('vue-speedy-antd/conf')({
     lessModifyVars: {
-
+        'primary-color': '#1DA57A',
     },
     title: 'Vue Speedy Ant Design',
     baseUrl: '/',

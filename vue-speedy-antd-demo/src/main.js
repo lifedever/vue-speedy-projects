@@ -6,6 +6,7 @@ import router from "vue-speedy-antd/src/router";
 
 import homeMenu from 'vue-speedy-antd/src/pages/home/menu'
 import systemMenu from 'vue-speedy-antd/src/pages/system/menu'
+import './assets/override.less'
 
 const routerInstance = router(pages)
 
