@@ -72,6 +72,7 @@
                 this.$http.post('/api/login', values).then(loginRes => {
                     this.storeToken(loginRes.data).then(_ => {
                         this.$message.success('登录成功')
+                        this.$router.push('/')
                     })
                 }).catch(err => {
                     this.loading = false

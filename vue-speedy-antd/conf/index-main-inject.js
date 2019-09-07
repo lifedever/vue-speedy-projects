@@ -8,10 +8,12 @@ import VueBus from 'vue-bus'
 import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
-import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
 import notification from 'ant-design-vue/lib/notification'
+
+import '../src/assets/less/index.less'
+import '../src/index/less/index.less'
 
 Vue.use(VueBus)
 Vue.config.productionTip = false

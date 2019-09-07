@@ -35,6 +35,18 @@ export const removeToken = () => {
     return Cookies.remove(TOKEN_KEY)
 }
 
+export const cookieSet = (key, value, expires) => {
+    Cookies.set(key, value, {expires: expires})
+}
+
+export const cookieGet = (key) => {
+    return Cookies.get(key)
+}
+
+export const removeCookie = (key) => {
+    return Cookies.remove(key)
+}
+
 
 export const setHolder = (holder, expires) => {
     console.log(holder, expires)

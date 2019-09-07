@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 const state = {
     userInfo: null,
-    holders: null
 }
 
 const getters = {

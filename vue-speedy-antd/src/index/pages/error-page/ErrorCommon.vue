@@ -5,7 +5,7 @@
             <div class="error-description">
                 {{description}}
             </div>
-            <a-button type="primary" style="width: 100px;" @click="() => {$router.push('/home')}">返回首页</a-button>
+            <a-button type="primary" style="width: 100px;" @click="() => {$router.push('/')}">返回首页</a-button>
         </div>
     </div>
 </template>
@@ -25,11 +25,10 @@
     .error {
         height: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         padding-right: 100px;
         align-items: center;
         .error-container {
-            float: right;
             width: 800px;
             height: 350px;
             background-repeat: no-repeat;

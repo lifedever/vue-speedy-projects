@@ -1,8 +1,8 @@
-import {getToken, removeToken, setToken} from "../../../utils/storage";
+import {cookieGet, cookieSet, removeCookie} from "../../../utils/storage";
 
 const state = {
     config: {},
-    token: getToken(),
+    token: cookieGet('UserToken'),
 }
 const getters = {
     configGet: state => state.config,
@@ -29,11 +29,11 @@ const mutations = {
     },
     'storeToken'(state, {token, expires}) {
         state.token = token
-        setToken(token, 365)
+        cookieSet('UserToken', token, 365)
     },
     'removeToken'(state) {
         state.token = null
-        removeToken()
+        removeCookie('UserToken')
     }
 }
 
