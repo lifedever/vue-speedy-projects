@@ -1,7 +1,6 @@
 module.exports = require('./conf')({
     title: 'Vue Speedy Ant Design',
-    baseAdminUrl: '/boss',
-    baseUrl: '/',
+    adminName: 'admin',     // 不能配置为 index
     devServer: {
         port: 6060,
         proxy: {

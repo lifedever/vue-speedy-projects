@@ -19,7 +19,7 @@ Vue.use(InjectSModal)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
-            baseAdminUrl: '/',
+            // adminName: 'index',
             pages: null,                // 路由配置
             modules: [],
             mixins: [],
@@ -30,7 +30,7 @@ export default {
 
         setSiteTitle(defaultOptions.config.title, true)
 
-        const routerInstance = router(defaultOptions.pages, defaultOptions.baseAdminUrl)
+        const routerInstance = router(defaultOptions.pages)
         axiosInterceptors(axios, routerInstance)
 
         /**

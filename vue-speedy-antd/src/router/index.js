@@ -4,12 +4,13 @@ import defaultRouters from './routers'
 
 Vue.use(Router);
 
-export default (routers, baseAdminUrl) => {
-    const router = new Router({
+export default (routers) => {
+    let options = {
         // mode: 'history',
-        base: `/${baseAdminUrl}/`,
+        // base: `/${adminName}/`,
         routes: routers.concat(defaultRouters)
-    })
+    }
+    const router = new Router(options);
     router.beforeEach((to, from, next) => {
         console.log('from', from)
         console.log('to', to)
