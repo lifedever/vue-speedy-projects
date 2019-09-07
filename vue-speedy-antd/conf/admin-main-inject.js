@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import App from '../src/App.vue'
+import App from '../src/admin/App.vue'
 import axios from 'axios'
-import router from '../src/router'
-import store from '../src/store'
+import router from '../src/admin/router'
+import store from '../src/admin/store'
 import VueBus from 'vue-bus'
 
-import AntdDependency from '../src/antd-common-dependency'
+import AntdDependency from '../src/admin/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
 
 import '../src/assets/less/index.less'

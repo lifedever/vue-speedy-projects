@@ -1,4 +1,4 @@
-import {removeHolder, setHolder, getHolder} from "../../utils/storage";
+import {removeHolder, setHolder} from "../../../utils/storage";
 import Vue from "vue";
 
 const state = {

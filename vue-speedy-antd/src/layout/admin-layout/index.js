@@ -5,7 +5,7 @@ import TableContainer from "./container/TableContainer";
 import TreeContainer from "./container/TreeContainer";
 
 import mixin from './mixins'
-import store from "../../store";
+import store from "../../admin/store";
 import menuStore from './store/menu'
 import defaultMenus from './menu-default'
 

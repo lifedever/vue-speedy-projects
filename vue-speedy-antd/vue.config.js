@@ -2,7 +2,7 @@ module.exports = require('./conf')({
     title: 'Vue Speedy Ant Design',
     admin: {
         name: 'boss',
-        entry: 'src/main.js',
+        entry: 'src/admin/main.js',
         title: 'Boss 后台管理'
     },
     index: {

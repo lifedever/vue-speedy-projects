@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import STableColumn from "../../../components/partial/table/STableColumn";
+    import STableColumn from "../../../../components/partial/table/STableColumn";
 
     const columns = [
         {

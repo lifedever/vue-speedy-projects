@@ -1,14 +1,14 @@
 import Vue from "vue";
-import Inject from '../conf/main-inject'
+import AdminInject from '../../conf/admin-main-inject'
 import pages from './pages'
-import adminLayout from "./layout/admin-layout";
+import adminLayout from "../layout/admin-layout";
 import menus from './menus';
 
 Vue.use(adminLayout, {
     menus,
 })
 
-Vue.use(Inject, {
+Vue.use(AdminInject, {
     config: {
         title: 'Vue Speedy Ant Design',
         shortTitle: 'VD',

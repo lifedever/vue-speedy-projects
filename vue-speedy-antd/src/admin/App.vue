@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import SModal from "./components/global/s-modal/SModal";
+    import SModal from "../components/global/s-modal/SModal";
     export default {
         name: 'app',
         components: {SModal},

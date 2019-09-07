@@ -1,4 +1,4 @@
-import {getToken, removeToken, setToken} from "../../utils/storage";
+import {getToken, removeToken, setToken} from "../../../utils/storage";
 
 const state = {
     config: {},

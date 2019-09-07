@@ -1,20 +1,20 @@
 <template>
-    <error-common code="500" description="抱歉，服务器出错了" :con-style="{
+    <error-common code="404" description="抱歉，您访问的页面不存在" :con-style="{
     backgroundImage: 'url('+backgroundImage+')',
-    backgroundSize: '422px 193px'
+    backgroundSize: '350px 276px'
     }"></error-common>
 </template>
 
 <script>
     import ErrorCommon from "./ErrorCommon";
-    import e500 from '../../assets/imgs/500.png'
+    import e404 from '../../../assets/imgs/404.png'
 
     export default {
-        name: "Error500",
+        name: "Error404",
         components: {ErrorCommon},
         computed: {
             backgroundImage() {
-                return e500
+                return e404
             }
         }
     }

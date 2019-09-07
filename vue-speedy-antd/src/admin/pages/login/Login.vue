@@ -42,8 +42,8 @@
 
 <script>
     import {mapActions, mapGetters} from "vuex";
-    import SForm from "../../components/partial/form/SForm";
-    import SFormItem from "../../components/partial/form/SFormItem";
+    import SForm from "../../../components/partial/form/SForm";
+    import SFormItem from "../../../components/partial/form/SFormItem";
 
     export default {
         name: "Login",
@@ -129,7 +129,7 @@
 <style scoped lang="less">
     .login {
         height: 100%;
-        background: #f0f2f5 url("../../assets/imgs/bg.svg") no-repeat center 100px;
+        background: #f0f2f5 url("../../../assets/imgs/bg.svg") no-repeat center 100px;
         background-size: 100% 100%;
         display: flex;
         flex-direction: column;

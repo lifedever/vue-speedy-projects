@@ -1,21 +1,20 @@
 <template>
-    <error-common code="403" description="抱歉，您无权访问该页面" :con-style="{
+    <error-common code="500" description="抱歉，服务器出错了" :con-style="{
     backgroundImage: 'url('+backgroundImage+')',
-    backgroundSize: '227px 269px',
-    backgroundPosition: '100px center'
+    backgroundSize: '422px 193px'
     }"></error-common>
 </template>
 
 <script>
     import ErrorCommon from "./ErrorCommon";
-    import e403 from '../../assets/imgs/403.png'
+    import e500 from '../../../assets/imgs/500.png'
 
     export default {
-        name: "Error403",
+        name: "Error500",
         components: {ErrorCommon},
         computed: {
             backgroundImage() {
-                return e403
+                return e500
             }
         }
     }

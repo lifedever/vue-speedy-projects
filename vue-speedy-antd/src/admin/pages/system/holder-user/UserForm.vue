@@ -21,9 +21,9 @@
 </template>
 
 <script>
-    import SForm from "../../../components/partial/form/SForm";
-    import SFormItem from "../../../components/partial/form/SFormItem";
-    import {getErrorCode, toFormData} from "../../../utils/common";
+    import SForm from "../../../../components/partial/form/SForm";
+    import SFormItem from "../../../../components/partial/form/SFormItem";
+    import {getErrorCode, toFormData} from "../../../../utils/common";
 
     export default {
         name: "UserForm",

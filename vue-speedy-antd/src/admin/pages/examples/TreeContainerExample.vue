@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import STableColumn from "../../components/partial/table/STableColumn";
+    import STableColumn from "../../../components/partial/table/STableColumn";
     export default {
         name: "TreeContainerExample",
         components: {STableColumn},

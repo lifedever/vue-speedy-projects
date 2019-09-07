@@ -24,7 +24,7 @@
 
 <script>
     import {mapGetters} from "vuex";
-    import IFrameView from "../components/global/iframe";
+    import IFrameView from "../../components/global/iframe";
 
     export default {
         name: "Main",
