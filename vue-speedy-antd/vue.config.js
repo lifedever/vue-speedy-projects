@@ -1,6 +1,6 @@
 module.exports = require('./conf')({
-
     title: 'Vue Speedy Ant Design',
+    baseAdminUrl: '/boss',
     baseUrl: '/',
     devServer: {
         port: 6060,

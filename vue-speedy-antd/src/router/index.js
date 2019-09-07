@@ -4,9 +4,10 @@ import defaultRouters from './routers'
 
 Vue.use(Router);
 
-export default (routers) => {
+export default (routers, baseAdminUrl) => {
     const router = new Router({
-        mode: 'history',
+        // mode: 'history',
+        base: `/${baseAdminUrl}/`,
         routes: routers.concat(defaultRouters)
     })
     router.beforeEach((to, from, next) => {

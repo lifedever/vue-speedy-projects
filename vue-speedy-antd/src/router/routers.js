@@ -4,9 +4,9 @@ import Main from "../pages/Main";
 export default [
     {
         name: 'Main',
-        path: '/',
+        path: '',
         component: Main,
-        redirect: '/home',
+        redirect: {name: 'Home'},
         children: [
             {
                 name: 'Home',
