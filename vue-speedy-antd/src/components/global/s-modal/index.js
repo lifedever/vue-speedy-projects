@@ -7,6 +7,9 @@ export default {
         Vue.prototype.$closeModal = () => {
             $bus.emit('bus_closeModal')
         }
+        Vue.prototype.$okLoadingModal = (loading) => {
+            $bus.emit('bus_okLoadingModal', loading)
+        }
 
         Vue.prototype.$openFormModal = view => {
             view.modal = Object.assign({}, view.modal, {footer: null})

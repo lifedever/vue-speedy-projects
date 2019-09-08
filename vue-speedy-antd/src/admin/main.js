@@ -2,10 +2,8 @@ import Vue from "vue";
 import AdminInject from '../../conf/admin-main-inject'
 import pages from './pages'
 import adminLayout from "../layout/admin-layout";
-import menus from './menus';
 
 Vue.use(adminLayout, {
-    menus,
 })
 
 Vue.use(AdminInject, {

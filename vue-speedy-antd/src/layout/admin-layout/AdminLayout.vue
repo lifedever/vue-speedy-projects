@@ -49,6 +49,11 @@
         mounted() {
             parallel([
                     callback => {
+                        this.loadMenus().then(res => {
+                            callback(null, res)
+                        })
+                    },
+                    callback => {
                         this.loadUserInfo().then(res => {
                             callback(null, res);
                         })
@@ -107,6 +112,9 @@
             }),
             ...mapActions('holder', {
                 loadHolder: 'loadHolderAction'
+            }),
+            ...mapActions('menu', {
+                loadMenus: 'loadMenusAction'
             })
         }
     }

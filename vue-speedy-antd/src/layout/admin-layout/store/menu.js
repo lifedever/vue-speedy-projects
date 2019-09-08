@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import {localGet, localSave} from "../../../utils/storage";
 import {storage} from "../../../cost/index";
 import {MenuUtil} from "../../../utils/menu.util";
@@ -31,6 +32,11 @@ const getters = {
     }
 }
 const actions = {
+    loadMenusAction({commit}) {
+        new Vue().$http.get(`/api/pt/functions`).then(res => {
+            commit('storeMenus', res.data)
+        })
+    },
     storeMenusAction({commit}, menus) {
         commit('storeMenus', menus)
     },

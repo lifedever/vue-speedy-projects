@@ -35,7 +35,6 @@
         name: "TableContainer",
         components: {STableColumn, STable, ATable: Table},
         props: {
-            columns: Array,
             url: String,
             hideHeader: Boolean,
             pageable: Boolean,

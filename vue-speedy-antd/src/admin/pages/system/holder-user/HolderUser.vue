@@ -1,6 +1,5 @@
 <template>
-    <table-container :columns="columns"
-                     url="/api/holder/users"
+    <table-container url="/api/holder/users"
                      ref="containerRef"
                      operation-width="240px"
                      @editItem="editUser">

@@ -57,8 +57,9 @@ module.exports = (option) => {
         },
         devServer: defaultOption.devServer
     }
-    config.pages = {
-        index: {
+    config.pages = {}
+    if (defaultOption.index) {
+        config.pages['index'] = {
             entry: defaultOption.index.entry,
             template: 'public/index.html',
             filename: `index.html`,
