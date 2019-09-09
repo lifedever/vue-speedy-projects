@@ -1,5 +1,8 @@
 import Vue from "vue";
 import Inject from '../../conf/index-main-inject'
+import PageLayoutInject from '../layout/page-layout'
+
+Vue.use(PageLayoutInject, {})
 
 Vue.use(Inject, {
     config: {
@@ -17,3 +20,4 @@ Vue.use(Inject, {
     ],
     modules: []
 })
+

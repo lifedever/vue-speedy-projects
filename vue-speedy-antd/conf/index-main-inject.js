@@ -31,7 +31,8 @@ export default {
         defaultOptions = Object.assign(defaultOptions, options)
         setSiteTitle(defaultOptions.config.title, true)
         const routerInstance = router(defaultOptions.pages)
-        axiosInterceptors(axios, routerInstance)
+
+        axiosInterceptors(axios, routerInstance, true)
         /**
          * @description 全局注册应用配置
          */
@@ -53,7 +54,7 @@ export default {
             })
         }
         // 保存配置信息
-        store.dispatch('app/storeConfigAction', defaultOptions.config)
+        store.dispatch('indexApp/storeConfigAction', defaultOptions.config)
 
         new Vue({
             router: routerInstance,

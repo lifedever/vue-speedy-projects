@@ -2,6 +2,7 @@ import lscache from 'lscache'
 import Cookies from 'js-cookie'
 
 const TOKEN_KEY = "Token"
+const OPEN_TOKEN_KEY = "UserToken"
 const HOLDER_KEY = "Holder"
 
 /**
@@ -37,6 +38,19 @@ export const getToken = () => {
 
 export const removeToken = () => {
     return Cookies.remove(TOKEN_KEY)
+}
+
+
+export const setOpenToken = (token, expires) => {
+    Cookies.set(OPEN_TOKEN_KEY, token, {expires: expires})
+}
+
+export const getOpenToken = () => {
+    return Cookies.get(OPEN_TOKEN_KEY)
+}
+
+export const removeOpenToken = () => {
+    return Cookies.remove(OPEN_TOKEN_KEY)
 }
 
 export const cookieSet = (key, value, expires) => {

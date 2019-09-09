@@ -11,9 +11,13 @@ const state = {
 }
 const getters = {
     menusGet: state => state.menus,
-    menuTabsGet: state => state.tabs,
+    menuTabsGet: state => {
+        return state.tabs
+    },
     iFrameTabsGet: state => state.tabs.filter(o => o.iframe) || [],
-    currentGet: state => state.current,
+    currentGet: (state, {menuTabsGet}) => {
+        return state.current
+    },
     parentGet: state => {
         if (state.menus && state.current) {
             return MenuUtil.findParent(state.menus, state.current)
@@ -35,6 +39,7 @@ const actions = {
     loadMenusAction({commit}) {
         new Vue().$http.get(`/api/pt/functions`).then(res => {
             commit('storeMenus', res.data)
+            commit('setFixed', res.data)
         })
     },
     storeMenusAction({commit}, menus) {
@@ -48,10 +53,17 @@ const actions = {
     }
 }
 const mutations = {
+    'setFixed'(state, menus) {
+        if (state.tabs.length === 0) {
+            state.tabs = menus.filter(o => o.fixed)
+            state.current = state.tabs.length > 0? state.tabs[0]: null
+        }
+    },
     'storeMenus'(state, menus) {
         state.menus = menus
     },
     'addMenuToTab'(state, menu) {
+        console.log('addMenuToTab', menu)
         if (!state.tabs.find(o => o.id === menu.id)) {
             state.tabs.push(menu)
         }
@@ -71,7 +83,7 @@ const mutations = {
                             state.current = tabs[i - 1]
                             resolve(state.current)
                         }, 100)
-                    }else{
+                    } else {
                         resolve(state.current)
                     }
                 }

@@ -1,8 +1,11 @@
-import {cookieGet, cookieSet, removeCookie} from "../../../utils/storage";
+import {} from "../../../utils/storage";
+import {setOpenToken} from "../../../utils/storage";
+import {removeOpenToken} from "../../../utils/storage";
+import {getOpenToken} from "../../../utils/storage";
 
 const state = {
     config: {},
-    token: cookieGet('UserToken'),
+    token: getOpenToken(),
 }
 const getters = {
     configGet: state => state.config,
@@ -29,11 +32,11 @@ const mutations = {
     },
     'storeToken'(state, {token, expires}) {
         state.token = token
-        cookieSet('UserToken', token, 365)
+        setOpenToken(token, 365)
     },
     'removeToken'(state) {
         state.token = null
-        removeCookie('UserToken')
+        removeOpenToken()
     }
 }
 

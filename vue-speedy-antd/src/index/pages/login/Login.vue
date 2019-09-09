@@ -9,7 +9,7 @@
                         <s-form-item label="请输入登录名称"
                                      :label-span="8">
                             <a-input v-decorator="[
-                                      'username',
+                                      'loginName',
                                       { rules: [{ required: true, message: '请输入用户名!' }] }
                                     ]"
                                      placeholder="登录名">
@@ -44,6 +44,7 @@
     import {mapActions, mapGetters} from "vuex";
     import SForm from "../../../components/partial/form/SForm";
     import SFormItem from "../../../components/partial/form/SFormItem";
+    import {toFormData} from "../../../utils/common";
 
     export default {
         name: "Login",
@@ -58,18 +59,18 @@
             this.logout()
         },
         computed: {
-            ...mapGetters('app', {
+            ...mapGetters('indexApp', {
                 config: 'configGet'
             })
         },
         methods: {
-            ...mapActions('app', {
+            ...mapActions('indexApp', {
                 storeToken: 'storeTokenAction',
                 logout: 'logoutAction'
             }),
             handleSubmit(values) {
                 this.loading = true
-                this.$http.post('/api/login', values).then(loginRes => {
+                this.$http.post('/api/open/login', toFormData(values)).then(loginRes => {
                     this.storeToken(loginRes.data).then(_ => {
                         this.$message.success('登录成功')
                         this.$router.push('/')

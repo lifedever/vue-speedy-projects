@@ -11,7 +11,7 @@ export default [
         path: '/logout',
         redirect: '/login',
         beforeEnter: (to, from, next) => {
-            store.dispatch('app/logoutAction')
+            store.dispatch('indexApp/logoutAction')
             next()
         }
     },

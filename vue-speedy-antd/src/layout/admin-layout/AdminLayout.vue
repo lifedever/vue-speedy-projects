@@ -10,7 +10,7 @@
             <div class="logo">
                 <slot name="logo" v-bind:data="collapsed"></slot>
             </div>
-            <menus :menus="menus" :menu-collapsed="collapsed"></menus>
+            <menus :menus="menus" v-if="menus && menus.length > 0" :menu-collapsed="collapsed"></menus>
         </a-layout-sider>
         <a-layout :loading="true">
             <top v-model="collapsed"></top>

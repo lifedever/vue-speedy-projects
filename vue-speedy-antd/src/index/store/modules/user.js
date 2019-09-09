@@ -10,7 +10,7 @@ const getters = {
 const actions = {
     loadUserInfoAction({commit}) {
         return new Promise((resolve, reject) => {
-            new Vue().$http.get(`/api/pt/userinfo`).then(res => {
+            new Vue().$http.get(`/api/open/userinfo`).then(res => {
                 commit('loadUserInfo', res.data)
                 resolve(res)
             }).catch(reject)
