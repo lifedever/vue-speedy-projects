@@ -1,7 +1,10 @@
 <template>
     <a-layout class="base-container">
         <a-layout-header v-if="!hideHeader">
-            <div class="base-container-header-left">
+            <div class="base-container-header-left" v-if="$slots['headerLeft']">
+                <slot name="headerLeft"></slot>
+            </div>
+            <div class="base-container-header-left" v-else>
                 <a-breadcrumb>
                     <a-breadcrumb-item v-if="parentMenu">
                         <a-icon :type="parentMenu.icon" v-if="parentMenu.icon"/>
@@ -39,6 +42,9 @@
         },
         props: {
             hideHeader: Boolean
+        },
+        mounted() {
+            console.log(this.$slots)
         },
         computed: {
             ...mapGetters('menu', {

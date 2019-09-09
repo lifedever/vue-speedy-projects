@@ -23,6 +23,10 @@ export const localRemove = (key) => {
     lscache.remove(key)
 }
 
+export const localClear = () => {
+    lscache.flush()
+}
+
 export const setToken = (token, expires) => {
     Cookies.set(TOKEN_KEY, token, {expires: expires})
 }

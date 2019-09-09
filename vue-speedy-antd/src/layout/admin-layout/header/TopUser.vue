@@ -16,8 +16,9 @@
                     {{usernameShort}}
                 </a-avatar>
                 {{userInfo.nickname || userInfo.loginName}}
-                &nbsp;
-                <a-tag color="blue">{{holder.name}}</a-tag>
+                <div class="text-right">
+                    <a-tag color="blue">{{holder.name}}</a-tag>
+                </div>
             </div>
         </div>
         <div slot="content" class="admin-top-user-content">

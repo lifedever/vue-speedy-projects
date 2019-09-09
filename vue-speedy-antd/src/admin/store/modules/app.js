@@ -1,4 +1,4 @@
-import {getToken, removeToken, setToken} from "../../../utils/storage";
+import {getToken, localClear, removeToken, setToken} from "../../../utils/storage";
 
 const state = {
     config: {},
@@ -35,6 +35,7 @@ const mutations = {
     'removeToken'(state) {
         state.token = null
         removeToken()
+        localClear()
     }
 }
 

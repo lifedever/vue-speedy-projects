@@ -14,10 +14,19 @@
         </a-layout-sider>
         <a-layout :loading="true">
             <top v-model="collapsed"></top>
-            <a-layout-content class="admin-layout-content">
+            <a-layout-content class="admin-layout-content" v-if="userInfo && !userInfo.unsafed">
                 <a-spin :spinning="spinning" class="admin-layout-content-spin">
                     <slot></slot>
                 </a-spin>
+            </a-layout-content>
+            <a-layout-content class="admin-layout-content" else>
+                <base-container>
+                    <div slot="headerLeft">设置新密码</div>
+                    <div class="margin-bottom-lg">
+                        <a-alert style="width: 600px;" message="您的账号存在安全隐患，请先设置您的新密码！" type="warning"></a-alert>
+                    </div>
+                    <change-password-form></change-password-form>
+                </base-container>
             </a-layout-content>
         </a-layout>
     </a-layout>
@@ -34,10 +43,12 @@
     import {getHolder} from "../../utils/storage";
     import PageLoading from "../../components/partial/other/PageLoading";
     import parallel from 'async/parallel';
+    import ChangePasswordForm from "./partial/ChangePasswordForm";
 
     export default {
         name: "AdminLayout",
         components: {
+            ChangePasswordForm,
             PageLoading,
             Top,
             MenuTabs,
@@ -101,6 +112,9 @@
             }),
             ...mapGetters('app', {
                 token: 'tokenGet'
+            }),
+            ...mapGetters('user', {
+                userInfo: 'userInfoGet'
             }),
             spinning() {
                 return (!this.currentMenu || this.loading) && !this.$route.meta.clearLoading

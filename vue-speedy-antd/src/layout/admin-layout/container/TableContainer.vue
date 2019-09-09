@@ -13,9 +13,15 @@
 
             <s-table-column title="操作" :width="operationWidth" v-if="operation" align="center">
                 <template slot-scope="{text, record, index}">
-                    <a-button size="small" type="primary" @click="() => {$emit('editItem', record)}">编辑</a-button>
+                    <a-button size="small"
+                              :disabled="record.disableEdit"
+                              type="primary"
+                              @click="() => {$emit('editItem', record)}">编辑</a-button>
                     &nbsp;
-                    <a-button size="small" type="danger" @click="removeItem(record)">删除</a-button>
+                    <a-button size="small"
+                              type="danger"
+                              :disabled="record.disableDelete"
+                              @click="removeItem(record)">删除</a-button>
                     &nbsp;
                     <slot name="otherOperation" v-bind:record="record"></slot>
                 </template>
@@ -101,6 +107,7 @@
                     this.computedPagination()
                     this.loading = false
                     this.computedTableHeight()
+                    this.$emit('load', res.data)
                 })
             },
             computedPagination() {
