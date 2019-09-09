@@ -18,11 +18,17 @@
         },
         data() {
             return {
-                columns: []
+                columns: [],
+                defaultConfig: {
+                    rowKey: 'id'
+                }
             }
         },
         mounted() {
-            this.parseColumns()
+            if (!this.config.rowKey) {
+                this.config.rowKey = 'id'
+            }
+            this.parseColumns();
         },
         methods: {
             handleChange(pagination, filters, sorter) {

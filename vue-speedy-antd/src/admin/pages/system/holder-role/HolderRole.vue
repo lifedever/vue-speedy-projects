@@ -1,9 +1,21 @@
 <template>
-    <table-container url="/api/holder/roles" ref="conRef">
+    <table-container url="/api/holder/roles" ref="conRef" @load="handleLoad" @editItem="editRole">
         <template v-slot:headerRight>
             <a-button type="primary" icon="plus" @click="addRole">添加角色</a-button>
         </template>
-        <s-table-column title="角色名称" prop="name"></s-table-column>
+        <s-table-column title="角色名称" width="250px" prop="name"></s-table-column>
+        <s-table-column title="自动授权新用户" width="300px">
+            <template slot-scope="{record}">
+                <a-tag color="green" v-if="record.autoAuthorized">自动授权</a-tag>
+                <a-tag color="red" v-else>不自动授权</a-tag>
+            </template>
+        </s-table-column>
+        <s-table-column title="系统默认">
+            <template slot-scope="{record}">
+                <a-tag color="green" v-if="record.administrator">是</a-tag>
+                <a-tag color="red" v-else>否</a-tag>
+            </template>
+        </s-table-column>
         <template v-slot:otherOperation="{record}">
             <a-button class="btn-success" size="small" @click="authorizeRole(record)">授权</a-button>
         </template>
@@ -14,8 +26,39 @@
     export default {
         name: "HoleRole",
         methods: {
+            handleLoad(roles) {
+                roles.forEach(u => {
+                    this.$set(u, 'disableDelete', u.administrator)
+                })
+            },
             addRole() {
-
+                this.$openFormModal({
+                    modal: {
+                        title: '添加角色',
+                        width: 400,
+                    },
+                    props: {
+                        callback: _ => {
+                            this.$refs['conRef'].loadData()
+                        }
+                    },
+                    component: () => import('./RoleForm')
+                })
+            },
+            editRole(role) {
+                this.$openFormModal({
+                    modal: {
+                        title: '添加角色',
+                        width: 400,
+                    },
+                    props: {
+                        role: role,
+                        callback: _ => {
+                            this.$refs['conRef'].loadData()
+                        }
+                    },
+                    component: () => import('./RoleForm')
+                })
             },
             authorizeRole(role) {
                 this.$openModal({

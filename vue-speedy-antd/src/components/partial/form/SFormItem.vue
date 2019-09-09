@@ -1,7 +1,12 @@
 <template>
-    <a-form-item :label="label"
+    <a-form-item v-if="horizontal"
+                 :label="label"
                  :label-col="{ span: labelSpan }"
                  :wrapper-col="{ span: 24-labelSpan }">
+        <slot></slot>
+    </a-form-item>
+    <a-form-item v-else
+                 :label="label">
         <slot></slot>
     </a-form-item>
 </template>
@@ -14,6 +19,10 @@
             labelSpan: {
                 type: Number,
                 default: 8
+            },
+            horizontal: {
+                type: Boolean,
+                default: true
             }
         }
     }

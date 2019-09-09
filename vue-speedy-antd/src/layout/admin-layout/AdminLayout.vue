@@ -19,7 +19,7 @@
                     <slot></slot>
                 </a-spin>
             </a-layout-content>
-            <a-layout-content class="admin-layout-content" else>
+            <a-layout-content class="admin-layout-content" v-else-if="userInfo">
                 <base-container>
                     <div slot="headerLeft">设置新密码</div>
                     <div class="margin-bottom-lg">

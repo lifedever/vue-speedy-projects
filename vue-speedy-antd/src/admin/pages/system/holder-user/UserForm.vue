@@ -9,7 +9,7 @@
                 <s-form-item label="用户名" :label-span="6">
                     <a-input v-decorator="['nickname', {rules: [{required: true, message: '请输入用户名'}]}]"></a-input>
                 </s-form-item>
-                <s-form-item label="登录账号" :label-span="6">
+                <s-form-item v-if="!user" label="登录账号" :label-span="6">
                     <a-input v-decorator="['loginName', {rules: [{required: true, message: '请输入账号信息'}]}]"></a-input>
                 </s-form-item>
             </template>
@@ -48,7 +48,7 @@
         methods: {
             handleSubmit(values) {
                 this.loading = true
-                this.$http.post('/api/holder/users', toFormData(values)).then(res => {
+                this.$http.post(this.user? `/api/holder/users/${this.user.id}`: '/api/holder/users', toFormData(values)).then(res => {
                     this.$message.success('保存成功！');
                     this.$closeModal()
                     this.callback(res.data)
