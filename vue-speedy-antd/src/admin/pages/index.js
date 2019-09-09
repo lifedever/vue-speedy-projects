@@ -7,6 +7,11 @@ export default [
         redirect: '/home',
         children: [
             {
+                name: 'Home',
+                path: 'home',
+                component: () => import('../pages/home')
+            },
+            {
                 name: 'Example',
                 path: 'example',
                 component: () => import('./examples')

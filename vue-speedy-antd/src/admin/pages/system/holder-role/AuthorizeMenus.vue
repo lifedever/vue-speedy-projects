@@ -39,7 +39,7 @@
                     this.functions = res.data
                     this.loading = false
                 })
-            }
+            },
         }
     }
 </script>

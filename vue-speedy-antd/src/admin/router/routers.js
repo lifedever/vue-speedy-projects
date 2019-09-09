@@ -9,11 +9,6 @@ export default [
         redirect: {name: 'Home'},
         children: [
             {
-                name: 'Home',
-                path: 'home',
-                component: () => import('../pages/home')
-            },
-            {
                 name: 'SystemHolderProfiles',
                 path: 'system/users',
                 component: () => import('../pages/system/holder-user')
