@@ -1,19 +1,23 @@
 <template>
-    <table-container url="/api/holder/roles" ref="conRef" @load="handleLoad" @editItem="editRole">
+    <table-container url="/api/holder/roles" ref="conRef" @load="handleLoad" @editItem="editRole" operation-width="200px">
         <template v-slot:headerRight>
             <a-button type="primary" icon="plus" @click="addRole">添加角色</a-button>
         </template>
-        <s-table-column title="角色名称" width="250px" prop="name"></s-table-column>
-        <s-table-column title="自动授权新用户" width="300px">
-            <template slot-scope="{record}">
-                <a-tag color="green" v-if="record.autoAuthorized">自动授权</a-tag>
-                <a-tag color="red" v-else>不自动授权</a-tag>
-            </template>
-        </s-table-column>
-        <s-table-column title="系统默认">
+        <s-table-column title="角色名称"
+                        width="150px"
+                        prop="name" />
+        <s-table-column title="系统默认"
+                        width="100px">
             <template slot-scope="{record}">
                 <a-tag color="green" v-if="record.administrator">是</a-tag>
                 <a-tag color="red" v-else>否</a-tag>
+            </template>
+        </s-table-column>
+        <s-table-column title="权限列表">
+            <template slot-scope="{record}">
+                <a-tag class="margin-bottom-sm" v-for="fun in record.allPermissions">
+                    {{fun}}
+                </a-tag>
             </template>
         </s-table-column>
         <template v-slot:otherOperation="{record}">

@@ -8,8 +8,8 @@
             <a-button type="primary" icon="user-add" @click="addUser">添加新用户</a-button>
             <a-button icon="user-add" class="btn-success margin-left" @click="addPlatformUsers">添加其他平台用户</a-button>
         </template>
-        <s-table-column title="用户名" prop="nickname" width="250px"></s-table-column>
-        <s-table-column title="登录账号" prop="loginName" width="350px">
+        <s-table-column title="用户名" prop="nickname" width="200px"></s-table-column>
+        <s-table-column title="登录账号" prop="loginName" width="200px">
             <template slot-scope="{record}">
                 <a-tag color="green" v-for="u in record.platformUser.userCertificates">
                     {{u.loginName}}
@@ -17,6 +17,13 @@
             </template>
         </s-table-column>
         <s-table-column title="添加日期" prop="createdDate" width="200px"></s-table-column>
+        <s-table-column title="授权角色" width="250px">
+            <template slot-scope="{record}">
+                <a-tag color="blue" v-for="role in record.roles">
+                    {{role.name}}
+                </a-tag>
+            </template>
+        </s-table-column>
         <s-table-column title="是否激活" prop="id">
             <template slot-scope="{value, record, index}">
                 <a-switch :defaultChecked="record.active"
@@ -28,7 +35,7 @@
         </s-table-column>
 
         <template v-slot:otherOperation="{record}">
-            <a-button class="btn-success" size="small" :disabled="record.administrator">重置密码</a-button>
+            <a-button class="btn-success" size="small" :disabled="record.administrator" @click="resetPassword(record)">重置密码</a-button>
         </template>
     </table-container>
 </template>
@@ -108,6 +115,22 @@
                         }
                     },
                     component: () => import('./PlatformUsers')
+                })
+            },
+            resetPassword(user) {
+                this.$Modal.confirm({
+                    title: '重置密码确认',
+                    content: '确定要重置当前帐号密码吗？',
+                    okText: '确认重置',
+                    cancelText: '取消操作',
+                    onOk: () => {
+                        this.$http.get(`/api/holder/users/${user.id}/password/reset`).then(res => {
+                            this.$Modal.info({
+                                title: '密码重置成功！！',
+                                content: '新密码为：' + res.data + '，请妥善保管！'
+                            })
+                        })
+                    }
                 })
             }
         }

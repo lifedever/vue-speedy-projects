@@ -46,3 +46,11 @@ export const getErrorCode = (err) => {
         return null
     }
 }
+
+export const _map = (list, key) => {
+    let temp = [];
+    (list || []).forEach(o => {
+        temp.push(o[key])
+    })
+    return temp
+}

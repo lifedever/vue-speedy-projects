@@ -20,6 +20,7 @@ const actions = {
     },
     logoutAction({commit, dispatch}, params) {
         commit('removeToken')
+        dispatch('menu/clearAction', {}, {root: true})
         dispatch('holder/removeHolderAction', {}, {root: true})
     }
 }

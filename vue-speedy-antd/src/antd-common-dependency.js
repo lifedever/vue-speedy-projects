@@ -43,6 +43,7 @@ export default {
         Vue.component(Input.Search.name, Input.Search)
         Vue.component(InputNumber.name, InputNumber)
         Vue.component(Checkbox.name, Checkbox)
+        Vue.component(Checkbox.Group.name, Checkbox.Group)
         Vue.component(Radio.name, Radio)
         Vue.component(Select.name, Select)
         Vue.component(Switch.name, Switch)

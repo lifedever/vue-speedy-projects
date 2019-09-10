@@ -2,14 +2,11 @@
     <s-form @submit="handleSubmit"
             ok-text="保存"
             ref="form"
-            :submit-btn-span="6"
+            :submit-btn-span="10"
             :loading="loading">
         <template>
             <s-form-item label="角色名称" :label-span="6" :horizontal="false">
                 <a-input v-decorator="['name', {rules: [{required: true, message: '请输入角色名称'}]}]"></a-input>
-            </s-form-item>
-            <s-form-item label="自动授权新用户" :label-span="6" :horizontal="false">
-                <a-switch checkedChildren="是" unCheckedChildren="否" :defaultChecked="role? role.autoAuthorized: false" v-decorator="['autoAuthorized']"/>
             </s-form-item>
         </template>
     </s-form>

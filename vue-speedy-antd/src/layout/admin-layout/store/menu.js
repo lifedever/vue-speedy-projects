@@ -50,9 +50,17 @@ const actions = {
     },
     removeTabAction({state, commit}, menu) {
         commit('removeMenuFromTab', menu)
+    },
+    clearAction({commit}){
+        commit('clear')
     }
 }
 const mutations = {
+    'clear'(state) {
+        state.tabs = []
+        state.menus = []
+        state.current = null
+    },
     'setFixed'(state, menus) {
         if (state.tabs.length === 0) {
             state.tabs = menus.filter(o => o.fixed)
