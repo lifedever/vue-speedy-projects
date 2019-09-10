@@ -24,10 +24,10 @@
                 </a-tag>
             </template>
         </s-table-column>
-        <s-table-column title="是否激活" prop="id">
+        <s-table-column title="是否激活" prop="id" width="200px">
             <template slot-scope="{value, record, index}">
                 <a-switch :defaultChecked="record.active"
-                          :disabled="record.administrator"
+                          :disabled="activeDisabled"
                           checkedChildren="已激活"
                           unCheckedChildren="未激活"
                           @change="activeChange(record)"></a-switch>
@@ -48,17 +48,21 @@
         components: {STableColumn},
         data() {
             return {
-                data: []
+                data: [],
+                users: []
             }
         },
         computed: {
-
+            activeDisabled() {
+                return this.users.filter(o => o.administrator).length === 1
+            }
         },
         methods: {
             handleLoad(users) {
                 users.forEach(u => {
                     this.$set(u, 'disableDelete', u.administrator)
                 })
+                this.users = users
             },
             activeChange(user) {
                 this.$http.put(`/api/holder/users/${user.id}/active/${!user.active}`).then(res => {
