@@ -88,10 +88,15 @@
             }
         },
         watch: {
-            value() {
-                if (this.editor) {
-                    this.editor.txt.html(this.value)
-                }
+            // value() {
+            //     if (this.editor) {
+            //         this.editor.txt.html(this.value)
+            //     }
+            // }
+        },
+        methods: {
+            setHtml (val) {
+                this.editor.txt.html(val)
             }
         },
         mounted() {

@@ -14,7 +14,7 @@
     import Editor from "../../../components/editor/editor";
     export default {
         name: "ExpEditor",
-        components: {SimditorEditor, Editor},
+        components: {Editor},
         data(){
             return {
                 value: 'hello world'
