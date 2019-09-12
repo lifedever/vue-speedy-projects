@@ -77,7 +77,6 @@
                     },
                     props: {
                         callback: password => {
-                            console.log(password)
                             this.$refs['containerRef'].loadData()
                             if (password) {
                                 this.$Modal.info({
@@ -91,11 +90,10 @@
                 })
             },
             editUser(user) {
-                this.$openModal({
+                this.$openFormModal({
                     modal: {
                         title: '编辑用户',
                         width: 400,
-                        footer: null
                     },
                     props: {
                         user,
