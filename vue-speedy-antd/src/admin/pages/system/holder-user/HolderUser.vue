@@ -11,7 +11,7 @@
         <s-table-column title="用户名" prop="nickname" width="200px"></s-table-column>
         <s-table-column title="登录账号" prop="loginName" width="200px">
             <template slot-scope="{record}">
-                <a-tag color="green" v-for="u in record.platformUser.userCertificates">
+                <a-tag color="green" :key="u.id" v-for="u in record.platformUser.userCertificates">
                     {{u.loginName}}
                 </a-tag>
             </template>
@@ -19,7 +19,7 @@
         <s-table-column title="添加日期" prop="createdDate" width="200px"></s-table-column>
         <s-table-column title="授权角色" width="250px">
             <template slot-scope="{record}">
-                <a-tag color="blue" v-for="role in record.roles">
+                <a-tag color="blue" :key="role.id" v-for="role in record.roles">
                     {{role.name}}
                 </a-tag>
             </template>
