@@ -137,7 +137,7 @@
     }
     .admin-top-user-content {
         margin: -10px -15px -15px -15px;
-
+        width: 200px;
         .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
             border-right: none;
         }

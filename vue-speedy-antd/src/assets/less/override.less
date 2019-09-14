@@ -10,13 +10,23 @@
     color: #fff;
     background-color: @success-color;
     border-color: @success-color;
-    &:hover, &:active, &:focus {
-        background-color: tint(@success-color, 20%);
+    &:hover, &:active, &:focus, &[disabled], &[disabled]:hover {
+        background-color: tint(@success-color, 25%);
         color: #ffffff;
-        border-color: tint(@success-color, 20%);
+        border-color: tint(@success-color, 25%);
     }
 }
 .ant-btn-sm {
     font-size: 12px;
     line-height: 1.4;
+}
+.ant-btn-danger {
+    background-color: @btn-danger-color;
+    color: #fff;
+    border-color: @btn-danger-color;
+    &:hover, &[disabled], &[disabled]:hover {
+        background-color: tint(@btn-danger-color, 25%);
+        border-color: tint(@btn-danger-color, 25%);
+        color: #fff;
+    }
 }

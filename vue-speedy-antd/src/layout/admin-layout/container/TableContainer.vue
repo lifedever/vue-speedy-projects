@@ -1,37 +1,52 @@
 <template>
-    <base-container class="table-container" ref="baseRef" :hide-header="hideHeader">
+    <base-container class="table-container"
+                    ref="baseRef"
+                    :hide-header="hideHeader"
+                    @headerDbClick="loadData">
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
         <s-table :config="tableConfig" @change="tableChange" class="table-container-s-table">
             <s-table-column title="#" prop="nickname" width="60px" align="center">
                 <template slot-scope="{text, record, index}">
-                    <div>{{index + 1}}</div>
+                    <div v-if="pageable">
+                        {{pagination.pageSize * (pagination.current - 1) + index + 1}}
+                    </div>
                 </template>
             </s-table-column>
             <slot></slot>
-
             <s-table-column title="操作" :width="operationWidth" v-if="operation" align="center">
                 <template slot-scope="{text, record, index}">
                     <a-button size="small"
                               :disabled="record.disableEdit"
                               type="primary"
-                              @click="() => {$emit('editItem', record)}">编辑</a-button>
+                              @click="() => {$emit('editItem', record)}">编辑
+                    </a-button>
                     &nbsp;
                     <a-button size="small"
                               type="danger"
                               :disabled="record.disableDelete"
-                              @click="removeItem(record)">删除</a-button>
+                              @click="removeItem(record)">删除
+                    </a-button>
                     &nbsp;
                     <slot name="otherOperation" v-bind:record="record"></slot>
                 </template>
             </s-table-column>
         </s-table>
+        <div slot="footer">
+            <div v-if="pageable">
+                <a-pagination v-model="pagination.current"
+                              :showTotal="(total, range) => `第 ${range[0]}-${range[1]} 条 / 共 ${total} 条`"
+                              :page-size="pagination.pageSize"
+                              :total="pagination.total" @change="paginationChange"></a-pagination>
+            </div>
+            <div v-else class="pull-right">共 {{dataSource.length}} 条记录</div>
+        </div>
     </base-container>
 </template>
 
 <script>
-    import {Table} from 'ant-design-vue'
+    import {Table, Pagination} from 'ant-design-vue'
     import STable from "../../../components/partial/table/STable";
     import STableColumn from "../../../components/partial/table/STableColumn";
     import {clearObj} from "../../../utils/common";
@@ -39,7 +54,11 @@
 
     export default {
         name: "TableContainer",
-        components: {STableColumn, STable, ATable: Table},
+        components: {
+            STableColumn, STable,
+            ATable: Table,
+            APagination: Pagination
+        },
         props: {
             url: String,
             hideHeader: Boolean,
@@ -60,12 +79,12 @@
         },
         data() {
             return {
-                data: [],
+                data: null,
+                dataSource: [],
                 loading: false,
                 tableHeight: null,
                 pagination: {
-                    // size: 'normal',
-                    // pageSizeOptions: ['10', '20', '30', '50', '100'],
+                    current: 1,
                     pageSize: 10,
                     total: 0,
                 }
@@ -75,11 +94,11 @@
             tableConfig() {
                 return {
                     size: 'middle',
-                    dataSource: this.pageable ? this.data.content : this.data,
+                    dataSource: this.dataSource,
                     loading: this.loading,
                     rowKey: 'id',
                     scroll: {x: true, y: this.tableHeight},
-                    pagination: this.pageable ? this.pagination : false
+                    pagination: false
                 }
             }
         },
@@ -96,18 +115,33 @@
             tableChange(pagination, filters, sorter) {
                 this.loadData({page: pagination.current})
             },
+            paginationChange(page) {
+                this.loadData({page})
+                this.$router.replace({
+                    query: {
+                        page: page
+                    }
+                })
+            },
             loadData(params) {
                 this.loading = true
                 this.$http.get(this.url, {
                     params: clearObj({
-                        page: params && params.page ? params.page - 1: null
+                        page: params && params.page ? params.page - 1 : (this.pageable && this.$route.query.page? Number(this.$route.query.page) - 1: null)
                     })
                 }).then(res => {
                     this.data = res.data
+                    if (this.pageable) {
+                        this.dataSource = this.data.content
+                        this.pagination.current = this.data.number + 1;
+                        this.pagination.pageSize = this.data.size
+                    } else {
+                        this.dataSource = this.data
+                    }
                     this.computedPagination()
                     this.loading = false
                     this.computedTableHeight()
-                    this.$emit('load', res.data)
+                    this.$emit('load', this.dataSource)
                 })
             },
             computedPagination() {

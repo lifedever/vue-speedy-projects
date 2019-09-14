@@ -90,6 +90,13 @@
                 if (menu && !menu.anonymous && !this.token) {
                     this.$router.push('/login')
                 }
+            },
+            '$route.fullPath'(fullPath) {
+                console.log('fullPath', fullPath)
+                this.updateByUrl({
+                    url: this.$route.path,
+                    route: {fullPath}
+                })
             }
         },
         props: {
@@ -128,7 +135,8 @@
                 loadHolder: 'loadHolderAction'
             }),
             ...mapActions('menu', {
-                loadMenus: 'loadMenusAction'
+                loadMenus: 'loadMenusAction',
+                updateByUrl: 'updateTabByUrlAction',
             })
         }
     }

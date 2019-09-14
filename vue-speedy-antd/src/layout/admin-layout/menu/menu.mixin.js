@@ -12,7 +12,8 @@ export default {
         currentMenu(value) {
             this.current = [value.id]
             if (value && value.url && !value.iframe) {
-                this.$router.push(value.url)
+                let path = (value.route ? value.route.fullPath : value.url) || value.url
+                this.$router.push(path)
             } else {
                 this.$router.push(`/frame/${value.id}`)
             }

@@ -1,6 +1,7 @@
 <template>
     <table-container url="/api/holder/users"
                      ref="containerRef"
+                     pageable
                      operation-width="240px"
                      @load="handleLoad"
                      @editItem="editUser">
@@ -8,18 +9,25 @@
             <a-button type="primary" icon="user-add" @click="addUser">添加新用户</a-button>
             <a-button icon="user-add" class="btn-success margin-left" @click="addPlatformUsers">添加其他平台用户</a-button>
         </template>
-        <s-table-column title="用户名" prop="nickname" width="200px"></s-table-column>
+        <s-table-column title="用户名" prop="nickname" width="200px">
+            <template slot-scope="{record}">
+                {{record.nickname}}
+                <a-icon v-if="record.administrator" class="text-danger" type="lock" />
+            </template>
+        </s-table-column>
         <s-table-column title="登录账号" prop="loginName" width="200px">
             <template slot-scope="{record}">
-                <a-tag color="green" :key="u.id" v-for="u in record.platformUser.userCertificates">
+                <span class="text-primary"
+                      :key="u.id"
+                      v-for="u in record.platformUser.userCertificates">
                     {{u.loginName}}
-                </a-tag>
+                </span>
             </template>
         </s-table-column>
         <s-table-column title="添加日期" prop="createdDate" width="200px"></s-table-column>
         <s-table-column title="授权角色" width="250px">
             <template slot-scope="{record}">
-                <a-tag color="blue" :key="role.id" v-for="role in record.roles">
+                <a-tag :color="role.administrator? 'red': 'blue'" :key="role.id" v-for="role in record.roles">
                     {{role.name}}
                 </a-tag>
             </template>
@@ -27,7 +35,6 @@
         <s-table-column title="是否激活" prop="id" width="200px">
             <template slot-scope="{value, record, index}">
                 <a-switch :defaultChecked="record.active"
-                          :disabled="activeDisabled"
                           checkedChildren="已激活"
                           unCheckedChildren="未激活"
                           @change="activeChange(record)"></a-switch>
@@ -53,9 +60,7 @@
             }
         },
         computed: {
-            activeDisabled() {
-                return this.users.filter(o => o.administrator).length === 1
-            }
+
         },
         methods: {
             handleLoad(users) {

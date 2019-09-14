@@ -7946,6 +7946,11 @@ vuex@^3.1.1:
   resolved "http://npm.kanasinfo.cn/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
   integrity sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
 
+wangeditor@^3.1.1:
+  version "3.1.1"
+  resolved "http://npm.kanasinfo.cn/wangeditor/-/wangeditor-3.1.1.tgz#fbd3c1d4976923c9edebb85b29d30b35512ad039"
+  integrity sha1-+9PB1JdpI8nt67hbKdMLNVEq0Dk=
+
 warning@^3.0.0:
   version "3.0.0"
   resolved "http://npm.kanasinfo.cn/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"

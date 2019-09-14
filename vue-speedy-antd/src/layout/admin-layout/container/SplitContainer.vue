@@ -11,6 +11,10 @@
                 <slot name="right" />
             </div>
         </split>
+
+        <div slot="footer" v-if="$slots['footer']">
+            <slot name="footer"></slot>
+        </div>
     </base-container>
 </template>
 
@@ -31,7 +35,7 @@
         },
         data(){
             return {
-                split: '250'
+                split: 0.5
             }
         }
     }

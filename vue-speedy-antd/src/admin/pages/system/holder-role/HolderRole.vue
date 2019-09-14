@@ -15,8 +15,8 @@
         </s-table-column>
         <s-table-column title="权限列表">
             <template slot-scope="{record}">
-                <a-tag class="margin-bottom-sm" v-for="fun in record.allPermissions">
-                    {{fun}}
+                <a-tag class="margin-bottom-sm" v-for="fun in record.functions">
+                    {{fun.name}}: {{fun.id}}
                 </a-tag>
             </template>
         </s-table-column>
@@ -68,6 +68,7 @@
                 this.$openModal({
                     modal: {
                         title: '功能菜单授权',
+                        width: 380
                     },
                     props: {
                         role: role

@@ -3,6 +3,7 @@
 @dark-color: #061f37;
 .admin-layout {
     overflow: hidden;
+
     .admin-layout-header {
         background: #fff;
         padding: 0;
@@ -11,6 +12,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+
         .trigger {
             font-size: 18px;
             padding: 0 @container-pad;
@@ -22,6 +24,7 @@
             flex: 1;
             overflow: hidden;
             padding-right: 50px;
+
             .ant-menu {
                 border-bottom-color: transparent;
             }
@@ -32,15 +35,18 @@
     .admin-layout-sider {
         box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
         background: @dark-color;
+
         &.ant-layout-sider-dark {
-            .logo{
-                background: darken(@dark-color, 4%);
+            .logo {
+                border-bottom: 1px solid darken(@dark-color, 5%);
                 //border-bottom: 1px solid darken(@dark-color, 10%);
             }
         }
+
         .ant-layout-sider-children {
             display: flex;
             flex-direction: column;
+
             .logo {
                 height: 56px;
                 line-height: 56px;
@@ -52,17 +58,19 @@
                 text-align: center;
                 font-weight: bold;
                 font-size: 18px;
+
                 .logo-in {
                     height: 100%;
-                    background: rgba(255, 255, 255, .2);
                 }
             }
 
             .menus {
                 flex: 1;
                 overflow: auto;
+
                 &.ant-menu-dark {
                     background: @dark-color;
+
                     .ant-menu-inline.ant-menu-sub {
                         background: darken(@dark-color, 3%);
                     }
@@ -74,8 +82,10 @@
 
     .admin-layout-content {
         padding: @container-pad;
+
         .admin-layout-content-spin {
             height: 100%;
+
             .ant-spin-container {
                 height: 100%;
 

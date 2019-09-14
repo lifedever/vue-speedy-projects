@@ -25,6 +25,11 @@ export default [
                 name: 'TreeExample',
                 path: 'example/tree',
                 component: () => import('./examples/TreeContainerExample')
+            },
+            {
+                name: 'EditorExample',
+                path: 'example/editor',
+                component: () => import('./examples/EditorExample')
             }
         ]
     }

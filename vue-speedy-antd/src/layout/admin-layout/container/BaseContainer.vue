@@ -1,10 +1,12 @@
 <template>
     <a-layout class="base-container">
         <a-layout-header v-if="!hideHeader">
-            <div class="base-container-header-left" v-if="$slots['headerLeft']">
+            <div class="base-container-header-left"
+                 v-if="$slots['headerLeft']">
                 <slot name="headerLeft"></slot>
             </div>
-            <div class="base-container-header-left" v-else>
+            <div class="base-container-header-left" v-else
+                 @dblclick="handleHeaderDbClick">
                 <a-breadcrumb>
                     <a-breadcrumb-item v-if="parentMenu">
                         <a-icon :type="parentMenu.icon" v-if="parentMenu.icon"/>
@@ -23,6 +25,9 @@
         <a-layout-content ref="contentRef">
             <slot></slot>
         </a-layout-content>
+        <a-layout-footer v-if="$slots['footer']">
+            <slot name="footer"></slot>
+        </a-layout-footer>
     </a-layout>
 </template>
 
@@ -37,6 +42,7 @@
             ALayout: Layout,
             ALayoutContent: Layout.Content,
             ALayoutHeader: Layout.Header,
+            ALayoutFooter: Layout.Footer,
             ABreadcrumb: Breadcrumb,
             ABreadcrumbItem: Breadcrumb.Item,
         },
@@ -51,7 +57,11 @@
                 currentMenu: 'currentGet',
                 parentMenu: 'parentGet'
             }),
-
+        },
+        methods: {
+            handleHeaderDbClick() {
+                this.$emit('headerDbClick')
+            }
         }
     }
 </script>

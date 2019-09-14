@@ -3,6 +3,7 @@ import {localGet, localSave} from "../../../utils/storage";
 import {storage} from "../../../cost/index";
 import {MenuUtil} from "../../../utils/menu.util";
 import _cloneDeep from 'lodash/cloneDeep'
+import _merge from 'lodash/merge'
 
 const state = {
     tabs: localGet(storage.MENU_TAB) || [],
@@ -16,7 +17,11 @@ const getters = {
     },
     iFrameTabsGet: state => state.tabs.filter(o => o.iframe) || [],
     currentGet: (state, {menuTabsGet}) => {
-        return state.current
+        if (state.current) {
+            return state.tabs.find(tab => tab.url === state.current.url) || state.current
+        } else {
+            return null
+        }
     },
     parentGet: state => {
         if (state.menus && state.current) {
@@ -38,7 +43,15 @@ const getters = {
 const actions = {
     loadMenusAction({commit}) {
         new Vue().$http.get(`/api/pt/functions`).then(res => {
-            commit('storeMenus', res.data)
+            // 写死首页
+            let menus = [{
+                "id": "home",
+                "name": "首页",
+                "icon": "home",
+                "url": "/home",
+                "fixed": true
+            }].concat(res.data)
+            commit('storeMenus', menus)
             commit('setFixed', res.data)
         })
     },
@@ -51,7 +64,10 @@ const actions = {
     removeTabAction({state, commit}, menu) {
         commit('removeMenuFromTab', menu)
     },
-    clearAction({commit}){
+    updateTabByUrlAction({state, commit}, menu) {
+        commit('updateTabByUrl', menu)
+    },
+    clearAction({commit}) {
         commit('clear')
     }
 }
@@ -64,7 +80,7 @@ const mutations = {
     'setFixed'(state, menus) {
         if (state.tabs.length === 0) {
             state.tabs = menus.filter(o => o.fixed)
-            state.current = state.tabs.length > 0? state.tabs[0]: null
+            state.current = state.tabs.length > 0 ? state.tabs[0] : null
         }
     },
     'storeMenus'(state, menus) {
@@ -99,6 +115,15 @@ const mutations = {
             state.tabs = tabs
             localSave(storage.MENU_TAB, state.tabs)
         })
+    },
+    'updateTabByUrl'(state, menu) {
+        console.log('updateTab', menu)
+        state.tabs.forEach(tab => {
+            if (tab.url === menu.url) {
+                tab.route = menu.route
+            }
+        })
+        localSave(storage.MENU_TAB, state.tabs)
     }
 }
 export default {
