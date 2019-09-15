@@ -20,6 +20,9 @@ export default {
         menuList: (state, getters, rootState) => {
             return getMenuByRouter(state.routes, rootState.user.access)
         },
+        tagNavList: state => {
+            return state.tagNavList
+        },
         forbiddenGet: (state) => {
             return state.forbidden
         }

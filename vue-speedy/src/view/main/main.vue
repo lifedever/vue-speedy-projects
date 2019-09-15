@@ -184,6 +184,7 @@
         },
         watch: {
             '$route' (newRoute) {
+                console.log('main watch router', newRoute)
                 if (!newRoute.meta || !newRoute.meta.ignoreTab) {
                     this.setBreadCrumb(newRoute.matched)
                     this.setTagNavList(getNewTagList(this.tagNavList, newRoute))
