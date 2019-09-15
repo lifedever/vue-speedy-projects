@@ -1,10 +1,12 @@
 <template>
-    
+    <table-container>
+
+    </table-container>
 </template>
 
 <script>
     export default {
-        name: "OpenUsers"
+        name: "OpenUser"
     }
 </script>
 

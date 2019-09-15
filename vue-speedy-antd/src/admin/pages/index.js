@@ -30,6 +30,11 @@ export default [
                 name: 'EditorExample',
                 path: 'example/editor',
                 component: () => import('./examples/EditorExample')
+            },
+            {
+                name: 'OpenUser',
+                path: 'open/users',
+                component: () => import('./open/user/OpenUser')
             }
         ]
     }

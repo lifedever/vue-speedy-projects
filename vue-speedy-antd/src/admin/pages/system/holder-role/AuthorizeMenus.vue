@@ -5,7 +5,12 @@
                 ref="treeRef"
                 v-model="checkedKeys"
                 :tree-data="functions"
-                defaultExpandAll></a-tree>
+                defaultExpandAll>
+            <template slot="title" slot-scope="data">
+                <a-icon :type="data.icon" v-if="data.icon"></a-icon>
+                {{data.title}}
+            </template>
+        </a-tree>
     </div>
 </template>
 
@@ -36,6 +41,9 @@
         methods: {
             loadAllMenus() {
                 this.$http.get(`/api/functions`).then(res => {
+                    res.data.forEach(o => {
+                        this.$set(o, 'scopedSlots', {title: 'title'})
+                    })
                     this.functions = res.data
                     this.loading = false
                 })
