@@ -41,7 +41,7 @@ export default {
             if (state.tagNavList.findIndex(tag => {
                 if (item.meta.matchByPath) {
                     return tag.path === item.path
-                }else{
+                } else {
                     return tag.name === item.name
                 }
             }) < 0) {
@@ -63,6 +63,18 @@ export default {
         setRoutes(state, routes) {
             state.homeRoute = getHomeRoute(routes)
             state.routes = routes
+        },
+        replaceTabByPath(state, route) {
+            let tags = []
+            state.tagNavList.forEach(tab => {
+                if (tab.path === route.path) {
+                    tags.push(route)
+                } else {
+                    tags.push(tab)
+                }
+            })
+            state.tagNavList = tags
+            setTagNavListInLocalstorage(state.tagNavList)
         }
     },
     actions: {
@@ -71,6 +83,9 @@ export default {
         },
         setRoutes({state, commit}, routes) {
             commit('setRoutes', routes)
+        },
+        replaceTabByPath({commit}, route) {
+            commit('replaceTabByPath', route)
         }
     }
 }
