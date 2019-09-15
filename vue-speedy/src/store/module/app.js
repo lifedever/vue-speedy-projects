@@ -68,10 +68,9 @@ export default {
             let tags = []
             state.tagNavList.forEach(tab => {
                 if (tab.path === route.path) {
-                    tags.push(route)
-                } else {
-                    tags.push(tab)
+                    tab.query = route.query
                 }
+                tags.push(tab)
             })
             state.tagNavList = tags
             setTagNavListInLocalstorage(state.tagNavList)
