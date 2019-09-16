@@ -29,7 +29,7 @@ export const localClear = () => {
 }
 
 export const setToken = (token, expires) => {
-    Cookies.set(TOKEN_KEY, token, {expires: expires})
+    Cookies.set(TOKEN_KEY, token, { expires: expires })
 }
 
 export const getToken = () => {
@@ -42,7 +42,7 @@ export const removeToken = () => {
 
 
 export const setOpenToken = (token, expires) => {
-    Cookies.set(OPEN_TOKEN_KEY, token, {expires: expires})
+    Cookies.set(OPEN_TOKEN_KEY, token, { expires: expires })
 }
 
 export const getOpenToken = () => {
@@ -54,7 +54,7 @@ export const removeOpenToken = () => {
 }
 
 export const cookieSet = (key, value, expires) => {
-    Cookies.set(key, value, {expires: expires})
+    Cookies.set(key, value, { expires: expires })
 }
 
 export const cookieGet = (key) => {
@@ -68,7 +68,7 @@ export const removeCookie = (key) => {
 
 export const setHolder = (holder, expires) => {
     console.log(holder, expires)
-    Cookies.set(HOLDER_KEY, holder, {expires: expires})
+    Cookies.set(HOLDER_KEY, holder, { expires: expires })
 }
 
 
