@@ -67,12 +67,14 @@ module.exports = (option) => {
             chunks: ['chunk-vendors', 'chunk-common', `index`]
         }
     }
-    config.pages[defaultOption.admin.name] = {
-        entry: defaultOption.admin.entry,
-        template: 'public/index.html',
-        filename: `${defaultOption.admin.name}.html`,
-        title: defaultOption.admin.title,
-        chunks: ['chunk-vendors', 'chunk-common', `${defaultOption.admin.name}`]
+    if (defaultOption.admin) {
+        config.pages[defaultOption.admin.name] = {
+            entry: defaultOption.admin.entry,
+            template: 'public/index.html',
+            filename: `${defaultOption.admin.name}.html`,
+            title: defaultOption.admin.title,
+            chunks: ['chunk-vendors', 'chunk-common', `${defaultOption.admin.name}`]
+        }
     }
     return config
 }
