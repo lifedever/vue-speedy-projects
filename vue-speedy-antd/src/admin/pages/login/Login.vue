@@ -28,11 +28,10 @@
                         </s-form-item>
                     </template>
                     <template v-slot:otherBtn>
-                        <a-button type="link"
-                                  class="margin-left"
-                                  @click="() => {$message.info('请联系系统管理员！');}">
+                        <a class="margin-left"
+                           :href="config.defaultLogin.registerUrl">
                             注册
-                        </a-button>
+                        </a>
                     </template>
                 </s-form>
             </a-card>
@@ -90,7 +89,7 @@
                                 this.$message.warning('无相关平台授权账号，请联系平台管理员！')
                                 this.$router.push('/logout')
                                 this.loading = false
-                            } else if(res.data.length === 1){
+                            } else if (res.data.length === 1) {
                                 this.setHolder(res.data[0], loginRes.data.expires)
                             } else {
                                 this.$openModal({

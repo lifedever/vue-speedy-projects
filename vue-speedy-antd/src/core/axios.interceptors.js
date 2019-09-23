@@ -4,7 +4,7 @@ import {getToken, getHolder, getOpenToken} from "../utils/storage";
 export default (axios, router, open = false) => {
     // 请求拦截器
     axios.interceptors.request.use(config => {
-        config.headers.Authorization = `Bearer ${open? getOpenToken(): getToken()}`;
+        config.headers.Authorization = `Bearer ${(open? getOpenToken(): getToken()) || ''}`;
         if (!open) {
             let holder = getHolder()
             if (holder)

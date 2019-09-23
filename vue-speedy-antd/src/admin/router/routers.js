@@ -21,11 +21,6 @@ export default [
         ]
     },
     {
-        name: 'Login',
-        path: '/login',
-        component: () => import('../pages/login')
-    },
-    {
         name: 'Logout',
         path: '/logout',
         redirect: '/login',

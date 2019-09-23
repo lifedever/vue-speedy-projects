@@ -31,7 +31,7 @@ export default {
 
         setSiteTitle(defaultOptions.config.title, true)
 
-        const routerInstance = router(defaultOptions.pages)
+        const routerInstance = router(defaultOptions.pages, defaultOptions.config)
         axiosInterceptors(axios, routerInstance)
 
         /**
