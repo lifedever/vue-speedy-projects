@@ -35,7 +35,17 @@ export default [
                 name: 'OpenUser',
                 path: 'open/users',
                 component: () => import('./open/user/OpenUser')
-            }
+            },
+            {
+                name: 'CustomerList',
+                path: '/customer/list',
+                component: () => import('./customer/CustomerList')
+            },
+            {
+                name: 'OrderConsume',
+                path: '/order/consume',
+                component: () => import('./order/OrderConsume')
+            },
         ]
     }
 ]

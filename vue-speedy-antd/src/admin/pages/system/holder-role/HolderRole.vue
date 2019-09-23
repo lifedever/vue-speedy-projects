@@ -1,13 +1,13 @@
 <template>
-    <table-container url="/api/holder/roles" ref="conRef" @load="handleLoad" @editItem="editRole" operation-width="200px">
+    <table-container url="/api/holder/roles" ref="conRef" @load="handleLoad" @editItem="editRole" :operation-width="200">
         <template v-slot:headerRight>
             <a-button type="primary" icon="plus" @click="addRole">添加角色</a-button>
         </template>
         <s-table-column title="角色名称"
-                        width="150px"
+                        :width="150"
                         prop="name" />
         <s-table-column title="系统默认"
-                        width="100px">
+                        :width="150">
             <template slot-scope="{record}">
                 <a-tag color="green" v-if="record.administrator">是</a-tag>
                 <a-tag color="red" v-else>否</a-tag>

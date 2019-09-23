@@ -1,6 +1,6 @@
 <template>
-    <div class="s-table">
-        <a-table v-bind="config" :columns="columns" @change="handleChange">
+    <div class="s-table" ref="tableRef">
+        <a-table v-bind="config" :scroll="{ x: scrollX, y: scrollY }" :columns="columns" @change="handleChange">
         </a-table>
         <slot></slot>
     </div>
@@ -19,6 +19,7 @@
         data() {
             return {
                 columns: [],
+                scrollY: 0,
                 defaultConfig: {
                     rowKey: 'id'
                 }
@@ -29,8 +30,24 @@
                 this.config.rowKey = 'id'
             }
             this.parseColumns();
+            this.getScrollY()
+        },
+        computed: {
+            scrollX(){
+                let width = 0
+                this.columns.forEach(c => {
+                    width += (c.width || 100)
+                })
+                return width;
+            }
         },
         methods: {
+            getScrollY() {
+                setTimeout(() => {
+                    this.scrollY = this.$el.clientHeight - 50
+                    console.log(this.scrollY)
+                }, 100)
+            },
             handleChange(pagination, filters, sorter) {
                 this.$emit('change', pagination, filters, sorter)
             },

@@ -7,15 +7,18 @@
             <slot name="headerRight"></slot>
         </template>
         <s-table :config="tableConfig" @change="tableChange" class="table-container-s-table">
-            <s-table-column title="#" prop="nickname" width="60px" align="center">
+            <s-table-column title="#" prop="nickname" :width="60" align="center" :fixed="fixedIndex? 'left': null">
                 <template slot-scope="{text, record, index}">
                     <div v-if="pageable">
                         {{pagination.pageSize * (pagination.current - 1) + index + 1}}
                     </div>
+                    <div v-else>
+                        {{index + 1}}
+                    </div>
                 </template>
             </s-table-column>
             <slot></slot>
-            <s-table-column title="操作" :width="operationWidth" v-if="operation" align="center">
+            <s-table-column title="操作" :width="operationWidth" v-if="operation" align="center" :fixed="fixedOperation? 'right': null">
                 <template slot-scope="{text, record, index}">
                     <a-button size="small"
                               :disabled="record.disableEdit"
@@ -68,13 +71,21 @@
                 default: true
             },
             operationWidth: {
-                type: String,
-                default: '150px'
+                type: [Number],
+                default: 150
             },
             // 数据主键
             itemKey: {
                 type: String,
                 default: 'id'
+            },
+            fixedIndex: {
+                type: Boolean,
+                default: true
+            },
+            fixedOperation: {
+                type: Boolean,
+                default: true
             },
         },
         data() {
@@ -86,7 +97,7 @@
                 pagination: {
                     current: 1,
                     pageSize: 10,
-                    total: 0,
+                    total: 0
                 }
             }
         },
@@ -97,8 +108,7 @@
                     dataSource: this.dataSource,
                     loading: this.loading,
                     rowKey: 'id',
-                    scroll: {x: true, y: this.tableHeight},
-                    pagination: false
+                    pagination: false,
                 }
             }
         },

@@ -47,7 +47,7 @@
             id: String,
             sorter: [Function, Boolean],
             sortOrder: [Function, String],
-            width: [Number, String],
+            width: [Number],
             customCell: Function,
             customHeaderCell: Function,
             onFilter: Function,
