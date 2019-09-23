@@ -18,7 +18,7 @@
                             v-decorator="['roles', {initialValue: initialValue}]"
                             style="width: 100%;">
                         <a-row>
-                            <a-col :span="8" v-for="role in roles">
+                            <a-col :span="8" v-for="role in roles" :key="role.id">
                                 <a-checkbox :value="role.id">
                                     {{role.name}}
                                 </a-checkbox>

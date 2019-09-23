@@ -27,7 +27,7 @@
                             </a-input>
                         </s-form-item>
                     </template>
-                    <template v-slot:otherBtn>
+                    <template v-slot:otherBtn v-if="config.defaultLogin && config.defaultLogin.registerUrl">
                         <a class="margin-left"
                            :href="config.defaultLogin.registerUrl">
                             注册

@@ -15,7 +15,7 @@
         </s-table-column>
         <s-table-column title="权限列表">
             <template slot-scope="{record}">
-                <a-tag class="margin-bottom-sm" v-for="fun in record.functions">
+                <a-tag class="margin-bottom-sm" v-for="fun in record.functions" :key="fun.id">
                     {{fun.name}}: {{fun.id}}
                 </a-tag>
             </template>

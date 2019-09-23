@@ -8,7 +8,7 @@
             </s-table-column>
             <s-table-column title="账号">
                 <template slot-scope="{record}">
-                    <a-tag color="green" v-for="c in record.userCertificates">
+                    <a-tag color="green" v-for="c in record.userCertificates" :key="c.id">
                         {{c.loginName}}
                     </a-tag>
                 </template>
