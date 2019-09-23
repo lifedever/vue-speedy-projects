@@ -3,6 +3,7 @@ import AdminInject from '../../conf/admin-main-inject'
 import pages from './pages'
 import adminLayout from "../layout/admin-layout";
 import Login from '../admin/pages/login'
+import TopNotice from '../layout/admin-layout/header/TopNotice'
 
 Vue.use(adminLayout, {})
 
@@ -13,6 +14,9 @@ Vue.use(AdminInject, {
         loginComponent: Login,              // 登录组件，完成对登录页面对自定义
         defaultLogin: {
             registerUrl: '/register'           // 注册地址
+        },
+        top: {
+            rightControl: TopNotice
         }
     },
     pages: pages,

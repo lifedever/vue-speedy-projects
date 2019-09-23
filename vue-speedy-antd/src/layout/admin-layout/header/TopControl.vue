@@ -1,6 +1,6 @@
 <template>
     <div class="admin-top-control">
-        <top-notice></top-notice>
+        <component v-if="config.top && config.top.rightControl" :is="config.top.rightControl"></component>
         <top-user></top-user>
     </div>
 </template>
@@ -9,9 +9,16 @@
 
     import TopUser from "./TopUser";
     import TopNotice from "./TopNotice";
+    import {mapGetters} from "vuex";
+
     export default {
         name: "TopControl",
-        components: {TopNotice, TopUser}
+        components: {TopNotice, TopUser},
+        computed: {
+            ...mapGetters('app', {
+                config: 'configGet'
+            })
+        }
     }
 </script>
 
