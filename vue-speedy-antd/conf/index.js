@@ -15,6 +15,7 @@ module.exports = (option) => {
         baseUrl: '/',    // base url
         devServer: null,      // 开发代理服务器
         title: null,            // 站点名称
+
     };
 
     Object.assign(defaultOption, option);
@@ -61,7 +62,7 @@ module.exports = (option) => {
     if (defaultOption.index) {
         config.pages['index'] = {
             entry: defaultOption.index.entry,
-            template: 'public/index.html',
+            template: defaultOption.index.template || '../public/index.html',
             filename: `index.html`,
             title: defaultOption.index.title,
             chunks: ['chunk-vendors', 'chunk-common', `index`]
@@ -70,7 +71,7 @@ module.exports = (option) => {
     if (defaultOption.admin) {
         config.pages[defaultOption.admin.name] = {
             entry: defaultOption.admin.entry,
-            template: 'public/index.html',
+            template: defaultOption.admin.template || '../public/index.html',
             filename: `${defaultOption.admin.name}.html`,
             title: defaultOption.admin.title,
             chunks: ['chunk-vendors', 'chunk-common', `${defaultOption.admin.name}`]
