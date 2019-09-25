@@ -7,7 +7,8 @@
                 :trigger="null"
                 collapsible
                 v-model="collapsed">
-            <div class="logo">
+            <div class="logo" :style="{backgroundImage: 'url(\'/logo.png\')'}">
+
                 <slot name="logo" v-bind:data="collapsed"></slot>
             </div>
             <menus :menus="menus" v-if="menus && menus.length > 0" :menu-collapsed="collapsed"></menus>
@@ -110,7 +111,7 @@
             },
             siderWidth: {
                 type: [Number, String],
-                default: 250
+                default: 230
             }
         },
         computed: {

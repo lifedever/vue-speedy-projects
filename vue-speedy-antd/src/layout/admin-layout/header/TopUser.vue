@@ -12,13 +12,10 @@
         </a>
         <div slot="title" class="admin-top-user-title">
             <div class="text-lg">
-                <a-avatar style="color: #61759a; backgroundColor: rgba(178,220,255,0.65)">
+                <a-avatar style="color: #61759a; background-color: rgba(178,220,255,0.65)">
                     {{usernameShort}}
                 </a-avatar>
                 {{userInfo.nickname || userInfo.loginName}}
-                <div class="text-right">
-                    <a-tag color="blue">{{holder.name}}</a-tag>
-                </div>
             </div>
         </div>
         <div slot="content" class="admin-top-user-content">
