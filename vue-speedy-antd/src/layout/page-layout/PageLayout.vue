@@ -1,6 +1,6 @@
 <template>
     <div class="page-layout">
-        <top-menus :theme="theme" :menus="menus" v-model="currentMenu">
+        <top-menus v-if="menus && menus.length > 0" :theme="theme" :menus="menus" v-model="currentMenu">
             <slot name="topRight"></slot>
         </top-menus>
         <div class="container">
