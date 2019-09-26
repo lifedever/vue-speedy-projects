@@ -2,5 +2,20 @@
 .page-layout {
     .page-layout-menus {
         background: @menu-dark-bg;
+        z-index: 1;
+    }
+    .page-layout-wrapper {
+        padding-top: 10px;
+    }
+    &.page-layout-fixed-menu {
+        .page-layout-menus {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+        .page-layout-wrapper {
+            margin-top: 46px;
+        }
     }
 }

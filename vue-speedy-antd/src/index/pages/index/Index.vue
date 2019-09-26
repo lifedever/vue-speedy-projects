@@ -1,5 +1,5 @@
 <template>
-    <page-layout :menus="menus" :current-menu="['home']">
+    <page-layout :menus="menus" :current-menu="['home']" fixed-menu>
         <a-menu slot="topRight" theme="dark" mode="horizontal" :value="[]">
             <a-menu-item>
                 <router-link to="login">
