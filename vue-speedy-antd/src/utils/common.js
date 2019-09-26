@@ -73,14 +73,6 @@ export function oneOf (value, validList) {
     return false
 }
 
-export const setLocale = (language) => {
-    window.localStorage.setItem(LANGUAGE_KEY, language)
-}
-
-export const getLocale = () => {
-    return window.localStorage.getItem(LANGUAGE_KEY)
-}
-
 export const appendPath = (prefix, path) => {
     if (_endsWith(prefix, '/')) {
         prefix = prefix.slice(0, -1)
