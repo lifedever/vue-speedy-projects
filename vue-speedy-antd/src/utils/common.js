@@ -1,3 +1,7 @@
+import {LANGUAGE_KEY} from "../../../vue-speedy/src/const";
+import _endsWith from 'lodash/endsWith'
+import _startsWith from 'lodash/startsWith'
+
 export const setSiteTitle = (title, reset = false) => {
     if (reset) {
         document.title = title
@@ -67,4 +71,22 @@ export function oneOf (value, validList) {
         }
     }
     return false
+}
+
+export const setLocale = (language) => {
+    window.localStorage.setItem(LANGUAGE_KEY, language)
+}
+
+export const getLocale = () => {
+    return window.localStorage.getItem(LANGUAGE_KEY)
+}
+
+export const appendPath = (prefix, path) => {
+    if (_endsWith(prefix, '/')) {
+        prefix = prefix.slice(0, -1)
+    }
+    if (_startsWith(path, '/')) {
+        path = path.slice(1)
+    }
+    return prefix + '/' + path
 }

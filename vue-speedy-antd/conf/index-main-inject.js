@@ -7,6 +7,7 @@ import VueBus from 'vue-bus'
 
 import AntdDependency from '../src/antd-common-dependency'
 import axiosInterceptors from '../src/core/axios.interceptors'
+import Prototype from '../src/core/prototype'
 
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
@@ -19,6 +20,7 @@ Vue.use(VueBus)
 Vue.config.productionTip = false
 Vue.use(AntdDependency)
 Vue.use(InjectSModal)
+Vue.use(Prototype)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
