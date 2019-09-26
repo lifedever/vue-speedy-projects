@@ -1,4 +1,3 @@
-import {LANGUAGE_KEY} from "../../../vue-speedy/src/const";
 import _endsWith from 'lodash/endsWith'
 import _startsWith from 'lodash/startsWith'
 
