@@ -21,6 +21,7 @@ import {
     Col,
     message,
     notification,
+    Menu
 } from 'ant-design-vue';
 
 export default {
@@ -59,5 +60,9 @@ export default {
         Vue.component(Divider.name, Divider)
         Vue.component(Row.name, Row)
         Vue.component(Col.name, Col)
+        Vue.component(Menu.name, Menu)
+        Vue.component(Menu.Item.name, Menu.Item)
+        Vue.component(Menu.SubMenu.name, Menu.SubMenu)
+        Vue.component(Menu.ItemGroup.name, Menu.ItemGroup)
     }
 }

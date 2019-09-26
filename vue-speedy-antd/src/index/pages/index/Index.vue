@@ -1,15 +1,22 @@
 <template>
-    <page-layout>
+    <page-layout :menus="menus" :current-menu="['home']">
+        <a-menu slot="topRight" theme="dark" mode="horizontal" :value="[]">
+            <a-menu-item>
+                <router-link to="login">
+                    登录
+                </router-link>
+            </a-menu-item>
+        </a-menu>
         <div class="home">
             <a-row>
-                <a-col :span="16" :offset="4" v-if="userInfo" class="margin-bottom-lg">
+                <a-col :span="24" v-if="userInfo" class="margin-bottom-lg">
                     <h3>
                         登录用户信息如下：
                         <router-link to="/logout">退出</router-link>
                     </h3>
                     <div>{{userInfo}}</div>
                 </a-col>
-                <a-col :span="16" :offset="4">
+                <a-col :span="24">
                    <h3>
                        这是首页，需要自己实现功能，参考配置如下：
                    </h3>
@@ -77,6 +84,25 @@ module.exports = require('./conf')({
 
     export default {
         name: "Index",
+        data() {
+            return {
+                menus: [
+                    {
+                        id: 'home',
+                        name: '首页',
+                        url: '/'
+                    },
+                    {
+                        id: 'menu1',
+                        name: '文章列表',
+                    },
+                    {
+                        id: 'menu2',
+                        name: '用户列表'
+                    }
+                ]
+            }
+        },
         computed: {
             ...mapGetters('indexUser', {
                 'userInfo': 'userInfoGet'
@@ -87,6 +113,5 @@ module.exports = require('./conf')({
 
 <style scoped>
     .home {
-        padding: 60px;
     }
 </style>
