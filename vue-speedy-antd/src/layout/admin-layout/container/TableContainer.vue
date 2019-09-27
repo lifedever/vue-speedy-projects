@@ -64,6 +64,8 @@
         },
         props: {
             url: String,
+            dataLoading: Boolean,
+            tableData: Array,
             hideHeader: Boolean,
             pageable: Boolean,
             operation: {
@@ -106,22 +108,34 @@
                 return {
                     size: 'middle',
                     dataSource: this.dataSource,
-                    loading: this.loading,
+                    loading: this.tableData? this.dataLoading: this.loading,
                     rowKey: 'id',
                     pagination: false,
                 }
             }
         },
         mounted() {
-            this.loadData()
+            if (this.tableData) {
+                this.initData()
+            }else{
+                this.loadData();
+            }
             window.addEventListener('resize', this.computedTableHeight)
         },
         watch: {
             url() {
-                this.loadData()
+                if (this.url) {
+                    this.loadData()
+                }
+            },
+            tableData() {
+                this.initData()
             }
         },
         methods: {
+            initData() {
+                this.dataSource = this.tableData
+            },
             tableChange(pagination, filters, sorter) {
                 this.loadData({page: pagination.current})
             },

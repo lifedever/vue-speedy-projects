@@ -18,6 +18,11 @@ export default [
                 path: 'system/roles',
                 component: () => import('../pages/system/holder-role')
             },
+            {
+                name: 'SystemHolderConfigurations',
+                path: 'system/configurations',
+                component: () => import('../pages/system/holder-configuration')
+            },
         ]
     },
     {

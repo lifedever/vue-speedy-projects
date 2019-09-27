@@ -1,6 +1,8 @@
 <template>
     <div class="s-table" ref="tableRef">
-        <a-table v-bind="config" :scroll="{ x: scrollX, y: scrollY }" :columns="columns" @change="handleChange">
+        <a-table v-bind="config"
+                 :locale="{emptyText: '暂无数据', filterConfirm: '确定', filterReset: '重置'}"
+                 :scroll="{ x: scrollX, y: scrollY }" :columns="columns" @change="handleChange">
         </a-table>
         <slot></slot>
     </div>
@@ -21,7 +23,7 @@
                 columns: [],
                 scrollY: 0,
                 defaultConfig: {
-                    rowKey: 'id'
+                    rowKey: 'id',
                 }
             }
         },

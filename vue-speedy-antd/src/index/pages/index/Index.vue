@@ -104,6 +104,11 @@ module.exports = require('./conf')({
                     {
                         id: 'menu2',
                         name: '用户列表'
+                    },
+                    {
+                        id: 'admin',
+                        name: '后台登录',
+                        url: '/admin'
                     }
                 ]
             }
