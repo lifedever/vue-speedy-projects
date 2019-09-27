@@ -6,6 +6,11 @@
                     登录
                 </router-link>
             </a-menu-item>
+            <a-menu-item>
+                <router-link to="login">
+                    注册
+                </router-link>
+            </a-menu-item>
         </a-menu>
         <div class="home">
             <a-row>

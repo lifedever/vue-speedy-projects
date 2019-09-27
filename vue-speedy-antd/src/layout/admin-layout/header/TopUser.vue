@@ -10,14 +10,6 @@
                 &nbsp; {{userInfo.nickname || userInfo.loginName}}
             </span>
         </a>
-        <div slot="title" class="admin-top-user-title">
-            <div class="text-lg">
-                <a-avatar style="color: #61759a; background-color: rgba(178,220,255,0.65)">
-                    {{usernameShort}}
-                </a-avatar>
-                {{userInfo.nickname || userInfo.loginName}}
-            </div>
-        </div>
         <div slot="content" class="admin-top-user-content">
             <a-menu @click="menuClick">
                 <a-menu-item key="profile">
