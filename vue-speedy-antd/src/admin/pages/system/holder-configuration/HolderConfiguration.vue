@@ -9,10 +9,12 @@
                 <a-button type="primary" :loading="initing" @click="initConfigs">马上初始化</a-button>
             </div>
         </div>
-        <div v-if="status === 'NONE'">
-            <a-alert type="info" showIcon>
-                当前平台暂不支持配置项
-            </a-alert>
+        <div v-if="status === 'NONE'" class="s-config-incomplete">
+            <a-icon type="meh" class="text-primary" :style="{fontSize: '48px', marginBottom: '20px'}"/>
+            <div class="s-config-incomplete-message">
+                当前平台暂不支持配置项管理！
+            </div>
+
         </div>
         <a-spin class="mar-top-lg" v-if="!status"></a-spin>
     </base-container>
