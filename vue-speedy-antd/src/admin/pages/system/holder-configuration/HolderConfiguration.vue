@@ -10,7 +10,7 @@
             </div>
         </div>
         <div v-if="status === 'NONE'" class="s-config-incomplete">
-            <a-icon type="meh" class="text-primary" :style="{fontSize: '48px', marginBottom: '20px'}"/>
+            <a-icon type="frown" class="text-primary" :style="{fontSize: '48px', marginBottom: '20px'}"/>
             <div class="s-config-incomplete-message">
                 当前平台暂不支持配置项管理！
             </div>
