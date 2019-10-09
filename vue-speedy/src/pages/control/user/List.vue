@@ -1,5 +1,5 @@
 <template>
-    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="210">
+    <DataContainer url="/api/holder/users" ref="containerRef" :operation-width="210" :editModal="editModal">
         <div slot="headerRight">
             <Button type="primary"
                     icon="md-add"
@@ -54,7 +54,28 @@
         },
         data() {
             return {
-                sending: false
+                sending: false,
+            }
+        },
+        computed: {
+            editModal(){
+                return {
+                    component: () => import('./Edit'),
+                    width: 300,
+                    title: '编辑用户',
+                    ok: (formIns, error) => {
+                        formIns.saveUser().then(res => {
+                            this.$Message.success('保存成功！');
+                            this.$unmountModal()
+                            this.$refs['containerRef'].loadData()
+                        }).catch(err => {
+                            if (getErrorCode(err) === 'HOLDER_PROFILE_EXISTS') {
+                                this.$Message.warning('邮箱已被占用')
+                            }
+                            error();
+                        })
+                    }
+                }
             }
         },
         methods: {

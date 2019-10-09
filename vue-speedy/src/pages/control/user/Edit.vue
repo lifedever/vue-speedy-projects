@@ -5,7 +5,7 @@
                 <Input type="text" v-model="userForm.nickname" ref="nickname"/>
             </FormItem>
             <FormItem label="邮箱" prop="email">
-                <Input type="email" v-model="userForm.email" ref="email"  @input="emailChange"/>
+                <Input type="email" :readonly="!!userForm.id" v-model="userForm.email" ref="email"  @input="emailChange"/>
             </FormItem>
         </Form>
     </div>
@@ -16,28 +16,43 @@
 
     export default {
         name: "Edit",
+        props: {
+            itemId: String
+        },
         data(){
             return {
                 userValidate: {
                     nickname: {
                         required: true,
                         message: '请填写用户名称'
-                    },
+                    }
+                    ,
                     email: {
-                        type: 'email',
                         required: true,
                         message: '请填写正确的邮箱格式'
                     }
                 },
                 userForm: {
+                    id: null,
                     email: '',
                     nickname: ''
-                }
+                },
+                current: null
             }
         },
         mounted(){
+            if (this.itemId) {
+                this.loadCurrent(this.itemId)
+            }
         },
         methods: {
+            loadCurrent(id) {
+                this.$http.get(`/api/holder/users/${id}`).then(res => {
+                    this.userForm.id = res.data.id
+                    this.userForm.email = res.data.loginName
+                    this.userForm.nickname = res.data.nickname
+                })
+            },
             emailChange(){
                 if (this.userForm.email) {
                     this.userForm.email = this.userForm.email.toLowerCase()

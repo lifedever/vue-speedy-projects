@@ -5,7 +5,7 @@ module.exports = require('./conf')({
         port: 6060,
         proxy: {
             '/api': {
-                target: "http://yoyotrip.kanasinfo.com",
+                target: "http://localhost:8081",
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {
