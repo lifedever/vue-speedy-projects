@@ -12,6 +12,11 @@ export default {
             id: 'system_holder_role',
             name: '角色管理',
             url: '/system/roles'
+        },
+        {
+            id: 'system_holder_configuration',
+            name: '配置管理',
+            url: '/system/configurations'
         }
     ]
 }
