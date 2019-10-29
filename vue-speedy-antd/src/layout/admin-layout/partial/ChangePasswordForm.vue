@@ -1,5 +1,5 @@
 <template>
-    <div class="profile">
+    <div>
         <s-form @submit="modifyPass" ref="form">
             <template v-slot:default>
                 <s-form-item label="输入原密码">
@@ -64,7 +64,5 @@
 </script>
 
 <style scoped>
-    .profile {
-        width: 500px;
-    }
+
 </style>
