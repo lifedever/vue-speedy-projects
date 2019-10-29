@@ -26,8 +26,8 @@
                   v-if="status === 'INCOMPLETE'">
             <a-button type="primary" :loading="initing" icon="database" @click="initConfigs">导入配置项</a-button>
         </template>
-        <s-table-column title="主键" prop="configKey" :width="200"></s-table-column>
-        <s-table-column title="配置名称" prop="configKeyTitle" :width="300"></s-table-column>
+        <s-table-column title="主键" prop="configKey" :width="350"></s-table-column>
+        <s-table-column title="配置名称" prop="configKeyTitle" :width="350"></s-table-column>
         <s-table-column title="配置内容" prop="configValue"></s-table-column>
         <s-table-column title="操作" :width="100" align="center">
             <template slot-scope="{record}">

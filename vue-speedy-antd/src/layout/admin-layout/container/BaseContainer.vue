@@ -50,7 +50,6 @@
             hideHeader: Boolean
         },
         mounted() {
-            console.log(this.$slots)
         },
         computed: {
             ...mapGetters('menu', {
