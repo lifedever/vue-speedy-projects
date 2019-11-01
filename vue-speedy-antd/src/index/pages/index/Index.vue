@@ -25,10 +25,9 @@
                    <h3>
                        这是首页，需要自己实现功能，参考配置如下：
                    </h3>
-                    <h1>
-                        main.js:
-                    </h1>
-                    <pre>
+                    <a-collapse v-model="current">
+                        <a-collapse-panel header="main.js" :key="1">
+                            <pre>
 import Vue from "vue";
 import Inject from '../../conf/index-main-inject'
 
@@ -49,8 +48,9 @@ Vue.use(Inject, {
     modules: []
 })
         </pre>
-                    <h1>vue.config.js</h1>
-                    <pre>
+                        </a-collapse-panel>
+                        <a-collapse-panel header="vue.config.js" :key="2">
+                            <pre>
 module.exports = require('./conf')({
     title: 'Vue Speedy Ant Design',
     admin: {
@@ -78,10 +78,9 @@ module.exports = require('./conf')({
 })
 
                 </pre>
-                    <h1>
-                        多页面Nginx配置
-                    </h1>
-                    <pre>
+                        </a-collapse-panel>
+                        <a-collapse-panel header="多页面Nginx配置" :key="3">
+                            <pre>
 server {
     listen       80;
     server_name  localhost;
@@ -121,6 +120,8 @@ server {
     }
 }
                     </pre>
+                        </a-collapse-panel>
+                    </a-collapse>
                 </a-col>
             </a-row>
         </div>
@@ -129,11 +130,17 @@ server {
 
 <script>
     import {mapGetters} from "vuex";
+    import {Collapse} from 'ant-design-vue'
 
     export default {
+        components: {
+            ACollapse: Collapse,
+            ACollapsePanel: Collapse.Panel
+        },
         name: "Index",
         data() {
             return {
+                current: 1,
                 menus: [
                     {
                         id: 'home',
