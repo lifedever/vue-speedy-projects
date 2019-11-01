@@ -1,8 +1,10 @@
 <template>
     <div :class="['page-layout', fixedMenu? 'page-layout-fixed-menu': '']">
         <top-menus v-if="menus && menus.length > 0"
-                   :span="menuSpan"
                    :theme="theme" :menus="menus" v-model="currentMenu">
+            <div slot="brand">
+                <slot name="brand"></slot>
+            </div>
             <slot name="topRight"></slot>
         </top-menus>
         <div class="page-layout-wrapper container">
@@ -22,10 +24,10 @@
         },
         mounted() {
             this.loadUserInfo().then(res => {
-
             }).catch(err => {
                 console.warn('openUser not login!')
             })
+            console.log('currentMenus', this.currentMenu)
         },
         props: {
             menus: Array,
@@ -35,10 +37,6 @@
                 default: 'dark'
             },
             fixedMenu: Boolean,
-            menuSpan: {
-                type: Number,
-                default: 20
-            }
         },
         methods: {
             ...mapActions('indexUser', {

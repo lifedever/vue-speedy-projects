@@ -13,7 +13,7 @@ module.exports = require('./conf')({
         port: 6060,
         proxy: {
             '/api': {
-                target: "http://localhost:18080",
+                target: process.env.VUE_APP_SERVER_URL,
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {

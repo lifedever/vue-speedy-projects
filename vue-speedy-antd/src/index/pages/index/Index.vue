@@ -1,32 +1,19 @@
 <template>
-    <page-layout :menus="menus" :current-menu="['home']" fixed-menu>
-        <a-menu slot="topRight" theme="dark" mode="horizontal" :value="[]">
-            <a-menu-item>
-                <router-link to="login">
-                    登录
-                </router-link>
-            </a-menu-item>
-            <a-menu-item>
-                <router-link to="login">
-                    注册
-                </router-link>
-            </a-menu-item>
-        </a-menu>
-        <div class="home">
-            <a-row>
-                <a-col :span="24" v-if="userInfo" class="margin-bottom-lg">
-                    <h3>
-                        登录用户信息如下：
-                        <router-link to="/logout">退出</router-link>
-                    </h3>
-                    <div>{{userInfo}}</div>
-                </a-col>
-                <a-col :span="24">
-                   <h3>
-                       这是首页，需要自己实现功能，参考配置如下：
-                   </h3>
-                    <a-collapse :active-key="1">
-                        <a-collapse-panel header="main.js" :key="1">
+    <div class="home">
+        <a-row>
+            <a-col :span="24" v-if="userInfo" class="margin-bottom-lg">
+                <h3>
+                    登录用户信息如下：
+                    <router-link to="/logout">退出</router-link>
+                </h3>
+                <div>{{userInfo}}</div>
+            </a-col>
+            <a-col :span="24">
+                <h3>
+                    这是首页，需要自己实现功能，参考配置如下：
+                </h3>
+                <a-collapse active-key="1" accordion>
+                    <a-collapse-panel header="main.js" key="1">
                             <pre>
 import Vue from "vue";
 import Inject from '../../conf/index-main-inject'
@@ -48,8 +35,8 @@ Vue.use(Inject, {
     modules: []
 })
         </pre>
-                        </a-collapse-panel>
-                        <a-collapse-panel header="vue.config.js" :key="2">
+                    </a-collapse-panel>
+                    <a-collapse-panel header="vue.config.js" key="2">
                             <pre>
 module.exports = require('./conf')({
     title: 'Vue Speedy Ant Design',
@@ -78,8 +65,8 @@ module.exports = require('./conf')({
 })
 
                 </pre>
-                        </a-collapse-panel>
-                        <a-collapse-panel header="多页面Nginx配置" :key="3">
+                    </a-collapse-panel>
+                    <a-collapse-panel header="多页面Nginx配置" key="3">
                             <pre>
 server {
     listen       80;
@@ -120,12 +107,11 @@ server {
     }
 }
                     </pre>
-                        </a-collapse-panel>
-                    </a-collapse>
-                </a-col>
-            </a-row>
-        </div>
-    </page-layout>
+                    </a-collapse-panel>
+                </a-collapse>
+            </a-col>
+        </a-row>
+    </div>
 </template>
 
 <script>
@@ -134,33 +120,12 @@ server {
 
     export default {
         components: {
-            ACollapse: Collapse,
-            ACollapsePanel: Collapse.Panel
+            [Collapse.name]: Collapse,
+            [Collapse.Panel.name]: Collapse.Panel
         },
         name: "Index",
         data() {
-            return {
-                menus: [
-                    {
-                        id: 'home',
-                        name: '首页',
-                        url: '/'
-                    },
-                    {
-                        id: 'menu1',
-                        name: '文章列表',
-                    },
-                    {
-                        id: 'menu2',
-                        name: '用户列表'
-                    },
-                    {
-                        id: 'admin',
-                        name: '后台登录',
-                        url: '/admin'
-                    }
-                ]
-            }
+            return {}
         },
         computed: {
             ...mapGetters('indexUser', {

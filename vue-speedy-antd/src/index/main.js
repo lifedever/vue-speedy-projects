@@ -7,6 +7,27 @@ Vue.use(PageLayoutInject, {})
 Vue.use(Inject, {
     config: {
         title: '业务前台页面',
+        menus: [
+            {
+                id: 'Index',
+                name: '首页',
+                url: '/'
+            },
+            {
+                id: 'Config',
+                name: '配置参考',
+                url: '/config'
+            },
+            {
+                id: 'menu2',
+                name: '功能列表'
+            },
+            {
+                id: 'admin',
+                name: '后台登录',
+                url: '/admin'
+            }
+        ]
     },
     pages: [
         {
@@ -15,7 +36,15 @@ Vue.use(Inject, {
             meta: {
                 anonymous: true
             },
-            component: () => import('./pages/index/Index')
+            component: () => import('./pages/index/Index'),
+        },
+        {
+            name: 'Config',
+            path: '/config',
+            meta: {
+                anonymous: true
+            },
+            component: () => import('./pages/config/Config')
         }
     ],
     modules: []

@@ -7,7 +7,8 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "serve:hot": "nodemon --exec yarn serve"
+        "serve:hot": "nodemon --exec yarn serve",
+        "serve:uat": "nodemon --exec yarn serve --mode uat"
     },
     "dependencies": {
         "ant-design-vue": "^1.3.16",

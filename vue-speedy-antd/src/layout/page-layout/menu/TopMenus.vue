@@ -1,8 +1,11 @@
 <template>
     <div class="page-layout-menus">
         <div class="container">
-            <a-row>
-                <a-col :span="span">
+            <a-row type="flex" justify="space-between">
+                <a-col>
+                    <div class="brand">
+                        <slot name="brand"></slot>
+                    </div>
                     <a-menu :theme="theme"
                             v-model="current"
                             mode="horizontal">
@@ -36,8 +39,7 @@
                         </template>
                     </a-menu>
                 </a-col>
-
-                <a-col :span="24-span" v-if="$slots.default" class="text-right">
+                <a-col v-if="$slots.default" class="text-right">
                     <slot></slot>
                 </a-col>
             </a-row>
@@ -55,10 +57,10 @@
         components: {
             ACol,
             ARow,
-            AMenu: Menu,
-            AMenuItem: Menu.Item,
-            ASubMenu: Menu.SubMenu,
-            AMenuItemGroup: Menu.ItemGroup
+            [Menu.name]: Menu,
+            [Menu.Item.name]: Menu.Item,
+            [Menu.SubMenu.name]: Menu.SubMenu,
+            [Menu.ItemGroup.name]: Menu.ItemGroup
         },
         data() {
             return {
@@ -68,14 +70,15 @@
         mounted() {
             this.current = this.value
         },
+        watch: {
+            value() {
+                this.current = this.value
+            }
+        },
         props: {
             theme: String,
             value: Array,
             menus: Array,
-            span: {
-                type: Number,
-                default: 20
-            }
         }
     }
 </script>
