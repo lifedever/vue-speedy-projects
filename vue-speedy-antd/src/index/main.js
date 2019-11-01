@@ -20,7 +20,8 @@ Vue.use(Inject, {
             },
             {
                 id: 'menu2',
-                name: '功能列表'
+                name: '功能列表',
+                url: '/functions'
             },
             {
                 id: 'admin',
@@ -31,20 +32,30 @@ Vue.use(Inject, {
     },
     pages: [
         {
-            name: 'Index',
-            path: '/',
+            name: 'Home',
+            path: '',
             meta: {
                 anonymous: true
             },
-            component: () => import('./pages/index/Index'),
-        },
-        {
-            name: 'Config',
-            path: '/config',
-            meta: {
-                anonymous: true
-            },
-            component: () => import('./pages/config/Config')
+            component: () => import('./Home'),
+            children: [
+                {
+                    name: 'Index',
+                    path: '/',
+                    meta: {
+                        anonymous: true
+                    },
+                    component: () => import('./pages/index/Index'),
+                },
+                {
+                    name: 'Config',
+                    path: '/config',
+                    meta: {
+                        anonymous: true
+                    },
+                    component: () => import('./pages/config/Config')
+                }
+            ]
         }
     ],
     modules: []
