@@ -14,27 +14,7 @@
                 </h3>
                 <a-collapse active-key="1" accordion>
                     <a-collapse-panel header="main.js" key="1">
-                            <pre>
-import Vue from "vue";
-import Inject from '../../conf/index-main-inject'
-
-Vue.use(Inject, {
-    config: {
-        title: '业务前台页面',
-    },
-    pages: [
-        {
-            name: 'Index',
-            path: '/',
-            meta: {
-                anonymous: true
-            },
-            component: () => import('./pages/index/Index')
-        }
-    ],
-    modules: []
-})
-        </pre>
+                        <main-j-s/>
                     </a-collapse-panel>
                     <a-collapse-panel header="vue.config.js" key="2">
                             <pre>
@@ -117,9 +97,11 @@ server {
 <script>
     import {mapGetters} from "vuex";
     import {Collapse} from 'ant-design-vue'
+    import MainJS from "./MainJS";
 
     export default {
         components: {
+            MainJS,
             [Collapse.name]: Collapse,
             [Collapse.Panel.name]: Collapse.Panel
         },
