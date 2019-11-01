@@ -25,7 +25,7 @@
                    <h3>
                        这是首页，需要自己实现功能，参考配置如下：
                    </h3>
-                    <a-collapse v-model="current">
+                    <a-collapse :active-key="1">
                         <a-collapse-panel header="main.js" :key="1">
                             <pre>
 import Vue from "vue";
@@ -140,7 +140,6 @@ server {
         name: "Index",
         data() {
             return {
-                current: 1,
                 menus: [
                     {
                         id: 'home',
