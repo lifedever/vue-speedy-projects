@@ -1,5 +1,6 @@
 import notification from 'ant-design-vue/lib/notification'
 import {getToken, getHolder, getOpenToken} from "../utils/storage";
+import Vue from 'vue'
 
 export default (axios, router, open = false) => {
     // 请求拦截器
@@ -20,11 +21,10 @@ export default (axios, router, open = false) => {
     axios.interceptors.response.use(response => {
         return Promise.resolve(response)
     }, error => {
+        console.log()
         if (error.response && error.response.status === 500) {
-            notification.warning({
-                message: '系统错误',
-                description: error.response.data ? error.response.data.message || '系统发生了错误，请联系管理员！' : '系统发生了错误，请联系管理员！',
-            })
+            error.type = 'SERVER_ERROR'
+            Vue.config.errorHandler(error)
         }
         if (error && error.response && !open) {
             let status = error.response.status;

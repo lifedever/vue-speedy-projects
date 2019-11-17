@@ -9,17 +9,21 @@ export default {
         Vue.config.errorHandler = (error, vm, trace) => {
             console.error(vm);
             console.error(error);
-            let name = 'notice#' + new Date().getTime()
+            let key = 'notice#' + new Date().getTime()
             new Vue().$notification.warning({
-                name,
+                key,
                 duration: 0,
-                title: '未知错误',
-                render: function (createElement) {
+                message: '未知错误',
+                style: {
+                    width: '450px',
+                    marginLeft: `${-60}px`,
+                },
+                description: function (createElement) {
                     return createElement('error-notice', {
                         props: {
-                            name,
+                            noticeKey: key,
                             error,
-                            type: 'JS_ERROR',
+                            type: error.type || 'JS_ERROR',
                         }
                     })
                 }

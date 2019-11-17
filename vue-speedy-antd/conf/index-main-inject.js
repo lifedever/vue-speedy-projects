@@ -11,7 +11,7 @@ import Prototype from '../src/core/prototype'
 
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
-import notification from 'ant-design-vue/lib/notification'
+import errorNotice from '../src/components/global/error-notice'
 
 import '../src/assets/less/index.less'
 import '../src/index/less/index.less'
@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 Vue.use(AntdDependency)
 Vue.use(InjectSModal)
 Vue.use(Prototype)
+Vue.use(errorNotice)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
@@ -44,17 +45,7 @@ export default {
             store.registerModule(m.path, m.module)
         })
 
-        Vue.config.errorHandler = (error, vm) => {
-            console.error(error)
-            console.error({
-                error,
-                vm
-            })
-            notification.error({
-                message: '遇到未知错误!',
-                description: `请按Ctrl + F5强制刷新浏览器重试！`
-            })
-        }
+
         // 保存配置信息
         store.dispatch('indexApp/storeConfigAction', defaultOptions.config)
 

@@ -9,16 +9,15 @@
 
         <div v-if="view === 'resolve'" class="mar-top-sm">
             <ol v-if="view === 'resolve'">
-                <li><code>Ctrl+Shift+F5</code> 强制刷新浏览器</li>
+                <li><code>Ctrl/Command + Shift + F5</code> 强制刷新浏览器</li>
                 <li>更换高版本的浏览器：<a href="https://www.baidu.com/s?wd=Google%20Chrome浏览器下载" target="_blank">Chrome</a> / <a
                         href="https://www.mozilla.org/zh-CN/firefox/new/" target="_blank">Firefox</a></li>
-                <li>联系客服：<a href="mailto:feedback@manyibar.com">feedback@manyibar.com</a></li>
             </ol>
         </div>
         <div v-if="view === 'feedback'" class="mar-top-sm">
             <pre>{{content}}</pre>
             <div>
-                <Button size="small" @click="send" type="primary" :loading="loading">发送反馈</Button>
+                <a-button @click="send" type="primary" :loading="loading">发送反馈</a-button>
             </div>
         </div>
     </div>
@@ -36,7 +35,7 @@
         props: {
             error: Error,
             type: String,
-            name: String
+            noticeKey: String
         },
         mounted() {
             if (this.type === 'SERVER_ERROR') {
@@ -48,9 +47,9 @@
         computed: {
             title() {
                 if (this.type === 'SERVER_ERROR') {
-                    return this.error.response ? this.error.response.data.message : ''
+                    return this.error.response ? this.error.response.data.code : ''
                 } else {
-                    this.error.message
+                    return this.error.message
                 }
             },
             content() {
@@ -78,16 +77,15 @@
             },
             send() {
                 this.loading = true
-                this.$http.post(`/page/general/feedback`, {
+                this.$http.post(`/api/general/feedback`, {
                     title: this.title,
                     type: this.type,
                     link: location.href,
                     content: JSON.stringify(this.content)
                 }).then(res => {
                     this.loading = false
-                    this.$Message.success('已收到您的反馈，谢谢！')
-                    console.log(this.name)
-                    this.$Notice.close(this.name)
+                    this.$message.success('已收到您的反馈，谢谢！')
+                    this.$notification.close(this.noticeKey)
                 })
             }
         }
@@ -97,17 +95,13 @@
 <style scoped lang="less">
     .error-notice {
         line-height: 24px;
-
         ul, ol {
-            margin-left: 18px;
-            margin-top: 3px;
-
+            margin-left: -20px;
             li {
                 a {
                     font-weight: bold;
                     color: #313131;
                     text-decoration: underline;
-
                     &.active {
                         color: #0a65ff;
                     }
