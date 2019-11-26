@@ -2,12 +2,13 @@
     <base-container class="table-container"
                     ref="baseRef"
                     :hide-header="hideHeader"
+                    :hide-index="hideIndex"
                     @headerDbClick="loadData">
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
         <s-table :config="tableConfig" @change="tableChange" class="table-container-s-table">
-            <s-table-column title="#" prop="nickname" :width="60" align="center" :fixed="fixedIndex? 'left': null">
+            <s-table-column title="#" prop="nickname" :width="60" align="center" :fixed="fixedIndex? 'left': null" v-if="!hideIndex">
                 <template slot-scope="{text, record, index}">
                     <div v-if="pageable">
                         {{pagination.pageSize * (pagination.current - 1) + index + 1}}
@@ -68,6 +69,10 @@
             tableData: Array,
             hideHeader: Boolean,
             pageable: Boolean,
+            hideIndex:{
+                type: Boolean,
+                default: false
+            },
             operation: {
                 type: Boolean,
                 default: true
@@ -111,6 +116,7 @@
                     loading: this.tableData? this.dataLoading: this.loading,
                     rowKey: 'id',
                     pagination: false,
+                    indentSize: 20
                 }
             }
         },
