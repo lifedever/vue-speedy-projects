@@ -1,5 +1,5 @@
 .tab-container {
-    .ant-tabs {
+    > .ant-tabs {
         display: flex;
         flex-direction: column;
         > .ant-tabs-top-content  {
@@ -12,9 +12,9 @@
     }
 }
 .base-container.tab-container.tab-container-hide-header {
-    .ant-layout-content {
+    > .ant-layout-content {
         padding: 6px 0 0;
-        .ant-tabs {
+        > .ant-tabs {
             display: flex;
             flex-direction: column;
             >.ant-tabs-bar.ant-tabs-top-bar{
