@@ -27,6 +27,11 @@ export default [
                 component: () => import('./examples/TreeContainerExample')
             },
             {
+                name: 'TabExample',
+                path: 'example/tabs',
+                component: () => import('./examples/TabContainerExample')
+            },
+            {
                 name: 'EditorExample',
                 path: 'example/editor',
                 component: () => import('./examples/EditorExample')
