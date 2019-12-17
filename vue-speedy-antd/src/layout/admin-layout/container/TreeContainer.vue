@@ -60,6 +60,7 @@
             },
             defaultConfig2() {
                 return {
+                    autoExpandParent: true,
                     showLine: false,
                     showIcon: this.showIcon,
                     draggable: false,
