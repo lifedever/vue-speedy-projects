@@ -1,5 +1,5 @@
 <template>
-    <split-container>
+    <split-container v-model="split">
         <div slot="left">
             <a-spin v-if="loading"/>
             <template v-else>
@@ -39,10 +39,12 @@
             config: {
                 type: Object,
                 default: {}
-            }
+            },
+            splitWidth: [Number, String]
         },
         data() {
             return {
+                split: '250px',
                 loading: false,
                 parent: null,
                 key: null,

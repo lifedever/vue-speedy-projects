@@ -3,7 +3,7 @@
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
-        <split v-model="split" mode="horizontal">
+        <split v-model="split" mode="horizontal" @on-moving="handleMoving">
             <div slot="left" class="height100">
                 <slot name="left" />
             </div>
@@ -35,7 +35,22 @@
         },
         data(){
             return {
-                split: 0.5
+                split: null
+            }
+        },
+        mounted() {
+            this.split = this.value
+        },
+        props: {
+            value: {
+                type: [String, Number],
+                default: 0.5
+            }
+        },
+        methods: {
+            handleMoving(e){
+                this.$emit('input', this.split);
+                this.$emit('on-moving', e);
             }
         }
     }

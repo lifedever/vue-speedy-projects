@@ -1,5 +1,5 @@
 <template>
-    <split-container>
+    <split-container v-model="split">
         <template v-slot:headerRight>
             <a-button type="primary">添加按钮</a-button>
         </template>
@@ -15,6 +15,11 @@
 <script>
     export default {
         name: "SplitContainerExample",
+        data(){
+            return {
+                split: 0.2
+            }
+        }
     }
 </script>
 
