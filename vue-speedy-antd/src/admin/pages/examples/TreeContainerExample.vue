@@ -1,7 +1,8 @@
 <template>
     <tree-container :data="data"
-                    v-model="selectedNodes"
-                    :config="{asyncLoad: false, autoExpandParent: true, defaultExpandAll: true}">
+                    @load="handleLoad"
+                    :expandedKeys="expandedKeys"
+                    :config="{asyncLoad: false}">
         <table-container url="/api/categories/1IcwnGBCkVPNAT2byiQ/places"
                          hide-header
                          pageable
@@ -18,9 +19,7 @@
         components: {STableColumn},
         data() {
             return {
-                selectedNodes: [{
-                    id: "Cd6ATXSIRfbi1cM8yWh"
-                }],
+                expandedKeys: [],
                 data: [
                     {
                         key: '节点1',
@@ -42,12 +41,14 @@
 
         },
         watch: {
-            selectedNodes() {
-                console.log(this.selectedNodes)
-            }
+
         },
         methods: {
-
+            handleLoad(data){
+                this.$nextTick(() => {
+                    this.expandedKeys = [data[0].key]
+                })
+            }
         }
     }
 </script>

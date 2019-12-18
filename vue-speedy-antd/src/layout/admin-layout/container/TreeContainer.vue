@@ -8,6 +8,8 @@
                 <a-tree :treeData="gData"
                         v-bind="defaultConfig"
                         @dragenter="onDragEnter"
+                        :expandedKeys.sync="expandedKeys"
+                        :selectedKeys.sync="selectedKeys"
                         @check="handleCheck"
                         @load="handleLoad"
                         @select="handleSelect"
@@ -36,6 +38,8 @@
             url: String,
             data: Array,
             value: Array,
+            expandedKeys: Array,
+            selectedKeys: Array,
             config: {
                 type: Object,
                 default: {}
@@ -50,7 +54,6 @@
                 key: null,
                 gData: [],
                 defaultConfig: {
-                    selectedKeys: []
                 }
             }
         },
@@ -75,21 +78,21 @@
             if (this.defaultConfig.asyncLoad) {
                 this.defaultConfig.loadData = this.onLoadData
             }
+
             console.log('defaultConfig', this.defaultConfig)
 
             if (this.data) {
                 this.gData = this.data
                 this.decorationTreeNode(this.data)
+                this.handleLoad(this.gData)
             } else {
-                this.loadData().then(data => {
-                    this.gData = data
-                });
+                this.loadData()
             }
 
             // 设置默认选中
             if (this.value) {
                 this.value.forEach(o => {
-                    this.defaultConfig.selectedKeys.push(o.id)
+                    this.selectedKeys.push(o.id)
                 })
             }
         },
@@ -127,7 +130,6 @@
              * @param items
              */
             decorationTreeNode(items) {
-                console.log(items)
                 items.forEach(item => {
                     if (this.showIcon) {
                         this.$set(item, 'scopedSlots', {icon: 'custom'})
@@ -152,7 +154,8 @@
                         this.decorationTreeNode(items)
                         this.loading = false
                         this.initLoad()
-                        this.handleLoad(res.data)
+                        this.gData = items
+                        this.handleLoad(this.gData)
                         resolve(items)
                     }).catch(reject)
                 })
