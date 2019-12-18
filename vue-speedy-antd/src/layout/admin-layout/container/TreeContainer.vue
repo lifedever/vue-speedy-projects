@@ -62,13 +62,16 @@
                     return {}
                 }
             },
-            splitWidth: [Number, String]
+            splitWidth: {
+                type: [Number, String],
+                default: '250px'
+            }
         },
         data() {
             return {
                 defaultSelectedKeys: [],
                 defaultExpandedKeys: [],
-                split: '250px',
+                split: null,
                 loading: false,
                 parent: null,
                 key: null,
@@ -93,6 +96,7 @@
             }
         },
         created() {
+            this.split = this.splitWidth
             this.initDefaultSelectedKeys()
             this.initDefaultExpandedKeys()
             this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config);
