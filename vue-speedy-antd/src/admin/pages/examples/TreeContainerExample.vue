@@ -21,7 +21,7 @@
         components: {STableColumn},
         data() {
             return {
-                expandedKeys: [],
+                expandedKeys: ['节点1'],
                 data: [
                     {
                         key: '节点1',

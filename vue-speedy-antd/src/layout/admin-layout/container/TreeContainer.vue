@@ -44,7 +44,12 @@
             url: String,
             data: Array,
             value: Array,
-            expandedKeys: Array,
+            expandedKeys: {
+                type: Array,
+                default: () => {
+                    return []
+                }
+            },
             selectedKeys: {
                 type: Array,
                 default: () => {
@@ -119,6 +124,9 @@
             },
             selectedKeys(){
                 this.initDefaultSelectedKeys()
+            },
+            expandedKeys(){
+                this.initDefaultExpandedKeys()
             }
         },
         methods: {
