@@ -13,6 +13,7 @@ import '../src/assets/less/index.less'
 import {setSiteTitle} from "../src/utils/common";
 import InjectSModal from '../src/components/global/s-modal'
 import errorNotice from '../src/components/global/error-notice'
+import SForm from '../src/components/partial/form'
 
 Vue.use(VueBus)
 Vue.config.productionTip = false
@@ -20,6 +21,7 @@ Vue.use(AntdDependency)
 Vue.use(InjectSModal)
 Vue.use(Prototype)
 Vue.use(errorNotice)
+Vue.use(SForm)
 export default {
     install: (Vue, options) => {
         let defaultOptions = {
