@@ -14,7 +14,7 @@
                 <a-tree :treeData="gData"
                         v-bind="defaultConfig"
                         @dragenter="onDragEnter"
-                        :expandedKeys="expandedKeys"
+                        :expandedKeys.sync="defaultExpandedKeys"
                         :selectedKeys.sync="defaultSelectedKeys"
                         @check="handleCheck"
                         @load="handleLoad"
@@ -62,6 +62,7 @@
         data() {
             return {
                 defaultSelectedKeys: [],
+                defaultExpandedKeys: [],
                 split: '250px',
                 loading: false,
                 parent: null,
@@ -88,6 +89,7 @@
         },
         created() {
             this.initDefaultSelectedKeys()
+            this.initDefaultExpandedKeys()
             this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config);
             // 判断是否异步
             if (this.defaultConfig.asyncLoad) {
@@ -124,6 +126,13 @@
                 if (this.selectedKeys) {
                     this.selectedKeys.forEach(key => {
                         this.defaultSelectedKeys.push(key)
+                    })
+                }
+            },
+            initDefaultExpandedKeys() {
+                if (this.expandedKeys) {
+                    this.expandedKeys.forEach(key => {
+                        this.defaultExpandedKeys.push(key)
                     })
                 }
             },

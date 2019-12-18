@@ -4,7 +4,7 @@
                     :expandedKeys="expandedKeys"
                     :config="{asyncLoad: false}">
         <a-button slot="headerRight" @click="handleAdd">添加</a-button>
-        <table-container url="/api/categories/1IcwnGBCkVPNAT2byiQ/places"
+        <table-container url="/api/holder/users"
                          hide-header
                          pageable
                          :operation="false">
