@@ -69,13 +69,13 @@
                 }
             }
         },
-        mounted() {
+        created() {
             this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config)
-
             // 判断是否异步
             if (this.defaultConfig.asyncLoad) {
                 this.defaultConfig.loadData = this.onLoadData
             }
+            console.log('defaultConfig', this.defaultConfig)
 
             if (this.data) {
                 this.gData = this.data
