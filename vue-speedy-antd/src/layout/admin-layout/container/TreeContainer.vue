@@ -1,5 +1,8 @@
 <template>
     <split-container v-model="split">
+        <template v-slot:headerRight>
+            <slot name="headerRight"></slot>
+        </template>
         <div slot="left">
             <a-spin v-if="loading"/>
             <template v-else>

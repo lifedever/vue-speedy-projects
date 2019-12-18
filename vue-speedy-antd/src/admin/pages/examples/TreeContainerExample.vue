@@ -3,6 +3,7 @@
                     @load="handleLoad"
                     :expandedKeys="expandedKeys"
                     :config="{asyncLoad: false}">
+        <a-button slot="headerRight">添加</a-button>
         <table-container url="/api/categories/1IcwnGBCkVPNAT2byiQ/places"
                          hide-header
                          pageable
