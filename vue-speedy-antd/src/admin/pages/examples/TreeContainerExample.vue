@@ -3,7 +3,7 @@
                     @load="handleLoad"
                     :expandedKeys="expandedKeys"
                     :config="{asyncLoad: false}">
-        <a-button slot="headerRight">添加</a-button>
+        <a-button slot="headerRight" @click="handleAdd">添加</a-button>
         <table-container url="/api/categories/1IcwnGBCkVPNAT2byiQ/places"
                          hide-header
                          pageable
@@ -15,6 +15,7 @@
 
 <script>
     import STableColumn from "../../../components/partial/table/STableColumn";
+
     export default {
         name: "TreeContainerExample",
         components: {STableColumn},
@@ -29,7 +30,7 @@
                             {
                                 key: '节点11',
                                 title: '节点11'
-                            },{
+                            }, {
                                 key: '节点12',
                                 title: '节点12'
                             },
@@ -38,16 +39,21 @@
                 ]
             }
         },
-        computed: {
-
-        },
-        watch: {
-
-        },
+        computed: {},
+        watch: {},
         methods: {
-            handleLoad(data){
+            handleLoad(data) {
                 this.$nextTick(() => {
                     this.expandedKeys = [data[0].key]
+                })
+            },
+            handleAdd() {
+                this.$openModal({
+                    modal: {
+                        title: '测试标题',
+                        footer: null
+                    },
+                    component: () => import('./FormExample')
                 })
             }
         }

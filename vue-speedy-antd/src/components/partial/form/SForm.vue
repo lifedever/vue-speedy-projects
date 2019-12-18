@@ -3,8 +3,7 @@
             :layout="layout"
             @submit.prevent="handleSubmit">
         <slot></slot>
-        <a-form-item
-                :wrapper-col="{ span: 24 - submitBtnSpan, offset: submitBtnSpan }">
+        <a-form-item :class="btnCenter? 'text-center': ''" :wrapper-col="btnCenter? {}: { span: 24 - submitBtnSpan, offset: submitBtnSpan }">
             <a-button
                     type="primary"
                     :loading="loading"
@@ -31,6 +30,10 @@
             layout: {
                 type: String,
                 default: 'horizontal'
+            },
+            btnCenter: {
+                type: Boolean,
+                default: true
             },
             okText: {
                 type: String,
