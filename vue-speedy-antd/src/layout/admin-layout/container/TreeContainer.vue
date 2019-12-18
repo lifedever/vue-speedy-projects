@@ -3,13 +3,16 @@
         <div slot="left">
             <a-spin v-if="loading"/>
             <template v-else>
-                <a-input-search v-model="key" v-if="defaultConfig.searchable" class="margin-bottom-sm"
-                                placeholder="关键词搜索" @change="onSearch"/>
+                <a-input-search v-model="key"
+                                v-if="defaultConfig.searchable"
+                                class="margin-bottom-sm"
+                                placeholder="关键词搜索"
+                                @change="onSearch"/>
                 <a-tree :treeData="gData"
                         v-bind="defaultConfig"
                         @dragenter="onDragEnter"
-                        :expandedKeys.sync="expandedKeys"
-                        :selectedKeys.sync="selectedKeys"
+                        :expandedKeys="expandedKeys"
+                        :selectedKeys.sync="defaultSelectedKeys"
                         @check="handleCheck"
                         @load="handleLoad"
                         @select="handleSelect"
@@ -39,15 +42,23 @@
             data: Array,
             value: Array,
             expandedKeys: Array,
-            selectedKeys: Array,
+            selectedKeys: {
+                type: Array,
+                default: () => {
+                    return []
+                }
+            },
             config: {
                 type: Object,
-                default: {}
+                default: () => {
+                    return {}
+                }
             },
             splitWidth: [Number, String]
         },
         data() {
             return {
+                defaultSelectedKeys: [],
                 split: '250px',
                 loading: false,
                 parent: null,
@@ -73,7 +84,8 @@
             }
         },
         created() {
-            this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config)
+            this.initDefaultSelectedKeys()
+            this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config);
             // 判断是否异步
             if (this.defaultConfig.asyncLoad) {
                 this.defaultConfig.loadData = this.onLoadData
@@ -92,16 +104,26 @@
             // 设置默认选中
             if (this.value) {
                 this.value.forEach(o => {
-                    this.selectedKeys.push(o.id)
+                    this.defaultSelectedKeys.push(o.id)
                 })
             }
         },
         watch: {
             url() {
                 this.loadData()
+            },
+            selectedKeys(){
+                this.initDefaultSelectedKeys()
             }
         },
         methods: {
+            initDefaultSelectedKeys() {
+                if (this.selectedKeys) {
+                    this.selectedKeys.forEach(key => {
+                        this.defaultSelectedKeys.push(key)
+                    })
+                }
+            },
             initLoad() {
                 this.parent = null
                 this.key = null
@@ -118,6 +140,10 @@
                 this.$emit('load', loadedKeys, e)
             },
             handleSelect(selectedKeys, e) {
+                this.defaultSelectedKeys = []
+                selectedKeys.forEach(key => {
+                    this.defaultSelectedKeys.push(key)
+                })
                 this.$emit('select', selectedKeys, e)
                 let nodes = []
                 e.selectedNodes.forEach(o => {
