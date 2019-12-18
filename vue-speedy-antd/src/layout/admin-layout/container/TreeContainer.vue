@@ -152,6 +152,7 @@
                         this.decorationTreeNode(items)
                         this.loading = false
                         this.initLoad()
+                        this.handleLoad(res.data)
                         resolve(items)
                     }).catch(reject)
                 })
