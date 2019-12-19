@@ -11,7 +11,7 @@
             </span>
         </template>
         <keep-alive>
-            <router-view v-if="!iframeShow"></router-view>
+            <router-view v-if="!iframeShow" :key="key"></router-view>
         </keep-alive>
         <i-frame-view v-if="iFrames && iFrames.length > 0"
                       :key="item.id"
@@ -48,6 +48,9 @@
             }),
             iframeShow() {
                 return this.currentMenu && this.currentMenu.iframe
+            },
+            key() {
+                return this.$route.fullPath
             }
         }
     }

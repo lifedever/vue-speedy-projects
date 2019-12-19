@@ -51,6 +51,11 @@ export default [
                 path: '/order/consume',
                 component: () => import('./order/OrderConsume')
             },
+            {
+                name: "Test",
+                path: '/test/:id',
+                component: () => import ('./examples/Test')
+            }
         ]
     }
 ]
