@@ -14,6 +14,7 @@ import {
     Spin,
     Alert,
     Modal,
+    Empty,
     List,
     Divider,
     Avatar,
@@ -64,5 +65,6 @@ export default {
         Vue.component(Menu.Item.name, Menu.Item)
         Vue.component(Menu.SubMenu.name, Menu.SubMenu)
         Vue.component(Menu.ItemGroup.name, Menu.ItemGroup)
+        Vue.component(Empty.name, Empty)
     }
 }
