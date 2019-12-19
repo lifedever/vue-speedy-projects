@@ -15,13 +15,6 @@
         mounted() {
             this.init()
         },
-        watch: {
-            '$route'(){
-                if (this.$route.name === 'Test') {
-                    // this.init()
-                }
-            }
-        },
         methods: {
             init(){
                 this.text = this.$route.params.id
