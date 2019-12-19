@@ -29,6 +29,13 @@
             defaultTab: [String, Number],
             hideHeader: Boolean,
         },
+        watch: {
+            '$route.query._t'(value) {
+                if (value) {
+                    this.current = value
+                }
+            }
+        },
         methods: {
             routeTab() {
                 let query = Object.assign({}, this.$route.query)
