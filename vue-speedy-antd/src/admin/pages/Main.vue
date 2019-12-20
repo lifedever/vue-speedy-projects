@@ -50,7 +50,7 @@
                 return this.currentMenu && this.currentMenu.iframe
             },
             key() {
-                return this.currentMenu.id
+                return this.currentMenu ? this.currentMenu.id: null
             }
         }
     }
