@@ -50,7 +50,7 @@
                 return this.currentMenu && this.currentMenu.iframe
             },
             key() {
-                return currentMenu.id
+                return this.currentMenu.id
             }
         }
     }
