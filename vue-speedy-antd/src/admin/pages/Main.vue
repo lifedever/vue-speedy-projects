@@ -50,7 +50,7 @@
                 return this.currentMenu && this.currentMenu.iframe
             },
             key() {
-                return this.$route.fullPath
+                return currentMenu.id
             }
         }
     }
