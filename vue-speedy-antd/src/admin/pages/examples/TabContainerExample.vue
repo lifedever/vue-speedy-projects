@@ -14,6 +14,8 @@
             <p>Content of Tab Pane 2</p>
         </a-tab-pane>
         <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>
+
+        <a-button slot="tabBarExtraContent">dddd</a-button>
     </tab-container>
 </template>
 

@@ -16,7 +16,7 @@
 <script>
     import {mapActions} from "vuex";
     import './less/page-layout.less'
-    import TopMenus from "./menu/TopMenus";
+    import TopMenus from "@/layout/page-layout/menu/TopMenus";
     export default {
         name: "PageLayout",
         components: {
