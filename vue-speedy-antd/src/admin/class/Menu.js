@@ -9,8 +9,9 @@ class Menu {
      * @param children 子菜单
      * @param anonymous 允许匿名访问
      * @param hide 从左侧菜单列表中隐藏
+     * @param selecedKey 手动指定对应左侧被选中的菜单的Id
      */
-    constructor(id, name, url, icon, fixed, children, anonymous, hide) {
+    constructor(id, name, url, icon, fixed, children, anonymous, hide, selecedKey) {
         this.id = id
         this.name = name
         this.icon = icon
@@ -19,6 +20,8 @@ class Menu {
         this.children = children
         this.anonymous = anonymous
         this.hide = hide
+        this.selecedKey = selecedKey
+        
     }
 
     toString() {

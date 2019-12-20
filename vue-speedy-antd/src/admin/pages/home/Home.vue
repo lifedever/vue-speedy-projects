@@ -22,7 +22,8 @@ export default {
     methods: {
         openNewTab(){
             let id = new Date().getTime()
-            let menu = new Menu(id, "Tab_" + id, '/test/' + id)
+            let menu = new Menu(id = id, name = "Tab_" + id, '/test/' + id)
+            menu.selecedKey = 'home'
             this.openTab(menu)
         }
     }

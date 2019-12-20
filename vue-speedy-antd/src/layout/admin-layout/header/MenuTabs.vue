@@ -1,6 +1,6 @@
 <template>
     <div class="menu-tab">
-        <a-menu v-model="current"
+        <a-menu v-model="currentTab"
                 mode="horizontal" @select="menuSelect">
             <a-menu-item v-for="menu in menus" :key="menu.id">
                 <menu-name :menu="menu" closable/>

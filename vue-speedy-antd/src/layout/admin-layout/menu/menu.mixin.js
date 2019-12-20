@@ -5,12 +5,15 @@ import {setSiteTitle} from "../../../utils/common";
 export default {
     data() {
         return {
-            current: null
+            current: null,
+            currentTab: null
         }
     },
     watch: {
         currentMenu(value) {
-            this.current = [value.id]
+            this.current = [value.selecedKey || value.id]
+            this.currentTab = [value.id]
+            console.log('current Menu Id', this.current)
             if (value && value.url && !value.iframe) {
                 let path = (value.route ? value.route.fullPath : value.url) || value.url
                 this.$router.push(path)
