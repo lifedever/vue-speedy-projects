@@ -1,66 +1,64 @@
 <template>
-    <tree-container :data="data"
-                    @load="handleLoad"
-                    splitWidth="50px"
-                    :expandedKeys="expandedKeys"
-                    :config="{asyncLoad: false}">
+    <tree-container
+        :data="data"
+        @load="handleLoad"
+        splitWidth="250px"
+        :expandedKeys="expandedKeys"
+        :config="{asyncLoad: false}"
+    >
         <a-button slot="headerRight" @click="handleAdd">添加</a-button>
-        <table-container url="/api/holder/users"
-                         hide-header
-                         pageable
-                         :operation="false">
+        <table-container url="/api/holder/users" hide-header pageable :operation="false">
             <s-table-column title="名称" prop="name"></s-table-column>
         </table-container>
     </tree-container>
 </template>
 
 <script>
-    import STableColumn from "../../../components/partial/table/STableColumn";
+import STableColumn from "../../../components/partial/table/STableColumn";
 
-    export default {
-        name: "TreeContainerExample",
-        components: {STableColumn},
-        data() {
-            return {
-                expandedKeys: ['节点1'],
-                data: [
-                    {
-                        key: '节点1',
-                        title: '节点1',
-                        children: [
-                            {
-                                key: '节点11',
-                                title: '节点11'
-                            }, {
-                                key: '节点12',
-                                title: '节点12'
-                            },
-                        ]
-                    }
-                ]
-            }
+export default {
+    name: "TreeContainerExample",
+    components: { STableColumn },
+    data() {
+        return {
+            expandedKeys: ['节点1'],
+            data: [
+                {
+                    key: '节点1',
+                    title: '节点1',
+                    children: [
+                        {
+                            key: '节点11',
+                            title: '节点11'
+                        }, {
+                            key: '节点12',
+                            title: '节点12'
+                        },
+                    ]
+                }
+            ]
+        }
+    },
+    computed: {},
+    watch: {},
+    methods: {
+        handleLoad(data) {
+            this.$nextTick(() => {
+                this.expandedKeys = [data[0].key]
+            })
         },
-        computed: {},
-        watch: {},
-        methods: {
-            handleLoad(data) {
-                this.$nextTick(() => {
-                    this.expandedKeys = [data[0].key]
-                })
-            },
-            handleAdd() {
-                this.$openModal({
-                    modal: {
-                        title: '测试标题',
-                        footer: null
-                    },
-                    component: () => import('./FormExample')
-                })
-            }
+        handleAdd() {
+            this.$openModal({
+                modal: {
+                    title: '测试标题',
+                    footer: null
+                },
+                component: () => import('./FormExample')
+            })
         }
     }
+}
 </script>
 
 <style scoped>
-
 </style>

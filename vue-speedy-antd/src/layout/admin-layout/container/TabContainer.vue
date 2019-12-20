@@ -3,7 +3,7 @@
         :hide-header="hideHeader"
         :class="['tab-container', hideHeader? 'tab-container-hide-header': '']"
     >
-        <a-tabs v-model="current" :animated="false" @change="tabChange">
+        <a-tabs v-model="current" :animated="false" @change="tabChange" :tabPosition="tabPosition">
             <template>
                 <slot></slot>
             </template>
@@ -35,6 +35,10 @@ export default {
     props: {
         defaultTab: [String, Number],
         hideHeader: Boolean,
+        tabPosition: {
+            type: String,
+            default: 'top'
+        }
     },
     watch: {
         '$route.query._t'(value) {

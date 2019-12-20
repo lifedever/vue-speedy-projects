@@ -1,5 +1,5 @@
 <template>
-    <tab-container default-tab="2" hide-header>
+    <tab-container default-tab="2" hide-header tab-position="top">
         <a-tab-pane tab="Tab 1" key="1">Content of Tab Pane 1</a-tab-pane>
         <a-tab-pane tab="Tab 2" key="2" forceRender>
             <p>Content of Tab Pane 2</p>
@@ -20,21 +20,20 @@
 </template>
 
 <script>
-    import TabContainer from "../../../layout/admin-layout/container/TabContainer";
-    import {Tabs} from 'ant-design-vue'
+import TabContainer from "../../../layout/admin-layout/container/TabContainer";
+import { Tabs } from 'ant-design-vue'
 
-    export default {
-        name: "TabContainerExample",
-        components: {
-            TabContainer,
-            [Tabs.TabPane.name]: Tabs.TabPane
-        },
-        mounted() {
+export default {
+    name: "TabContainerExample",
+    components: {
+        TabContainer,
+        [Tabs.TabPane.name]: Tabs.TabPane
+    },
+    mounted() {
 
-        }
     }
+}
 </script>
 
 <style scoped>
-
 </style>
