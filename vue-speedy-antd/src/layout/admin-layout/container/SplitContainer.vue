@@ -41,6 +41,11 @@
         mounted() {
             this.split = this.value
         },
+        watch: {
+            value(){
+                this.split = this.value
+            }
+        },
         props: {
             value: {
                 type: [String, Number],

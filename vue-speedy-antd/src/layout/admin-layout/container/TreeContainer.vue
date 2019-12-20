@@ -100,7 +100,6 @@ export default {
         }
     },
     created() {
-        this.split = this.splitWidth
         this.initDefaultSelectedKeys()
         this.initDefaultExpandedKeys()
         this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config);
@@ -125,6 +124,11 @@ export default {
                 this.defaultSelectedKeys.push(o.id)
             })
         }
+    },
+    mounted(){
+        this.$nextTick(() => {
+            this.split = this.splitWidth
+        })
     },
     watch: {
         url() {

@@ -1,6 +1,7 @@
 <template>
     <tree-container :data="data"
                     @load="handleLoad"
+                    splitWidth="50px"
                     :expandedKeys="expandedKeys"
                     :config="{asyncLoad: false}">
         <a-button slot="headerRight" @click="handleAdd">添加</a-button>
