@@ -11,8 +11,7 @@
             </span>
         </template>
         <keep-alive>
-            <router-view v-if="!iframeShow && key" :key="key"></router-view>
-            <router-view v-else-if="!iframeShow"></router-view>
+            <router-view v-if="!iframeShow" :key="$route.fullPath"></router-view>
         </keep-alive>
         <i-frame-view v-if="iFrames && iFrames.length > 0"
                       :key="item.id"
@@ -32,8 +31,12 @@
         components: {IFrameView},
         data() {
             return {
-
+                key: null
             }
+        },
+        created(){
+        },
+        watch: {
         },
         computed:{
             ...mapGetters('menu', {
@@ -50,9 +53,6 @@
             iframeShow() {
                 return this.currentMenu && this.currentMenu.iframe
             },
-            key() {
-                return this.currentMenu ? this.currentMenu.id: null
-            }
         }
     }
 </script>
