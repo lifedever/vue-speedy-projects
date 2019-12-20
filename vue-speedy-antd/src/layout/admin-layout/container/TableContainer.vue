@@ -40,7 +40,7 @@
         <div slot="footer">
             <div v-if="pageable">
                 <a-pagination v-model="pagination.current"
-                              :showTotal="(total, range) => `第 ${range[0]}-${range[1]} 条 / 共 ${total} 条`"
+                              :showTotal="(total, range) => `第 ${range[0]}-${range[1]} 条 / 共 ${total} 条记录`"
                               :page-size="pagination.pageSize"
                               :total="pagination.total" @change="paginationChange"></a-pagination>
             </div>
