@@ -23,7 +23,11 @@
             </div>
         </a-layout-header>
         <a-layout-content ref="contentRef">
-            <slot></slot>
+            <keep-alive>
+                <div class="content-wrapper" :key="$route.fullPath">
+                    <slot></slot>
+                </div>
+            </keep-alive>
         </a-layout-content>
         <a-layout-footer v-if="$slots['footer']">
             <slot name="footer"></slot>

@@ -1,19 +1,22 @@
 <template>
-    <div>
-        <h1>{{text}}</h1>
-    </div>
+    <base-container>
+        <test-item></test-item>
+    </base-container>
 </template>
 
 <script>
+    import TestItem from "./TestItem";
     export default {
         name: "Test",
+        components: {TestItem},
+        mounted() {
+            console.log('mounted')
+            this.init()
+        },
         data() {
             return {
                 text: null
             }
-        },
-        mounted() {
-            this.init()
         },
         methods: {
             init(){
