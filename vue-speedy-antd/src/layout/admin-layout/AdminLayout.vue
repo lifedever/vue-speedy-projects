@@ -83,7 +83,7 @@
         data() {
             return {
                 collapsed: false,
-                mainLoading: true
+                mainLoading: true,
             }
         },
         watch: {
