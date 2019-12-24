@@ -1,5 +1,5 @@
 <template>
-    <split-container v-model="split">
+    <split-container v-model="split" :hideHeader="hideHeader">
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
@@ -47,6 +47,7 @@ export default {
     props: {
         url: String,
         data: Array,
+        hideHeader: Boolean,
         value: Array,
         expandedKeys: {
             type: Array,

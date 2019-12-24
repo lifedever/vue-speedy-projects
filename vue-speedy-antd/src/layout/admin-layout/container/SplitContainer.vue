@@ -1,5 +1,6 @@
 <template>
-    <base-container class="split-container">
+    <base-container class="split-container"
+                    :hideHeader="hideHeader">
         <template v-slot:headerRight>
             <slot name="headerRight"></slot>
         </template>
@@ -47,6 +48,7 @@
             }
         },
         props: {
+            hideHeader: Boolean,
             value: {
                 type: [String, Number],
                 default: 0.5
