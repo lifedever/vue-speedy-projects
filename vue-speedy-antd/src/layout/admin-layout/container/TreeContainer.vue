@@ -37,13 +37,11 @@
 </template>
 
 <script>
-import { Tree } from 'ant-design-vue'
 import _merge from 'lodash/merge'
 import { clearObj } from "../../../utils/common";
 
 export default {
     name: "TreeContainer",
-    components: { ATree: Tree },
     props: {
         url: String,
         data: Array,
@@ -70,7 +68,7 @@ export default {
         splitWidth: {
             type: [Number, String],
             default: '250px'
-        }
+        },
     },
     data() {
         return {
@@ -183,6 +181,7 @@ export default {
                 nodes.push(o.data.props.dataRef)
             })
             this.$emit('input', nodes)
+
         },
         /**
          * 处理树节点

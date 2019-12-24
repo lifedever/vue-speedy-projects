@@ -4,8 +4,7 @@
         @load="handleLoad"
         splitWidth="250px"
         :expandedKeys="expandedKeys"
-        :config="{asyncLoad: false}"
-    >
+        :config="{asyncLoad: false, draggable: true}" @drop="handleDrop">
         <a-button slot="headerRight" @click="handleAdd">添加</a-button>
         <table-container url="/api/holder/users" hide-header pageable :operation="false">
             <s-table-column title="名称" prop="name"></s-table-column>
@@ -33,6 +32,25 @@ export default {
                         }, {
                             key: '节点12',
                             title: '节点12'
+                        }, {
+                            key: '节点13',
+                            title: '节点13'
+                        },
+                    ]
+                },
+                {
+                    key: '节点2',
+                    title: '节点2',
+                    children: [
+                        {
+                            key: '节点21',
+                            title: '节点21'
+                        },{
+                            key: '节点22',
+                            title: '节点22'
+                        },{
+                            key: '节点23',
+                            title: '节点23'
                         },
                     ]
                 }
@@ -55,6 +73,9 @@ export default {
                 },
                 component: () => import('./FormExample')
             })
+        },
+        handleDrop(data) {
+            console.log(data)
         }
     }
 }
