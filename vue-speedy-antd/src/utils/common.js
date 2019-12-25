@@ -19,7 +19,7 @@ export const toFormData = (object) => {
     let formData = new FormData()
     Object.keys(object).forEach(key => {
         let value = object[key]
-        if (value)
+        if (value !== undefined)
             formData.append(key, value)
     })
     return formData
