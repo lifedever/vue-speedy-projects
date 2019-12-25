@@ -20,7 +20,7 @@ export const toFormData = (object) => {
     Object.keys(object).forEach(key => {
         let value = object[key]
         if (value)
-            formData.append(key,)
+            formData.append(key, value)
     })
     return formData
 }
