@@ -24,7 +24,8 @@ import {
     notification,
     Tree,
     Tooltip,
-    Menu
+    Menu,
+    LocaleProvider
 } from 'ant-design-vue';
 
 export default {
@@ -73,5 +74,6 @@ export default {
         Vue.component(Tooltip.name, Tooltip)
         Vue.component(Tree.name, Tree)
         Vue.component(Tree.TreeNode.name, Tree.TreeNode)
+        Vue.component(LocaleProvider.name, LocaleProvider)
     }
 }
