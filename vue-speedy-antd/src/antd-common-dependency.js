@@ -23,6 +23,7 @@ import {
     message,
     notification,
     Tree,
+    Tooltip,
     Menu
 } from 'ant-design-vue';
 
@@ -69,6 +70,7 @@ export default {
         Vue.component(Menu.SubMenu.name, Menu.SubMenu)
         Vue.component(Menu.ItemGroup.name, Menu.ItemGroup)
         Vue.component(Empty.name, Empty)
+        Vue.component(Tooltip.name, Tooltip)
         Vue.component(Tree.name, Tree)
         Vue.component(Tree.TreeNode.name, Tree.TreeNode)
     }
