@@ -3,14 +3,14 @@
         <div>
             <div style="margin-top: 40px;">
                 <a-button @click="openNewTab" type="primary">打开新Tab并加载数据</a-button>
-                <s-form>
+                <s-form @submit="handleSubmit">
                     <s-form-item label="输入验证码">
                         <s-code-send-input style="width: 400px;"
                                            v-decorator="['code', { rules: [{ required: true, message: 'Please input your code' }] }]"
                                            url="/api/pt/userinfo"
                                            @send="handleSend"
                                            @finish="handleFinish"
-                                           placeholder="输入一个时长，测试发送，单位：秒"
+                                           placeholder="输入验证码"
                                            :timeout="60"/>
                     </s-form-item>
                 </s-form>
@@ -56,7 +56,7 @@
         methods: {
             openNewTab() {
                 let id = new Date().getTime()
-                let menu = new Menu(id = id, name = "Tab_" + id, '/test/' + id)
+                let menu = new Menu(id, name = "Tab_" + id, '/test/' + id)
                 menu.selecedKey = 'home'
                 this.openTab(menu)
             },
@@ -68,6 +68,9 @@
             },
             handleFinish() {
                 this.$message.success('又可以重新发送验证码了')
+            },
+            handleSubmit(data) {
+                this.$message.success(JSON.stringify(data))
             }
         }
     }
