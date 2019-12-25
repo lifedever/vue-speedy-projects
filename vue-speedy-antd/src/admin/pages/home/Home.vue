@@ -1,16 +1,14 @@
 <template>
     <base-container>
         <div>
-            哈哈， 这是首页
-            <div style="width: 400px;">
-                <a-input class="s-input-with-button-right">
-                    <a-button slot="addonAfter" type="primary">
-                        获取验证码
-                    </a-button>
-                </a-input>
-            </div>
             <div style="margin-top: 40px;">
                 <a-button @click="openNewTab" type="primary">打开新Tab并加载数据</a-button>
+                <s-code-send-input class="margin-left-sm"
+                                   style="width: 400px;"
+                                   url="/api/pt/userinfo"
+                                   @send="handleSend"
+                                   @finish="handleFinish"
+                                   :timeout="60"/>
             </div>
 
             <a-select class="inline-block" defaultValue="lucy" style="margin-top: 40px; width: 120px"
@@ -59,6 +57,12 @@
             },
             handleChange(value) {
                 this.$message.success(value)
+            },
+            handleSend() {
+                this.$message.success('验证码发送成功！')
+            },
+            handleFinish() {
+                this.$message.success('又可以重新发送验证码了')
             }
         }
     }

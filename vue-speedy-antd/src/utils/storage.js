@@ -8,8 +8,13 @@ const HOLDER_KEY = "Holder"
 /**
  * 本地保存
  */
-export const localSave = (key, value) => {
-    lscache.set(key, value)
+export const localSave = (key, value, time) => {
+    if (time) {
+        lscache.setExpiryMilliseconds = 1000
+        lscache.set(key, value, time)
+    }else{
+        lscache.set(key, value)
+    }
 }
 /**
  * 本地获取
