@@ -3,12 +3,17 @@
         <div>
             <div style="margin-top: 40px;">
                 <a-button @click="openNewTab" type="primary">打开新Tab并加载数据</a-button>
-                <s-code-send-input class="margin-left-sm"
-                                   style="width: 400px;"
-                                   url="/api/pt/userinfo"
-                                   @send="handleSend"
-                                   @finish="handleFinish"
-                                   :timeout="60"/>
+                <s-form>
+                    <s-form-item label="输入验证码">
+                        <s-code-send-input style="width: 400px;"
+                                           v-decorator="['code', { rules: [{ required: true, message: 'Please input your code' }] }]"
+                                           url="/api/pt/userinfo"
+                                           @send="handleSend"
+                                           @finish="handleFinish"
+                                           placeholder="输入一个时长，测试发送，单位：秒"
+                                           :timeout="60"/>
+                    </s-form-item>
+                </s-form>
             </div>
 
             <a-select class="inline-block" defaultValue="lucy" style="margin-top: 40px; width: 120px"

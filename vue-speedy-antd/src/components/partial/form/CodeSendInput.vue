@@ -1,5 +1,8 @@
 <template>
-    <a-input class="s-input-with-button-right">
+    <a-input class="s-input-with-button-right"
+             :value="code"
+             @change="handleChange"
+             :placeholder="placeholder">
         <a-button slot="addonAfter"
                   type="primary"
                   :loading="loading"
@@ -17,6 +20,7 @@
     export default {
         name: "CodeSendInput",
         props: {
+            value: [String, Number],
             url: String,
             timeout: {
                 type: Number,
@@ -29,15 +33,23 @@
             localKey: {
                 type: String,
                 default: 's-code-send-flag'
-            }
+            },
+            placeholder: String,
+            decorator: Array,
         },
         data() {
+            const value = this.value
             return {
                 time: null,
                 interval: null,
                 loading: false,
-                localKey: 's-code-send-flag'
+                code: value
             }
+        },
+        watch: {
+            value() {
+                this.code = this.value
+            },
         },
         mounted() {
             let localTime = localGet(this.localKey)
@@ -46,7 +58,7 @@
                 if (time < this.timeout) {
                     this.time = (this.timeout - time).toFixed(0)
                     this.beginInterval();
-                }else{
+                } else {
                     localRemove(this.localKey)
                 }
             }
@@ -75,6 +87,11 @@
                 this.time = null
                 window.clearInterval(this.interval)
                 localRemove(this.localKey)
+            },
+            handleChange(e) {
+                let code = e.target.value
+                this.code = code
+                this.$emit('change', code)
             }
         }
     }
