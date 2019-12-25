@@ -18,7 +18,9 @@ export const setSiteTitle = (title, reset = false) => {
 export const toFormData = (object) => {
     let formData = new FormData()
     Object.keys(object).forEach(key => {
-        formData.append(key, object[key])
+        let value = object[key]
+        if (value)
+            formData.append(key,)
     })
     return formData
 }
@@ -63,7 +65,7 @@ export const _map = (list, key) => {
  * @param {String|Number} value 要验证的字符串或数值
  * @param {*} validList 用来验证的列表
  */
-export function oneOf (value, validList) {
+export function oneOf(value, validList) {
     for (let i = 0; i < validList.length; i++) {
         if (value === validList[i]) {
             return true
