@@ -1,6 +1,8 @@
 <template>
     <base-container>
-        <test-item></test-item>
+        <keep-alive>
+            <test-item :key="$route.fullPath"></test-item>
+        </keep-alive>
     </base-container>
 </template>
 

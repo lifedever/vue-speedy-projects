@@ -1,40 +1,49 @@
 @import "~ant-design-vue/lib/style/themes/default";
+
 .ant-layout {
     height: 100%;
 }
+
 .ant-modal-confirm .ant-modal-confirm-btns {
     float: unset;
     text-align: center;
 }
-.btn-success {
+
+.btn-success, .ant-btn-success {
     color: #fff;
     background-color: @success-color;
     border-color: @success-color;
+
     &:hover, &:active, &:focus, &[disabled], &[disabled]:hover {
         background-color: tint(@success-color, 25%);
         color: #ffffff;
         border-color: tint(@success-color, 25%);
     }
 }
-.btn-warning {
+
+.btn-warning, .ant-btn-warning {
     color: #fff;
     background-color: @warning-color;
     border-color: @warning-color;
+
     &:hover, &:active, &:focus, &[disabled], &[disabled]:hover {
         background-color: tint(@warning-color, 25%);
         color: #ffffff;
         border-color: tint(@warning-color, 25%);
     }
 }
+
 .ant-btn-sm {
     font-size: 12px;
     line-height: 1.4;
 }
+
 .ant-btn-danger {
     background-color: @btn-danger-color;
     color: #fff;
     border-color: @btn-danger-color;
-    &:hover, &[disabled], &[disabled]:hover {
+
+    &:hover, &:focus, &[disabled], &[disabled]:hover {
         background-color: tint(@btn-danger-color, 25%);
         border-color: tint(@btn-danger-color, 25%);
         color: #fff;
@@ -45,30 +54,36 @@
     .ant-input {
         border-right: none;
     }
+
     .ant-input-group-addon {
         background: transparent;
         border: none;
         padding: 0;
+
         .ant-btn {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
     }
 }
+
 .s-input-with-button-left {
     .ant-input {
         border-left: none;
     }
+
     .ant-input-group-addon {
         background: transparent;
         border: none;
         padding: 0;
+
         .ant-btn {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
     }
 }
+
 .ant-form-item {
     margin-bottom: 5px;
 }
