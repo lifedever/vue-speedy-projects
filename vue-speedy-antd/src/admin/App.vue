@@ -1,10 +1,10 @@
 <template>
-    <div id="app">
-        <a-locale-provider :locale="locale">
+    <a-locale-provider :locale="locale">
+        <div id="app">
             <router-view></router-view>
             <s-modal></s-modal>
-        </a-locale-provider>
-    </div>
+        </div>
+    </a-locale-provider>
 </template>
 
 <script>
