@@ -24,7 +24,7 @@
                 <a-select-option value="Yiminghe">yiminghe</a-select-option>
             </a-select>
 
-            <s-dropdown :data="dropdownData"
+            <s-dropdown :data="dropdownData" @select="handleSelect"
                         class="mar-left-sm margin-right-sm">
                 <a-button> Cascading menu <a-icon type="down" /> </a-button>
             </s-dropdown>
@@ -101,6 +101,9 @@
             }
         },
         methods: {
+            handleSelect(data) {
+                console.log(data)
+            },
             openNewTab() {
                 let id = new Date().getTime()
                 let menu = new Menu(id, name = "Tab_" + id, '/test/' + id)

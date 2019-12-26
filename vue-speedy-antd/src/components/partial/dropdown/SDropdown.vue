@@ -16,7 +16,7 @@
 
 <script>
     import SDropdownMenuItem from "./SDropdownMenuItem";
-
+    import _cloneDeep from 'lodash/cloneDeep'
     export default {
         name: "SDropdown",
         components: {SDropdownMenuItem},
@@ -45,7 +45,7 @@
         methods: {
             toParallelData(data) {
                 data.forEach(o => {
-                    let item = Object.assign({}, {}, o)
+                    let item = _cloneDeep(o)
                     this.parallelData.push(item)
                     delete item[this.replaceFields.children]
                     let children = o[this.replaceFields.children]
