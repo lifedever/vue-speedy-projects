@@ -68,6 +68,7 @@ export default {
         Vue.component(Row.name, Row)
         Vue.component(Col.name, Col)
         Vue.component(Menu.name, Menu)
+        Vue.component(Menu.Divider.name, Menu.Divider)
         Vue.component(Menu.Item.name, Menu.Item)
         Vue.component(Menu.SubMenu.name, Menu.SubMenu)
         Vue.component(Menu.ItemGroup.name, Menu.ItemGroup)
