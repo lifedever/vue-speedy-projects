@@ -1,5 +1,6 @@
 import {
     Button,
+    Dropdown,
     Icon,
     Card,
     Form,
@@ -75,5 +76,6 @@ export default {
         Vue.component(Tree.name, Tree)
         Vue.component(Tree.TreeNode.name, Tree.TreeNode)
         Vue.component(LocaleProvider.name, LocaleProvider)
+        Vue.component(Dropdown.Button.name, Dropdown.Button)
     }
 }
