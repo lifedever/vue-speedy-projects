@@ -29,7 +29,7 @@
                     return {
                         children: 'children',
                         title: 'title',
-                        key: 'id'
+                        key: 'key'
                     }
                 }
             }
