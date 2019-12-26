@@ -24,6 +24,11 @@
                 <a-select-option value="Yiminghe">yiminghe</a-select-option>
             </a-select>
 
+            <s-dropdown :data="dropdownData"
+                        class="mar-left-sm margin-right-sm">
+                <a-button> Cascading menu <a-icon type="down" /> </a-button>
+            </s-dropdown>
+
             <div class="margin-left-sm inline-block">
                 <a-button>普通按钮</a-button>
                 <a-button type="primary" class="inline-block mar-left-sm">主要按钮</a-button>
@@ -43,14 +48,56 @@
 
 <script>
     import Menu from "../../class/Menu";
+    import SDropdown from "../../../components/partial/dropdown/SDropdown";
 
     export default {
         name: 'Home',
+        components: {SDropdown},
         data() {
             return {
                 code: `<keep-alive>
     <test-item :key="$route.fullPath"></test-item>
-</keep-alive>`
+</keep-alive>`,
+                dropdownData: [
+                    {
+                        id: 1,
+                        title: '1'
+                    },
+                    {
+                        id: 2,
+                        title: '2'
+                    },
+                    {
+                        id: 3,
+                        title: '3',
+                        children: [
+                            {
+                                id: 31,
+                                title: '31'
+                            },
+                            {
+                                id: 32,
+                                title: '32',
+                                children: [
+                                    {
+                                        id: 321,
+                                        title: '321'
+                                    },
+                                    {
+                                        id: 322,
+                                        title: '322',
+                                        children: [
+                                            {
+                                                id: 3221,
+                                                title: '3221'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         },
         methods: {
