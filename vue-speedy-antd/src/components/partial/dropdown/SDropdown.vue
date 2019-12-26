@@ -53,6 +53,7 @@
                         this.toParallelData(children)
                     }
                 })
+                console.log('toParallelData', data, this.parallelData)
             },
 
             handleClick({key, keyPath}) {
