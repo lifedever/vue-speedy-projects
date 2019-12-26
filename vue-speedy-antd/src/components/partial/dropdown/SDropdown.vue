@@ -7,7 +7,8 @@
                              :key="item[replaceFields['key']]">
                     <span>{{item[replaceFields['title']]}}</span>
                 </a-menu-item>
-                <s-dropdown-menu-item v-else :item="item" :key="item[replaceFields['key']]" />
+                <s-dropdown-menu-item v-else :item="item" :replace-fields="replaceFields"
+                                      :key="item[replaceFields['key']]"/>
             </template>
         </a-menu>
     </a-dropdown>
@@ -15,6 +16,7 @@
 
 <script>
     import SDropdownMenuItem from "./SDropdownMenuItem";
+
     export default {
         name: "SDropdown",
         components: {SDropdownMenuItem},
@@ -23,8 +25,12 @@
             config: Object,
             replaceFields: {
                 type: Object,
-                default() {
-                    return {children: 'children', title: 'title', key: 'id'}
+                default: () => {
+                    return {
+                        children: 'children',
+                        title: 'title',
+                        key: 'id'
+                    }
                 }
             }
         },
