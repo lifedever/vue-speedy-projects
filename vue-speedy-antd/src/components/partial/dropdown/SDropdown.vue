@@ -42,6 +42,12 @@
         mounted() {
             this.toParallelData(this.data)
         },
+        watch: {
+            data(){
+                this.parallelData = []
+                this.toParallelData(this.data)
+            }
+        },
         methods: {
             toParallelData(data) {
                 data.forEach(o => {
