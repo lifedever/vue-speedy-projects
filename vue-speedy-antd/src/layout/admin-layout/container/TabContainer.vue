@@ -45,14 +45,12 @@ export default {
     watch: {
         '$route'(value) {
             if (value.name === this.routeName && this.$route.query._t) {
-
                 this.current = this.$route.query._t
             }
         }
     },
     methods: {
         routeTab() {
-            console.log('tap container, routeTab')
             let query = Object.assign({}, this.$route.query)
             query._t = this.current
             this.$router.push({
@@ -60,6 +58,7 @@ export default {
             })
         },
         tabChange() {
+            console.log('tab container, tab change', this.routeName)
             this.routeTab()
         }
     }
