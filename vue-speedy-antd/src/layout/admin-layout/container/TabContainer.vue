@@ -25,10 +25,12 @@ export default {
     },
     data() {
         return {
-            current: null
+            current: null,
+            routeName: null
         }
     },
     mounted() {
+        this.routeName = this.$route.name
         this.current = this.$route.query._t || this.defaultTab
         this.routeTab()
     },
@@ -41,14 +43,16 @@ export default {
         }
     },
     watch: {
-        '$route.query._t'(value) {
-            if (value) {
-                this.current = value
+        '$route'(value) {
+            if (value.name === this.routeName && this.$route.query._t) {
+
+                this.current = this.$route.query._t
             }
         }
     },
     methods: {
         routeTab() {
+            console.log('tap container, routeTab')
             let query = Object.assign({}, this.$route.query)
             query._t = this.current
             this.$router.push({
