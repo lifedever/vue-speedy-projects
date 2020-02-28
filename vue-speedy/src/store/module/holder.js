@@ -4,7 +4,7 @@ export default {
         holders: null
     },
     getters: {
-
+        holdersGet: state => state.holders
     },
     mutations: {
         setHolders(state, holders){

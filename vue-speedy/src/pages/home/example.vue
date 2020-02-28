@@ -1,5 +1,7 @@
 <template>
-    <div ref="dom"></div>
+    <div ref="dom">
+        <h1>租户示例</h1>
+    </div>
 </template>
 
 <script>

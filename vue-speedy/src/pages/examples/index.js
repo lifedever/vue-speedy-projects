@@ -60,6 +60,15 @@ export default {
                 title: '待定',
                 holderNeedless: true
             }
+        }, {
+            path: '/holder',
+            name: 'holder', // 一级目录下的二级页面
+            meta: {
+                authenticated: true,
+                title: '多租户选择',
+                holderNeedless: true
+            },
+            component: () => import('./holder/HolderExample')
         }
     ]
 }

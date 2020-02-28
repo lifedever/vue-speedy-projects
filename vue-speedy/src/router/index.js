@@ -46,6 +46,7 @@ export default (extRoutes) => {
             }
 
             holderId = getLocalHolder()
+
             if (holderId) {
                 // 本地有holder缓存
                 nextRoute(holderId)
@@ -60,9 +61,18 @@ export default (extRoutes) => {
                         nextRoute(holders[0].id);
                     } else {
                         // TODO 租户选择
+                        console.log('select holder')
+                        nextRoute(holders[1].id);
                     }
                 });
             }
+        }
+
+        const holdersGet = store.getters.holdersGet
+        if (!holdersGet) {
+            store.dispatch('loadHolders').then(holders => {
+                console.log('load holders', holders)
+            });
         }
 
         storeHolder(to)
