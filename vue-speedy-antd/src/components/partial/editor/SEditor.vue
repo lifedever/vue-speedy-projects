@@ -1,5 +1,5 @@
 <template>
-    <div ref="editor" class="s-editor"><p>{{defaultValue}}</p></div>
+    <div ref="editor" class="s-editor"><p v-html="defaultValue"></p></div>
 </template>
 
 <script>
@@ -89,7 +89,9 @@
             }
         },
         watch: {
-
+            value(value) {
+                this.defaultValue = value
+            }
         },
         methods: {
             setContent(val) {
