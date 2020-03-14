@@ -1,10 +1,11 @@
 <template>
-    <div ref="editor" class="s-editor"></div>
+    <div ref="editor" class="s-editor"><p>{{defaultValue}}</p></div>
 </template>
 
 <script>
     import E from 'wangeditor'
     import {oneOf} from "../../../utils/common";
+
     export default {
         name: "SEditor",
         mounted() {
@@ -12,7 +13,8 @@
         },
         data() {
             return {
-                editor: null
+                editor: null,
+                defaultValue: ''
             }
         },
         props: {
@@ -87,10 +89,13 @@
             }
         },
         methods: {
-            setContent (val) {
+            setContent(val) {
                 this.editor.txt.html(val)
             },
             init() {
+                if (this.value){
+                    this.defaultValue = this.value
+                }
                 this.editor = new E(this.$refs.editor)
 
                 this.editor.customConfig.onchange = (html) => {
@@ -104,15 +109,13 @@
                     this.editor.customConfig.uploadFileName = 'file'
                     this.editor.customConfig.uploadImgServer = this.uploadImgServer
                     this.editor.customConfig.uploadImgTimeout = this.uploadImgTimeout
-                } else{
+                } else {
                     this.editor.customConfig.uploadImgShowBase64 = true
                 }
 
                 // create这个方法一定要在所有配置项之后调用
                 this.editor.create();
-                if (this.value) {
-                    this.editor.txt.html(this.value)
-                }
+
             }
         }
     }
@@ -123,6 +126,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+
         .w-e-text-container {
             flex: 1;
         }
