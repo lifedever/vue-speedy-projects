@@ -90,7 +90,7 @@
         },
         watch: {
             value(value) {
-                this.defaultValue = value
+                // this.defaultValue = value
             }
         },
         methods: {
