@@ -88,9 +88,14 @@
                 default: 60000
             }
         },
+        watch: {
+            value(value) {
+                this.defaultValue = value
+            }
+        },
         methods: {
             setContent(val) {
-                this.editor.txt.html(val)
+                this.defaultValue = val
             },
             init() {
                 if (this.value){
