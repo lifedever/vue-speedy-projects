@@ -8,7 +8,9 @@
                        :menu-list="menuList">
                 <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
                 <div class="logo-con">
-                    <div class="logo-title" v-if="!collapsed">{{$site.title}}</div>
+                    <a href="#" class="logo-title" v-if="!collapsed" @click.prevent="selectHolder">
+                        <span v-if="currentHolder">{{currentHolder.name}}</span>
+                    </a>
                     <div class="logo-title" v-else>{{$site.shortTitle}}</div>
                 </div>
             </side-menu>
@@ -81,8 +83,12 @@
         },
         computed: {
             ...mapGetters([
-                'forbiddenGet'
+                'forbiddenGet',
+                'holdersGet'
             ]),
+            currentHolder() {
+                return this.holdersGet? this.holdersGet.find(o => o.id === this.$route.params.holder): null
+            },
             tagNavList () {
                 return this.$store.state.app.tagNavList
             },
@@ -113,6 +119,13 @@
                 'handleLogin',
                 'forbid'
             ]),
+            selectHolder() {
+                this.$mountModal({
+                    title: '选择租户',
+                    footerHide: true,
+                    component: () => import('./SelectHolderModal')
+                });
+            },
             /**
              * 匹配当前是否为iframe，如果是iframe，则不走router，走缓存。
              */
