@@ -89,9 +89,7 @@
             }
         },
         watch: {
-            value(value) {
-                this.defaultValue = value
-            }
+
         },
         methods: {
             setContent(val) {
