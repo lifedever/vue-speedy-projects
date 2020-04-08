@@ -42,6 +42,11 @@
                 <div class="mar-bottom-sm">对需要隔离的组件指定一个唯一的 <code>key</code>：</div>
                 <pre>{{code}}</pre>
             </div>
+            <div>
+                <s-editor ref="editor"
+                          upload-img-server="/api/open/general/edit/upload"
+                          v-model="detail"></s-editor>
+            </div>
         </div>
     </base-container>
 </template>
@@ -49,12 +54,14 @@
 <script>
     import Menu from "../../class/Menu";
     import SDropdown from "../../../components/partial/dropdown/SDropdown";
+    import SEditor from "../../../components/partial/editor/SEditor";
 
     export default {
         name: 'Home',
-        components: {SDropdown},
+        components: {SEditor, SDropdown},
         data() {
             return {
+                detail: '1223',
                 code: `<keep-alive>
     <test-item :key="$route.fullPath"></test-item>
 </keep-alive>`,
