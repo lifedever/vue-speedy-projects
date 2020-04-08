@@ -20,12 +20,7 @@
                 console.log('select', holder)
                 this.$unmountModal()
                 setLocalHolder(this.$route, holder)
-                this.$router.push({
-                    name: 'Home',
-                    params: {
-                        holder: holder.id
-                    }
-                })
+                location.href = `/${holder.id}/home`
             }
         }
     }
