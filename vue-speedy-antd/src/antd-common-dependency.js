@@ -51,6 +51,8 @@ export default {
         Vue.component(Checkbox.name, Checkbox)
         Vue.component(Checkbox.Group.name, Checkbox.Group)
         Vue.component(Radio.name, Radio)
+        Vue.component(Radio.Group.name, Radio.Group)
+        Vue.component(Radio.Button.name, Radio.Button)
         Vue.component(Select.name, Select)
         Vue.component(Select.Option.name, Select.Option)
         Vue.component(Select.OptGroup.name, Select.OptGroup)
