@@ -30,6 +30,9 @@ module.exports = (option) => {
 
         },
         configureWebpack: config => {
+            config.watchOptions = {
+                ignored: /node_modules/
+            }
             if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'uat') {
                 config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
                 // gzip打包
