@@ -143,6 +143,9 @@
                 this.dataSource = this.tableData
             },
             tableChange(pagination, filters, sorter) {
+                console.log('pagination', pagination)
+                console.log('filters', filters)
+                console.log('sorter', sorter)
                 this.loadData({page: pagination.current})
             },
             paginationChange(page) {
