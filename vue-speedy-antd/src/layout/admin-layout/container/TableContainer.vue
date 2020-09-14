@@ -151,11 +151,11 @@
             },
             paginationChange(page) {
                 this.loadData({page})
-                this.$router.replace({
-                    query: {
-                        page: page
-                    }
-                })
+                // this.$router.replace({
+                //     query: {
+                //         page: page
+                //     }
+                // })
             },
             loadData(params) {
                 this.loading = true
