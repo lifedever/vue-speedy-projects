@@ -114,7 +114,7 @@
                     size: 'middle',
                     dataSource: this.dataSource,
                     loading: this.tableData? this.dataLoading: this.loading,
-                    rowKey: 'id',
+                    rowKey: this.itemKey,
                     pagination: false,
                     indentSize: 20
                 }
