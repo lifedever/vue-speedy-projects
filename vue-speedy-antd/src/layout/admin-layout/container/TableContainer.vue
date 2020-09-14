@@ -146,7 +146,8 @@
                 console.log('pagination', pagination)
                 console.log('filters', filters)
                 console.log('sorter', sorter)
-                this.loadData({page: pagination.current})
+                // this.loadData({page: pagination.current})
+                this.$emit('change', {pagination, filters, sorter})
             },
             paginationChange(page) {
                 this.loadData({page})
