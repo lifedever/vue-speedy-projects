@@ -7,8 +7,7 @@
                 :trigger="null"
                 collapsible
                 v-model="collapsed">
-            <div class="logo" :style="{backgroundImage: 'url(\'/logo.png\')'}">
-
+            <div class="logo">
                 <slot name="logo" v-bind:data="collapsed"></slot>
             </div>
             <menus :menus="menus" v-if="menus && menus.length > 0" :menu-collapsed="collapsed"></menus>
