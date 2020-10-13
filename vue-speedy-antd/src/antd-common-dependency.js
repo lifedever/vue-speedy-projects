@@ -36,7 +36,7 @@ export default {
             duration: 3,
             maxCount: 3,
         });
-
+        Vue.use(Modal)  // 防止报错 Failed to resolve directive: ant-portal
         Vue.prototype.$message = message
         Vue.prototype.$notification = notification
         Vue.prototype.$Modal = Modal
@@ -62,7 +62,6 @@ export default {
         Vue.component(Avatar.name, Avatar)
         Vue.component(Spin.name, Spin)
         Vue.component(Alert.name, Alert)
-        Vue.component(Modal.name, Modal)
         Vue.component(List.name, List)
         Vue.component(List.Item.name, List.Item)
         Vue.component(List.Item.Meta.name, List.Item.Meta)
