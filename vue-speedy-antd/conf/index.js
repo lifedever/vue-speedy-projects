@@ -52,9 +52,11 @@ module.exports = (option) => {
         css: {
             loaderOptions: {
                 less: {
-                    // 覆盖antd颜色
-                    modifyVars: Object.assign({}, aLessOverride, defaultOption.lessModifyVars),
-                    javascriptEnabled: true // 设置为true
+                    lessOptions: {
+                        // 覆盖antd颜色
+                        modifyVars: Object.assign({}, aLessOverride, defaultOption.lessModifyVars),
+                        javascriptEnabled: true // 设置为true
+                    },
                 }
             },
         },
