@@ -3,7 +3,7 @@
             :layout="layout"
             @submit.prevent="handleSubmit">
         <slot></slot>
-        <a-form-item :class="btnCenter? 'text-center': ''" :wrapper-col="btnCenter? {}: { span: 24 - submitBtnSpan, offset: submitBtnSpan }">
+        <a-form-item v-if="!hideSubmitBtn" :class="btnCenter? 'text-center': ''" :wrapper-col="btnCenter? {}: { span: 24 - submitBtnSpan, offset: submitBtnSpan }">
             <a-button
                     type="primary"
                     :loading="loading"
@@ -43,7 +43,8 @@
                 type: Number,
                 default: 8
             },
-            loading: Boolean
+            loading: Boolean,
+            hideSubmitBtn: Boolean
         },
         methods: {
             getFieldValue(field) {
