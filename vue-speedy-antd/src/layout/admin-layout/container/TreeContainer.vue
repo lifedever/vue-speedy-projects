@@ -99,8 +99,8 @@ export default {
         }
     },
     created() {
-        this.initDefaultSelectedKeys()
-        this.initDefaultExpandedKeys()
+        // this.initDefaultSelectedKeys()
+        // this.initDefaultExpandedKeys()
         this.defaultConfig = _merge({}, this.defaultConfig, this.defaultConfig2, this.config);
         // 判断是否异步
         if (this.defaultConfig.asyncLoad) {
@@ -133,11 +133,19 @@ export default {
         url() {
             this.loadData()
         },
-        selectedKeys() {
-            this.initDefaultSelectedKeys()
+        selectedKeys: {
+            handler() {
+                this.initDefaultSelectedKeys()
+            },
+            immediate: true,
+            deep: true
         },
-        expandedKeys() {
-            this.initDefaultExpandedKeys()
+        expandedKeys: {
+            handler(){
+                this.initDefaultExpandedKeys()
+            },
+            immediate: true,
+            deep: true
         }
     },
     methods: {
