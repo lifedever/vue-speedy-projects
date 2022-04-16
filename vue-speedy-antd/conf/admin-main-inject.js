@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from '../src/admin/App.vue'
 import axios from 'axios'
-import router from '../src/admin/router'
+import {createRouter} from '../src/admin/router'
 import store from '../src/admin/store'
 import VueBus from 'vue-bus'
 
@@ -29,14 +29,14 @@ export default {
             pages: null,                // 路由配置
             modules: [],
             mixins: [],
-            config: {
-            }
+            loginComponent: null,       // 登录页面自定义的组件
+            config: {}
         }
         defaultOptions = Object.assign(defaultOptions, options)
 
         setSiteTitle(defaultOptions.config.title, true)
 
-        const routerInstance = router(defaultOptions.pages, defaultOptions.config)
+        const routerInstance = createRouter(defaultOptions.pages, defaultOptions.config)
         axiosInterceptors(axios, routerInstance)
 
         /**

@@ -111,6 +111,7 @@
 </script>
 
 <style lang="less">
+    @import "../../../assets/less/index";
     .admin-top-user {
         height: 46px;
         display: block;

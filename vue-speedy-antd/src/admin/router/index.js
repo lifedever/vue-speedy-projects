@@ -4,8 +4,7 @@ import defaultRouters from './routers'
 import Login from '../pages/login'
 
 Vue.use(Router);
-
-export default (routers, config) => {
+const createRouter = (routers, config) => {
     let options = {
         // mode: 'history',
         // base: `/${adminName}/`,
@@ -27,3 +26,4 @@ export default (routers, config) => {
     })
     return router
 }
+export {createRouter}

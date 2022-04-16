@@ -1,5 +1,5 @@
 <template>
-    <admin-layout :menus="menus">
+    <admin-layout>
         <template v-slot:logo="{data}">
             <span v-if="data">
                 {{config.shortTitle}}

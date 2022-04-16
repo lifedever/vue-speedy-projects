@@ -100,10 +100,6 @@
             }
         },
         props: {
-            menus: {
-                type: Array,
-                default: []
-            },
             loading: {
                 type: Boolean,
                 default: false
@@ -115,7 +111,8 @@
         },
         computed: {
             ...mapGetters('menu', {
-                currentMenu: 'currentGet'
+                currentMenu: 'currentGet',
+                menus: 'menusGet'
             }),
             ...mapGetters('app', {
                 token: 'tokenGet'
