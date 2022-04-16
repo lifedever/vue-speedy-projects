@@ -5037,9 +5037,9 @@ lodash.uniq@^4.5.0:
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
-  version "4.17.11"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -8133,10 +8133,10 @@ vue-router@^3.0.1:
   resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.2.tgz#dedc67afe6c4e2bc25682c8b1c2a8c0d7c7e56be"
   integrity sha1-3txnr+bE4rwlaCyLHCqMDXx+Vr4=
 
-vue-speedy@2.0.11:
-  version "2.0.11"
-  resolved "http://registry.npm.taobao.org/vue-speedy/download/vue-speedy-2.0.11.tgz#ea9e210c04c4acb3a58faebe9d3bba2a7f4f5c39"
-  integrity sha1-6p4hDATErLOlj66+nTu6Kn9PXDk=
+vue-speedy@latest:
+  version "2.0.37"
+  resolved "https://registry.yarnpkg.com/vue-speedy/-/vue-speedy-2.0.37.tgz#98ccf44336ab2282b0c285c6089c9f93f68d640a"
+  integrity sha512-kXAYZyx1HeME8vYBi2J0YA7IBdJwYDYxh++qK7Z+IRCL1eD3tyZl6C4VbHfcdtRuThBCeVnFhOAairOHp7JJBA==
   dependencies:
     axios "^0.18.0"
     clipboard "^2.0.0"
